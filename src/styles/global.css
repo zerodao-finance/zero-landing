@@ -1,0 +1,14 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@tailwind variants;
+
+@layer base {
+    body {
+        background-color: #212121;
+        font-family: 'Roboto Flex', sans-serif;
+    }
+}
