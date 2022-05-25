@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 // Hooks
 import useWindowDimensions from '../../hooks/WindowDimensions';
+import { useAppContext } from '../../store';
 // Layout
 // Components
 import { Background } from '../background/Background';
@@ -13,12 +14,14 @@ import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 
 const Hero = () => {
+  const { totalTransacted, pastEvents } = useAppContext();
   const { width } = useWindowDimensions();
 
   return (
     <Background full spaceBetween color="bg-gray-800">
       <Section verticalCenter fullHeight>
         <Grid
+          xl
           left={
             <HeroOneAction
               reactive
@@ -62,10 +65,10 @@ const Hero = () => {
       </Section>
       <Banner
         items={[
-          { text: 'text', value: 5 },
-          { text: 'text', value: 5 },
-          { text: 'text', value: 5 },
-          { text: 'text', value: 5 },
+          { text: 'Total Volume (BTC)', value: totalTransacted },
+          { text: 'Transactions', value: pastEvents.length },
+          { text: 'Assets Integrated', value: 5 },
+          { text: '???', value: 0 },
         ]}
       />
     </Background>
