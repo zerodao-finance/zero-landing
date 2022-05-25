@@ -21,6 +21,9 @@ function useZeroAnalytics() {
   const [totalTransacted, setTotalTransacted] = useState("");
   const [eventsLoading, setEventsLoading] = useState(false);
 
+  console.log("Past Events", pastEvents);
+  console.log("Transacted", totalTransacted);
+
   const web3 = new Web3(
     'https://mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
   );
@@ -55,8 +58,16 @@ function useZeroAnalytics() {
       if(events.length === 0) {
         noResultsCounter++;
       } else {
-        events.map(event => {
-          shallowEvents.push(event);
+        events.map(async event => {
+          // Add timestamp to TX
+          const timestamp:any = (await web3.eth.getBlock(event.blockNumber)).timestamp;
+          const eventWithTimestamp = {
+            ...event,
+            timestamp: new Date(timestamp * 1000).toUTCString()
+          }
+          // Add events to state
+          shallowEvents.push(eventWithTimestamp);
+          // Sum up TX totals
           shallowTotalTransacted += parseInt(event.returnValues.value)
         })
         noResultsCounter = 0;
