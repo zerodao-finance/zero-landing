@@ -16,7 +16,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'gradient-radial-shadow':
-          'radial-gradient(ellipse at center, #000000 0%, #212121 70%)',
+          'radial-gradient(ellipse at center, #111111 0%, #212121 70%)',
       },
       colors: {
         brand: {

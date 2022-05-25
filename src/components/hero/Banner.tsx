@@ -1,3 +1,4 @@
+// Types
 type IObjectProps = {
   text: string;
   value: string | number;
