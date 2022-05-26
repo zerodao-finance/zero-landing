@@ -8,6 +8,7 @@ import { useAppContext } from '../../store';
 // Components
 import { Background } from '../background/Background';
 import { Button } from '../button/Button';
+import { CTAButton } from '../button/CallToAction';
 import { Banner } from '../hero/Banner';
 import { HeroOneAction } from '../hero/HeroOneAction';
 import { Grid } from '../layout/Grid';
@@ -33,10 +34,12 @@ const Hero = () => {
               title="Interopobility Optimized."
               description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
               button={
-                <div className="flex gap-5 justify-center 2xl:justify-start">
+                <div className="flex gap-5 justify-center items-center 2xl:justify-start">
                   <Link href="https://bridge.zerodao.com" passHref={true}>
                     <a>
-                      <Button xl>Launch Bridge</Button>
+                      <CTAButton
+                        text="Launch Bridge"
+                      />
                     </a>
                   </Link>
                   <Link href="/analytics">

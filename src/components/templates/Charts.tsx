@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { Button } from '../button/Button';
 import { Grid } from '../layout/Grid';
 import { DefaultCard } from '../card/Default';
+import { CTAButton } from '../button/CallToAction';
 
 const Charts = () => {
   const { eventsLoading, totalTransacted } = useAppContext();
@@ -31,9 +32,9 @@ const Charts = () => {
           </li>
           <Link href="https://bridge.zerodao.com">
             <a>
-              <Button>
-                Bridge
-              </Button>
+              <CTAButton
+                text="Bridge"
+              />
             </a>
           </Link>
         </NavbarTwoColumns>
