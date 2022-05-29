@@ -32,7 +32,8 @@ function useZeroAnalytics() {
     let topBlock = currentBlock;
     let noResultsCounter = 0;
 
-    while (noResultsCounter < 10) {
+    while (noResultsCounter < 5) {
+      // TODO: figure out why number is off from jonto's dune analytics
       const events = await contract.getPastEvents('Transfer', {
         fromBlock: bottomBlock,
         toBlock: topBlock,

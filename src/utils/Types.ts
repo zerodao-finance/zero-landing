@@ -22,7 +22,7 @@ export type IEventProps = {
   signature: string;
   transactionHash: string;
   transactionIndex: number;
-  timestamp?: string | Date | number;
+  timestamp?: string | Date;
 };
 
 // Charts

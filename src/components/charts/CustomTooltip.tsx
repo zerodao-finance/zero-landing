@@ -5,7 +5,10 @@ function CustomTooltip(props: ICustomTooltipProps) {
     return (
       <div className="bg-white text-black px-5 py-3 rounded-lg">
         <p className="font-bold">{`${props.label || ''}`}</p>
-        <p className="">{`${props.payload[0]?.value || ''} BTC`}</p>
+        <p className="">
+          {`${props.payload.length > 0 ? props.payload[0]?.value : '0'} BTC
+					`}
+        </p>
       </div>
     );
   }

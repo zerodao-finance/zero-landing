@@ -6,6 +6,7 @@ type IDefaultCardProps = {
   color?: string;
   minHeight?: string;
   center?: boolean;
+  title?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
@@ -20,6 +21,7 @@ const DefaultCard = (props: IDefaultCardProps) => (
     px-4 py-6 rounded-xl shadow-xl
 	`}
   >
+    {props.title && <p className="font-bold">{props.title}</p>}
     {props.children}
   </div>
 );

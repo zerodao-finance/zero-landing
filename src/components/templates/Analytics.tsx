@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+// Hooks & Helpers
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-// Layout
 import { eventsToBarChart } from '../../utils/Helpers';
+// Store
+// Layout
 import { Background } from '../background/Background';
 import { CTAButton } from '../button/CallToAction';
 import { DefaultCard } from '../card/Default';
@@ -15,7 +17,7 @@ import { Section } from '../layout/Section';
 import { Navbar } from '../navigation/Navbar';
 import { Logo } from './Logo';
 
-const Charts = () => {
+const Analytics = () => {
   const { eventsLoading, totalTransacted, pastEvents } = useAppContext();
   const { width } = useWindowDimensions();
 
@@ -85,15 +87,14 @@ const Charts = () => {
         <Grid style="mb-10">
           {quickviewItems.map((obj, i) => (
             <div key={i}>
-              <DefaultCard center minHeight="min-h-[150px]">
+              <DefaultCard center minHeight="min-h-[100px]">
                 <p className="text-4xl font-bold">{obj.top}</p>
-                <p>{obj.bottom}</p>
+                <p className="">{obj.bottom}</p>
               </DefaultCard>
             </div>
           ))}
-          <DefaultCard minHeight="min-h-[150px]">
-            <p className="mb-5 font-bold">Assets Integrated</p>
-            <div className="flex justify-around">
+          <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
+            <div className="flex justify-around mt-5">
               {tokens.map((obj, i) => (
                 <div key={i}>
                   <Image src={obj.src} alt={obj.alt} height="40" width="40" />
@@ -103,9 +104,15 @@ const Charts = () => {
           </DefaultCard>
         </Grid>
 
-        <Grid cols="!grid-cols-1">
-          <DefaultCard>
+        <Grid cols="!grid-cols-1" style="mb-10">
+          <DefaultCard title="Daily Transaction Volume">
             <ResponsiveBarChart data={eventsToBarChart(pastEvents, true)} />
+          </DefaultCard>
+        </Grid>
+
+        <Grid cols="!grid-cols-1">
+          <DefaultCard title="All Transactions">
+            <></>
           </DefaultCard>
         </Grid>
       </Section>
@@ -113,4 +120,4 @@ const Charts = () => {
   );
 };
 
-export { Charts };
+export { Analytics };
