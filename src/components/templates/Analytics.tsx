@@ -104,6 +104,8 @@ const Analytics = () => {
           </DefaultCard>
         </Grid>
 
+        {console.log(eventsToBarChart(pastEvents, true))}
+
         <Grid cols="!grid-cols-1" style="mb-10">
           <DefaultCard title="Daily Transaction Volume">
             <ResponsiveBarChart data={eventsToBarChart(pastEvents, true)} />

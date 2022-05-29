@@ -5,9 +5,11 @@ import Web3 from 'web3';
 
 import { IEventProps } from '../utils/Types';
 
+const GENESIS_BLOCK = 14567078;
+
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps>>([]);
-  const [totalTransacted, setTotalTransacted] = useState('');
+  const [totalTransacted, setTotalTransacted] = useState('0');
   const [eventsLoading, setEventsLoading] = useState(false);
 
   const web3 = new Web3(
@@ -30,11 +32,10 @@ function useZeroAnalytics() {
 
     let bottomBlock = currentBlock - 10000;
     let topBlock = currentBlock;
-    let noResultsCounter = 0;
 
-    while (noResultsCounter < 5) {
-      // TODO: figure out why number is off from jonto's dune analytics
-      const events = await contract.getPastEvents('Transfer', {
+    while (topBlock > GENESIS_BLOCK) {
+      // For burns
+      const burnEvents = await contract.getPastEvents('Transfer', {
         fromBlock: bottomBlock,
         toBlock: topBlock,
         filter: {
@@ -42,25 +43,47 @@ function useZeroAnalytics() {
         },
       });
 
-      if (events.length === 0) {
-        noResultsCounter += 1;
-      } else {
-        events.map(async (event) => {
-          // Add timestamp to TX
-          const timestamp: string = (
-            await web3.eth.getBlock(event.blockNumber)
-          ).timestamp.toString();
-          const eventWithTimestamp = {
-            ...event,
-            timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
-          };
-          // Add events to state
-          shallowEvents.push(eventWithTimestamp);
-          // Sum up TX totals
-          shallowTotalTransacted += parseInt(event.returnValues.value, 10);
-        });
-        noResultsCounter = 0;
-      }
+      burnEvents.map(async (event) => {
+        // Add timestamp to TX
+        const timestamp: string = (
+          await web3.eth.getBlock(event.blockNumber)
+        ).timestamp.toString();
+        const eventWithTimestamp = {
+          ...event,
+          timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
+          type: 'burn',
+        };
+        // Add events to state
+        shallowEvents.push(eventWithTimestamp);
+        // Sum up TX totals
+        shallowTotalTransacted += parseInt(event.returnValues.value, 10);
+      });
+
+      // For mints
+      const mintEvents = await contract.getPastEvents('Transfer', {
+        fromBlock: bottomBlock,
+        toBlock: topBlock,
+        filter: {
+          to: controllerAddress,
+        },
+      });
+
+      mintEvents.map(async (event) => {
+        // Add timestamp to TX
+        const timestamp: string = (
+          await web3.eth.getBlock(event.blockNumber)
+        ).timestamp.toString();
+
+        const eventWithTimestamp = {
+          ...event,
+          timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
+          type: 'mint',
+        };
+        // Add events to state
+        shallowEvents.push(eventWithTimestamp);
+        // Sum up TX totals
+        shallowTotalTransacted += parseInt(event.returnValues.value, 10);
+      });
 
       bottomBlock -= 10000;
       topBlock -= 10000;

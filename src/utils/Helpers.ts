@@ -12,11 +12,14 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
             amt: parseInt(e.returnValues.value, 10),
           };
         } else {
-          r[k].amt = parseInt(r[k].amt, 10) + e.amt;
+          r[k].amt = r[k].amt === 'NaN' ? 0 : parseInt(r[k].amt, 10);
         }
         return r;
       }, {})
     );
+
+    console.log(result);
+
     const divided = result
       .filter((el) => el.amt.toString() !== 'NaN')
       .map((el) => {

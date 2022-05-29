@@ -23,6 +23,7 @@ export type IEventProps = {
   transactionHash: string;
   transactionIndex: number;
   timestamp?: string | Date;
+  type?: string;
 };
 
 // Charts
