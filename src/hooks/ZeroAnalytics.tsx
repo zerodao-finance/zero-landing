@@ -5,6 +5,8 @@ import Web3 from 'web3';
 
 import { IEventProps } from '../utils/Types';
 
+const GENESIS_BLOCK = 14567078;
+
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps>>([]);
   const [totalTransacted, setTotalTransacted] = useState('');
@@ -30,9 +32,8 @@ function useZeroAnalytics() {
 
     let bottomBlock = currentBlock - 10000;
     let topBlock = currentBlock;
-    let noResultsCounter = 0;
 
-    while (noResultsCounter < 10) {
+    while (topBlock > GENESIS_BLOCK) {
       const events = await contract.getPastEvents('Transfer', {
         fromBlock: bottomBlock,
         toBlock: topBlock,
@@ -41,25 +42,20 @@ function useZeroAnalytics() {
         },
       });
 
-      if (events.length === 0) {
-        noResultsCounter += 1;
-      } else {
-        events.map(async (event) => {
-          // Add timestamp to TX
-          const timestamp: string = (
-            await web3.eth.getBlock(event.blockNumber)
-          ).timestamp.toString();
-          const eventWithTimestamp = {
-            ...event,
-            timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
-          };
-          // Add events to state
-          shallowEvents.push(eventWithTimestamp);
-          // Sum up TX totals
-          shallowTotalTransacted += parseInt(event.returnValues.value, 10);
-        });
-        noResultsCounter = 0;
-      }
+      events.map(async (event) => {
+        // Add timestamp to TX
+        const timestamp: string = (
+          await web3.eth.getBlock(event.blockNumber)
+        ).timestamp.toString();
+        const eventWithTimestamp = {
+          ...event,
+          timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
+        };
+        // Add events to state
+        shallowEvents.push(eventWithTimestamp);
+        // Sum up TX totals
+        shallowTotalTransacted += parseInt(event.returnValues.value, 10);
+      });
 
       bottomBlock -= 10000;
       topBlock -= 10000;
