@@ -20,7 +20,7 @@ const ResponsiveBarChart = (props: IBarProps) => {
       >
         <XAxis dataKey="name" />
         <Tooltip content={<CustomTooltip />} />
-        <Area type="monotone" dataKey="amt" stroke="#82ca9d" fill="#82ca9d" />
+        <Area type="monotone" dataKey="amt" stroke="#41a75b" fill="#41a75b" />
       </AreaChart>
     </ResponsiveContainer>
   );
