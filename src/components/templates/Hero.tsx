@@ -37,9 +37,7 @@ const Hero = () => {
                 <div className="flex gap-5 justify-center items-center 2xl:justify-start">
                   <Link href="https://bridge.zerodao.com" passHref={true}>
                     <a>
-                      <CTAButton
-                        text="Launch Bridge"
-                      />
+                      <CTAButton text="Launch Bridge" />
                     </a>
                   </Link>
                   <Link href="/analytics">
@@ -69,9 +67,9 @@ const Hero = () => {
       <Banner
         items={[
           { text: 'Total Volume (BTC)', value: totalTransacted },
+          { text: 'Chains Integrated', value: 3 },
           { text: 'Transactions', value: pastEvents.length },
           { text: 'Assets Integrated', value: 5 },
-          { text: '???', value: 0 },
         ]}
       />
     </Background>

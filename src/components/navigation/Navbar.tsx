@@ -7,7 +7,7 @@ type INavbarProps = {
   children: ReactNode;
 };
 
-const NavbarTwoColumns = (props: INavbarProps) => (
+const Navbar = (props: INavbarProps) => (
   <div className="flex flex-wrap justify-between items-center w-full">
     <div>
       <Link href="/">
@@ -28,11 +28,11 @@ const NavbarTwoColumns = (props: INavbarProps) => (
         }
 
         .navbar :global(li:not(:last-child)) {
-          @apply mr-10;
+          @apply mr-8;
         }
       `}
     </style>
   </div>
 );
 
-export { NavbarTwoColumns };
+export { Navbar };

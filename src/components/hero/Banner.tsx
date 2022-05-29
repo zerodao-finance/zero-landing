@@ -1,6 +1,3 @@
-import useZeroAnalytics from "../../hooks/ZeroAnalytics";
-import { useAppContext } from "../../store";
-
 // Types
 type IObjectProps = {
   text: string;
@@ -13,7 +10,7 @@ type IBannerProps = {
   title?: string;
 };
 
-const Banner = (props: IBannerProps) => {  
+const Banner = (props: IBannerProps) => {
   return (
     <div
       className={`
