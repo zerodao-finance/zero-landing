@@ -39,7 +39,7 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
 }
 
 export function truncateBetween(
-  string: string,
+  string: string | undefined,
   width: number,
   numberShown = 5
 ) {

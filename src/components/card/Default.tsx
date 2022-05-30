@@ -8,6 +8,7 @@ type IDefaultCardProps = {
   center?: boolean;
   title?: string;
   largeTitle?: boolean;
+  maxHeight?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
@@ -17,6 +18,7 @@ const DefaultCard = (props: IDefaultCardProps) => (
       props.center &&
       `text-center flex flex-col justify-center items-center h-full w-full`
     }
+		${props.maxHeight && props.maxHeight}
 		${props.minHeight ? props.minHeight : 'min-h-[300px]'}
 		${props.color ? props.color : 'bg-gray-900'}
     px-4 py-6 rounded-xl shadow-xl

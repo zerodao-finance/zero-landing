@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+// Dependencies
+import CountUp from 'react-countup';
 
 // Hooks & Helpers
 import useWindowDimensions from '../../hooks/WindowDimensions';
@@ -25,7 +27,7 @@ const Analytics = () => {
   const quickviewItems = [
     {
       top: eventsLoading ? 'Loading' : `${totalTransacted} BTC`,
-      bottom: 'Net Volume',
+      bottom: 'Net Volume (BTC)',
     },
     {
       top: eventsLoading ? 'Loading' : pastEvents.length,
@@ -89,7 +91,18 @@ const Analytics = () => {
           {quickviewItems.map((obj, i) => (
             <div key={i}>
               <DefaultCard center minHeight="min-h-[100px]">
-                <p className="text-4xl font-bold">{obj.top}</p>
+                <CountUp
+                  start={0}
+                  end={parseFloat(obj.top.toString())}
+                  delay={0}
+                  decimals={parseFloat(obj.top.toString()) % 1 !== 0 ? 8 : 0}
+                >
+                  {({ countUpRef }) => (
+                    <div className="text-4xl font-bold">
+                      <span ref={countUpRef} />
+                    </div>
+                  )}
+                </CountUp>
                 <p className="">{obj.bottom}</p>
               </DefaultCard>
             </div>
@@ -113,7 +126,9 @@ const Analytics = () => {
 
         <Grid cols="!grid-cols-1">
           <DefaultCard title="All Transactions" largeTitle>
-            <EventsTable data={pastEvents} />
+            <div className="max-h-[400px] overflow-y-scroll">
+              <EventsTable data={pastEvents} />
+            </div>
           </DefaultCard>
         </Grid>
       </Section>

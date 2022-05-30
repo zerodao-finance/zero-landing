@@ -9,7 +9,7 @@ const GENESIS_BLOCK = 14567078;
 
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps>>([]);
-  const [totalTransacted, setTotalTransacted] = useState('0');
+  const [totalTransacted, setTotalTransacted] = useState(0);
   const [eventsLoading, setEventsLoading] = useState(false);
 
   const web3 = new Web3(
@@ -90,13 +90,11 @@ function useZeroAnalytics() {
     }
 
     setTotalTransacted(
-      utils.formatUnits(BigNumber.from(shallowTotalTransacted), 8)
+      parseFloat(utils.formatUnits(BigNumber.from(shallowTotalTransacted), 8))
     );
     setPastEvents(shallowEvents);
     setEventsLoading(false);
   };
-
-  console.log(pastEvents);
 
   return {
     pastEvents,

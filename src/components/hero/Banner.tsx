@@ -1,7 +1,9 @@
+import CountUp from 'react-countup';
+
 // Types
 type IObjectProps = {
   text: string;
-  value: string | number;
+  value: number;
 };
 
 type IBannerProps = {
@@ -32,7 +34,18 @@ const Banner = (props: IBannerProps) => {
 						sm:min-w-[100px] flex flex-col justify-center text-center
 					`}
           >
-            <div className={`text-2xl font-bold`}>{item.value}</div>
+            <CountUp
+              start={0}
+              end={item.value}
+              delay={0}
+              decimals={item.value % 1 !== 0 ? 4 : 0}
+            >
+              {({ countUpRef }) => (
+                <div className="text-2xl font-bold">
+                  <span ref={countUpRef} />
+                </div>
+              )}
+            </CountUp>
             <div className={``}>{item.text}</div>
           </div>
         ))}
