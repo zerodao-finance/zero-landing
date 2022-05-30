@@ -10,11 +10,12 @@ import { eventsToBarChart } from '../../utils/Helpers';
 import { Background } from '../background/Background';
 import { CTAButton } from '../button/CallToAction';
 import { DefaultCard } from '../card/Default';
-import { ResponsiveBarChart } from '../charts/BarChart';
+import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 // Components
 import { Navbar } from '../navigation/Navbar';
+import { EventsTable } from '../tables/EventsTable';
 import { Logo } from './Logo';
 
 const Analytics = () => {
@@ -108,13 +109,16 @@ const Analytics = () => {
 
         <Grid cols="!grid-cols-1" style="mb-10">
           <DefaultCard title="Daily Transaction Volume">
-            <ResponsiveBarChart data={eventsToBarChart(pastEvents, true)} />
+            <ResponsiveLineChart data={eventsToBarChart(pastEvents, true)} />
           </DefaultCard>
         </Grid>
 
         <Grid cols="!grid-cols-1">
-          <DefaultCard title="All Transactions">
-            <></>
+          <DefaultCard title="All Transactions" largeTitle>
+            <EventsTable
+              data={pastEvents}
+              headers={['Date', 'Type', 'Amount']}
+            />
           </DefaultCard>
         </Grid>
       </Section>

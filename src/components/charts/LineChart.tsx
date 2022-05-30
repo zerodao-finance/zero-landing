@@ -5,11 +5,11 @@ import { Area, AreaChart, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { IBarChartProps } from '../../utils/Types';
 import CustomTooltip from './CustomTooltip';
 
-type IBarProps = {
+type ILineProps = {
   data: Array<IBarChartProps>;
 };
 
-const ResponsiveBarChart = (props: IBarProps) => {
+const ResponsiveLineChart = (props: ILineProps) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart
@@ -26,4 +26,4 @@ const ResponsiveBarChart = (props: IBarProps) => {
   );
 };
 
-export { ResponsiveBarChart };
+export { ResponsiveLineChart };

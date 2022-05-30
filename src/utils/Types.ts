@@ -22,7 +22,7 @@ export type IEventProps = {
   signature: string;
   transactionHash: string;
   transactionIndex: number;
-  timestamp?: string | Date;
+  timestamp?: string | Date | number | any;
   type?: string;
 };
 
@@ -36,6 +36,12 @@ export type ICustomTooltipProps = {
   payload?: any;
   label?: any;
   active?: any;
+};
+
+// Tables
+export type IEventsTableProps = {
+  headers: Array<string>;
+  data: Array<IEventProps>;
 };
 
 // Atoms

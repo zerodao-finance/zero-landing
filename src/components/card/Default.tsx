@@ -7,6 +7,7 @@ type IDefaultCardProps = {
   minHeight?: string;
   center?: boolean;
   title?: string;
+  largeTitle?: boolean;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
@@ -21,7 +22,11 @@ const DefaultCard = (props: IDefaultCardProps) => (
     px-4 py-6 rounded-xl shadow-xl
 	`}
   >
-    {props.title && <p className="font-bold">{props.title}</p>}
+    {props.title && (
+      <p className={`${props.largeTitle && 'text-3xl'} font-bold`}>
+        {props.title}
+      </p>
+    )}
     {props.children}
   </div>
 );
