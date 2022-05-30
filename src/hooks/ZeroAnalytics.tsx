@@ -96,6 +96,8 @@ function useZeroAnalytics() {
     setEventsLoading(false);
   };
 
+  console.log(pastEvents);
+
   return {
     pastEvents,
     getPastEvents,

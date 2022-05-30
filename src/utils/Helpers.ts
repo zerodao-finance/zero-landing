@@ -18,8 +18,6 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
       }, {})
     );
 
-    console.log(result);
-
     const divided = result
       .filter((el) => el.amt.toString() !== 'NaN')
       .map((el) => {
@@ -38,4 +36,35 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
     return divided;
   }
   return [];
+}
+
+export function truncateBetween(
+  string: string,
+  width: number,
+  numberShown = 5
+) {
+  if (string) {
+    const first = string.substring(0, numberShown);
+    const last = string.substring(string.length - numberShown, string.length);
+    return first + (width > 900 ? '...' : '..') + last;
+  }
+  return '';
+}
+
+export function capitalize(string: string | undefined) {
+  if (string) {
+    const first = string.substring(0, 1);
+    const last = string.substring(1, string.length);
+    return first.toUpperCase() + last;
+  }
+  return '';
+}
+
+export function shortenDate(date: string) {
+  const split = new Date(date).toLocaleDateString().split('/');
+  const final = `${split[0]}/${split[1]}/${split[2]?.substring(
+    2,
+    split[2]?.length
+  )}`;
+  return final;
 }

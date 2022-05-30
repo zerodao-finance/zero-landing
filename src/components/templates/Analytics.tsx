@@ -85,7 +85,7 @@ const Analytics = () => {
         description="Bringing you live updates about our bridge."
         vertical
       >
-        <Grid style="mb-10">
+        <Grid style="mb-5 lg:mb-10">
           {quickviewItems.map((obj, i) => (
             <div key={i}>
               <DefaultCard center minHeight="min-h-[100px]">
@@ -105,9 +105,7 @@ const Analytics = () => {
           </DefaultCard>
         </Grid>
 
-        {console.log(eventsToBarChart(pastEvents, true))}
-
-        <Grid cols="!grid-cols-1" style="mb-10">
+        <Grid cols="!grid-cols-1" style="mb-5 lg:mb-10">
           <DefaultCard title="Daily Transaction Volume">
             <ResponsiveLineChart data={eventsToBarChart(pastEvents, true)} />
           </DefaultCard>
@@ -115,10 +113,7 @@ const Analytics = () => {
 
         <Grid cols="!grid-cols-1">
           <DefaultCard title="All Transactions" largeTitle>
-            <EventsTable
-              data={pastEvents}
-              headers={['Date', 'Type', 'Amount']}
-            />
+            <EventsTable data={pastEvents} />
           </DefaultCard>
         </Grid>
       </Section>

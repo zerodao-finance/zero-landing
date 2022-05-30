@@ -40,7 +40,7 @@ export type ICustomTooltipProps = {
 
 // Tables
 export type IEventsTableProps = {
-  headers: Array<string>;
+  headers?: Array<string>;
   data: Array<IEventProps>;
 };
 

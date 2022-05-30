@@ -19,7 +19,7 @@ const Section = (props: ISectionProps) => (
       ${props.verticalCenter && 'flex items-center'}
       ${props.fullHeight && 'h-full'}
       ${props.vertical && 'flex-col'}
-      mx-auto px-10 flex justify-center
+      mx-auto px-5 lg:px-10 flex justify-center
     `}
   >
     {(props.title || props.description) && (
