@@ -10,14 +10,14 @@ import { eventsToBarChart } from '../../utils/Helpers';
 // Store
 // Layout
 import { Background } from '../background/Background';
-import { CTAButton } from '../button/CallToAction';
+import { CTAButton } from '../buttons/CTA';
 import { DefaultCard } from '../card/Default';
 import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 // Components
 import { Navbar } from '../navigation/Navbar';
-import { EventsTable } from '../tables/EventsTable';
+import { EventsTable } from '../tables/events-table';
 import { Logo } from './Logo';
 
 const Analytics = () => {

@@ -1,5 +1,6 @@
-import className from 'classnames';
 import { ReactNode } from 'react';
+
+import className from 'classnames';
 
 type IButtonProps = {
   xl?: boolean;

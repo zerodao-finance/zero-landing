@@ -52,6 +52,10 @@ function useZeroAnalytics() {
           ...event,
           timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
           type: 'burn',
+          amount: utils.formatUnits(
+            BigNumber.from(event.returnValues.value),
+            8
+          ),
         };
         // Add events to state
         shallowEvents.push(eventWithTimestamp);
@@ -78,6 +82,10 @@ function useZeroAnalytics() {
           ...event,
           timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
           type: 'mint',
+          amount: utils.formatUnits(
+            BigNumber.from(event.returnValues.value),
+            8
+          ),
         };
         // Add events to state
         shallowEvents.push(eventWithTimestamp);

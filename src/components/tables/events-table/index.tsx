@@ -1,25 +1,40 @@
-import { BigNumber, utils } from 'ethers';
+// Web3
 
-import useWindowDimensions from '../../hooks/WindowDimensions';
-import { capitalize, shortenDate, truncateBetween } from '../../utils/Helpers';
-import { IEventsTableProps } from '../../utils/Types';
+// Hooks & Helpers
+import { AiOutlineCaretDown } from 'react-icons/ai';
+
+import useWindowDimensions from '../../../hooks/WindowDimensions';
+import {
+  capitalize,
+  shortenDate,
+  truncateBetween,
+} from '../../../utils/Helpers';
+// Utils
+import { IEventsTableProps, IHeaderProps } from '../../../utils/Types';
+import useEventTableUtils from './utils';
+// Types
 
 const EventsTable = (props: IEventsTableProps) => {
   const { width } = useWindowDimensions();
+  const { headersSmall, headersLarge } = useEventTableUtils();
 
-  const headers: Array<string> =
-    width > 900
-      ? ['Date', 'Type', 'Block Number', 'Transaction Hash', 'Amount']
-      : ['Date', 'Type', 'TX', 'Amount'];
+  const headers: Array<IHeaderProps> =
+    width > 900 ? headersLarge : headersSmall;
 
   return (
     <>
       <table className="table-auto w-full" id="myTable">
         <thead className="border-b-[2px]">
           <tr>
-            {(props.headers ? props.headers : headers).map((header, i) => (
+            {headers.map((header, i) => (
               <th className="text-left" key={i}>
-                {header}
+                <div
+                  onClick={() => header.sortFx(props.data, header.text)}
+                  className="cursor-pointer flex items-center gap-1"
+                >
+                  {header.text}
+                  {header.sortFx && <AiOutlineCaretDown />}
+                </div>
               </th>
             ))}
           </tr>
@@ -60,16 +75,8 @@ const EventsTable = (props: IEventsTableProps) => {
               </td>
               <td>
                 {width > 900
-                  ? utils.formatUnits(
-                      BigNumber.from(event.returnValues.value),
-                      8
-                    )
-                  : parseFloat(
-                      utils.formatUnits(
-                        BigNumber.from(event.returnValues.value),
-                        8
-                      )
-                    ).toFixed(3)}{' '}
+                  ? event.amount
+                  : parseFloat(event.amount || '0').toFixed(3)}{' '}
                 BTC
               </td>
             </tr>
@@ -79,6 +86,19 @@ const EventsTable = (props: IEventsTableProps) => {
 
       <style jsx>
         {`
+          table {
+            text-align: left;
+            position: relative;
+          }
+          th {
+            background: #121212;
+            position: sticky;
+            top: 0;
+            padding-bottom: 0.5rem;
+          }
+          th:first-child {
+            padding-left: 1rem;
+          }
           td {
             padding-top: 1rem;
             padding-bottom: 1rem;

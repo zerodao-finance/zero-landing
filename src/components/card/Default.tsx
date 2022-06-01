@@ -25,9 +25,7 @@ const DefaultCard = (props: IDefaultCardProps) => (
 	`}
   >
     {props.title && (
-      <p
-        className={`${props.largeTitle && '!text-3xl mb-5'} text-lg font-bold`}
-      >
+      <p className={`${props.largeTitle && '!text-3xl'} text-lg font-bold`}>
         {props.title}
       </p>
     )}

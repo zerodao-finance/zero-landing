@@ -7,8 +7,8 @@ import { useAppContext } from '../../store';
 // Layout
 // Components
 import { Background } from '../background/Background';
-import { Button } from '../button/Button';
-import { CTAButton } from '../button/CallToAction';
+import { CTAButton } from '../buttons/CTA';
+import { Button } from '../buttons/Default';
 import { Banner } from '../hero/Banner';
 import { HeroOneAction } from '../hero/HeroOneAction';
 import { Grid } from '../layout/Grid';

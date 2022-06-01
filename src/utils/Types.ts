@@ -24,6 +24,7 @@ export type IEventProps = {
   transactionIndex: number;
   timestamp?: string | Date | number | any;
   type?: string;
+  amount?: string;
 };
 
 // Charts
@@ -40,8 +41,12 @@ export type ICustomTooltipProps = {
 
 // Tables
 export type IEventsTableProps = {
-  headers?: Array<string>;
   data: Array<IEventProps>;
+};
+
+export type IHeaderProps = {
+  text: string;
+  sortFx?: any;
 };
 
 // Atoms
