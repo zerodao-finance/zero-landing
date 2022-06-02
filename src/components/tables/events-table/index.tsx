@@ -91,7 +91,7 @@ const EventsTable = (props: IEventsTableProps) => {
             position: relative;
           }
           th {
-            background: #121212;
+            background: #181818;
             position: sticky;
             top: 0;
             padding-bottom: 0.5rem;
