@@ -10,7 +10,7 @@ const GENESIS_BLOCK = 14567078;
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps>>([]);
   const [totalTransacted, setTotalTransacted] = useState(0);
-  const [eventsLoading, setEventsLoading] = useState(false);
+  const [eventsLoading, setEventsLoading] = useState(true);
 
   const web3 = new Web3(
     'https://mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'

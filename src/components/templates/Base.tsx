@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { useAppContext } from '../../store';
 // Utils
@@ -14,12 +14,27 @@ type IBaseProps = {
 };
 
 const Base = (props: IBaseProps) => {
-  const { eventsLoading } = useAppContext();
+  const { eventsLoading, setFirstLogin, firstLogin } = useAppContext();
+  const [timed, setTimed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimed(true);
+    }, 6000);
+
+    const timer2 = setTimeout(() => {
+      setFirstLogin?.(false);
+    }, 10000);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <div className="antialiased text-white">
       <Meta title={AppConfig.title} description={AppConfig.description} />
-      {eventsLoading ? (
+      {firstLogin && (eventsLoading || !timed) ? (
         <PreLoader />
       ) : (
         <>
