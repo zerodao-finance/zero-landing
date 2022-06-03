@@ -1,10 +1,10 @@
+import { Analytics } from '../components/templates/Analytics';
 import { Base } from '../components/templates/Base';
-import { Charts } from '../components/templates/Charts';
 
-const Analytics = () => (
+const AnalyticsPage = () => (
   <Base>
-    <Charts />
+    <Analytics />
   </Base>
 );
 
-export default Analytics;
+export default AnalyticsPage;

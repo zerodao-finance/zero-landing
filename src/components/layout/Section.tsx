@@ -8,16 +8,18 @@ type ISectionProps = {
   wide?: boolean;
   verticalCenter?: boolean;
   fullHeight?: boolean;
+  vertical?: boolean;
 };
 
 const Section = (props: ISectionProps) => (
   <div
     className={`
       ${props.wide ? 'max-w-screen-2xl' : 'max-w-screen-xl'} 
-      ${props.yPadding ? props.yPadding : props.verticalCenter ? '0' : 'py-16'}
+      ${props.yPadding ? props.yPadding : props.verticalCenter ? '0' : 'py-12'}
       ${props.verticalCenter && 'flex items-center'}
       ${props.fullHeight && 'h-full'}
-      mx-auto px-10 flex justify-center
+      ${props.vertical && 'flex-col'}
+      mx-auto px-5 lg:px-10 flex justify-center
     `}
   >
     {(props.title || props.description) && (

@@ -14,14 +14,42 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
+      // animations
+      animation: {
+        fade: 'fadeOut 6s ease-in-out',
+        'fade-transparent': 'fadeOutTransparent 6s ease-in-out',
+        reveal: 'revealFromBlack 2s ease-in-out',
+      },
+      keyframes: () => ({
+        fadeOut: {
+          '0%': { backgroundColor: '#212121' },
+          '50%': { backgroundColor: '#212121' },
+          '100%': { backgroundColor: '#000' },
+        },
+        fadeOutTransparent: {
+          '0%': { opacity: '1' },
+          '50%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+        revealFromBlack: {
+          '0%': { backgroundColor: 'rgba(0,0,0,1)' },
+          '20%': { backgroundColor: 'rgba(0,0,0,1)' },
+          '100%': { backgroundColor: 'rgba(0,0,0,0)' },
+        },
+      }),
+      // gradient bg
       backgroundImage: {
         'gradient-radial-shadow':
-          'radial-gradient(ellipse at center, #000000 0%, #212121 70%)',
+          'radial-gradient(ellipse at center, #111111 0%, #212121 70%)',
       },
+      // colors
       colors: {
         brand: {
           900: '#368e4c',
+          800: '##286638',
           100: '#41a75b',
+          'neon-dark': '',
+          'neon-light': '',
         },
         primary: {
           100: '#E6F6FE',
@@ -35,7 +63,7 @@ module.exports = {
           900: '#013349',
         },
         gray: {
-          900: '#121212',
+          900: '#181818',
           800: '#212121',
           700: '#2b2b2b',
           600: '#333333',
@@ -46,6 +74,7 @@ module.exports = {
           100: '#aaaaaa',
         },
       },
+      // other
       lineHeight: {
         hero: '4.5rem',
       },
