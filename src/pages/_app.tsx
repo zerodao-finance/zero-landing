@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+
 import { AppWrapper } from '../store';
 
 import '../styles/global.css';
