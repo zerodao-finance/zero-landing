@@ -17,7 +17,7 @@ const Banner = (props: IBannerProps) => {
     <div
       className={`
         ${props.color ? props.color : 'bg-gray-900'}
-        flex-col py-5 2xl:py-10
+        flex-col py-5 2xl:py-6 border-t-4
     	`}
     >
       {props.title && (
