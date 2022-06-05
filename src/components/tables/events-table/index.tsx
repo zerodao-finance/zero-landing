@@ -1,6 +1,6 @@
-// Web3
-
 // Hooks & Helpers
+import { useState } from 'react';
+
 import { AiOutlineCaretDown } from 'react-icons/ai';
 
 import useWindowDimensions from '../../../hooks/WindowDimensions';
@@ -11,19 +11,29 @@ import {
 } from '../../../utils/Helpers';
 // Utils
 import { IEventsTableProps, IHeaderProps } from '../../../utils/Types';
+import TableSearch from '../Search';
 import useEventTableUtils from './utils';
+// Components
 
 const EventsTable = (props: IEventsTableProps) => {
   const { data } = props;
   const { width } = useWindowDimensions();
-  const { headersSmall, headersLarge } = useEventTableUtils();
+  const { headersSmall, headersLarge, searchTableByHash } =
+    useEventTableUtils();
+  const [input, setInput] = useState('');
 
   const headers: Array<IHeaderProps> =
     width > 900 ? headersLarge : headersSmall;
 
   return (
     <>
-      <table className="table-auto w-full" id="myTable">
+      <TableSearch
+        searchFx={() => searchTableByHash(input)}
+        value={input}
+        onChange={setInput}
+      />
+
+      <table className="table-auto w-full" id="events-table">
         <thead className="border-b-[2px]">
           <tr>
             {headers.map((header, i) => (
@@ -59,7 +69,7 @@ const EventsTable = (props: IEventsTableProps) => {
                 </div>
               </td>
               {width > 900 && <td>{event.blockNumber}</td>}
-              <td>
+              <td id={`hash-${event.transactionHash}`}>
                 <a
                   href={`https://etherscan.io/tx/${event.transactionHash}`}
                   target="_blank"

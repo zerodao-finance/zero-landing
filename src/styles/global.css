@@ -13,6 +13,15 @@
     }
 }
 
+/* highlighting */
+::selection {
+    background: #41a75b; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #41a75b; /* Gecko Browsers */
+  }
+
+  /* BG Animation */
 #bg-animation {
     display: none;
 }

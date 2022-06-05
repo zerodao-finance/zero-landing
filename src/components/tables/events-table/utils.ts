@@ -44,7 +44,30 @@ function useEventTableUtils() {
     },
   ];
 
+  function searchTableByHash(_input: string) {
+    // Declare variables
+    let td;
+    let i;
+    let txtValue;
+    const filter: string = _input.toUpperCase();
+    const table: any = document.getElementById('events-table');
+    const tr: any = table.getElementsByTagName('tr');
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i += 1) {
+      td = tr[i].getElementsByTagName('td')[3];
+      if (td) {
+        txtValue = td.id;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = '';
+        } else {
+          tr[i].style.display = 'none';
+        }
+      }
+    }
+  }
+
   return {
+    searchTableByHash,
     headersLarge,
     headersSmall,
   };
