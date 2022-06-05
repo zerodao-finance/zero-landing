@@ -28,7 +28,7 @@ const Hero = () => {
 
   return (
     <>
-      <Background full spaceBetween color="bg-gray-800">
+      <Background full spaceBetween animation>
         <Section verticalCenter fullHeight>
           <Grid
             xl
@@ -68,24 +68,29 @@ const Hero = () => {
                   height={width > 900 ? '300' : '200'}
                   width={width > 900 ? '300' : '200'}
                 />
-                <div className="mx-auto w-[300px] md:w-[350px] h-[50px] bg-gradient-radial-shadow" />
               </div>
             }
           />
         </Section>
         <Banner
           items={[
-            { text: 'Total Volume (BTC)', value: totalTransacted },
-            { text: 'Chains Integrated', value: 3 },
-            { text: 'Transactions', value: pastEvents.length },
-            { text: 'Assets Integrated', value: 5 },
+            {
+              text: width > 600 ? 'Total Volume (BTC)' : 'BTC Volume',
+              value: totalTransacted,
+            },
+            { text: width > 600 ? 'Chains Integrated' : 'Chains', value: 3 },
+            {
+              text: width > 600 ? 'Transactions' : 'TXs',
+              value: pastEvents.length,
+            },
+            { text: width > 600 ? 'Assets Integrated' : 'Assets', value: 5 },
           ]}
         />
       </Background>
 
       {!timed && firstLogin && (
         <div
-          className={`h-screen w-full absolute left-0 top-0 animate-reveal`}
+          className={`h-screen w-full absolute left-0 top-0 animate-reveal block z-[999]`}
         />
       )}
     </>

@@ -68,3 +68,11 @@ export function shortenDate(date: string) {
   )}`;
   return final;
 }
+
+export function removeDuplicates(arr: Array<any>, prop: string) {
+  const final = arr.filter(
+    (value, index, self) =>
+      index === self.findIndex((t) => t[prop] === value[prop])
+  );
+  return final;
+}

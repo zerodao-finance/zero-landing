@@ -70,7 +70,9 @@
         "no-param-reassign": "off",
         "@typescript-eslint/no-loop-func": "off",
         "no-await-in-loop": "off",
-        "no-return-assign": "off"
+        "no-return-assign": "off",
+        "prefer-destructuring": "warn",
+        "no-plusplus": "warn"
       }
     }
   ]

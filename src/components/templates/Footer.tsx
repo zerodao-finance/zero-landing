@@ -10,7 +10,7 @@ import { Section } from '../layout/Section';
 import { Logo } from './Logo';
 
 const Footer = () => (
-  <Background color="bg-gray-800">
+  <Background color="bg-brand-black">
     <Section>
       <CenteredFooter logo={<Logo />} iconList>
         <li className={hoverWhite}>

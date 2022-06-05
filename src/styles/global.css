@@ -8,7 +8,42 @@
 
 @layer base {
     body {
-        background-color: #212121;
+        background-color: #121212;
         font-family: 'Roboto Flex', sans-serif;
     }
 }
+
+/* highlighting */
+::selection {
+    background: #41a75b; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #41a75b; /* Gecko Browsers */
+  }
+
+  /* BG Animation */
+#bg-animation {
+    display: none;
+}
+
+@media screen and (min-width: 600px) {
+    #bg-animation {
+        display: block;
+        margin-top: 8vh
+    }
+}
+@media screen and (min-width: 900px) {
+    #bg-animation {
+        margin-top: 3vh
+    }
+}
+@media screen and (min-width: 1200px) {
+    #bg-animation {
+        margin-top: 2vh;
+    }
+}
+/* @media screen and (min-width: 2000px) {
+    #bg-animation {
+        display: none;
+    }
+} */
