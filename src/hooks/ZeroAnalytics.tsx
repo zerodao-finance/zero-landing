@@ -57,8 +57,10 @@ function useZeroAnalytics() {
             8
           ),
         };
+
         // Add events to state
         shallowEvents.push(eventWithTimestamp);
+
         // Sum up TX totals
         shallowTotalTransacted += parseInt(event.returnValues.value, 10);
       });
@@ -87,8 +89,10 @@ function useZeroAnalytics() {
             8
           ),
         };
+
         // Add events to state
         shallowEvents.push(eventWithTimestamp);
+
         // Sum up TX totals
         shallowTotalTransacted += parseInt(event.returnValues.value, 10);
       });

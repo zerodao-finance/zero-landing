@@ -3,11 +3,11 @@ import Link from 'next/link';
 // Dependencies
 import CountUp from 'react-countup';
 
-// Hooks & Helpers
+// Hooks & Utils
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-import { eventsToBarChart } from '../../utils/Helpers';
-// Store
+import { tokens } from '../../utils/Constants';
+import { eventsToBarChart, removeDuplicates } from '../../utils/Helpers';
 // Layout
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
@@ -35,31 +35,8 @@ const Analytics = () => {
     },
   ];
 
-  const tokens = [
-    {
-      src: '/assets/svg-coins/btc.svg',
-      alt: 'BTC',
-    },
-    {
-      src: '/assets/svg-coins/eth.svg',
-      alt: 'ETH',
-    },
-    {
-      src: '/assets/svg-coins/ibbtc.svg',
-      alt: 'ibBTC',
-    },
-    {
-      src: '/assets/svg-coins/renbtc.svg',
-      alt: 'renBTC',
-    },
-    {
-      src: '/assets/svg-coins/wbtc.svg',
-      alt: 'WBTC',
-    },
-  ];
-
   return (
-    <Background color="bg-gray-800">
+    <Background>
       <Section yPadding="py-6">
         <Navbar logo={<Logo xl={width > 900} />}>
           {width > 600 && (
@@ -127,7 +104,9 @@ const Analytics = () => {
         <Grid cols="!grid-cols-1">
           <DefaultCard title="All Transactions" largeTitle>
             <div className="max-h-[400px] overflow-y-scroll">
-              <EventsTable data={pastEvents} />
+              <EventsTable
+                data={removeDuplicates(pastEvents, 'transactionHash')}
+              />
             </div>
           </DefaultCard>
         </Grid>

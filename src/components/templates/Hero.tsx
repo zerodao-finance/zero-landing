@@ -68,7 +68,6 @@ const Hero = () => {
                   height={width > 900 ? '300' : '200'}
                   width={width > 900 ? '300' : '200'}
                 />
-                <div className="mx-auto w-[300px] md:w-[350px] h-[50px] bg-gradient-radial-shadow z-[-2] block" />
               </div>
             }
           />

@@ -13,7 +13,7 @@ const Background = (props: IBackgroundProps) => (
     className={`
       ${props.full && 'h-screen min-h-[850px]'} 
       ${props.spaceBetween && 'flex flex-col items-between'}
-      ${props.color}
+      ${props.color ? props.color : 'bg-gray-1000'}
       ${props.animation && 'z-[99] relative block overflow-x-hidden'}
     `}
   >
@@ -42,8 +42,8 @@ const Background = (props: IBackgroundProps) => (
               y1="0"
               y2="0"
             >
-              <stop stopColor="#212121" offset="0"></stop>
-              <stop stopColor="#161616" offset="1"></stop>
+              <stop stopColor="#121212" offset="0"></stop>
+              <stop stopColor="#020202" offset="1"></stop>
             </linearGradient>
             <path d="" fill="url(#lg-0.6273623870597458)" opacity="0.4">
               <animate

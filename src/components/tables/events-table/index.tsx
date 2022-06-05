@@ -12,9 +12,9 @@ import {
 // Utils
 import { IEventsTableProps, IHeaderProps } from '../../../utils/Types';
 import useEventTableUtils from './utils';
-// Types
 
 const EventsTable = (props: IEventsTableProps) => {
+  const { data } = props;
   const { width } = useWindowDimensions();
   const { headersSmall, headersLarge } = useEventTableUtils();
 
@@ -40,7 +40,7 @@ const EventsTable = (props: IEventsTableProps) => {
           </tr>
         </thead>
         <tbody>
-          {props.data.map((event, i) => (
+          {data.map((event, i) => (
             <tr key={i}>
               <td>
                 {width > 900
@@ -91,7 +91,7 @@ const EventsTable = (props: IEventsTableProps) => {
             position: relative;
           }
           th {
-            background: #181818;
+            background: #0a0a0a;
             position: sticky;
             top: 0;
             padding-bottom: 0.5rem;

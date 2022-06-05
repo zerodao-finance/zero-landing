@@ -50,6 +50,7 @@ module.exports = {
           100: '#41a75b',
           'neon-dark': '',
           'neon-light': '',
+          black: '#0a0a0a',
         },
         primary: {
           100: '#E6F6FE',
@@ -63,6 +64,7 @@ module.exports = {
           900: '#013349',
         },
         gray: {
+          1000: '#121212',
           900: '#181818',
           800: '#212121',
           700: '#2b2b2b',
