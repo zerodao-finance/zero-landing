@@ -20,7 +20,7 @@ const ResponsiveLineChart = (props: ILineProps) => {
       >
         <XAxis dataKey="name" />
         <Tooltip content={<CustomTooltip />} />
-        <Area type="monotone" dataKey="amt" stroke="#41a75b" fill="#41a75b" />
+        <Area type="monotone" dataKey="amt" stroke="#41a75b" fill="#368e4c" />
       </AreaChart>
     </ResponsiveContainer>
   );
