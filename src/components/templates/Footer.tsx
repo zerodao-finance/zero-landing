@@ -12,7 +12,7 @@ import { Logo } from './Logo';
 const Footer = () => (
   <Background color="bg-brand-black">
     <Section>
-      <CenteredFooter logo={<Logo />} iconList>
+      <CenteredFooter logo={<Logo svg />} iconList>
         <li className={hoverWhite}>
           <Link href="/">
             <a>Docs</a>

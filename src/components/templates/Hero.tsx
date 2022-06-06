@@ -81,7 +81,7 @@ const Hero = () => {
               text: width > 600 ? 'Transactions' : 'TXs',
               value: pastEvents.length,
             },
-            { text: width > 600 ? 'Assets Integrated' : 'Assets', value: 5 },
+            { text: width > 600 ? 'Assets Integrated' : 'Assets', value: 6 },
           ]}
         />
 

@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
-// Dependencies
-import CountUp from 'react-countup';
 
 // Hooks & Utils
+import CountUp from 'react-countup';
+
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
 import { tokens } from '../../utils/Constants';
@@ -21,6 +20,7 @@ import { Section } from '../layout/Section';
 import { Navbar } from '../navigation/Navbar';
 import { EventsTable } from '../tables/events-table';
 import { Logo } from './Logo';
+// External
 
 const Analytics = () => {
   const { eventsLoading, totalTransacted, pastEvents } = useAppContext();
@@ -46,7 +46,7 @@ const Analytics = () => {
   return (
     <Background>
       <Section yPadding="py-6">
-        <Navbar logo={<Logo xl={width > 900} />}>
+        <Navbar logo={<Logo xl={width > 900} svg />}>
           {width > 600 && (
             <li className="hover:text-gray-100 transition duration-200">
               <Link href="/">
@@ -95,8 +95,9 @@ const Analytics = () => {
           <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
             <div className="flex justify-around mt-5">
               {tokens.map((obj, i) => (
-                <div key={i}>
-                  <Image src={obj.src} alt={obj.alt} height="40" width="40" />
+                <div key={i} className="h-[40px] w-[40px]">
+                  <obj.svg />
+                  {/* <Image src={obj.src} alt={obj.alt} height="40" width="40" /> */}
                 </div>
               ))}
             </div>
