@@ -46,7 +46,7 @@ module.exports = {
       colors: {
         brand: {
           900: '#368e4c',
-          800: '##286638',
+          800: '#286638',
           100: '#41a75b',
           'neon-dark': '',
           'neon-light': '',

@@ -1,8 +1,8 @@
-// Hooks & Helpers
 import { useState } from 'react';
 
 import { AiOutlineCaretDown } from 'react-icons/ai';
 
+// Hooks & Helpers
 import useWindowDimensions from '../../../hooks/WindowDimensions';
 import {
   capitalize,
@@ -103,8 +103,9 @@ const EventsTable = (props: IEventsTableProps) => {
           th {
             background: #0a0a0a;
             position: sticky;
-            top: 0;
+            top: -2px;
             padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
           }
           th:first-child {
             padding-left: 1rem;

@@ -10,6 +10,7 @@ type IBannerProps = {
   items: Array<IObjectProps>;
   color?: string;
   title?: string;
+  loading?: boolean;
 };
 
 const Banner = (props: IBannerProps) => {
@@ -34,18 +35,24 @@ const Banner = (props: IBannerProps) => {
 						sm:min-w-[100px] flex flex-col justify-center text-center
 					`}
           >
-            <CountUp
-              start={0}
-              end={item.value}
-              delay={0}
-              decimals={item.value % 1 !== 0 ? 4 : 0}
-            >
-              {({ countUpRef }) => (
-                <div className="text-2xl font-bold">
-                  <span ref={countUpRef} />
-                </div>
-              )}
-            </CountUp>
+            {props.loading ? (
+              <div className="text-2xl font-bold animate-pulse">
+                <span>0</span>
+              </div>
+            ) : (
+              <CountUp
+                start={0}
+                end={item.value}
+                delay={0}
+                decimals={item.value % 1 !== 0 ? 4 : 0}
+              >
+                {({ countUpRef }) => (
+                  <div className="text-2xl font-bold">
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+            )}
             <div className={``}>{item.text}</div>
           </div>
         ))}

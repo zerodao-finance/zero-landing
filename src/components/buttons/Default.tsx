@@ -6,6 +6,7 @@ type IButtonProps = {
   xl?: boolean;
   children: string | ReactNode;
   secondary?: boolean;
+  disabled?: boolean;
 };
 
 const Button = (props: IButtonProps) => {
@@ -18,7 +19,11 @@ const Button = (props: IButtonProps) => {
 
   if (props.secondary) {
     return (
-      <div className={btnClass}>
+      <div
+        className={`${btnClass} ${
+          props.disabled && `opacity-50 !cursor-not-allowed !text-white`
+        }`}
+      >
         {props.children}
 
         <style jsx>
@@ -48,7 +53,11 @@ const Button = (props: IButtonProps) => {
     );
   }
   return (
-    <div className={btnClass}>
+    <div
+      className={`${btnClass} ${
+        props.disabled && `opacity-50 !cursor-not-allowed !text-white`
+      }`}
+    >
       {props.children}
 
       <style jsx>
