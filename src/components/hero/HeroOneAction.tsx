@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-// Components
 import { FooterIconList } from '../footer/FooterIconList';
 
 // Types
