@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 // Dependencies
@@ -23,6 +25,12 @@ import { Logo } from './Logo';
 const Analytics = () => {
   const { eventsLoading, totalTransacted, pastEvents } = useAppContext();
   const { width } = useWindowDimensions();
+  const [formattedEvents, setFormattedEvents] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    if (pastEvents)
+      setFormattedEvents(removeDuplicates(pastEvents, 'transactionHash'));
+  }, [pastEvents]);
 
   const quickviewItems = [
     {
@@ -104,10 +112,12 @@ const Analytics = () => {
         <Grid cols="!grid-cols-1">
           <DefaultCard title="All Transactions" largeTitle>
             <div className="max-h-[400px] overflow-y-scroll">
-              <EventsTable
-                data={removeDuplicates(pastEvents, 'transactionHash')}
-              />
+              <EventsTable data={formattedEvents} />
             </div>
+            {/* IN PROG */}
+            {/* <Pagination
+              data={formattedEvents} 
+            /> */}
           </DefaultCard>
         </Grid>
       </Section>

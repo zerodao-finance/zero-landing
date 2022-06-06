@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -19,12 +17,6 @@ import { Section } from '../layout/Section';
 const Hero = () => {
   const { totalTransacted, pastEvents, firstLogin } = useAppContext();
   const { width } = useWindowDimensions();
-  const [timed, setTimed] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setTimed(true), 4000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <>
@@ -40,18 +32,20 @@ const Hero = () => {
                   text: 'Introducing $ZERO',
                   href: 'https://docs.zerodao.com',
                 }}
-                title="Interopobility Optimized."
+                title="Interoperability Optimized."
                 description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
                 button={
                   <div className="flex gap-5 justify-center items-center 2xl:justify-start">
                     <Link href="https://bridge.zerodao.com" passHref={true}>
                       <a>
-                        <CTAButton text="Launch Bridge" />
+                        <CTAButton
+                          text={width > 600 ? 'Launch Bridge' : 'Bridge'}
+                        />
                       </a>
                     </Link>
-                    <Link href="/analytics">
+                    <Link href={totalTransacted === 0 ? '/' : '/analytics'}>
                       <a>
-                        <Button xl secondary>
+                        <Button xl secondary disabled={totalTransacted === 0}>
                           Analytics
                         </Button>
                       </a>
@@ -62,17 +56,21 @@ const Hero = () => {
             }
             right={
               <div className="w-full flex flex-col justify-center gap-10">
-                <Image
-                  src="/assets/images/logo-only.svg"
-                  alt="zeroDAO Logo"
-                  height={width > 900 ? '300' : '200'}
-                  width={width > 900 ? '300' : '200'}
-                />
+                <div className="flex justify-center">
+                  <Image
+                    src="/assets/3d/ZeroLogo3D.png"
+                    alt="zeroDAO Logo"
+                    height={width > 900 ? '300' : '200'}
+                    width={width > 900 ? '300' : '200'}
+                  />
+                </div>
               </div>
             }
           />
         </Section>
+
         <Banner
+          loading={totalTransacted === 0}
           items={[
             {
               text: width > 600 ? 'Total Volume (BTC)' : 'BTC Volume',
@@ -86,13 +84,13 @@ const Hero = () => {
             { text: width > 600 ? 'Assets Integrated' : 'Assets', value: 5 },
           ]}
         />
-      </Background>
 
-      {!timed && firstLogin && (
-        <div
-          className={`h-screen w-full absolute left-0 top-0 animate-reveal block z-[999]`}
-        />
-      )}
+        {firstLogin && (
+          <div
+            className={`h-screen w-full absolute left-0 top-0 animate-reveal block z-[999]`}
+          />
+        )}
+      </Background>
     </>
   );
 };
