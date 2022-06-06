@@ -48,7 +48,7 @@ const HeroOneAction = (props: IHeroOneActionProps) => (
     {props.button}
 
     {props.socials && (
-      <div className="absolute left-[1rem] md:left-[2rem] top-[24%] md:top-[40%] 2xl:left-0 2xl:top-0 2xl:mt-10 2xl:relative">
+      <div className="absolute left-[1rem] md:left-[2rem] top-[20%] md:top-[40%] 2xl:left-0 2xl:top-0 2xl:mt-10 2xl:relative">
         <FooterIconList reactive />
       </div>
     )}
