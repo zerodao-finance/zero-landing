@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 // Hooks
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
+import LogoOnly from '../../utils/svg/logos/only';
 // Layout
 // Components
 import { Background } from '../background/Background';
@@ -35,7 +35,7 @@ const Hero = () => {
                 title="Interoperability Optimized."
                 description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
                 button={
-                  <div className="flex gap-5 justify-center items-center 2xl:justify-start">
+                  <div className="flex gap-2 md:gap-5 justify-center items-center 2xl:justify-start">
                     <Link href="https://bridge.zerodao.com" passHref={true}>
                       <a>
                         <CTAButton
@@ -56,13 +56,14 @@ const Hero = () => {
             }
             right={
               <div className="w-full flex flex-col justify-center gap-10">
-                <div className="flex justify-center">
-                  <Image
-                    src="/assets/3d/ZeroLogo3D.png"
-                    alt="zeroDAO Logo"
-                    height={width > 900 ? '300' : '200'}
-                    width={width > 900 ? '300' : '200'}
-                  />
+                <div
+                  style={{ margin: '0 auto' }}
+                  className={`
+                  flex justify-center 
+                  ${width > 900 ? 'h-[300px] w-[300px]' : 'h-[200px] w-[200px]'}
+                `}
+                >
+                  <LogoOnly />
                 </div>
               </div>
             }

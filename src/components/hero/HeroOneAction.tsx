@@ -40,15 +40,15 @@ const HeroOneAction = (props: IHeroOneActionProps) => (
         </div>
       </Link>
     )}
-    <h1 className="text-3xl text-white font-bold whitespace-pre-line">
+    <h1 className="text-2xl md:text-3xl text-white font-bold whitespace-pre-line">
       {props.title}
     </h1>
-    <div className="text-xl mt-4 mb-10">{props.description}</div>
+    <div className="text-lg md:text-xl mt-4 mb-10">{props.description}</div>
 
     {props.button}
 
     {props.socials && (
-      <div className="absolute left-[1rem] md:left-[2rem] top-[18%] md:top-[40%] 2xl:left-0 2xl:top-0 2xl:mt-10 2xl:relative">
+      <div className="absolute left-[1rem] md:left-[2rem] top-[24%] md:top-[40%] 2xl:left-0 2xl:top-0 2xl:mt-10 2xl:relative">
         <FooterIconList reactive />
       </div>
     )}
