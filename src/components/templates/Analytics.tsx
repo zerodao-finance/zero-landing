@@ -71,7 +71,10 @@ const Analytics = () => {
           </li>
           <Link href="https://bridge.zerodao.com">
             <a>
-              <CTAButton text={width > 600 ? 'Launch Bridge' : 'Bridge'} />
+              <CTAButton
+                text={width > 600 ? 'Launch Bridge' : 'Bridge'}
+                sm={width < 600}
+              />
             </a>
           </Link>
         </Navbar>
@@ -116,7 +119,7 @@ const Analytics = () => {
 
         <Grid cols="!grid-cols-1" style="mb-5 lg:mb-10">
           <DefaultCard
-            title="Daily Transaction Volume"
+            title={width > 900 ? 'Daily Transaction Volume' : 'Daily TX Volume'}
             action={setType}
             active={type}
           >

@@ -1,13 +1,17 @@
 type ICTAButtonProps = {
   text: string;
   onClick?: () => void;
+  sm?: boolean;
 };
 
 function CTAButton(props: ICTAButtonProps) {
   return (
     <button
       onClick={props.onClick}
-      className="transition duration-300 font-bold relative group overflow-hidden px-6 h-12 rounded-full flex space-x-2 items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900"
+      className={`
+      ${props.sm ? 'px-5 space-x-1' : 'px-6 space-x-2'}
+        transition duration-300 h-12 font-bold relative group overflow-hidden rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900
+      `}
     >
       <span className="relative text-lg text-white">{props.text}</span>
       <div className="flex items-center -space-x-3 translate-x-3">

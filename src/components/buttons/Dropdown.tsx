@@ -4,6 +4,8 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { FaChevronDown } from 'react-icons/fa';
 
+import useWindowDimensions from '../../hooks/WindowDimensions';
+
 type IDropdownProps = {
   text?: string;
   items?: Array<string>;
@@ -17,12 +19,13 @@ function classNames(...classes: any) {
 
 export default function Dropdown(props: IDropdownProps) {
   const items: Array<string> = ['All', 'Mint', 'Burn'];
+  const { width } = useWindowDimensions();
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 bg-gray-700 text-sm font-medium text-gray-100 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-brand-100 transition duration-200">
-          {props.text ? props.text : 'TX Type'}
+          {props.text ? props.text : width > 900 ? 'TX Type' : 'Type'}
           <FaChevronDown className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
       </div>
