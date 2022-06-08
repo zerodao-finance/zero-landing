@@ -1,5 +1,6 @@
 import { IBarChartProps, IEventProps } from './Types';
 
+// Charts
 export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
   // TODO: Optimize
   if (events && events.length > 0) {
@@ -38,6 +39,18 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
   return [];
 }
 
+export function filterByType(type: string, events: Array<IEventProps>) {
+  switch (type.toLowerCase()) {
+    case 'mint':
+      return events.filter((el) => el.type === 'mint');
+    case 'burn':
+      return events.filter((el) => el.type === 'burn');
+    default:
+      return events;
+  }
+}
+
+// Typography
 export function truncateBetween(
   string: string | undefined,
   width: number,
@@ -60,6 +73,7 @@ export function capitalize(string: string | undefined) {
   return '';
 }
 
+// Dates
 export function shortenDate(date: string) {
   const split = new Date(date).toLocaleDateString().split('/');
   const final = `${split[0]}/${split[1]}/${split[2]?.substring(
@@ -69,6 +83,7 @@ export function shortenDate(date: string) {
   return final;
 }
 
+// Arrays
 export function removeDuplicates(arr: Array<any>, prop: string) {
   const final = arr.filter(
     (value, index, self) =>

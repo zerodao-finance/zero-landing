@@ -8,7 +8,11 @@ import CountUp from 'react-countup';
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
 import { tokens } from '../../utils/Constants';
-import { eventsToBarChart, removeDuplicates } from '../../utils/Helpers';
+import {
+  eventsToBarChart,
+  filterByType,
+  removeDuplicates,
+} from '../../utils/Helpers';
 // Layout
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
@@ -23,15 +27,21 @@ import { Logo } from './Logo';
 // External
 
 const Analytics = () => {
+  // Store
   const { eventsLoading, totalTransacted, pastEvents } = useAppContext();
+  // Hooks
   const { width } = useWindowDimensions();
+  // States
   const [formattedEvents, setFormattedEvents] = useState<Array<any>>([]);
+  const [type, setType] = useState('all');
 
+  // Subscribers
   useEffect(() => {
     if (pastEvents)
       setFormattedEvents(removeDuplicates(pastEvents, 'transactionHash'));
   }, [pastEvents]);
 
+  // Utils
   const quickviewItems = [
     {
       top: eventsLoading ? 'Loading' : `${totalTransacted} BTC`,
@@ -105,8 +115,14 @@ const Analytics = () => {
         </Grid>
 
         <Grid cols="!grid-cols-1" style="mb-5 lg:mb-10">
-          <DefaultCard title="Daily Transaction Volume">
-            <ResponsiveLineChart data={eventsToBarChart(pastEvents, true)} />
+          <DefaultCard
+            title="Daily Transaction Volume"
+            action={setType}
+            active={type}
+          >
+            <ResponsiveLineChart
+              data={eventsToBarChart(filterByType(type, pastEvents), true)}
+            />
           </DefaultCard>
         </Grid>
 
