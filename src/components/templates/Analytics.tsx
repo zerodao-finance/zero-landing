@@ -110,7 +110,6 @@ const Analytics = () => {
               {tokens.map((obj, i) => (
                 <div key={i} className="h-[40px] w-[40px]">
                   <obj.svg />
-                  {/* <Image src={obj.src} alt={obj.alt} height="40" width="40" /> */}
                 </div>
               ))}
             </div>
@@ -130,14 +129,8 @@ const Analytics = () => {
         </Grid>
 
         <Grid cols="!grid-cols-1">
-          <DefaultCard title="All Transactions" largeTitle>
-            <div className="max-h-[400px] overflow-y-scroll">
-              <EventsTable data={formattedEvents} />
-            </div>
-            {/* IN PROG */}
-            {/* <Pagination
-              data={formattedEvents} 
-            /> */}
+          <DefaultCard title="All Transactions" largeTitle minHeight="400px">
+            <EventsTable search pagination data={formattedEvents} />
           </DefaultCard>
         </Grid>
       </Section>
