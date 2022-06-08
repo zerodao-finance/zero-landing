@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import Dropdown from '../buttons/Dropdown';
+
 // Types
 type IDefaultCardProps = {
   children: ReactNode;
@@ -9,6 +11,8 @@ type IDefaultCardProps = {
   title?: string;
   largeTitle?: boolean;
   maxHeight?: string;
+  action?: any;
+  active?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
@@ -25,9 +29,14 @@ const DefaultCard = (props: IDefaultCardProps) => (
 	`}
   >
     {props.title && (
-      <p className={`${props.largeTitle && '!text-3xl'} text-lg font-bold`}>
-        {props.title}
-      </p>
+      <div className="flex justify-between items-center">
+        <p className={`${props.largeTitle && '!text-3xl'} text-lg font-bold`}>
+          {props.title}
+        </p>
+        {props.action && (
+          <Dropdown action={props.action} active={props.active} />
+        )}
+      </div>
     )}
     {props.children}
   </div>
