@@ -6,23 +6,25 @@ import { FooterIconList } from './FooterIconList';
 
 // Types
 type ICenteredFooterProps = {
-  logo: ReactNode;
+  logo?: ReactNode;
   iconList?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const CenteredFooter = (props: ICenteredFooterProps) => (
   <div className="text-center">
     <div className="flex justify-center">{props.logo}</div>
 
-    <nav>
-      <ul className="navbar mt-5 flex flex-row justify-center font-medium text-xl text-white">
-        {props.children}
-      </ul>
-    </nav>
+    {props.children && (
+      <nav>
+        <ul className="navbar mt-5 flex flex-row justify-center font-medium text-xl text-white uppercase">
+          {props.children}
+        </ul>
+      </nav>
+    )}
 
     {props.iconList && (
-      <div className="mt-8 flex justify-center">
+      <div className={`${props.children && 'mt-8'} flex justify-center`}>
         <FooterIconList />
       </div>
     )}

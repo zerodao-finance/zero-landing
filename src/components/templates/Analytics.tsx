@@ -10,7 +10,7 @@ import { useAppContext } from '../../store';
 import { tokens } from '../../utils/Constants';
 import {
   eventsToBarChart,
-  filterByType,
+  filterEventByType,
   removeDuplicates,
 } from '../../utils/Helpers';
 // Layout
@@ -33,7 +33,7 @@ const Analytics = () => {
   const { width } = useWindowDimensions();
   // States
   const [formattedEvents, setFormattedEvents] = useState<Array<any>>([]);
-  const [type, setType] = useState('all');
+  const [type, setType] = useState('All');
 
   // Subscribers
   useEffect(() => {
@@ -71,7 +71,7 @@ const Analytics = () => {
           </li>
           <Link href="https://bridge.zerodao.com">
             <a>
-              <CTAButton text={width > 600 ? 'Launch Bridge' : 'Bridge'} />
+              <CTAButton text="Bridge" sm={width < 600} />
             </a>
           </Link>
         </Navbar>
@@ -107,7 +107,6 @@ const Analytics = () => {
               {tokens.map((obj, i) => (
                 <div key={i} className="h-[40px] w-[40px]">
                   <obj.svg />
-                  {/* <Image src={obj.src} alt={obj.alt} height="40" width="40" /> */}
                 </div>
               ))}
             </div>
@@ -116,25 +115,23 @@ const Analytics = () => {
 
         <Grid cols="!grid-cols-1" style="mb-5 lg:mb-10">
           <DefaultCard
-            title="Daily Transaction Volume"
+            title={width > 900 ? 'Daily Transaction Volume' : 'Daily TX Volume'}
             action={setType}
             active={type}
           >
             <ResponsiveLineChart
-              data={eventsToBarChart(filterByType(type, pastEvents), true)}
+              data={eventsToBarChart(filterEventByType(type, pastEvents), true)}
             />
           </DefaultCard>
         </Grid>
 
         <Grid cols="!grid-cols-1">
-          <DefaultCard title="All Transactions" largeTitle>
-            <div className="max-h-[400px] overflow-y-scroll">
-              <EventsTable data={formattedEvents} />
-            </div>
-            {/* IN PROG */}
-            {/* <Pagination
-              data={formattedEvents} 
-            /> */}
+          <DefaultCard title="All Transactions" largeTitle minHeight="400px">
+            <EventsTable
+              search={true}
+              pagination={false}
+              data={formattedEvents}
+            />
           </DefaultCard>
         </Grid>
       </Section>

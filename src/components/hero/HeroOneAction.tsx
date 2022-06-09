@@ -25,7 +25,7 @@ const HeroOneAction = (props: IHeroOneActionProps) => (
   >
     {props?.link && (
       <Link href={props.link.href}>
-        <div className="flex justify-center gap-3 pb-2 text-gray-100 cursor-pointer hover:text-brand-100 2xl:max-w-fit transition duration-200">
+        <div className="flex justify-center gap-3 pb-3 text-gray-100 cursor-pointer hover:text-brand-100 2xl:max-w-fit transition duration-200">
           <span>{props.link.text}</span>
           <svg
             width="24"
@@ -40,7 +40,7 @@ const HeroOneAction = (props: IHeroOneActionProps) => (
         </div>
       </Link>
     )}
-    <h1 className="text-2xl md:text-3xl text-white font-bold whitespace-pre-line">
+    <h1 className="text-2xl md:text-3xl text-white font-bold whitespace-pre-line uppercase">
       {props.title}
     </h1>
     <div className="text-lg md:text-xl mt-4 mb-10">{props.description}</div>
@@ -48,8 +48,9 @@ const HeroOneAction = (props: IHeroOneActionProps) => (
     {props.button}
 
     {props.socials && (
-      <div className="absolute left-[1rem] md:left-[2rem] top-[20%] md:top-[40%] 2xl:left-0 2xl:top-0 2xl:mt-10 2xl:relative">
-        <FooterIconList reactive />
+      // <div className="absolute left-[1rem] md:left-[2rem] top-[20%] md:top-[40%] 2xl:left-0 2xl:top-0 2xl:mt-10 2xl:relative">
+      <div className="mt-5 2xl:mt-10">
+        <FooterIconList />
       </div>
     )}
   </header>

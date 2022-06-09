@@ -42,6 +42,8 @@ export type ICustomTooltipProps = {
 // Tables
 export type IEventsTableProps = {
   data: Array<IEventProps>;
+  pagination?: boolean;
+  search?: boolean;
 };
 
 export type IHeaderProps = {

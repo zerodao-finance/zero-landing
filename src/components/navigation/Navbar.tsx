@@ -16,7 +16,7 @@ const Navbar = (props: INavbarProps) => (
     </div>
 
     <nav>
-      <ul className="navbar flex items-center font-medium text-xl text-white">
+      <ul className="navbar flex items-center font-medium text-lg text-white uppercase">
         {props.children}
       </ul>
     </nav>
@@ -28,7 +28,13 @@ const Navbar = (props: INavbarProps) => (
         }
 
         .navbar :global(li:not(:last-child)) {
-          @apply mr-8;
+          @apply mr-4;
+        }
+
+        @media only screen and (min-width: 900px) {
+          .navbar :global(li:not(:last-child)) {
+            @apply mr-8;
+          }
         }
       `}
     </style>
