@@ -71,10 +71,7 @@ const Analytics = () => {
           </li>
           <Link href="https://bridge.zerodao.com">
             <a>
-              <CTAButton
-                text={width > 600 ? 'Launch Bridge' : 'Bridge'}
-                sm={width < 600}
-              />
+              <CTAButton text="Bridge" sm={width < 600} />
             </a>
           </Link>
         </Navbar>
