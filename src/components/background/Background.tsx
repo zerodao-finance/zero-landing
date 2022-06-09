@@ -11,7 +11,7 @@ type IBackgroundProps = {
 const Background = (props: IBackgroundProps) => (
   <div
     className={`
-      ${props.full && 'h-screen min-h-[850px]'} 
+      ${props.full && 'h-screen'} 
       ${props.spaceBetween && 'flex flex-col items-between'}
       ${props.color ? props.color : 'bg-gray-1000'}
       ${props.animation && 'z-[99] relative block overflow-x-hidden'}
