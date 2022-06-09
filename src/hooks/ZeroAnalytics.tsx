@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { BigNumber, utils } from 'ethers';
+import { ethers, BigNumber, utils } from 'ethers';
 import Web3 from 'web3';
 
 import { IEventProps } from '../utils/Types';
@@ -40,6 +40,7 @@ function useZeroAnalytics() {
         toBlock: topBlock,
         filter: {
           from: controllerAddress,
+          to: ethers.constants.AddressZero
         },
       });
 
@@ -71,6 +72,7 @@ function useZeroAnalytics() {
         toBlock: topBlock,
         filter: {
           to: controllerAddress,
+          from: ethers.constants.AddressZero
         },
       });
 
