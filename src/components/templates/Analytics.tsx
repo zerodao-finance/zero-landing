@@ -130,7 +130,11 @@ const Analytics = () => {
 
         <Grid cols="!grid-cols-1">
           <DefaultCard title="All Transactions" largeTitle minHeight="400px">
-            <EventsTable search pagination data={formattedEvents} />
+            <EventsTable
+              search={true}
+              pagination={false}
+              data={formattedEvents}
+            />
           </DefaultCard>
         </Grid>
       </Section>
