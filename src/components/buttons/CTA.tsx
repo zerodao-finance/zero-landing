@@ -13,7 +13,9 @@ function CTAButton(props: ICTAButtonProps) {
         transition duration-300 h-12 font-bold relative group overflow-hidden rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900
       `}
     >
-      <span className="relative text-lg text-white">{props.text}</span>
+      <span className="relative text-lg text-white uppercase">
+        {props.text}
+      </span>
       <div className="flex items-center -space-x-3 translate-x-3">
         <div className="w-2.5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
         <svg

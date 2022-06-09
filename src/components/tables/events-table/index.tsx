@@ -1,28 +1,45 @@
-import { useState } from 'react';
-
-import { AiOutlineCaretDown } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 
 // Hooks & Helpers
+import { AiOutlineCaretDown } from 'react-icons/ai';
+
 import useWindowDimensions from '../../../hooks/WindowDimensions';
 import {
   capitalize,
   shortenDate,
+  spliceIntoChunks,
   truncateBetween,
 } from '../../../utils/Helpers';
 // Utils
 import { IEventsTableProps, IHeaderProps } from '../../../utils/Types';
+// Components
 import { Pagination } from '../Pagination';
 import TableSearch from '../Search';
 import useEventTableUtils from './utils';
-// Components
+// External
 
 const EventsTable = (props: IEventsTableProps) => {
   const { data, search, pagination } = props;
+
+  // Hooks
   const { width } = useWindowDimensions();
   const { headersSmall, headersLarge, searchTableByHash } =
     useEventTableUtils();
-  const [input, setInput] = useState('');
 
+  // States
+  const [input, setInput] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginated, setPaginated] = useState<Array<Array<any>>>([]);
+
+  // useEffects
+  useEffect(() => {
+    if (pagination && paginated.length === 0) {
+      const formatted = spliceIntoChunks(data);
+      setPaginated(formatted);
+    }
+  }, [data]);
+
+  // Utils
   const headers: Array<IHeaderProps> =
     width > 900 ? headersLarge : headersSmall;
 
@@ -53,16 +70,17 @@ const EventsTable = (props: IEventsTableProps) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((event, i) => (
-              <tr key={i}>
-                <td>
-                  {width > 900
-                    ? new Date(event.timestamp).toLocaleDateString()
-                    : shortenDate(event.timestamp)}
-                </td>
-                <td>
-                  <div
-                    className={`
+            {(pagination ? paginated[currentPage - 1] || [] : data).map(
+              (event, i) => (
+                <tr key={i}>
+                  <td>
+                    {width > 900
+                      ? new Date(event.timestamp).toLocaleDateString()
+                      : shortenDate(event.timestamp)}
+                  </td>
+                  <td>
+                    <div
+                      className={`
                     ${width > 900 ? `px-3` : `px-2`}
                     py-1 w-fit rounded-3xl
                     ${
@@ -71,38 +89,45 @@ const EventsTable = (props: IEventsTableProps) => {
                         : `bg-green-200 text-black`
                     }
                   `}
-                  >
-                    {capitalize(event.type)}
-                  </div>
-                </td>
-                {width > 900 && <td>{event.blockNumber}</td>}
-                <td id={`hash-${event.transactionHash}`}>
-                  <a
-                    href={`https://etherscan.io/tx/${event.transactionHash}`}
-                    target="_blank"
-                    className="hover:text-brand-100 transition duration-200 underline"
-                    rel="noreferrer"
-                  >
-                    {truncateBetween(
-                      event.transactionHash,
-                      width,
-                      width > 900 ? 6 : 3
-                    )}
-                  </a>
-                </td>
-                <td>
-                  {width > 900
-                    ? event.amount
-                    : parseFloat(event.amount || '0').toFixed(3)}{' '}
-                  BTC
-                </td>
-              </tr>
-            ))}
+                    >
+                      {capitalize(event.type)}
+                    </div>
+                  </td>
+                  {width > 900 && <td>{event.blockNumber}</td>}
+                  <td id={`hash-${event.transactionHash}`}>
+                    <a
+                      href={`https://etherscan.io/tx/${event.transactionHash}`}
+                      target="_blank"
+                      className="hover:text-brand-100 transition duration-200 underline"
+                      rel="noreferrer"
+                    >
+                      {truncateBetween(
+                        event.transactionHash,
+                        width,
+                        width > 900 ? 6 : 3
+                      )}
+                    </a>
+                  </td>
+                  <td>
+                    {width > 900
+                      ? event.amount
+                      : parseFloat(event.amount || '0').toFixed(3)}{' '}
+                    BTC
+                  </td>
+                </tr>
+              )
+            )}
           </tbody>
         </table>
       </div>
 
-      {pagination && <Pagination data={data} />}
+      {pagination && (
+        <Pagination
+          pages={paginated.length}
+          page={currentPage}
+          setPage={setCurrentPage}
+        />
+      )}
 
       <style jsx>
         {`

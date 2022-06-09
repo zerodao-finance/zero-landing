@@ -16,7 +16,7 @@ const Navbar = (props: INavbarProps) => (
     </div>
 
     <nav>
-      <ul className="navbar flex items-center font-medium text-xl text-white">
+      <ul className="navbar flex items-center font-medium text-xl text-white uppercase">
         {props.children}
       </ul>
     </nav>

@@ -32,15 +32,13 @@ const Hero = () => {
                   text: 'Introducing $ZERO',
                   href: 'https://docs.zerodao.com',
                 }}
-                title="Interoperability Optimized."
+                title="Interoperability Optimized"
                 description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
                 button={
-                  <div className="flex gap-2 md:gap-5 justify-center items-center 2xl:justify-start">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center 2xl:justify-start">
                     <Link href="https://bridge.zerodao.com" passHref={true}>
                       <a>
-                        <CTAButton
-                          text={width > 600 ? 'Launch Bridge' : 'Bridge'}
-                        />
+                        <CTAButton text="Launch Bridge" />
                       </a>
                     </Link>
                     <Link href={totalTransacted === 0 ? '/' : '/analytics'}>

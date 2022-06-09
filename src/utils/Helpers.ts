@@ -39,7 +39,7 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
   return [];
 }
 
-export function filterByType(type: string, events: Array<IEventProps>) {
+export function filterEventByType(type: string, events: Array<IEventProps>) {
   switch (type.toLowerCase()) {
     case 'mint':
       return events.filter((el) => el.type === 'mint');
@@ -90,4 +90,13 @@ export function removeDuplicates(arr: Array<any>, prop: string) {
       index === self.findIndex((t) => t[prop] === value[prop])
   );
   return final;
+}
+
+export function spliceIntoChunks(arr: Array<any>, chunkSize: number = 20) {
+  const res = [];
+  while (arr && arr.length > 0) {
+    const chunk = arr.splice(0, chunkSize);
+    res.push(chunk);
+  }
+  return res;
 }

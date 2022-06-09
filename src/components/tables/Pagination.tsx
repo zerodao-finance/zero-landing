@@ -1,39 +1,169 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 
+import { useAppContext } from '../../store';
+import { removeDuplicates } from '../../utils/Helpers';
+
 type IPaginationProps = {
-  data: Array<any>;
+  data?: Array<any>;
+  page: number;
+  setPage: any;
+  pages: number;
 };
 
 function Pagination(props: IPaginationProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+  // Hooks
+  const { pastEvents } = useAppContext();
 
-  function nextPage() {
-    setCurrentPage((page) => page + 1);
+  // Utils
+  const { data, page, setPage, pages } = props;
+  const PER_PAGE = 20;
+  const PAGE_START = page * PER_PAGE - (PER_PAGE - 1);
+  const PAGE_END = page * PER_PAGE;
+
+  // States
+  const [totalItems, setTotalItems] = useState<number>(0);
+
+  // useEffects
+  useEffect(() => {
+    if (data) setTotalItems(data?.length);
+    else setTotalItems(removeDuplicates(pastEvents, 'transactionHash').length);
+  }, []);
+
+  // Functions
+  function nextPage(e: any) {
+    e.preventDefault();
+    if (page !== pages) setPage((state: number) => state + 1);
   }
 
-  function prevPage() {
-    setCurrentPage((page) => page - 1);
+  function prevPage(e: any) {
+    e.preventDefault();
+    if (page !== 1) setPage((state: number) => state - 1);
   }
 
   function changePage(e: any) {
+    e.preventDefault();
     const pageNumber = Number(e.target.textContent);
-    setCurrentPage(pageNumber);
+    setPage(pageNumber);
+  }
+
+  // TODO: Clean up
+  function renderPagination() {
+    return (
+      <>
+        {page > pages / 2 && (
+          <>
+            <a
+              onClick={changePage}
+              href="#"
+              aria-current="page"
+              className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+            >
+              1
+            </a>
+            <a
+              href="#"
+              aria-current="page"
+              className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+            >
+              ...
+            </a>
+            {page === pages && (
+              <a
+                onClick={changePage}
+                href="#"
+                aria-current="page"
+                className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+              >
+                {page - 2}
+              </a>
+            )}
+          </>
+        )}
+        {page !== 1 && (
+          <a
+            onClick={changePage}
+            href="#"
+            aria-current="page"
+            className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+          >
+            {page - 1}
+          </a>
+        )}
+        <a
+          onClick={changePage}
+          href="#"
+          aria-current="page"
+          className="z-10 bg-gray-700 text-brand-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+        >
+          {page}
+        </a>
+        {page > pages / 2 && page !== pages && (
+          <a
+            onClick={changePage}
+            href="#"
+            aria-current="page"
+            className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+          >
+            {page + 1}
+          </a>
+        )}
+        {page <= pages / 2 && (
+          <>
+            <a
+              onClick={changePage}
+              href="#"
+              aria-current="page"
+              className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+            >
+              {page + 1}
+            </a>
+            {page === 1 && (
+              <a
+                onClick={changePage}
+                href="#"
+                aria-current="page"
+                className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+              >
+                {page + 2}
+              </a>
+            )}
+            <a
+              href="#"
+              aria-current="page"
+              className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+            >
+              ...
+            </a>
+            <a
+              onClick={changePage}
+              href="#"
+              aria-current="page"
+              className="z-10 bg-gray-700 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+            >
+              {pages}
+            </a>
+          </>
+        )}
+      </>
+    );
   }
 
   return (
     <div className="bg-brand-black px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
         <a
+          onClick={prevPage}
           href="#"
-          className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          className="relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-md bg-gray-700 border-gray-300 text-white hover:bg-gray-700"
         >
           Previous
         </a>
         <a
+          onClick={nextPage}
           href="#"
-          className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          className="ml-3 relative inline-flex items-center px-4 py-2 text-sm font-medium rounded-md bg-gray-700 border-gray-300 text-white hover:bg-gray-700"
         >
           Next
         </a>
@@ -41,10 +171,11 @@ function Pagination(props: IPaginationProps) {
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-100">
-            Showing <span className="font-medium">1</span> to{' '}
-            <span className="font-medium">20</span> of{' '}
-            <span className="font-medium">{props.data.length || 0}</span>{' '}
-            results
+            Showing <span className="font-medium">{PAGE_START}</span> to{' '}
+            <span className="font-medium">
+              {page === pages ? totalItems : PAGE_END}
+            </span>{' '}
+            of <span className="font-medium">{totalItems || 0}</span> results
           </p>
         </div>
         <div>
@@ -60,30 +191,7 @@ function Pagination(props: IPaginationProps) {
               <span className="sr-only">Previous</span>
               <BsChevronLeft className="h-5 w-5" aria-hidden="true" />
             </a>
-            {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
-            <a
-              href="#"
-              aria-current="page"
-              className="z-10 bg-gray-700 border-brand-100 text-brand-100 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-            >
-              {currentPage || 1}
-            </a>
-            <a
-              onClick={changePage}
-              href="#"
-              className="bg-gray-800 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-            >
-              2
-            </a>
-            <span className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-800 text-sm font-medium text-white">
-              ...
-            </span>
-            <a
-              href="#"
-              className="bg-gray-800 border-gray-300 text-white hover:bg-gray-700 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-            >
-              10
-            </a>
+            {renderPagination()}
             <a
               onClick={nextPage}
               href="#"

@@ -10,7 +10,7 @@ import { useAppContext } from '../../store';
 import { tokens } from '../../utils/Constants';
 import {
   eventsToBarChart,
-  filterByType,
+  filterEventByType,
   removeDuplicates,
 } from '../../utils/Helpers';
 // Layout
@@ -33,7 +33,7 @@ const Analytics = () => {
   const { width } = useWindowDimensions();
   // States
   const [formattedEvents, setFormattedEvents] = useState<Array<any>>([]);
-  const [type, setType] = useState('all');
+  const [type, setType] = useState('All');
 
   // Subscribers
   useEffect(() => {
@@ -123,7 +123,7 @@ const Analytics = () => {
             active={type}
           >
             <ResponsiveLineChart
-              data={eventsToBarChart(filterByType(type, pastEvents), true)}
+              data={eventsToBarChart(filterEventByType(type, pastEvents), true)}
             />
           </DefaultCard>
         </Grid>
