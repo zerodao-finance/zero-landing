@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 import { AppConfig } from '../utils/AppConfig';
 
@@ -7,6 +8,22 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang={AppConfig.locale}>
+        <Script
+          id="google-analytics-gtag"
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        />
+        <Script strategy="lazyOnload" id="google-analytics-functional">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
