@@ -25,7 +25,7 @@ const Button = (props: IButtonProps) => {
           props.className &&
           props.disabled &&
           `opacity-50 !cursor-not-allowed !text-white`
-        } uppercase text-lg`}
+        } uppercase`}
       >
         {props.children}
 
