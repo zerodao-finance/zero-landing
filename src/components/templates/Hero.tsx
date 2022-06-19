@@ -44,7 +44,13 @@ const Hero = () => {
                     <Link href={totalTransacted === 0 ? '/' : '/analytics'}>
                       <a>
                         <Button xl secondary disabled={totalTransacted === 0}>
-                          Analytics
+                          <span
+                            className={`${
+                              totalTransacted === 0 && 'animate-pulse'
+                            }`}
+                          >
+                            Analytics
+                          </span>
                         </Button>
                       </a>
                     </Link>
@@ -84,7 +90,7 @@ const Hero = () => {
           ]}
         />
 
-        {firstLogin && (
+        {firstLogin && totalTransacted === 0 && (
           <div
             className={`h-screen w-full absolute left-0 top-0 animate-reveal block z-[999]`}
           />

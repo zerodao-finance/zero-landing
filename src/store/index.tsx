@@ -4,8 +4,6 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
-  useEffect,
-  useState,
 } from 'react';
 
 import useZeroAnalytics from '../hooks/ZeroAnalytics';
@@ -29,21 +27,14 @@ const AppContext = createContext<IStoreProps>({
 
 // Wrapper
 export function AppWrapper(props: { children: ReactNode }) {
-  const { getPastEvents, totalTransacted, pastEvents, eventsLoading } =
+  const { firstLogin, totalTransacted, pastEvents, eventsLoading } =
     useZeroAnalytics();
-
-  const [firstLogin, setFirstLogin] = useState(true);
-
-  useEffect(() => {
-    getPastEvents();
-  }, []);
 
   const sharedState: IStoreProps = {
     totalTransacted,
     pastEvents,
     eventsLoading,
     firstLogin,
-    setFirstLogin,
   };
 
   return (
