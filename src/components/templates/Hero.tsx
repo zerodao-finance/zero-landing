@@ -90,7 +90,7 @@ const Hero = () => {
           ]}
         />
 
-        {firstLogin && (
+        {firstLogin && totalTransacted === 0 && (
           <div
             className={`h-screen w-full absolute left-0 top-0 animate-reveal block z-[999]`}
           />
