@@ -29,7 +29,7 @@ const DefaultCard = (props: IDefaultCardProps) => (
 	`}
   >
     {props.title && (
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mb-5">
         <p className={`${props.largeTitle && '!text-3xl'} text-lg font-bold`}>
           {props.title}
         </p>
