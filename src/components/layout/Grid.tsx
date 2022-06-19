@@ -17,7 +17,7 @@ const Grid = (props: ISectionProps) => (
     ${props.verticalCenter && 'h-full items-center'} 
     ${props.xl && 'md:!grid-cols-1 xl:!grid-cols-1 2xl:!grid-cols-2'}
     ${props.cols ? props.cols : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'}
-    grid gap-10
+    grid gap-5 md:gap-10
   `}
   >
     {props.children ? (

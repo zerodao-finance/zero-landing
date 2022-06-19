@@ -68,7 +68,13 @@ const Hero = () => {
                   style={{ margin: '0 auto' }}
                   className={`
                   flex justify-center 
-                  ${width > 900 ? 'h-[300px] w-[300px]' : 'h-[200px] w-[200px]'}
+                  ${
+                    width > 900
+                      ? 'h-[300px] w-[300px]'
+                      : width > 600
+                      ? 'h-[200px] w-[200px]'
+                      : 'h-[150px] w-[150px]'
+                  }
                 `}
                 >
                   <LogoOnly />
