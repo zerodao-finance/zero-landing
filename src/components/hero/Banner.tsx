@@ -35,7 +35,7 @@ const Banner = (props: IBannerProps) => {
 						sm:min-w-[100px] flex flex-col justify-center text-center
 					`}
           >
-            {props.loading ? (
+            {props.loading && props.items[0]?.value === 0 ? (
               <div className="text-2xl font-bold animate-pulse">
                 <span>0</span>
               </div>

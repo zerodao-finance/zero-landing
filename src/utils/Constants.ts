@@ -1,3 +1,5 @@
+import Web3 from 'web3';
+
 import BTCSvg from './svg/coins/btc';
 import ETHSvg from './svg/coins/eth';
 import ibBTCSvg from './svg/coins/ibbtc';
@@ -7,6 +9,21 @@ import WBTCSvg from './svg/coins/wbtc';
 
 // Styles
 export const hoverWhite = 'transition duration-200 hover:text-gray-100';
+
+/* Web3 */
+export const BRIDGE_GENESIS_BLOCK = 14567078;
+
+// Providers
+export const ethProvider = new Web3(
+  'https://mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
+);
+
+// Contracts
+// eslint-disable-next-line
+export const { address: bridgeControllerAddress } = require('zero-protocol/deployments/mainnet/BadgerBridgeZeroController.json');   
+// eslint-disable-next-line
+export const { abi, address } = require('../utils/RenbtcDeployment.json'); 
+export const renBtcContract = new ethProvider.eth.Contract(abi, address);
 
 // Tokens Integrated
 export const tokens = [

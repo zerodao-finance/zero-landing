@@ -28,7 +28,7 @@ import { Logo } from './Logo';
 
 const Analytics = () => {
   // Store
-  const { eventsLoading, totalTransacted, pastEvents } = useAppContext();
+  const { totalTransacted, pastEvents } = useAppContext();
   // Hooks
   const { width } = useWindowDimensions();
   // States
@@ -44,11 +44,11 @@ const Analytics = () => {
   // Utils
   const quickviewItems = [
     {
-      top: eventsLoading ? 'Loading' : `${totalTransacted} BTC`,
+      top: `${totalTransacted} BTC`,
       bottom: 'Net Volume (BTC)',
     },
     {
-      top: eventsLoading ? 'Loading' : pastEvents.length,
+      top: pastEvents.length,
       bottom: 'Total Transactions',
     },
   ];
