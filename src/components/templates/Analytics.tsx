@@ -93,7 +93,7 @@ const Analytics = () => {
                   decimals={parseFloat(obj.top.toString()) % 1 !== 0 ? 8 : 0}
                 >
                   {({ countUpRef }) => (
-                    <div className="text-4xl font-bold">
+                    <div className="text-3xl md:text-4xl font-bold">
                       <span ref={countUpRef} />
                     </div>
                   )}
