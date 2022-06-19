@@ -18,7 +18,7 @@ const Banner = (props: IBannerProps) => {
     <div
       className={`
         ${props.color ? props.color : 'bg-gray-800'}
-        flex-col py-5 2xl:py-6
+        flex-col py-3 md:py-4 lg:py-5 2xl:py-6
     	`}
     >
       {props.title && (
@@ -36,7 +36,7 @@ const Banner = (props: IBannerProps) => {
 					`}
           >
             {props.loading && props.items[0]?.value === 0 ? (
-              <div className="text-2xl font-bold animate-pulse">
+              <div className="text-xl md:text-2xl font-bold animate-pulse">
                 <span>0</span>
               </div>
             ) : (
@@ -47,13 +47,13 @@ const Banner = (props: IBannerProps) => {
                 decimals={item.value % 1 !== 0 ? 4 : 0}
               >
                 {({ countUpRef }) => (
-                  <div className="text-2xl font-bold">
+                  <div className="text-xl md:text-2xl font-bold">
                     <span ref={countUpRef} />
                   </div>
                 )}
               </CountUp>
             )}
-            <div className={``}>{item.text}</div>
+            <div className={`text-sm md:text-md`}>{item.text}</div>
           </div>
         ))}
       </div>

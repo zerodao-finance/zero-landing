@@ -15,7 +15,13 @@ const Section = (props: ISectionProps) => (
   <div
     className={`
       ${props.wide ? 'max-w-screen-2xl' : 'max-w-screen-xl'} 
-      ${props.yPadding ? props.yPadding : props.verticalCenter ? '0' : 'py-12'}
+      ${
+        props.yPadding
+          ? props.yPadding
+          : props.verticalCenter
+          ? '0'
+          : 'py-8 md:py-10 lg:py-12'
+      }
       ${props.verticalCenter && 'flex items-center'}
       ${props.fullHeight && 'h-full'}
       ${props.vertical && 'flex-col'}
