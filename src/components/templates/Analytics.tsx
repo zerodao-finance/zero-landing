@@ -7,7 +7,7 @@ import CountUp from 'react-countup';
 
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-import { tokens } from '../../utils/Constants';
+import { chains, tokens } from '../../utils/Constants';
 import {
   eventsToBarChart,
   filterByDate,
@@ -17,6 +17,7 @@ import {
 // Layout
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
+import Dropdown from '../buttons/Dropdown';
 import { DefaultCard } from '../card/Default';
 import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
@@ -84,8 +85,9 @@ const Analytics = () => {
         title="Analytics"
         description="Bringing you live updates about our bridge."
         vertical
+        action={<Dropdown items={chains.map((el) => el.name)} text="Chain" />}
       >
-        <Grid style="mb-5 lg:mb-10">
+        <Grid>
           {quickviewItems.map((obj, i) => (
             <div key={i}>
               <DefaultCard center minHeight="min-h-[100px]">
@@ -116,7 +118,7 @@ const Analytics = () => {
           </DefaultCard>
         </Grid>
 
-        <Grid cols="!grid-cols-1" style="mb-5 lg:mb-10">
+        <Grid cols="!grid-cols-1">
           <DefaultCard
             title={width > 900 ? 'Daily Transaction Volume' : 'Daily TX Volume'}
             action={setType}

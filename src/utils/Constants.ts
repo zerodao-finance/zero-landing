@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
 
+import AVAXSvg from './svg/coins/avax';
 import BTCSvg from './svg/coins/btc';
 import ETHSvg from './svg/coins/eth';
 import ibBTCSvg from './svg/coins/ibbtc';
@@ -61,5 +62,30 @@ export const tokens = [
     src: '/assets/svg-coins/ibbtc.svg',
     alt: 'ibBTC',
     svg: ibBTCSvg,
+  },
+];
+
+// Chains integrated
+export const chains = [
+  {
+    name: 'All',
+  },
+  {
+    name: 'Ethereum',
+    src: '/assets/svg-coins/eth.svg',
+    alt: 'ETH',
+    svg: ETHSvg,
+  },
+  {
+    name: 'Arbitrum',
+    src: '/assets/svg-coins/eth.svg',
+    alt: 'ARB',
+    svg: ETHSvg,
+  },
+  {
+    name: 'Avalanche',
+    src: '/assets/svg-coins/avax.svg',
+    alt: 'AVAX',
+    svg: AVAXSvg,
   },
 ];

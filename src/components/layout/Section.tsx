@@ -12,6 +12,7 @@ type ISectionProps = {
   fullHeight?: boolean;
   vertical?: boolean;
   style?: string;
+  action?: ReactNode;
 };
 
 const Section = (props: ISectionProps) => {
@@ -35,20 +36,33 @@ const Section = (props: ISectionProps) => {
       mx-auto px-5 lg:px-10 flex justify-center
     `}
     >
-      {(props.title || props.description) && (
-        <div className="mb-12 text-center">
-          {props.title && (
-            <h2 className="text-3xl md:text-4xl text-white font-bold">
-              {props.title}
-            </h2>
-          )}
-          {props.description && (
-            <div className="mt-2 md:mt-4 text-lg md:text-xl md:px-20">
-              {props.description}
-            </div>
-          )}
-        </div>
-      )}
+      <div
+        className={`
+        flex
+        ${
+          props.action
+            ? 'justify-between items-end mb-5'
+            : 'justify-center mb-10'
+        }
+      `}
+      >
+        {(props.title || props.description) && (
+          <div className={`${props.action ? 'text-left' : 'text-center'}`}>
+            {props.title && (
+              <h2 className="text-3xl md:text-4xl text-white font-bold">
+                {props.title}
+              </h2>
+            )}
+            {props.description && (
+              <div className="mt-2 md:mt-4 text-lg md:text-xl">
+                {props.description}
+              </div>
+            )}
+          </div>
+        )}
+        {props.action && props.action}
+      </div>
+
       {props.children}
     </div>
   );
