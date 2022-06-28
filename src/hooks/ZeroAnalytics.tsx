@@ -4,10 +4,10 @@ import { BigNumber, utils } from 'ethers';
 import useSWR from 'swr';
 
 import {
-  bridgeControllerAddress,
-  ethersProvider,
-  ethersRenBtcContract,
-} from '../utils/Constants';
+  ethBridgeControllerAddress,
+  ethRenBtcContract,
+} from '../utils/Contracts';
+import { ethProvider } from '../utils/Providers';
 import { IEventProps } from '../utils/Types';
 
 function useZeroAnalytics() {
@@ -40,21 +40,21 @@ function useZeroAnalytics() {
     let shallowTotalTransacted = 0;
 
     // Filter queries
-    const burnFilter = (ethersRenBtcContract.filters as any).Transfer(
-      bridgeControllerAddress
+    const burnFilter = (ethRenBtcContract.filters as any).Transfer(
+      ethBridgeControllerAddress
     );
-    const mintFilter = (ethersRenBtcContract.filters as any).Transfer(
+    const mintFilter = (ethRenBtcContract.filters as any).Transfer(
       null,
-      bridgeControllerAddress
+      ethBridgeControllerAddress
     );
 
     // Pulling filtered events
-    const burnEvents = await ethersRenBtcContract.queryFilter(burnFilter);
-    const mintEvents = await ethersRenBtcContract.queryFilter(mintFilter);
+    const burnEvents = await ethRenBtcContract.queryFilter(burnFilter);
+    const mintEvents = await ethRenBtcContract.queryFilter(mintFilter);
 
     await Promise.all(
       burnEvents.map(async (event) => {
-        const { timestamp } = await ethersProvider.getBlock(event.blockNumber);
+        const { timestamp } = await ethProvider.getBlock(event.blockNumber);
         const amount = event.args
           ? utils.formatUnits(BigNumber.from(event.args.value), 8)
           : '0';
@@ -76,7 +76,7 @@ function useZeroAnalytics() {
 
     await Promise.all(
       mintEvents.map(async (event) => {
-        const { timestamp } = await ethersProvider.getBlock(event.blockNumber);
+        const { timestamp } = await ethProvider.getBlock(event.blockNumber);
         const amount = event.args
           ? utils.formatUnits(BigNumber.from(event.args.value), 8)
           : '0';
