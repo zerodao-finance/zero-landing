@@ -10,6 +10,7 @@ import { useAppContext } from '../../store';
 import { tokens } from '../../utils/Constants';
 import {
   eventsToBarChart,
+  filterByDate,
   filterEventByType,
   removeDuplicates,
 } from '../../utils/Helpers';
@@ -38,7 +39,9 @@ const Analytics = () => {
   // Subscribers
   useEffect(() => {
     if (pastEvents)
-      setFormattedEvents(removeDuplicates(pastEvents, 'transactionHash'));
+      setFormattedEvents(
+        filterByDate(removeDuplicates(pastEvents, 'transactionHash'))
+      );
   }, [pastEvents]);
 
   // Utils
