@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import useWindowDimensions from '../../hooks/WindowDimensions';
 import { FooterIconList } from '../footer/FooterIconList';
 
 // Types
@@ -17,8 +16,6 @@ type IHeroOneActionProps = {
 };
 
 const HeroOneAction = (props: IHeroOneActionProps) => {
-  const { height, width } = useWindowDimensions();
-
   return (
     <header
       className={`
@@ -48,12 +45,7 @@ const HeroOneAction = (props: IHeroOneActionProps) => {
         {props.title}
       </h1>
 
-      {/* Don't display on tiny views like an iPhone SE or iPhone mini */}
-      {height > 680 && width > 380 ? (
-        <div className="text-lg md:text-xl mt-4 mb-10">{props.description}</div>
-      ) : (
-        <div className="mt-2 mb-5" />
-      )}
+      <div className="text-lg md:text-xl mt-4 mb-10">{props.description}</div>
 
       {props.button}
 
