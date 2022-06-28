@@ -5,9 +5,8 @@ import useSWR from 'swr';
 
 import {
   bridgeControllerAddress,
-  BRIDGE_GENESIS_BLOCK,
-  ethProvider,
-  renBtcContract,
+  ethersProvider,
+  ethersRenBtcContract,
 } from '../utils/Constants';
 import { IEventProps } from '../utils/Types';
 
@@ -25,9 +24,10 @@ function useZeroAnalytics() {
       localStorage.getItem('total-transacted') || '0'
     );
 
+    // Check localstorage
     if (firstLogin && localTotalTransacted !== 0) {
       setFirstLogin(false);
-      const localEvents: Array<IEventProps> = JSON.parse(
+      const localEvents: Array<IEventProps | any> = JSON.parse(
         localStorage.getItem('events') || '[]'
       );
 
@@ -35,93 +35,73 @@ function useZeroAnalytics() {
       setPastEvents(localEvents);
     }
 
-    // Start revalidation to see if data changed
-    const currentBlock = await ethProvider.eth.getBlockNumber();
-
-    const shallowEvents: Array<IEventProps> = [];
+    // Temp vars
+    const shallowEvents: Array<IEventProps | any> = [];
     let shallowTotalTransacted = 0;
 
-    let bottomBlock = currentBlock - 10000;
-    let topBlock = currentBlock;
-
-    while (topBlock > BRIDGE_GENESIS_BLOCK) {
-      // For burns
-      const burnEvents = await renBtcContract.getPastEvents('Transfer', {
-        fromBlock: bottomBlock,
-        toBlock: topBlock,
-        filter: {
-          from: bridgeControllerAddress,
-        },
-      });
-
-      burnEvents.map(async (event) => {
-        // Add timestamp to TX
-        const timestamp: string = (
-          await ethProvider.eth.getBlock(event.blockNumber)
-        ).timestamp.toString();
-        const eventWithTimestamp = {
-          ...event,
-          timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
-          type: 'burn',
-          amount: utils.formatUnits(
-            BigNumber.from(event.returnValues.value),
-            8
-          ),
-        };
-
-        // Add events to state
-        shallowEvents.push(eventWithTimestamp);
-
-        // Sum up TX totals
-        shallowTotalTransacted += parseInt(event.returnValues.value, 10);
-      });
-
-      // For mints
-      const mintEvents = await renBtcContract.getPastEvents('Transfer', {
-        fromBlock: bottomBlock,
-        toBlock: topBlock,
-        filter: {
-          to: bridgeControllerAddress,
-        },
-      });
-
-      mintEvents.map(async (event) => {
-        // Add timestamp to TX
-        const timestamp: string = (
-          await ethProvider.eth.getBlock(event.blockNumber)
-        ).timestamp.toString();
-
-        const eventWithTimestamp = {
-          ...event,
-          timestamp: new Date(parseInt(timestamp, 10) * 1000).toDateString(),
-          type: 'mint',
-          amount: utils.formatUnits(
-            BigNumber.from(event.returnValues.value),
-            8
-          ),
-        };
-
-        // Add events to state
-        shallowEvents.push(eventWithTimestamp);
-
-        // Sum up TX totals
-        shallowTotalTransacted += parseInt(event.returnValues.value, 10);
-      });
-
-      bottomBlock -= 10000;
-      topBlock -= 10000;
-    }
-
-    const formattedAmount = parseFloat(
-      utils.formatUnits(BigNumber.from(shallowTotalTransacted || 0), 8)
+    // Filter queries
+    const burnFilter = (ethersRenBtcContract.filters as any).Transfer(
+      bridgeControllerAddress
+    );
+    const mintFilter = (ethersRenBtcContract.filters as any).Transfer(
+      null,
+      bridgeControllerAddress
     );
 
-    // If same amount, don't re-set
-    if (localTotalTransacted !== formattedAmount) {
-      localStorage.setItem('total-transacted', String(formattedAmount));
+    // Pulling filtered events
+    const burnEvents = await ethersRenBtcContract.queryFilter(burnFilter);
+    const mintEvents = await ethersRenBtcContract.queryFilter(mintFilter);
+
+    await Promise.all(
+      burnEvents.map(async (event) => {
+        const { timestamp } = await ethersProvider.getBlock(event.blockNumber);
+        const amount = event.args
+          ? utils.formatUnits(BigNumber.from(event.args.value), 8)
+          : '0';
+
+        const withTimestampAndAmount = {
+          ...event,
+          timestamp: new Date(timestamp * 1000).toDateString(),
+          amount,
+          type: 'burn',
+        };
+
+        // Add events to state
+        shallowEvents.push(withTimestampAndAmount);
+
+        // Sum up TX totals
+        shallowTotalTransacted += parseFloat(amount);
+      })
+    );
+
+    await Promise.all(
+      mintEvents.map(async (event) => {
+        const { timestamp } = await ethersProvider.getBlock(event.blockNumber);
+        const amount = event.args
+          ? utils.formatUnits(BigNumber.from(event.args.value), 8)
+          : '0';
+
+        const withTimestampAndAmount = {
+          ...event,
+          timestamp: new Date(timestamp * 1000).toDateString(),
+          amount,
+          type: 'mint',
+        };
+
+        // Add events to state
+        shallowEvents.push(withTimestampAndAmount);
+
+        // Sum up TX totals
+        shallowTotalTransacted += parseFloat(amount);
+      })
+    );
+
+    // If same amount like in localstorage, don't re-set
+    if (localTotalTransacted !== shallowTotalTransacted) {
+      localStorage.setItem('total-transacted', String(shallowTotalTransacted));
       localStorage.setItem('events', JSON.stringify(shallowEvents));
 
-      setTotalTransacted(formattedAmount);
+      setTotalTransacted(shallowTotalTransacted);
       setPastEvents(shallowEvents);
     }
 
