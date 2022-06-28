@@ -16,7 +16,7 @@ type ISectionProps = {
 };
 
 const Section = (props: ISectionProps) => {
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
 
   return (
     <div
@@ -54,7 +54,11 @@ const Section = (props: ISectionProps) => {
               </h2>
             )}
             {props.description && (
-              <div className="mt-2 md:mt-4 text-lg md:text-xl">
+              <div
+                className={`mt-2 md:mt-4 text-lg md:text-xl ${
+                  props.action && width < 600 ? 'max-w-[200px]' : ''
+                }`}
+              >
                 {props.description}
               </div>
             )}
