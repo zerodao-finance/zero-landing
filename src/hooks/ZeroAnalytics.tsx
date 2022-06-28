@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { BigNumber, utils } from 'ethers';
 import useSWR from 'swr';
 
+import { IEventProps } from '../utils/Types';
 import {
   ethBridgeControllerAddress,
   ethRenBtcContract,
-} from '../utils/Contracts';
-import { ethProvider } from '../utils/Providers';
-import { IEventProps } from '../utils/Types';
+} from '../utils/web3/Contracts';
+import { ethProvider } from '../utils/web3/Providers';
 
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps | any>>([]);
