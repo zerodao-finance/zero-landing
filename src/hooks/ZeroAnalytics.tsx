@@ -5,10 +5,10 @@ import useSWR from 'swr';
 
 import { IEventProps } from '../utils/Types';
 import {
-  ethBridgeControllerAddress,
   ethRenBtcContract,
+  CONTROLLER_DEPLOYMENTS,
 } from '../utils/web3/Contracts';
-import { ethProvider } from '../utils/web3/Providers';
+import { PROVIDERS } from '../utils/web3/Providers';
 
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps | any>>([]);
@@ -41,11 +41,11 @@ function useZeroAnalytics() {
 
     // Filter queries
     const burnFilter = (ethRenBtcContract.filters as any).Transfer(
-      ethBridgeControllerAddress
+      CONTROLLER_DEPLOYMENTS.ETHEREUM
     );
     const mintFilter = (ethRenBtcContract.filters as any).Transfer(
       null,
-      ethBridgeControllerAddress
+      CONTROLLER_DEPLOYMENTS.ETHEREUM
     );
 
     // Pulling filtered events
@@ -54,7 +54,9 @@ function useZeroAnalytics() {
 
     await Promise.all(
       burnEvents.map(async (event) => {
-        const { timestamp } = await ethProvider.getBlock(event.blockNumber);
+        const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
+          event.blockNumber
+        );
         const amount = event.args
           ? utils.formatUnits(BigNumber.from(event.args.value), 8)
           : '0';
@@ -76,7 +78,9 @@ function useZeroAnalytics() {
 
     await Promise.all(
       mintEvents.map(async (event) => {
-        const { timestamp } = await ethProvider.getBlock(event.blockNumber);
+        const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
+          event.blockNumber
+        );
         const amount = event.args
           ? utils.formatUnits(BigNumber.from(event.args.value), 8)
           : '0';
