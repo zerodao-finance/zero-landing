@@ -4,11 +4,11 @@ import { BigNumber, utils } from 'ethers';
 import useSWR from 'swr';
 
 import { IEventProps } from '../utils/Types';
-import * as CONTRACTS from '../utils/web3/Contracts';
-import * as FILTERS from '../utils/web3/Filters';
 import { PROVIDERS } from '../utils/web3/Providers';
+import useBridgeEvents from './BridgeEvents';
 
 function useZeroAnalytics() {
+  const { getAllEvents } = useBridgeEvents();
   const [pastEvents, setPastEvents] = useState<Array<IEventProps | any>>([]);
   const [totalTransacted, setTotalTransacted] = useState(0);
   const [eventsLoading, setEventsLoading] = useState(true);
@@ -38,93 +38,34 @@ function useZeroAnalytics() {
     let shallowTotalTransacted = 0;
 
     // Pulling filtered events
-    // ETH
-    const ethBurnEvents = await CONTRACTS.ethRenBtcContract.queryFilter(
-      FILTERS.ethBurnFilter
-    );
-    const ethMintEvents = await CONTRACTS.ethRenBtcContract.queryFilter(
-      FILTERS.ethMintFilter
-    );
-    // ARB
-    const arbBurnEvents = await CONTRACTS.arbRenBtcContract.queryFilter(
-      FILTERS.arbBurnFilter
-    );
-    const arbMintEvents = await CONTRACTS.arbRenBtcContract.queryFilter(
-      FILTERS.arbMintFilter
-    );
-    // AVAX
-    const avaxBurnEvents = await CONTRACTS.avaxRenBtcContract.queryFilter(
-      FILTERS.avaxBurnFilter
-    );
-    const avaxMintEvents = await CONTRACTS.avaxRenBtcContract.queryFilter(
-      FILTERS.avaxMintFilter
-    );
-    // MATIC
-    const maticBurnEvents = await CONTRACTS.maticRenBtcContract.queryFilter(
-      FILTERS.maticBurnFilter
-    );
-    const maticMintEvents = await CONTRACTS.maticRenBtcContract.queryFilter(
-      FILTERS.maticMintFilter
-    );
-
-    console.log(
-      arbBurnEvents,
-      arbMintEvents,
-      avaxBurnEvents,
-      avaxMintEvents,
-      maticBurnEvents,
-      maticMintEvents
-    );
-
-    // Looping through events
-    // ETH
-    await Promise.all(
-      ethBurnEvents.map(async (event) => {
-        const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
-          event.blockNumber
-        );
-        const amount = event.args
-          ? utils.formatUnits(BigNumber.from(event.args.value), 8)
-          : '0';
-
-        const withTimestampAndAmount = {
-          ...event,
-          timestamp: new Date(timestamp * 1000).toDateString(),
-          amount,
-          type: 'burn',
-          chain: 'eth',
-        };
-
-        // Add events to state
-        shallowEvents.push(withTimestampAndAmount);
-
-        // Sum up TX totals
-        shallowTotalTransacted += parseFloat(amount);
-      })
-    );
+    const allEvents = await getAllEvents();
 
     await Promise.all(
-      ethMintEvents.map(async (event) => {
-        const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
-          event.blockNumber
+      allEvents.map(async (el) => {
+        await Promise.all(
+          el.events.map(async (event) => {
+            const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
+              event.blockNumber
+            );
+            const amount = event.args
+              ? utils.formatUnits(BigNumber.from(event.args.value), 8)
+              : '0';
+
+            const withTimestampAndAmount = {
+              ...event,
+              timestamp: new Date(timestamp * 1000).toDateString(),
+              amount,
+              type: el.type,
+              chain: el.chain,
+            };
+
+            // Add events to state
+            shallowEvents.push(withTimestampAndAmount);
+
+            // Sum up TX totals
+            shallowTotalTransacted += parseFloat(amount);
+          })
         );
-        const amount = event.args
-          ? utils.formatUnits(BigNumber.from(event.args.value), 8)
-          : '0';
-
-        const withTimestampAndAmount = {
-          ...event,
-          timestamp: new Date(timestamp * 1000).toDateString(),
-          amount,
-          type: 'mint',
-          chain: 'eth',
-        };
-
-        // Add events to state
-        shallowEvents.push(withTimestampAndAmount);
-
-        // Sum up TX totals
-        shallowTotalTransacted += parseFloat(amount);
       })
     );
 
