@@ -4,10 +4,8 @@ import { BigNumber, utils } from 'ethers';
 import useSWR from 'swr';
 
 import { IEventProps } from '../utils/Types';
-import {
-  ethRenBtcContract,
-  CONTROLLER_DEPLOYMENTS,
-} from '../utils/web3/Contracts';
+import * as CONTRACTS from '../utils/web3/Contracts';
+import * as FILTERS from '../utils/web3/Filters';
 import { PROVIDERS } from '../utils/web3/Providers';
 
 function useZeroAnalytics() {
@@ -39,21 +37,49 @@ function useZeroAnalytics() {
     const shallowEvents: Array<IEventProps | any> = [];
     let shallowTotalTransacted = 0;
 
-    // Filter queries
-    const burnFilter = (ethRenBtcContract.filters as any).Transfer(
-      CONTROLLER_DEPLOYMENTS.ETHEREUM
-    );
-    const mintFilter = (ethRenBtcContract.filters as any).Transfer(
-      null,
-      CONTROLLER_DEPLOYMENTS.ETHEREUM
-    );
-
     // Pulling filtered events
-    const burnEvents = await ethRenBtcContract.queryFilter(burnFilter);
-    const mintEvents = await ethRenBtcContract.queryFilter(mintFilter);
+    // ETH
+    const ethBurnEvents = await CONTRACTS.ethRenBtcContract.queryFilter(
+      FILTERS.ethBurnFilter
+    );
+    const ethMintEvents = await CONTRACTS.ethRenBtcContract.queryFilter(
+      FILTERS.ethMintFilter
+    );
+    // ARB
+    const arbBurnEvents = await CONTRACTS.arbRenBtcContract.queryFilter(
+      FILTERS.arbBurnFilter
+    );
+    const arbMintEvents = await CONTRACTS.arbRenBtcContract.queryFilter(
+      FILTERS.arbMintFilter
+    );
+    // AVAX
+    const avaxBurnEvents = await CONTRACTS.avaxRenBtcContract.queryFilter(
+      FILTERS.avaxBurnFilter
+    );
+    const avaxMintEvents = await CONTRACTS.avaxRenBtcContract.queryFilter(
+      FILTERS.avaxMintFilter
+    );
+    // MATIC
+    const maticBurnEvents = await CONTRACTS.maticRenBtcContract.queryFilter(
+      FILTERS.maticBurnFilter
+    );
+    const maticMintEvents = await CONTRACTS.maticRenBtcContract.queryFilter(
+      FILTERS.maticMintFilter
+    );
 
+    console.log(
+      arbBurnEvents,
+      arbMintEvents,
+      avaxBurnEvents,
+      avaxMintEvents,
+      maticBurnEvents,
+      maticMintEvents
+    );
+
+    // Looping through events
+    // ETH
     await Promise.all(
-      burnEvents.map(async (event) => {
+      ethBurnEvents.map(async (event) => {
         const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
           event.blockNumber
         );
@@ -66,6 +92,7 @@ function useZeroAnalytics() {
           timestamp: new Date(timestamp * 1000).toDateString(),
           amount,
           type: 'burn',
+          chain: 'eth',
         };
 
         // Add events to state
@@ -77,7 +104,7 @@ function useZeroAnalytics() {
     );
 
     await Promise.all(
-      mintEvents.map(async (event) => {
+      ethMintEvents.map(async (event) => {
         const { timestamp } = await PROVIDERS.ETHEREUM.getBlock(
           event.blockNumber
         );
@@ -90,6 +117,7 @@ function useZeroAnalytics() {
           timestamp: new Date(timestamp * 1000).toDateString(),
           amount,
           type: 'mint',
+          chain: 'eth',
         };
 
         // Add events to state
