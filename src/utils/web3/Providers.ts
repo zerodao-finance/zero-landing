@@ -8,14 +8,17 @@ const RPC_ENDPOINTS = {
   ETHEREUM: 'https://mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2',
 };
 
+export const getProvider = (
+  chain: string,
+  key: string = '816df2901a454b18b7df259e61f92cd2'
+) => new ethers.providers.InfuraProvider(chain.toLowerCase(), key);
+
 // Providers
 const ethProvider = new ethers.providers.JsonRpcProvider(
   RPC_ENDPOINTS.ETHEREUM
 );
 
-const arbProvider = new ethers.providers.JsonRpcProvider(
-  RPC_ENDPOINTS.ARBITRUM
-);
+const arbProvider = getProvider('arbitrum', 'ca0da016dedf4c5a9ee90bfdbafee233');
 
 const avaxProvider = new ethers.providers.JsonRpcProvider(
   RPC_ENDPOINTS.AVALANCHE

@@ -40,6 +40,6 @@ export const maticRenBtcContract = new ethers.Contract(
 
 export const arbRenBtcContract = new ethers.Contract(
   RENBTC_DEPLOYMENTS.ARBITRUM,
-  abi,
-  PROVIDERS.ARBITRUM.getSigner(0)
+  abi
+  // TODO: fix what signer is needed - infuraprovider inherits signers and does not need provider?
 );

@@ -36,18 +36,17 @@ const Section = (props: ISectionProps) => {
       mx-auto px-5 lg:px-10 flex justify-center
     `}
     >
-      <div
-        className={`
-        flex
-        ${
-          props.action
-            ? 'justify-between items-end mb-5'
-            : 'justify-center mb-10'
-        }
-      `}
-      >
+      <div className={`flex justify-between mb-5 items-end`}>
+        {/* Invisible to keep title centered w/ flex between */}
+        {props.action && (
+          <div className={`${width < 600 ? 'hidden' : ''} opacity-0`}>
+            {props.action}
+          </div>
+        )}
+
+        {/* Title and Description */}
         {(props.title || props.description) && (
-          <div className={`${props.action ? 'text-left' : 'text-center'}`}>
+          <div className={`${width < 600 ? 'text-left' : 'text-center'}`}>
             {props.title && (
               <h2 className="text-3xl md:text-4xl text-white font-bold">
                 {props.title}
@@ -64,9 +63,12 @@ const Section = (props: ISectionProps) => {
             )}
           </div>
         )}
+
+        {/* Action */}
         {props.action && props.action}
       </div>
 
+      {/* Section Content */}
       {props.children}
     </div>
   );
