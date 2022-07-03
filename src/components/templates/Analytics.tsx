@@ -12,7 +12,6 @@ import {
   eventsToBarChart,
   filterByDate,
   filterEventByType,
-  removeDuplicates,
 } from '../../utils/Helpers';
 // Layout
 import { Background } from '../background/Background';
@@ -38,10 +37,7 @@ const Analytics = () => {
 
   // Subscribers
   useEffect(() => {
-    if (pastEvents)
-      setFormattedEvents(
-        filterByDate(removeDuplicates(pastEvents, 'transactionHash'))
-      );
+    if (pastEvents) setFormattedEvents(filterByDate(pastEvents));
   }, [pastEvents]);
 
   // Utils

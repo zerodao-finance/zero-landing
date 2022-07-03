@@ -8,6 +8,7 @@ import {
   ethersProvider,
   ethersRenBtcContract,
 } from '../utils/Constants';
+import { removeDuplicates } from '../utils/Helpers';
 import { IEventProps } from '../utils/Types';
 
 function useZeroAnalytics() {
@@ -68,9 +69,6 @@ function useZeroAnalytics() {
 
         // Add events to state
         shallowEvents.push(withTimestampAndAmount);
-
-        // Sum up TX totals
-        shallowTotalTransacted += parseFloat(amount);
       })
     );
 
@@ -90,20 +88,21 @@ function useZeroAnalytics() {
 
         // Add events to state
         shallowEvents.push(withTimestampAndAmount);
-
-        // Sum up TX totals
-        shallowTotalTransacted += parseFloat(amount);
       })
     );
 
-    // If same amount like in localstorage, don't re-set
-    if (localTotalTransacted !== shallowTotalTransacted) {
-      localStorage.setItem('total-transacted', String(shallowTotalTransacted));
-      localStorage.setItem('events', JSON.stringify(shallowEvents));
+    localStorage.setItem('total-transacted', String(shallowTotalTransacted));
+    localStorage.setItem('events', JSON.stringify(shallowEvents));
 
-      setTotalTransacted(shallowTotalTransacted);
-      setPastEvents(shallowEvents);
-    }
+    // Remove Duplicates
+    const withoutDupes = removeDuplicates(shallowEvents, 'transactionHash');
+    setPastEvents(withoutDupes);
+
+    // Get total transacted
+    withoutDupes.forEach((el) => {
+      shallowTotalTransacted += parseFloat(el.amount);
+    });
+    setTotalTransacted(shallowTotalTransacted);
 
     setEventsLoading(false);
   });
