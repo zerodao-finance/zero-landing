@@ -18,6 +18,9 @@ function useBlogs() {
       const res2 = await fetch(
         'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@famousdoctrine000'
       );
+      const res3 = await fetch(
+        'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@zerodaohq'
+      );
 
       if (res.status === 200 && res2.status === 200) {
         setBlogError(false);
@@ -25,9 +28,11 @@ function useBlogs() {
 
         const data = await res.json();
         const data2 = await res2.json();
+        const data3 = await res3.json();
 
         data.items.map((el: IBlogDataProps) => articles.push(el));
         data2.items.map((el: IBlogDataProps) => articles.push(el));
+        data3.items.map((el: IBlogDataProps) => articles.push(el));
 
         setBlogData(articles);
       } else {

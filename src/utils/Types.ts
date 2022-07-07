@@ -60,7 +60,6 @@ export type IBlogDataProps = {
   guid?: string;
   link: string;
   pubDate: string;
-  publishedDate?: string | Date;
   thumbnail: string;
   title: string;
 };
