@@ -51,6 +51,19 @@ export type IHeaderProps = {
   sortFx?: any;
 };
 
+// Blog
+export type IBlogDataProps = {
+  author: string;
+  categories: Array<string>;
+  content?: string;
+  description: string;
+  guid?: string;
+  link: string;
+  pubDate: string;
+  thumbnail: string;
+  title: string;
+};
+
 // Atoms
 export type ILinkProps = {
   href: string;

@@ -16,7 +16,7 @@ import {
 // Layout
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
-import { DefaultCard } from '../card/Default';
+import { DefaultCard } from '../cards/Default';
 import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
