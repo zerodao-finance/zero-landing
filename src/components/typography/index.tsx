@@ -9,7 +9,7 @@ const SectionTitle = (props: ITypographyProps) => (
 
 // About Section
 const AboutSubTitle = (props: ITypographyProps) => (
-  <h4 className="text-sm uppercase font-bold">{props.text}</h4>
+  <h4 className="text-sm uppercase font-bold text-gray-100">{props.text}</h4>
 );
 
 const AboutTitle = (props: ITypographyProps) => (
