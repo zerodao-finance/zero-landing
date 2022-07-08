@@ -52,7 +52,7 @@ const About = () => {
             <div
               className={`
                 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}
-                flex flex-col md:flex-row gap-10 lg:gap-20 justify-between w-full mb-20 items-center
+                flex flex-col md:flex-row gap-10 lg:gap-20 justify-between w-full mb-10 md:mb-20 lg:mb-32 items-center
               `}
               key={`about-${i}`}
             >
