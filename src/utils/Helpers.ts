@@ -10,10 +10,10 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
         if (!r[k]) {
           r[k] = {
             name: e.timestamp?.toString(),
-            amt: parseInt(e.returnValues.value, 10),
+            amt: parseFloat(e.amount),
           };
         } else {
-          r[k].amt = r[k].amt === 'NaN' ? 0 : parseInt(r[k].amt, 10);
+          r[k].amt = r[k].amt === 'NaN' ? 0 : parseFloat(r[k].amt);
         }
         return r;
       }, {})
@@ -24,7 +24,7 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
       .map((el) => {
         return {
           name: el.name.substring(4),
-          amt: (el.amt /= 10 ** 8),
+          amt: parseFloat((el.amt /= 8).toFixed(6)),
         };
       });
 
@@ -39,12 +39,35 @@ export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
   return [];
 }
 
-export function filterEventByType(type: string, events: Array<IEventProps>) {
+export function filterEventByType(
+  type: string,
+  events: Array<IEventProps | any>
+) {
   switch (type.toLowerCase()) {
     case 'mint':
       return events.filter((el) => el.type === 'mint');
     case 'burn':
       return events.filter((el) => el.type === 'burn');
+    default:
+      return events;
+  }
+}
+
+export function filterByDate(
+  events: Array<IEventProps | any>,
+  direction: string = 'desc'
+) {
+  switch (direction.toLowerCase()) {
+    case 'asc':
+      return events.sort(
+        (a, b) =>
+          new Date(a.timestamp).valueOf() - new Date(b.timestamp).valueOf()
+      );
+    case 'desc':
+      return events.sort(
+        (a, b) =>
+          new Date(b.timestamp).valueOf() - new Date(a.timestamp).valueOf()
+      );
     default:
       return events;
   }
@@ -60,6 +83,14 @@ export function truncateBetween(
     const first = string.substring(0, numberShown);
     const last = string.substring(string.length - numberShown, string.length);
     return first + (width > 900 ? '...' : '..') + last;
+  }
+  return '';
+}
+
+export function truncate(string: string | undefined, numberShown = 150) {
+  if (string) {
+    const shown = string.substring(0, numberShown || string.length);
+    return `${shown}...`;
   }
   return '';
 }

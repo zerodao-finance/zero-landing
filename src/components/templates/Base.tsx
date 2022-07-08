@@ -2,7 +2,6 @@ import { ReactNode, useEffect } from 'react';
 
 import { useAppContext } from '../../store';
 // Utils
-import { AppConfig } from '../../utils/AppConfig';
 // Layouts
 import { Meta } from '../layout/Meta';
 // Components
@@ -21,7 +20,7 @@ const Base = (props: IBaseProps) => {
 
   return (
     <div className="antialiased text-white">
-      <Meta title={AppConfig.title} description={AppConfig.description} />
+      <Meta />
       {/*  IN PROG */}
       {/* {firstLogin || !eventsLoading ? (
         <PreLoader />

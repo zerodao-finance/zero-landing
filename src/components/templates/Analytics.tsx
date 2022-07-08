@@ -10,13 +10,13 @@ import { useAppContext } from '../../store';
 import { tokens } from '../../utils/Constants';
 import {
   eventsToBarChart,
+  filterByDate,
   filterEventByType,
-  removeDuplicates,
 } from '../../utils/Helpers';
 // Layout
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
-import { DefaultCard } from '../card/Default';
+import { DefaultCard } from '../cards/Default';
 import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
@@ -37,8 +37,7 @@ const Analytics = () => {
 
   // Subscribers
   useEffect(() => {
-    if (pastEvents)
-      setFormattedEvents(removeDuplicates(pastEvents, 'transactionHash'));
+    if (pastEvents) setFormattedEvents(filterByDate(pastEvents));
   }, [pastEvents]);
 
   // Utils

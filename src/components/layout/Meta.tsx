@@ -6,8 +6,8 @@ import { useRouter } from 'next/router';
 import { AppConfig } from '../../utils/AppConfig';
 
 type IMetaProps = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   canonical?: string;
 };
 
@@ -49,15 +49,20 @@ const Meta = (props: IMetaProps) => {
         />
       </Head>
       <NextSeo
-        title={props.title}
-        description={props.description}
+        title={props.title || AppConfig.title}
+        description={props.description || AppConfig.description}
         canonical={props.canonical}
         openGraph={{
-          title: props.title,
-          description: props.description,
+          title: props.title || AppConfig.title,
+          description: props.description || AppConfig.description,
           url: props.canonical,
           locale: AppConfig.locale,
           site_name: AppConfig.site_name,
+        }}
+        twitter={{
+          handle: AppConfig.twitter,
+          site: AppConfig.twitter,
+          cardType: 'summary_large_image',
         }}
       />
     </>
