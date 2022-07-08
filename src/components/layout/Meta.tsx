@@ -59,6 +59,11 @@ const Meta = (props: IMetaProps) => {
           locale: AppConfig.locale,
           site_name: AppConfig.site_name,
         }}
+        twitter={{
+          handle: AppConfig.twitter,
+          site: AppConfig.twitter,
+          cardType: 'summary_large_image',
+        }}
       />
     </>
   );

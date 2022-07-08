@@ -3,6 +3,7 @@ import { Background } from '../../background/Background';
 import { BlogPreview } from '../../cards/BlogPreview';
 import { Grid } from '../../layout/Grid';
 import { Section } from '../../layout/Section';
+import { SectionTitle } from '../../typography';
 
 function Blog() {
   const { blogData } = useBlogs();
@@ -10,7 +11,7 @@ function Blog() {
   return (
     <Background color="bg-gray-900">
       <Section vertical verticalCenter yPadding="py-10">
-        <h1 className="text-xl uppercase font-bold mb-10">Blog</h1>
+        <SectionTitle text="Blog" />
         <Grid>
           {blogData.map((el, i) => (
             <div key={i}>
