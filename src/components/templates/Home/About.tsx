@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 import { Background } from '../../background/Background';
-import { Grid } from '../../layout/Grid';
+import { CTAButton } from '../../buttons/CTA';
 import { Section } from '../../layout/Section';
 import {
   AboutParagraph,
@@ -17,41 +17,52 @@ const About = () => {
     {
       title: "Crypto's Accessibility Challenges",
       subtitle: 'The Problem',
-      content: '',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       img: '',
-      cta: '',
+      cta: 'Docs',
+      ctaClick: () => {},
     },
     {
       title: 'Bridging and Fiat-to-Crypto Ramps',
       subtitle: 'The Solution',
-      content: '',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       img: '',
-      cta: '',
+      cta: 'Launch Bridge',
+      ctaClick: () => {},
     },
     {
       title: 'All-in-one Decentralized Solution',
       subtitle: 'The Ideal',
-      content: '',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       img: '',
-      cta: '',
+      cta: 'Launch Bridge',
+      ctaClick: () => {},
     },
   ];
 
   return (
     <>
       <Background>
-        <Section vertical verticalCenter yPadding="py-10 pt-20">
+        <Section vertical verticalCenter yPadding="pt-10 lg:pt-20">
           <SectionTitle text="About" />
           {/* <Grid cols="grid-cols-1 lg:grid-cols-2"> */}
           {aboutContent.map((el, i) => (
-            <Grid cols="grid-cols-1 lg:grid-cols-2" key={`about-${i}`}>
+            <div
+              className="flex flex-col md:flex-row gap-10 justify-between w-full mb-20"
+              key={`about-${i}`}
+            >
               <div>
-                <AboutSubTitle text={el.subtitle} />
-                <AboutTitle text={el.title} />
-                <AboutParagraph text={el.content} />
-                <button>CTA</button>
+                <div className="mb-5">
+                  <AboutSubTitle text={el.subtitle} />
+                  <AboutTitle text={el.title} />
+                  <AboutParagraph text={el.content} />
+                </div>
+                <CTAButton text={el.cta} />
               </div>
-              <div>
+              <div className="min-w-[300px] flex justify-center items-center">
                 <Image
                   src="/assets/3d/ZeroLogo3D.png"
                   alt="image"
@@ -59,7 +70,7 @@ const About = () => {
                   width="300"
                 />
               </div>
-            </Grid>
+            </div>
           ))}
           {/* </Grid> */}
         </Section>
