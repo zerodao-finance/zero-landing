@@ -9,7 +9,7 @@ function Blog() {
   const { blogData, blogError } = useBlogs();
 
   return (
-    <Background>
+    <Background color="bg-gray-900">
       <Section vertical verticalCenter yPadding="py-10">
         <SectionTitle text="Blog" />
         {blogError ? (

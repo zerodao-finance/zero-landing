@@ -20,7 +20,7 @@ function BlogPreview(props: IBlogPreviewProps) {
 
   return (
     <a href={props.link} target="_blank" rel="noreferrer">
-      <div className="transition duration-300 hover:scale-105">
+      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100">
         <DefaultCard>
           <div className="mb-5">
             <img
@@ -33,7 +33,7 @@ function BlogPreview(props: IBlogPreviewProps) {
             {props.title}
           </h3>
           <span className="text-sm text-gray-100">{props.date}</span>
-          <p>{truncate(parsedDesc)}</p>
+          <p className="text-white">{truncate(parsedDesc)}</p>
         </DefaultCard>
       </div>
     </a>
