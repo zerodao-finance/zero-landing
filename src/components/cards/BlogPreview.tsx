@@ -16,10 +16,12 @@ function BlogPreview(props: IBlogPreviewProps) {
   html.innerHTML = props.desc;
   const parsedDesc = html.children[1]?.querySelector('p')?.innerHTML;
 
+  // TODO: Make as many skeleton loading cards as blog posts --> 2 atm
+
   return (
     <a href={props.link} target="_blank" rel="noreferrer">
       <div className="transition duration-300 hover:scale-105">
-        <DefaultCard color="bg-black">
+        <DefaultCard>
           <div className="mb-5">
             <img
               src={props.img}

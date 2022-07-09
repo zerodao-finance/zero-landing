@@ -1,6 +1,7 @@
 // Layout
 // Components
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Background } from '../../background/Background';
 import { CTAButton } from '../../buttons/CTA';
@@ -18,28 +19,19 @@ const About = () => {
       title: "Crypto's Accessibility Challenges",
       subtitle: 'The Problem',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        "There are three pain-staking problems that all crypto users when interacting with web3-enabled applications. Firstly, bitcoin is percieved to be a store of value, much like our bank account, but it's increasingly difficult to use in web3. Secondly, when moving assets from one network to another, it requires the network's native currency send any transaction in order to cover the network's gas fees. Lastly, we are all terrified of the security breaches that many protocols accidently allow for. Let's face it, the crypto community is tired and annoyed of all this.",
       img: '',
       cta: 'Docs',
-      ctaClick: () => {},
+      ctaLink: 'https://docs.zerodao.com',
     },
     {
-      title: 'Bridging and Fiat-to-Crypto Ramps',
+      title: 'Bridging with Security and Speed',
       subtitle: 'The Solution',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        "While there are a few solutions on the market, none of them cover these two prominenet aspects of moving value around the blockchain quickly and without worry. This is why we launched the zeroBRIDGE. zeroBRIDGE is built on top of RenVM to be secure, fast, and gasless. That's right, gasless. We want the crypto community to seamlessly move money around various blockchains without having to worry about holding the native currency in that wallet to bridge or how to get BTC to a smart-contract enabled network. We currently have Ethereum, Avalanche and Polygon integrated with Bitcoin where you can either transfer Bitcoin into or out of those networks.",
       img: '',
       cta: 'Launch Bridge',
-      ctaClick: () => {},
-    },
-    {
-      title: 'All-in-one Decentralized Solution',
-      subtitle: 'The Ideal',
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      img: '',
-      cta: 'Launch Bridge',
-      ctaClick: () => {},
+      ctaLink: 'https://bridge.zerodao.com',
     },
   ];
 
@@ -62,7 +54,9 @@ const About = () => {
                   <AboutTitle text={el.title} />
                   <AboutParagraph text={el.content} />
                 </div>
-                <CTAButton text={el.cta} />
+                <Link href={el.ctaLink} passHref={true}>
+                  <CTAButton text={el.cta} />
+                </Link>
               </div>
               <div className="min-w-[300px] flex justify-center items-center">
                 <Image
