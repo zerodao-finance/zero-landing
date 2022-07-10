@@ -91,18 +91,21 @@ function useZeroAnalytics() {
       })
     );
 
-    localStorage.setItem('total-transacted', String(shallowTotalTransacted));
-    localStorage.setItem('events', JSON.stringify(shallowEvents));
-
     // Remove Duplicates
     const withoutDupes = removeDuplicates(shallowEvents, 'transactionHash');
-    setPastEvents(withoutDupes);
-
     // Get total transacted
     withoutDupes.forEach((el) => {
       shallowTotalTransacted += parseFloat(el.amount);
     });
-    setTotalTransacted(shallowTotalTransacted);
+
+    // only re-set states and local storage if value is different
+    if (shallowTotalTransacted !== localTotalTransacted) {
+      localStorage.setItem('total-transacted', String(shallowTotalTransacted));
+      localStorage.setItem('events', JSON.stringify(withoutDupes));
+
+      setPastEvents(withoutDupes);
+      setTotalTransacted(shallowTotalTransacted);
+    }
 
     setEventsLoading(false);
   });
