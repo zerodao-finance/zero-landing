@@ -6,6 +6,7 @@ type IBackgroundProps = {
   full?: boolean;
   spaceBetween?: boolean;
   animation?: boolean;
+  style?: string;
 };
 
 const Background = (props: IBackgroundProps) => (
@@ -14,7 +15,8 @@ const Background = (props: IBackgroundProps) => (
       ${props.full && 'h-screen'} 
       ${props.spaceBetween && 'flex flex-col items-between'}
       ${props.color ? props.color : 'bg-gray-1000'}
-      ${props.animation && 'z-[99] relative block overflow-x-hidden'}
+      ${props.animation && 'z-[99] relative block overflow-hidden'}
+      ${props.style && props.style}
     `}
   >
     {props.animation && (

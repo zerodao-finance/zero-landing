@@ -1,10 +1,10 @@
-import useBlogs from '../../../hooks/Blogs';
-import { Background } from '../../background/Background';
-import { BlogPreview } from '../../cards/BlogPreview';
-import { Grid } from '../../layout/Grid';
-import { Section } from '../../layout/Section';
-import { Spinner } from '../../loaders/Spinner';
-import { SectionTitle } from '../../typography';
+import useBlogs from '../../hooks/Blogs';
+import { Background } from '../background/Background';
+import { BlogPreview } from '../cards/BlogPreview';
+import { Grid } from '../layout/Grid';
+import { Section } from '../layout/Section';
+import { Spinner } from '../loaders/Spinner';
+import { SectionTitle } from '../typography';
 
 function Blog() {
   const { blogData, blogLoading, blogError } = useBlogs();
