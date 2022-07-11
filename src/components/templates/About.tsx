@@ -19,7 +19,7 @@ const About = () => {
       title: "Crypto's Accessibility Challenges",
       subtitle: 'The Problem',
       content:
-        "There are three pain-staking problems that all crypto users when interacting with web3-enabled applications. Firstly, bitcoin is percieved to be a store of value, much like our bank account, but it's increasingly difficult to use in web3. Secondly, when moving assets from one network to another, it requires the network's native currency send any transaction in order to cover the network's gas fees. Lastly, we are all terrified of the security breaches that many protocols accidently allow for. Let's face it, the crypto community is tired and annoyed of all this.",
+        "There are three pain-staking problems that all crypto users when interacting with web3-enabled applications. Firstly, bitcoin is percieved to be a store of value, much like our bank account, but it's increasingly difficult to use in web3 applications. Secondly, moving assets from one network to another usually requires the network's native currency to send any transaction in order to cover the network's gas fees, but users don't always have that native currency. Lastly, we are all terrified of the vulnerabilities that many protocols accidently have, especially bridges. Let's face it, the crypto community is tired and annoyed of all this.",
       img: '/assets/images/bridge-problem.png',
       cta: 'Docs',
       ctaLink: 'https://docs.zerodao.com',
@@ -28,7 +28,7 @@ const About = () => {
       title: 'Bridging with Security and Speed',
       subtitle: 'The Solution',
       content:
-        "While there are a few solutions on the market, none of them cover these two prominenet aspects of moving value around the blockchain quickly and without worry. This is why we launched the zeroBRIDGE. zeroBRIDGE is built on top of RenVM to be secure, fast, and gasless. That's right, gasless. We want the crypto community to seamlessly move money around various blockchains without having to worry about holding the native currency in that wallet to bridge or how to get BTC to a smart-contract enabled network.",
+        "While there are a Bitcoin bridge solutions on the market, none of them cover these two prominenet aspects of moving value around the blockchain quickly and without worry. This is why we launched the zeroBRIDGE. zeroBRIDGE is built on top of RenVM to be secure, fast, and gasless. That's right, gasless. We want the crypto community to seamlessly transfer money around various blockchains without having to worry about holding the native currency in that wallet. We make BTC bridging fast, easy, and secure.",
       img: '/assets/images/bridge-solution.png',
       cta: 'Launch Bridge',
       ctaLink: 'https://bridge.zerodao.com',
