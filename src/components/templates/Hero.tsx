@@ -36,7 +36,7 @@ const Hero = () => {
                 title="Interoperability Optimized"
                 description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
                 button={
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center 2xl:justify-start">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center xl:justify-start">
                     <Link href="https://bridge.zerodao.com" passHref={true}>
                       <a>
                         <CTAButton text="Launch Bridge" />
@@ -70,8 +70,10 @@ const Hero = () => {
                   className={`
                   flex justify-center 
                   ${
-                    width > 900
+                    width > 1200
                       ? 'h-[300px] w-[300px]'
+                      : width > 900
+                      ? 'h-[250px] w-[250px]'
                       : width > 600
                       ? 'h-[200px] w-[200px]'
                       : 'h-[150px] w-[150px]'
