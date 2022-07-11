@@ -18,7 +18,7 @@ const Banner = (props: IBannerProps) => {
     <div
       className={`
         ${props.color ? props.color : 'bg-gray-800'}
-        flex-col py-3 md:py-4 lg:py-5 2xl:py-6
+        flex-col
     	`}
     >
       {props.title && (
@@ -27,7 +27,7 @@ const Banner = (props: IBannerProps) => {
         </div>
       )}
 
-      <div className="flex justify-around md:px-10 max-w-screen-2xl mx-auto">
+      <div className="flex justify-around md:px-10 max-w-screen-2xl mx-auto min-h-[100px]">
         {props.items.map((item, i) => (
           <div
             key={i}

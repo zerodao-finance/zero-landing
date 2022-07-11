@@ -9,6 +9,7 @@ type ISectionProps = {
   verticalCenter?: boolean;
   fullHeight?: boolean;
   vertical?: boolean;
+  style?: string;
 };
 
 const Section = (props: ISectionProps) => (
@@ -25,6 +26,7 @@ const Section = (props: ISectionProps) => (
       ${props.verticalCenter && 'flex items-center'}
       ${props.fullHeight && 'h-full'}
       ${props.vertical && 'flex-col'}
+      ${props.style && props.style}
       mx-auto px-5 lg:px-10 flex justify-center
     `}
   >

@@ -87,7 +87,7 @@ export function truncateBetween(
   return '';
 }
 
-export function truncate(string: string | undefined, numberShown = 150) {
+export function truncate(string: string | undefined, numberShown = 180) {
   if (string) {
     const shown = string.substring(0, numberShown || string.length);
     return `${shown}...`;

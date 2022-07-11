@@ -43,9 +43,9 @@ const About = () => {
           {aboutContent.map((el, i) => (
             <div
               className={`
-                ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}
+                ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}
                 ${i === 1 ? 'mt-10' : ''}
-                flex flex-col-reverse md:flex-row gap-10 justify-between w-full mb-10 md:mb-20 lg:mb-32 items-center
+                flex flex-col-reverse lg:flex-row gap-10 justify-between w-full mb-10 md:mb-20 lg:mb-32 items-center
               `}
               key={`about-${i}`}
             >
@@ -61,7 +61,7 @@ const About = () => {
                   </a>
                 </Link>
               </div>
-              <div className="min-w-[450px] min-h-[300px] relative flex justify-center items-center">
+              <div className="min-w-[100%] min-h-[250px] lg:min-w-[450px] lg:min-h-[300px] relative flex justify-center items-center">
                 <Image
                   src={el.img}
                   alt={el.title}
