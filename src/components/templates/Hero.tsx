@@ -1,18 +1,18 @@
 import Link from 'next/link';
 
 // Hooks
-import useWindowDimensions from '../../../hooks/WindowDimensions';
-import { useAppContext } from '../../../store';
-import LogoOnly from '../../../utils/svg/logos/only';
+import useWindowDimensions from '../../hooks/WindowDimensions';
+import { useAppContext } from '../../store';
+import LogoOnly from '../../utils/svg/logos/only';
 // Layout
 // Components
-import { Background } from '../../background/Background';
-import { CTAButton } from '../../buttons/CTA';
-import { Button } from '../../buttons/Default';
-import { Banner } from '../../hero/Banner';
-import { HeroOneAction } from '../../hero/HeroOneAction';
-import { Grid } from '../../layout/Grid';
-import { Section } from '../../layout/Section';
+import { Background } from '../background/Background';
+import { CTAButton } from '../buttons/CTA';
+import { Button } from '../buttons/Default';
+import { Banner } from '../hero/Banner';
+import { HeroOneAction } from '../hero/HeroOneAction';
+import { Grid } from '../layout/Grid';
+import { Section } from '../layout/Section';
 
 const Hero = () => {
   const { totalTransacted, pastEvents, firstLogin } = useAppContext();
@@ -22,7 +22,7 @@ const Hero = () => {
     <>
       <Background spaceBetween animation>
         {/* Height is to account for full screen including banner */}
-        <Section verticalCenter style="min-h-[calc(100vh-100px)]">
+        <Section verticalCenter style="min-h-[calc(100vh-210px)]">
           <Grid
             xl
             left={

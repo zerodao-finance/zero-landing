@@ -1,5 +1,6 @@
 type ITypographyProps = {
   text: string;
+  style?: string;
 };
 
 // General
@@ -13,7 +14,9 @@ const AboutSubTitle = (props: ITypographyProps) => (
 );
 
 const AboutTitle = (props: ITypographyProps) => (
-  <h4 className="text-xl font-bold mb-2">{props.text}</h4>
+  <h4 className={`text-xl font-bold mb-2 ${props.style && props.style}`}>
+    {props.text}
+  </h4>
 );
 
 const AboutParagraph = (props: ITypographyProps) => <p>{props.text}</p>;

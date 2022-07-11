@@ -4,11 +4,13 @@ import { useAppContext } from '../../store';
 // Utils
 // Layouts
 import { Meta } from '../layout/Meta';
+import { BatmanNavbar } from '../navigation/BatmanNavbar';
 // Components
 import { Footer } from './Footer';
 
 type IBaseProps = {
   children: ReactNode;
+  withNav?: boolean;
 };
 
 const Base = (props: IBaseProps) => {
@@ -26,6 +28,7 @@ const Base = (props: IBaseProps) => {
         <PreLoader />
       ) : ( */}
       <>
+        {props.withNav && <BatmanNavbar />}
         {props.children}
         <Footer />
       </>

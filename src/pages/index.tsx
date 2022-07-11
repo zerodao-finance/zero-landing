@@ -1,10 +1,10 @@
+import { About } from '../components/templates/About';
 import { Base } from '../components/templates/Base';
-import { About } from '../components/templates/Home/About';
-import { Blog } from '../components/templates/Home/Blog';
-import { Hero } from '../components/templates/Home/Hero';
+import { Blog } from '../components/templates/Blog';
+import { Hero } from '../components/templates/Hero';
 
 const HomePage = () => (
-  <Base>
+  <Base withNav>
     <Hero />
     <About />
     <Blog />
