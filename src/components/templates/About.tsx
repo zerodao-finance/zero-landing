@@ -44,7 +44,7 @@ const About = () => {
             className={`
                 ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}
                 ${i === 1 ? 'mt-10' : ''}
-                flex flex-col-reverse lg:flex-row gap-10 justify-between w-full mb-10 md:mb-20 lg:mb-32 items-center
+                flex flex-col-reverse lg:flex-row lg:gap-10 justify-between w-full mb-10 md:mb-20 lg:mb-32 items-center
               `}
             key={`about-${i}`}
           >
