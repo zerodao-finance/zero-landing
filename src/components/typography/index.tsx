@@ -5,12 +5,14 @@ type ITypographyProps = {
 
 // General
 const SectionTitle = (props: ITypographyProps) => (
-  <h1 className="text-2xl uppercase font-bold mb-10">{props.text}</h1>
+  <h1 className="text-2xl uppercase font-bold mb-5 lg:mb-10">{props.text}</h1>
 );
 
 // About Section
 const AboutSubTitle = (props: ITypographyProps) => (
-  <h4 className="text-sm uppercase font-bold text-gray-100">{props.text}</h4>
+  <h4 className="text-sm uppercase font-bold text-gray-100 mt-5 lg:mt-0">
+    {props.text}
+  </h4>
 );
 
 const AboutTitle = (props: ITypographyProps) => (
