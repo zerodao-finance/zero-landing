@@ -19,7 +19,8 @@ const About = () => {
       title: "Crypto's Accessibility Challenges",
       subtitle: 'The Problem',
       content:
-        "There are three pain-staking problems that all crypto users when interacting with web3-enabled applications. Firstly, bitcoin is percieved to be a store of value, much like our bank account, but it's increasingly difficult to use in web3 applications. Secondly, moving assets from one network to another usually requires the network's native currency to send any transaction in order to cover the network's gas fees, but users don't always have that native currency. Lastly, we are all terrified of the vulnerabilities that many protocols accidently have, especially bridges. Let's face it, the crypto community is tired and annoyed of all this.",
+        'As more of the world finds DeFi, they are met with a steep barrier to entry. Today it has become simple to acquire Bitcoin, but to bring it to other ecosystems such as Ethereum or Avalanche, we usually find ourselves having to sign up for a centralized exchange.',
+      contentStrong: 'The world needs decentralized interoperability.',
       img: '/assets/images/bridge-problem.png',
       cta: 'Docs',
       ctaLink: 'https://docs.zerodao.com',
@@ -28,7 +29,8 @@ const About = () => {
       title: 'Bridging with Security and Speed',
       subtitle: 'The Solution',
       content:
-        "While there are a Bitcoin bridge solutions on the market, none of them cover these two prominenet aspects of moving value around the blockchain quickly and without worry. This is why we launched the zeroBRIDGE. zeroBRIDGE is built on top of RenVM to be secure, fast, and gasless. That's right, gasless. We want the crypto community to seamlessly transfer money around various blockchains without having to worry about holding the native currency in that wallet. We make BTC bridging fast, easy, and secure.",
+        'zeroDAO is the decentralized governor of the zerop2p protocol, enabling cross-chain transactions for trade or even more complex scripting. A network of keepers is running at all times to ensure cross-chain transactions are executed quickly, reliably, and trustlessly.',
+      contentStrong: 'With zerop2p, you can bridge BTC directly to ETH.',
       img: '/assets/images/bridge-solution.png',
       cta: 'Launch Bridge',
       ctaLink: 'https://bridge.zerodao.com',
@@ -39,6 +41,14 @@ const About = () => {
     <Background color="bg-gray-900">
       <Section vertical verticalCenter yPadding="pt-10 lg:pt-20">
         <SectionTitle text="About" />
+        <AboutParagraph
+          big
+          center
+          text="The zeroDAO community maintains zeroBRIDGE as a trading hub, enabling a user to swap BTC <-> ETH or BTC <-> USDC on all major networks, without the need to have gas funds."
+        />
+        <br />
+        <br />
+        <br />
         {aboutContent.map((el, i) => (
           <div
             className={`
@@ -53,6 +63,8 @@ const About = () => {
                 <AboutSubTitle text={el.subtitle} />
                 <AboutTitle text={el.title} />
                 <AboutParagraph text={el.content} />
+                <br />
+                <AboutParagraph text={el.contentStrong} strong />
               </div>
               <Link href={el.ctaLink} passHref={true}>
                 <a>

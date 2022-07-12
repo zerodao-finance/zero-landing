@@ -1,6 +1,9 @@
 type ITypographyProps = {
   text: string;
   style?: string;
+  strong?: boolean;
+  center?: boolean;
+  big?: boolean;
 };
 
 // General
@@ -21,6 +24,14 @@ const AboutTitle = (props: ITypographyProps) => (
   </h4>
 );
 
-const AboutParagraph = (props: ITypographyProps) => <p>{props.text}</p>;
+const AboutParagraph = (props: ITypographyProps) => (
+  <p
+    className={`${props.strong && 'font-bold text-lg'} ${
+      props.center && 'text-center'
+    } ${props.big && 'text-lg'}`}
+  >
+    {props.text}
+  </p>
+);
 
 export { SectionTitle, AboutSubTitle, AboutTitle, AboutParagraph };
