@@ -21,14 +21,14 @@ function BlogPreview(props: IBlogPreviewProps) {
   return (
     <a href={props.link} target="_blank" rel="noreferrer">
       <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100">
-        <DefaultCard>
-          <div className="mb-5">
+        <DefaultCard minHeight="min-h-auto">
+          {/* <div className="mb-5">
             <img
               src={props.img}
               alt={props.alt}
               className="h-[200px] object-cover w-full rounded"
             />
-          </div>
+          </div> */}
           <h3 className="font-bold whitespace-nowrap overflow-hidden">
             {props.title}
           </h3>
