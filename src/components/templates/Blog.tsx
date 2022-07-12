@@ -7,7 +7,7 @@ import { Spinner } from '../loaders/Spinner';
 import { SectionTitle } from '../typography';
 
 function Blog() {
-  const { blogData, blogLoading, blogError, blogImgSelector } = useBlogs();
+  const { blogData, blogLoading, blogError } = useBlogs();
 
   return (
     <Background color="bg-gray-900">
@@ -27,7 +27,7 @@ function Blog() {
                   title={el.title}
                   date={el.pubDate}
                   desc={el.description}
-                  img={blogImgSelector(el.title)}
+                  img={el.thumbnail}
                   alt={el.title}
                   link={el.link}
                 />

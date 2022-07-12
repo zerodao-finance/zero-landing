@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { truncate } from '../../utils/Helpers';
 import { DefaultCard } from './Default';
 
@@ -21,14 +23,19 @@ function BlogPreview(props: IBlogPreviewProps) {
   return (
     <a href={props.link} target="_blank" rel="noreferrer">
       <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100">
-        <DefaultCard minHeight="min-h-auto">
-          {/* <div className="mb-5">
-            <img
+        <DefaultCard>
+          <div className="mb-5">
+            <Image
               src={props.img}
               alt={props.alt}
-              className="h-[200px] object-cover w-full rounded"
+              className="rounded"
+              height="200"
+              width="350"
+              objectFit="cover"
+              loading="lazy"
+              layout="responsive"
             />
-          </div> */}
+          </div>
           <h3 className="font-bold whitespace-nowrap overflow-hidden">
             {props.title}
           </h3>

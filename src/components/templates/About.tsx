@@ -79,6 +79,7 @@ const About = () => {
                 layout="fill"
                 objectFit="cover"
                 className="rounded-lg"
+                loading="lazy"
               />
             </div>
           </div>

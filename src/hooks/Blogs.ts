@@ -45,22 +45,10 @@ function useBlogs() {
     }
   });
 
-  const blogImgSelector = (title: string) => {
-    switch (title.toLowerCase()) {
-      case '10 minutes or less: cash out usdc to debit card easy':
-        return '/assets/images/blog/10-min-or-less-min.jpeg';
-      case 'zerodao — p2p cross-chain':
-        return '/assets/images/blog/p2p-cross-chain-min.jpg';
-      default:
-        return '/assets/images/blog/p2p-cross-chain-min.jpg';
-    }
-  };
-
   return {
     blogData,
     blogLoading,
     blogError,
-    blogImgSelector,
   };
 }
 
