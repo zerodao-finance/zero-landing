@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://zerodao.com
+
+# Sitemaps
+Sitemap: https://zerodao.com/sitemap.xml

@@ -20,8 +20,9 @@ const Hero = () => {
 
   return (
     <>
-      <Background full spaceBetween animation>
-        <Section verticalCenter fullHeight>
+      <Background spaceBetween animation>
+        {/* Height is to account for full screen including banner */}
+        <Section verticalCenter style="min-h-[calc(100vh-210px)]">
           <Grid
             xl
             left={
@@ -35,7 +36,7 @@ const Hero = () => {
                 title="Interoperability Optimized"
                 description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
                 button={
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center 2xl:justify-start">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center xl:justify-start">
                     <Link href="https://bridge.zerodao.com" passHref={true}>
                       <a>
                         <CTAButton text="Launch Bridge" />
@@ -63,14 +64,16 @@ const Hero = () => {
               />
             }
             right={
-              <div className="w-full flex flex-col justify-center gap-10">
+              <div className="w-full flex flex-col justify-center gap-10 mt-5">
                 <div
                   style={{ margin: '0 auto' }}
                   className={`
                   flex justify-center 
                   ${
-                    width > 900
+                    width > 1200
                       ? 'h-[300px] w-[300px]'
+                      : width > 900
+                      ? 'h-[250px] w-[250px]'
                       : width > 600
                       ? 'h-[200px] w-[200px]'
                       : 'h-[150px] w-[150px]'

@@ -2,14 +2,15 @@ import { ReactNode, useEffect } from 'react';
 
 import { useAppContext } from '../../store';
 // Utils
-import { AppConfig } from '../../utils/AppConfig';
 // Layouts
 import { Meta } from '../layout/Meta';
+import { BatmanNavbar } from '../navigation/BatmanNavbar';
 // Components
 import { Footer } from './Footer';
 
 type IBaseProps = {
   children: ReactNode;
+  withNav?: boolean;
 };
 
 const Base = (props: IBaseProps) => {
@@ -21,12 +22,13 @@ const Base = (props: IBaseProps) => {
 
   return (
     <div className="antialiased text-white">
-      <Meta title={AppConfig.title} description={AppConfig.description} />
+      <Meta />
       {/*  IN PROG */}
       {/* {firstLogin || !eventsLoading ? (
         <PreLoader />
       ) : ( */}
       <>
+        {props.withNav && <BatmanNavbar />}
         {props.children}
         <Footer />
       </>

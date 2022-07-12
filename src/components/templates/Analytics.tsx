@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import Link from 'next/link';
-
 // Hooks & Utils
 import CountUp from 'react-countup';
 
@@ -15,13 +13,13 @@ import {
 } from '../../utils/Helpers';
 // Layout
 import { Background } from '../background/Background';
-import { CTAButton } from '../buttons/CTA';
-import { DefaultCard } from '../card/Default';
+import { DefaultCard } from '../cards/Default';
 import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 // Components
 import { Navbar } from '../navigation/Navbar';
+import { NavItems } from '../navigation/NavItems';
 import { EventsTable } from '../tables/events-table';
 import { Logo } from './Logo';
 // External
@@ -56,23 +54,7 @@ const Analytics = () => {
     <Background>
       <Section yPadding="py-6">
         <Navbar logo={<Logo xl={width > 900} svg />}>
-          {width > 600 && (
-            <li className="hover:text-gray-100 transition duration-200">
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-          )}
-          <li className="hover:text-gray-100 transition duration-200">
-            <Link href="https://docs.zerodao.com" target="_blank">
-              <a>Docs</a>
-            </Link>
-          </li>
-          <Link href="https://bridge.zerodao.com">
-            <a>
-              <CTAButton text="Bridge" sm={width < 600} />
-            </a>
-          </Link>
+          <NavItems />
         </Navbar>
       </Section>
 

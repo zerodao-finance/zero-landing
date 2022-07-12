@@ -87,6 +87,14 @@ export function truncateBetween(
   return '';
 }
 
+export function truncate(string: string | undefined, numberShown = 180) {
+  if (string) {
+    const shown = string.substring(0, numberShown || string.length);
+    return `${shown}...`;
+  }
+  return '';
+}
+
 export function capitalize(string: string | undefined) {
   if (string) {
     const first = string.substring(0, 1);
