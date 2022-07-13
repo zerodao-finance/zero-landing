@@ -6,8 +6,8 @@ import { FooterIconList } from '../footer/FooterIconList';
 
 // Types
 type IHeroOneActionProps = {
-  title: ReactNode;
-  description: string;
+  title: ReactNode | string;
+  description: string | ReactNode;
   button: ReactNode;
   center?: boolean;
   reactive?: boolean;
