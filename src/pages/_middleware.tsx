@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest) {
+function middleware(req: NextRequest) {
   const host: any = req.headers.get('host');
   const wwwRegex = /^www\./;
   // This redirect will only take effect on a production website (on a non-localhost domain)
@@ -13,3 +13,5 @@ export function middleware(req: NextRequest) {
   }
   return NextResponse.next();
 }
+
+export default middleware;
