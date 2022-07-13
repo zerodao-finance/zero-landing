@@ -41,7 +41,7 @@ const About = () => {
     <Background color="bg-gray-900">
       <Section vertical verticalCenter yPadding="pt-10 lg:pt-20">
         <SectionTitle text="About" />
-        <div className="mb-15 md:mb-20 lg:mb-30">
+        <div className="mb-10 md:mb-20 lg:mb-30">
           <AboutParagraph
             big
             center
