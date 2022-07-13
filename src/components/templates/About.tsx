@@ -41,20 +41,19 @@ const About = () => {
     <Background color="bg-gray-900">
       <Section vertical verticalCenter yPadding="pt-10 lg:pt-20">
         <SectionTitle text="About" />
-        <AboutParagraph
-          big
-          center
-          text="The zeroDAO community maintains zeroBRIDGE as a trading hub, enabling a user to swap from BTC to ETH or BTC to USDC on all major networks, without the need to have gas funds."
-        />
-        <br />
-        <br />
-        <br />
+        <div className="mb-15 md:mb-20 lg:mb-30">
+          <AboutParagraph
+            big
+            center
+            text="The zeroDAO community maintains zeroBRIDGE as a trading hub, enabling a user to swap from BTC to ETH or BTC to USDC on all major networks, without the need to have additional gas funds. The zeroDAO protocol values security, speed, and reliability above all else, ensuring users can safely and quickly move funds across chains."
+          />
+        </div>
         {aboutContent.map((el, i) => (
           <div
             className={`
                 ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}
                 ${i === 1 ? 'mt-10' : ''}
-                flex flex-col-reverse lg:flex-row lg:gap-10 justify-between w-full mb-10 md:mb-20 lg:mb-32 items-center
+                flex flex-col-reverse lg:flex-row lg:gap-10 justify-between w-full mb-10 md:mb-15 lg:mb-20 items-center
               `}
             key={`about-${i}`}
           >
