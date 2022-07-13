@@ -19,9 +19,9 @@ const AboutSubTitle = (props: ITypographyProps) => (
 );
 
 const AboutTitle = (props: ITypographyProps) => (
-  <h4 className={`text-xl font-bold mb-2 ${props.style && props.style}`}>
+  <h3 className={`text-xl font-bold mb-2 ${props.style && props.style}`}>
     {props.text}
-  </h4>
+  </h3>
 );
 
 const AboutParagraph = (props: ITypographyProps) => (
