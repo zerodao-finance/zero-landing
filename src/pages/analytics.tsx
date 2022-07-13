@@ -3,7 +3,7 @@ import { Base } from '../components/templates/Base';
 
 const AnalyticsPage = () => (
   <Base
-    title="zeroDAO - Bridge Analytics"
+    title="zeroDAO - Bitcoin Bridge Analytics"
     description="zeroDAO is a web3 cross-chain platform optimizing interoperability. Look at how the zeroBRIDGE is performing here!"
   >
     <Analytics />

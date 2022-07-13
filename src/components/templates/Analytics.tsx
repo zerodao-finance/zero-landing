@@ -59,8 +59,9 @@ const Analytics = () => {
       </Section>
 
       <Section
-        title="Analytics"
-        description="Bringing you live updates about our bridge."
+        h1Title
+        title="Bridge Analytics"
+        description="Bringing you live performance updates about our bridge."
         vertical
       >
         <Grid style="mb-5 lg:mb-10">
