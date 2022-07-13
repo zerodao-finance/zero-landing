@@ -44,7 +44,7 @@ const About = () => {
         <AboutParagraph
           big
           center
-          text="The zeroDAO community maintains zeroBRIDGE as a trading hub, enabling a user to swap BTC <-> ETH or BTC <-> USDC on all major networks, without the need to have gas funds."
+          text="The zeroDAO community maintains zeroBRIDGE as a trading hub, enabling a user to swap from BTC to ETH or BTC to USDC on all major networks, without the need to have gas funds."
         />
         <br />
         <br />

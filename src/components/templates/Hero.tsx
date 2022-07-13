@@ -34,7 +34,7 @@ const Hero = () => {
                   href: 'https://docs.zerodao.com',
                 }}
                 title="Interoperability Optimized"
-                description="With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
+                description="Enabling gasless bitcoin bridging across various networks. With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
                 button={
                   <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center xl:justify-start">
                     <Link href="https://bridge.zerodao.com" passHref={true}>
