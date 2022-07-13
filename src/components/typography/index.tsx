@@ -8,7 +8,7 @@ type ITypographyProps = {
 
 // General
 const SectionTitle = (props: ITypographyProps) => (
-  <h1 className="text-2xl uppercase font-bold mb-5 lg:mb-10">{props.text}</h1>
+  <h2 className="text-2xl uppercase font-bold mb-5 lg:mb-10">{props.text}</h2>
 );
 
 // About Section
