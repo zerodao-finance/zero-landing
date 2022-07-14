@@ -9,25 +9,28 @@ const NavItems = () => {
   return (
     <>
       {width > 600 && (
-        <li className="hover:text-gray-100 transition duration-200">
+        <li className="hover:text-gray-100 transition duration-200 !mb-0">
           <Link href="/">
-            <a>Home</a>
+            <a id="nav-item">Home</a>
           </Link>
         </li>
       )}
-      <li className="hover:text-gray-100 transition duration-200">
+      <li className="hover:text-gray-100 transition duration-200 !mb-0">
         <Link href="https://docs.zerodao.com" target="_blank">
-          <a>Docs</a>
+          <a id="nav-item">Docs</a>
         </Link>
       </li>
-      {width > 600 && (
-        <li className="hover:text-gray-100 transition duration-200">
-          <Link href="https://zerodao.com/analytics">
-            <a>Analytics</a>
-          </Link>
-        </li>
-      )}
-      <Link href="https://bridge.zerodao.com">
+      <li className="hover:text-gray-100 transition duration-200 !mb-0">
+        <Link href="/blog">
+          <a id="nav-item">Blog</a>
+        </Link>
+      </li>
+      <li className="hover:text-gray-100 transition duration-200 !mb-0">
+        <Link href="/analytics">
+          <a id="nav-item">Analytics</a>
+        </Link>
+      </li>
+      <Link href="https://bridge.zerodao.com" target="_blank">
         <a>
           <CTAButton text="Bridge" sm={width < 600} />
         </a>
