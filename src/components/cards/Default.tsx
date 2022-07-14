@@ -13,6 +13,7 @@ type IDefaultCardProps = {
   maxHeight?: string;
   action?: any;
   active?: string;
+  dropdownText?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
@@ -34,7 +35,11 @@ const DefaultCard = (props: IDefaultCardProps) => (
           {props.title}
         </p>
         {props.action && (
-          <Dropdown action={props.action} active={props.active} />
+          <Dropdown
+            action={props.action}
+            active={props.active}
+            text={props.dropdownText}
+          />
         )}
       </div>
     )}

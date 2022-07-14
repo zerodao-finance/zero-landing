@@ -72,7 +72,9 @@
         "no-await-in-loop": "off",
         "no-return-assign": "off",
         "prefer-destructuring": "warn",
-        "no-plusplus": "warn"
+        "no-plusplus": "warn",
+        "no-useless-escape": "off",
+        "no-irregular-whitespace": "off"
       }
     }
   ]

@@ -54,7 +54,7 @@ export type IHeaderProps = {
 // Blog
 export type IBlogDataProps = {
   author: string;
-  categories: Array<string>;
+  categories?: Array<string>;
   content?: string;
   description: string;
   guid?: string;
