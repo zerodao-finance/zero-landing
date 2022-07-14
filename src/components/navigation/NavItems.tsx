@@ -21,16 +21,16 @@ const NavItems = () => {
         </Link>
       </li>
       <li className="hover:text-gray-100 transition duration-200">
-        <Link href="https://zerodao.com/blog">
+        <Link href="/blog">
           <a>Blog</a>
         </Link>
       </li>
       <li className="hover:text-gray-100 transition duration-200">
-        <Link href="https://zerodao.com/analytics">
+        <Link href="/analytics">
           <a>Analytics</a>
         </Link>
       </li>
-      <Link href="https://bridge.zerodao.com">
+      <Link href="https://bridge.zerodao.com" target="_blank">
         <a>
           <CTAButton text="Bridge" sm={width < 600} />
         </a>

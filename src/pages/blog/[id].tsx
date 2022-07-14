@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { IoMdArrowBack } from 'react-icons/io';
 
 import { Section } from '../../components/layout/Section';
 import { Base } from '../../components/templates/Base';
@@ -8,6 +10,7 @@ import { BLOGS } from '../../utils/Blogs';
 
 const BlogPost = () => {
   const router = useRouter();
+  const [found, setFound] = useState<any>();
 
   useEffect(() => {
     const figure = document.getElementsByTagName('figure');
@@ -15,6 +18,9 @@ const BlogPost = () => {
     const p = document.getElementsByTagName('p');
     const ol = document.getElementsByTagName('ol');
     const li = document.getElementsByTagName('li');
+    const figcaption = document.getElementsByTagName('figcaption');
+    const img = document.getElementsByTagName('img');
+    const a = document.getElementsByTagName('a');
 
     for (let i = 0; i < p.length && li.length; i++) {
       // Header
@@ -23,30 +29,66 @@ const BlogPost = () => {
       // Spacing
       figure[i]?.classList.add('my-5');
       p[i]?.classList.add('my-2');
+      figcaption[i]?.classList.add('mt-2', 'text-xs');
 
       // Lists
       ol[i]?.classList.add('list-disc', 'mx-10');
       li[i]?.classList.add('mb-2');
+
+      // Links
+      a[i]?.classList.add('underline', 'text-brand-100');
+      if (a[i]?.innerText.toLowerCase() === 'javascript is not available.') {
+        a[i]?.classList.add('hidden');
+      }
+
+      // Images
+      img[i]?.classList.add('max-w-[100%]');
     }
   });
 
-  const render = () => {
+  useEffect(() => {
     const shallowFound = BLOGS.find((el) => String(el.id) === router.query?.id);
+    setFound(shallowFound);
+  }, [router]);
 
-    if (shallowFound) {
+  const render = () => {
+    if (found) {
       return (
         <div
-          dangerouslySetInnerHTML={{ __html: shallowFound.description }}
-          className="w-full"
+          dangerouslySetInnerHTML={{ __html: found.description }}
+          className="w-full break-words"
         />
       );
     }
     return <p>Not found.</p>;
   };
 
+  const cleanupTitle = (str: string) => {
+    if (str) {
+      if (str.includes('—')) {
+        return str.split('—')[1];
+      }
+      return str;
+    }
+    return '';
+  };
+
   return (
-    <Base withNav title={`zeroDAO`}>
-      <Section>{render()}</Section>
+    <Base
+      withNav
+      title={`zeroDAO${found ? ` - ${cleanupTitle(found.title)}` : ''}`}
+    >
+      <Section vertical>
+        <div className="flex w-full justify-between items-center mb-5">
+          <Link href="/blog">
+            <IoMdArrowBack size="24px" color="#41a75b" />
+          </Link>
+          <Link href={found?.link || '/blog'} target="_blank">
+            View Full Article
+          </Link>
+        </div>
+        {render()}
+      </Section>
     </Base>
   );
 };
