@@ -33,21 +33,14 @@ const BlogPost = () => {
 
       // Lists
       ol[i]?.classList.add('list-disc', 'mx-10');
-      li[i]?.classList.add('mb-2');
 
       // Links
+      if (a[i]?.id !== 'nav-item') {
+        a[i]?.classList.add('underline', 'text-brand-100');
+        li[i]?.classList.add('mb-2');
+      }
       if (a[i]?.innerText.toLowerCase() === 'javascript is not available.') {
         a[i]?.classList.add('hidden');
-      }
-      if (
-        a[i]?.innerText.toUpperCase() !== 'HOME' &&
-        a[i]?.innerText.toUpperCase() !== 'HOME' &&
-        a[i]?.innerText.toUpperCase() !== 'HOME' &&
-        a[i]?.innerText === 'HOME'
-      ) {
-        a[i]?.classList.add('underline', 'text-brand-100');
-      } else {
-        li[i]?.classList.add('mb-0');
       }
 
       // Images
