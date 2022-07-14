@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { truncate } from '../../utils/Helpers';
 import { DefaultCard } from './Default';
@@ -14,14 +15,16 @@ type IBlogPreviewProps = {
 
 function BlogPreview(props: IBlogPreviewProps) {
   // Parse HTML and grab first 'p' element
-  const html = document.createElement('html');
-  html.innerHTML = props.desc;
-  const parsedDesc = html.children[1]?.querySelector('p')?.innerHTML;
+  let parsedDesc;
 
-  // TODO: Make as many skeleton loading cards as blog posts --> 2 atm
+  if (typeof window !== 'undefined') {
+    const html = document.createElement('html');
+    html.innerHTML = props.desc;
+    parsedDesc = html.children[1]?.querySelector('p')?.innerHTML;
+  }
 
   return (
-    <a href={props.link} target="_blank" rel="noreferrer">
+    <Link href={props.link} target="_blank" rel="noreferrer">
       <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100">
         <DefaultCard>
           <div className="mb-5">
@@ -43,7 +46,7 @@ function BlogPreview(props: IBlogPreviewProps) {
           <p className="text-white">{truncate(parsedDesc)}</p>
         </DefaultCard>
       </div>
-    </a>
+    </Link>
   );
 }
 

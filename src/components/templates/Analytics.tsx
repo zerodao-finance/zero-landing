@@ -18,10 +18,7 @@ import { ResponsiveLineChart } from '../charts/LineChart';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 // Components
-import { Navbar } from '../navigation/Navbar';
-import { NavItems } from '../navigation/NavItems';
 import { EventsTable } from '../tables/events-table';
-import { Logo } from './Logo';
 // External
 
 const Analytics = () => {
@@ -52,12 +49,6 @@ const Analytics = () => {
 
   return (
     <Background>
-      <Section yPadding="py-6">
-        <Navbar logo={<Logo xl={width > 900} svg />}>
-          <NavItems />
-        </Navbar>
-      </Section>
-
       <Section
         h1Title
         title="Bridge Analytics"
@@ -100,6 +91,7 @@ const Analytics = () => {
             title={width > 900 ? 'Daily Transaction Volume' : 'Daily TX Volume'}
             action={setType}
             active={type}
+            dropdownText={width > 900 ? 'Transaction Type' : 'TX Type'}
           >
             <ResponsiveLineChart
               data={eventsToBarChart(filterEventByType(type, pastEvents), true)}

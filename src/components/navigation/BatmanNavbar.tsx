@@ -18,7 +18,7 @@ const BatmanNavbar = () => {
     // just trigger this so that the initial state
     // is updated as soon as the component is mounted
     handleScroll();
-
+    console.log(scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -26,8 +26,6 @@ const BatmanNavbar = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(scrollY);
 
   return (
     <Section yPadding="py-6">
