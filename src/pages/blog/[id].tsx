@@ -42,7 +42,7 @@ const BlogPost = () => {
       }
 
       // Images
-      img[i]?.classList.add('max-w-[100%]');
+      img[i]?.classList.add('max-w-[100%]', 'my-0', 'mx-auto');
     }
   });
 
@@ -81,7 +81,9 @@ const BlogPost = () => {
       <Section vertical>
         <div className="flex w-full justify-between items-center mb-5">
           <Link href="/blog">
-            <IoMdArrowBack size="24px" color="#41a75b" />
+            <div className="cursor-pointer transition duration-200 hover:scale-110">
+              <IoMdArrowBack size="24px" color="#41a75b" />
+            </div>
           </Link>
           <Link href={found?.link || '/blog'} target="_blank">
             View Full Article
