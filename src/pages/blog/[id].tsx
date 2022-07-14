@@ -33,16 +33,18 @@ const BlogPost = () => {
 
       // Lists
       ol[i]?.classList.add('list-disc', 'mx-10');
-      li[i]?.classList.add('mb-2');
 
       // Links
-      a[i]?.classList.add('underline', 'text-brand-100');
+      if (a[i]?.id !== 'nav-item') {
+        a[i]?.classList.add('underline', 'text-brand-100');
+        li[i]?.classList.add('mb-2');
+      }
       if (a[i]?.innerText.toLowerCase() === 'javascript is not available.') {
         a[i]?.classList.add('hidden');
       }
 
       // Images
-      img[i]?.classList.add('max-w-[100%]');
+      img[i]?.classList.add('max-w-[100%]', 'my-0', 'mx-auto');
     }
   });
 
@@ -81,7 +83,9 @@ const BlogPost = () => {
       <Section vertical>
         <div className="flex w-full justify-between items-center mb-5">
           <Link href="/blog">
-            <IoMdArrowBack size="24px" color="#41a75b" />
+            <div className="cursor-pointer transition duration-200 hover:scale-110">
+              <IoMdArrowBack size="24px" color="#41a75b" />
+            </div>
           </Link>
           <Link href={found?.link || '/blog'} target="_blank">
             View Full Article
