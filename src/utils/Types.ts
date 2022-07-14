@@ -62,6 +62,7 @@ export type IBlogDataProps = {
   pubDate: string;
   thumbnail: string;
   title: string;
+  id?: number;
 };
 
 // Atoms

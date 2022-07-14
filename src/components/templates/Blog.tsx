@@ -1,4 +1,4 @@
-import { Blogs } from '../../utils/Blogs';
+import { BLOGS } from '../../utils/Blogs';
 import { Background } from '../background/Background';
 import { BlogPreview } from '../cards/BlogPreview';
 import { Grid } from '../layout/Grid';
@@ -18,7 +18,7 @@ function Blog() {
           <Spinner padding="py-20" />
         ) : ( */}
         <Grid>
-          {Blogs.map((el, i) => (
+          {BLOGS.map((el, i) => (
             <div key={i}>
               <BlogPreview
                 title={el.title}
@@ -27,6 +27,7 @@ function Blog() {
                 img={el.thumbnail}
                 alt={el.title}
                 link={el.link}
+                id={String(i + 1)}
               />
             </div>
           ))}
