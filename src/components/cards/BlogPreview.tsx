@@ -11,6 +11,7 @@ type IBlogPreviewProps = {
   img: string;
   alt?: string;
   link: string;
+  id?: string;
 };
 
 function BlogPreview(props: IBlogPreviewProps) {
@@ -24,8 +25,9 @@ function BlogPreview(props: IBlogPreviewProps) {
   }
 
   return (
-    <Link href={props.link} target="_blank" rel="noreferrer">
-      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100">
+    // <Link href={props.link} target="_blank" rel="noreferrer">
+    <Link href={`/blog/${props.id}`}>
+      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer">
         <DefaultCard>
           <div className="mb-5">
             <Image

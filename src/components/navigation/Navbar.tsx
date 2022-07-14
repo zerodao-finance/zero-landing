@@ -21,6 +21,8 @@ const Navbar = (props: INavbarProps) => {
         return router.push('/');
       case 'docs':
         return window.open('https://docs.zerodao.com');
+      case 'blog':
+        return router.push('/blog');
       case 'analytics':
         return router.push('/analytics');
       case 'launch bridge':
@@ -41,7 +43,7 @@ const Navbar = (props: INavbarProps) => {
       <nav>
         {width < 600 ? (
           <Dropdown
-            items={['Home', 'Docs', 'Analytics', 'Launch Bridge']}
+            items={['Home', 'Docs', 'Analytics', 'Blog', 'Launch Bridge']}
             action={redirect}
           />
         ) : (
