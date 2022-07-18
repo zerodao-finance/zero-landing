@@ -1,11 +1,12 @@
 import { BLOGS } from '../../utils/Blogs';
 import { Background } from '../background/Background';
-import { BlogPreview } from '../cards/BlogPreview';
+import { MediumBlogPreview } from '../cards/MediumBlogPreview';
+import { StrapiBlogPreview } from '../cards/StrapiBlogPreview';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 import { SectionTitle } from '../typography';
 
-function Blog() {
+function Blog({ articles }: any) {
   return (
     <Background color="bg-gray-900">
       <Section vertical verticalCenter yPadding="py-20">
@@ -20,7 +21,7 @@ function Blog() {
         <Grid>
           {BLOGS.map((el, i) => (
             <div key={i}>
-              <BlogPreview
+              <MediumBlogPreview
                 title={el.title}
                 date={el.pubDate}
                 desc={el.description}
@@ -30,6 +31,12 @@ function Blog() {
                 id={String(i + 1)}
               />
             </div>
+          ))}
+          {articles.map((article: any) => (
+            <StrapiBlogPreview
+              article={article}
+              key={article.attributes.slug}
+            />
           ))}
         </Grid>
         {/* )} */}
