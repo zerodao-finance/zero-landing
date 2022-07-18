@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { RiMediumFill } from 'react-icons/ri';
 
 import { truncate } from '../../utils/Helpers';
 import { DefaultCard } from './Default';
@@ -40,10 +41,13 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
               priority
             />
           </div>
-          <h3 className="font-bold whitespace-nowrap overflow-hidden">
-            {props.title}
-          </h3>
-          <span className="text-sm text-gray-100">{props.date}</span>
+          <div className="flex justify-between w-full items-center">
+            <h3 className="font-bold whitespace-nowrap overflow-hidden">
+              {truncate(props.title, 35)}
+            </h3>
+            <RiMediumFill size="24px" />
+          </div>
+          <span className="text-sm text-gray-100 mb-1">{props.date}</span>
           <p className="text-white" suppressHydrationWarning>
             {truncate(parsedDesc)}
           </p>
