@@ -40,7 +40,7 @@ const Article = ({ article, categories }: any) => {
         )}
         <div className="mt-5">
           <p>By {article.attributes.author.data.attributes.name}</p>
-          <p>{article.attributes.publishedAt}</p>
+          <p>{new Date(article.attributes.publishedAt).toLocaleString()}</p>
         </div>
         <div className="my-5">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
