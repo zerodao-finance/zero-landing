@@ -6,11 +6,14 @@ import remarkGfm from 'remark-gfm';
 
 import { Section } from '../../components/layout/Section';
 import { Base } from '../../components/templates/Base';
+import useWindowDimensions from '../../hooks/WindowDimensions';
 import { fetchAPI } from '../../lib/strapi/api';
 import { getStrapiMedia } from '../../lib/strapi/media';
+import style from '../../styles/markdown-styles.module.css';
 
-const Article = ({ article, categories }: any) => {
-  console.log(article, categories);
+const Article = ({ article }: any) => {
+  const { width } = useWindowDimensions();
+
   return (
     <Base
       withNav
@@ -18,32 +21,57 @@ const Article = ({ article, categories }: any) => {
       description={article.attributes.description}
     >
       <Section vertical>
-        <div className="mb-5">
+        <div className="mb-1">
           <h1 className="text-3xl font-bold">{article.attributes.title}</h1>
         </div>
-        {article.attributes.author.data.attributes.picture && (
-          <Image
-            src={getStrapiMedia(
-              article.attributes.author.data.attributes.picture
-            )}
-            alt={
-              article.attributes.author.data.attributes.picture.data.attributes
-                .alternativeText
-            }
-            className="rounded"
-            height="200"
-            width="350"
-            objectFit="cover"
-            layout="responsive"
-            priority
-          />
-        )}
-        <div className="mt-5">
-          <p>By {article.attributes.author.data.attributes.name}</p>
-          <p>{new Date(article.attributes.publishedAt).toLocaleString()}</p>
+        <div>
+          <p>Author: {article.attributes.author.data.attributes.name}</p>
+          <p>
+            Published On:{' '}
+            {new Date(article.attributes.publishedAt).toLocaleString()}
+          </p>
         </div>
         <div className="my-5">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {article.attributes.author.data.attributes.picture && (
+            <div className="md:max-h-[300px] md:max-w-[300px] lg:max-h-[500px] lg:max-w-[500px] mb-5 md:mb-0 md:float-left md:pr-10">
+              {width > 768 ? (
+                <Image
+                  src={getStrapiMedia(
+                    article.attributes.author.data.attributes.picture
+                  )}
+                  alt={
+                    article.attributes.author.data.attributes.picture.data
+                      .attributes.alternativeText
+                  }
+                  className="rounded"
+                  height="500"
+                  width="500"
+                  objectFit="cover"
+                  priority
+                />
+              ) : (
+                <Image
+                  src={getStrapiMedia(
+                    article.attributes.author.data.attributes.picture
+                  )}
+                  alt={
+                    article.attributes.author.data.attributes.picture.data
+                      .attributes.alternativeText
+                  }
+                  className="rounded"
+                  height="200"
+                  width="200"
+                  objectFit="cover"
+                  layout="responsive"
+                  priority
+                />
+              )}
+            </div>
+          )}
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            className={style.reactMarkDown}
+          >
             {article.attributes.content}
           </ReactMarkdown>
         </div>

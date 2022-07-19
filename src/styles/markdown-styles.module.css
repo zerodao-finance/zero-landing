@@ -1,0 +1,12 @@
+.reactMarkDown {
+  font-size: 20px;
+}
+
+.reactMarkDown p {
+  margin-bottom: 1rem;
+}
+
+.reactMarkDown h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
