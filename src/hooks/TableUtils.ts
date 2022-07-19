@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { IEventProps } from '../utils/Types';
-
+import { IEventProps } from '../utils/types/Events';
 // TODO: Fix all these functions
 
 function useTableUtils() {

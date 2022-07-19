@@ -9,7 +9,7 @@ import {
   ethersRenBtcContract,
 } from '../utils/Constants';
 import { removeDuplicates } from '../utils/Helpers';
-import { IEventProps } from '../utils/Types';
+import { IEventProps } from '../utils/types/Events';
 
 function useZeroAnalytics() {
   const [pastEvents, setPastEvents] = useState<Array<IEventProps | any>>([]);

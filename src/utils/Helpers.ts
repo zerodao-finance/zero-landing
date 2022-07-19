@@ -1,4 +1,5 @@
-import { IBarChartProps, IEventProps } from './Types';
+import { IBarChartProps } from './types/Charts';
+import { IEventProps } from './types/Events';
 
 // Charts
 export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
@@ -87,10 +88,18 @@ export function truncateBetween(
   return '';
 }
 
-export function truncate(string: string | undefined, numberShown = 180) {
+export function truncate(
+  string: string | undefined,
+  numberShown = 180,
+  withDots = true
+) {
   if (string) {
     const shown = string.substring(0, numberShown || string.length);
-    return `${shown}...`;
+    return withDots
+      ? string.length > numberShown
+        ? `${shown}...`
+        : shown
+      : shown;
   }
   return '';
 }
