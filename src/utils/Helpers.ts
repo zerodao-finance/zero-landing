@@ -1,4 +1,5 @@
-import { IBarChartProps, IEventProps } from './Types';
+import { IBarChartProps } from './types/Charts';
+import { IEventProps } from './types/Events';
 
 // Charts
 export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
