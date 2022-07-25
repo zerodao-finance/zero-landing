@@ -68,25 +68,6 @@ function Blog({ articles }: any) {
                 <StrapiBlogPreview article={el} key={el.attributes.slug} />
               );
             })}
-          {/* {BLOGS.map((el, i) => (
-            <div key={i}>
-              <MediumBlogPreview
-                title={el.title}
-                date={new Date(el.pubDate).toLocaleString()}
-                desc={el.description}
-                img={el.thumbnail}
-                alt={el.title}
-                link={el.link}
-                id={String(i + 1)}
-              />
-            </div>
-          ))}
-          {articles.map((article: any) => (
-            <StrapiBlogPreview
-              article={article}
-              key={article.attributes.slug}
-            />
-          ))} */}
         </Grid>
       </Section>
     </Background>
