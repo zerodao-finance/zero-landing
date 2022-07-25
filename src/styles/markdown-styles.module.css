@@ -9,4 +9,36 @@
 .reactMarkDown h1 {
   font-size: 30px;
   font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.reactMarkDown h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.reactMarkDown h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.reactMarkDown h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.reactMarkDown a {
+  color: #41a75b;
+  transition: 0.2s ease;
+}
+
+.reactMarkDown a:hover {
+  color: #368e4c;
+}
+
+.reactMarkDown img {
+  border-radius: 0.25rem;
 }

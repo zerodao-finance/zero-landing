@@ -25,14 +25,16 @@ const Article = ({ article }: any) => {
           <h1 className="text-3xl font-bold">{article.attributes.title}</h1>
         </div>
         <div>
-          <p>Author: {article.attributes.author.data.attributes.name}</p>
+          {article.attributes.author?.data?.attributes?.name && (
+            <p>Author: {article.attributes.author.data.attributes.name}</p>
+          )}
           <p>
             Published On:{' '}
             {new Date(article.attributes.publishedAt).toLocaleString()}
           </p>
         </div>
         <div className="my-5">
-          {article.attributes.author.data.attributes.picture && (
+          {article.attributes.author?.data?.attributes?.picture && (
             <div className="md:max-h-[300px] md:max-w-[300px] lg:max-h-[500px] lg:max-w-[500px] mb-5 md:mb-0 md:float-left md:pr-10">
               {width > 768 ? (
                 <Image
@@ -68,14 +70,18 @@ const Article = ({ article }: any) => {
               )}
             </div>
           )}
+          {console.log(article.attributes.content)}
           <ReactMarkdown
+            transformImageUri={(uri) =>
+              uri.startsWith('http') ? uri : `https://cms.zerodao.com${uri}`
+            }
             remarkPlugins={[remarkGfm]}
             className={style.reactMarkDown}
           >
             {article.attributes.content}
           </ReactMarkdown>
         </div>
-        <div className="flex w-full gap-5 items-center">
+        <div className="flex w-full gap-5 items-center mt-5">
           <Link href="/blog">
             <div className="flex items-center gap-5 cursor-pointer transition duration-200 hover:scale-110">
               <IoMdArrowBack size="24px" color="#41a75b" />
