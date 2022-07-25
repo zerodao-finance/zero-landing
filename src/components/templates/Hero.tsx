@@ -94,7 +94,7 @@ const Hero = () => {
               text: width > 600 ? 'Total Volume (BTC)' : 'BTC Volume',
               value: totalTransacted,
             },
-            { text: width > 600 ? 'Chains Integrated' : 'Chains', value: 3 },
+            { text: width > 600 ? 'Chains Integrated' : 'Chains', value: 4 },
             {
               text: width > 600 ? 'Transactions' : 'TXs',
               value: pastEvents.length,
