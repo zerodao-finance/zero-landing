@@ -7,25 +7,25 @@
 }
 
 .reactMarkDown h1 {
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 0.75rem;
 }
 
 .reactMarkDown h2 {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .reactMarkDown h3 {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .reactMarkDown h4 {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   margin: 0.5rem 0;
 }
