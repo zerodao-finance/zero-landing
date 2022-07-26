@@ -2,8 +2,7 @@ import { Base } from '../../components/templates/Base';
 import { Blog } from '../../components/templates/Blog';
 import { fetchAPI } from '../../lib/strapi/api';
 
-const BlogList = ({ articles, categories, homepage }: any) => {
-  console.log(articles, categories, homepage);
+const BlogList = ({ articles }: any) => {
   return (
     <Base withNav title="zeroDAO - All Blog Posts">
       <Blog articles={articles} />
@@ -23,8 +22,6 @@ export async function getStaticProps() {
       },
     }),
   ]);
-
-  console.log(articlesRes);
 
   return {
     props: {

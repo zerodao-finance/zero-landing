@@ -5,4 +5,5 @@ export const AppConfig = {
   description:
     'zeroDAO is a web3 cross-chain platform optimizing interoperability. zeroDAO enables quick and gasless bitcoin bridging across chains.',
   locale: 'en',
+  legalName: 'Z DAO LLC',
 };
