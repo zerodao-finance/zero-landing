@@ -35,7 +35,6 @@ function Blog({ articles }: any) {
 
     const finalBlogList: any = withMediumType.concat(withStrapiType);
 
-    console.log(finalBlogList);
     setBlogPosts(finalBlogList);
   }, [articles]);
 
