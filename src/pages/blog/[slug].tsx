@@ -70,7 +70,6 @@ const Article = ({ article }: any) => {
               )}
             </div>
           )}
-          {console.log(article.attributes.content)}
           <ReactMarkdown
             transformImageUri={(uri) =>
               uri.startsWith('http') ? uri : `https://cms.zerodao.com${uri}`

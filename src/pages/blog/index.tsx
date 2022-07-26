@@ -24,6 +24,8 @@ export async function getStaticProps() {
     }),
   ]);
 
+  console.log(articlesRes);
+
   return {
     props: {
       articles: articlesRes.data,
