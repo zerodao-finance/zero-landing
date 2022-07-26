@@ -3,13 +3,10 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { getStrapiMedia } from '../../lib/strapi/media';
 import { truncate } from '../../utils/Helpers';
 import { DefaultCard } from './Default';
 
 function StrapiBlogPreview({ article }: any) {
-  const imageUrl = getStrapiMedia(article.attributes.image);
-
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
       <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer">
@@ -17,7 +14,7 @@ function StrapiBlogPreview({ article }: any) {
           <>
             <div className="mb-5">
               <Image
-                src={imageUrl}
+                src={article.attributes.thumbnail}
                 alt={'image-url'}
                 className="rounded"
                 height="200"
@@ -33,7 +30,6 @@ function StrapiBlogPreview({ article }: any) {
             <span className="text-sm text-gray-100 mb-1">
               {article.formattedDate}
             </span>
-            {console.log(article.attributes)}
             <ReactMarkdown
               className="text-white"
               remarkPlugins={[remarkGfm]}

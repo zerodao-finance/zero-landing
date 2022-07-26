@@ -41,4 +41,5 @@
 
 .reactMarkDown img {
   border-radius: 0.25rem;
+  width: fit-content;
 }
