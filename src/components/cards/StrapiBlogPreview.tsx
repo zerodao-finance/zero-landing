@@ -9,8 +9,8 @@ import { DefaultCard } from './Default';
 function StrapiBlogPreview({ article }: any) {
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
-      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer">
-        <DefaultCard>
+      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer h-full">
+        <DefaultCard minHeight="!h-full">
           <>
             <div className="mb-5">
               <Image
