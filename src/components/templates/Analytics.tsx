@@ -78,8 +78,12 @@ const Analytics = () => {
           <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
             <div className="flex justify-around mt-5">
               {tokens.map((obj, i) => (
-                <div key={i} className="h-[40px] w-[40px]">
-                  <obj.svg />
+                <div key={i} className="h-[30px] w-[30px]">
+                  <img
+                    src={obj.src}
+                    alt={obj.alt}
+                    className="h-full w-full object-contain"
+                  />
                 </div>
               ))}
             </div>

@@ -1,8 +1,10 @@
 import { ethers } from 'ethers';
 
+import AVAXSvg from './svg/coins/avax';
 import BTCSvg from './svg/coins/btc';
 import ETHSvg from './svg/coins/eth';
 import ibBTCSvg from './svg/coins/ibbtc';
+import MATICSvg from './svg/coins/matic';
 import renBTCSvg from './svg/coins/renbtc';
 import USDCSvg from './svg/coins/usdc';
 import WBTCSvg from './svg/coins/wbtc';
@@ -61,5 +63,15 @@ export const tokens = [
     src: '/assets/svg-coins/ibbtc.svg',
     alt: 'ibBTC',
     svg: ibBTCSvg,
+  },
+  {
+    src: '/assets/svg-coins/avax.svg',
+    alt: 'AVAX',
+    svg: AVAXSvg,
+  },
+  {
+    src: '/assets/svg-coins/matic.svg',
+    alt: 'MATIC',
+    svg: MATICSvg,
   },
 ];
