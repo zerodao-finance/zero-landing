@@ -9,17 +9,21 @@ import { DefaultCard } from './Default';
 function StrapiBlogPreview({ article }: any) {
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
-      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer">
-        <DefaultCard>
+      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer h-full">
+        <DefaultCard minHeight="!h-full">
           <>
             <div className="mb-5">
               <Image
-                src={article.attributes.thumbnail}
+                src={
+                  article?.attributes?.thumbnail
+                    ? article?.attributes?.thumbnail
+                    : '/assets/images/logos/logo-only.svg'
+                }
                 alt={'image-url'}
                 className="rounded"
                 height="200"
                 width="350"
-                objectFit="cover"
+                objectFit={article?.attributes?.thumbnail ? 'cover' : 'contain'}
                 layout="responsive"
                 priority
               />
