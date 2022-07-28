@@ -14,12 +14,16 @@ function StrapiBlogPreview({ article }: any) {
           <>
             <div className="mb-5">
               <Image
-                src={article.attributes.thumbnail}
+                src={
+                  article?.attributes?.thumbnail
+                    ? article?.attributes?.thumbnail
+                    : '/assets/images/logos/logo-only.svg'
+                }
                 alt={'image-url'}
                 className="rounded"
                 height="200"
                 width="350"
-                objectFit="cover"
+                objectFit={article?.attributes?.thumbnail ? 'cover' : 'contain'}
                 layout="responsive"
                 priority
               />

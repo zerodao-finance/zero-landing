@@ -52,19 +52,23 @@ function Blog({ articles }: any) {
             .map((el: any, i: number) => {
               if (el.source === 'medium') {
                 return (
-                  <MediumBlogPreview
-                    title={el.title}
-                    date={el.formattedDate}
-                    desc={el.description}
-                    img={el.thumbnail}
-                    alt={el.title}
-                    link={el.link}
-                    id={String(i + 1)}
-                  />
+                  <div key={i}>
+                    <MediumBlogPreview
+                      title={el.title}
+                      date={el.formattedDate}
+                      desc={el.description}
+                      img={el.thumbnail}
+                      alt={el.title}
+                      link={el.link}
+                      id={String(i + 1)}
+                    />
+                  </div>
                 );
               }
               return (
-                <StrapiBlogPreview article={el} key={el.attributes.slug} />
+                <div key={i}>
+                  <StrapiBlogPreview article={el} key={el.attributes.slug} />
+                </div>
               );
             })}
         </Grid>
