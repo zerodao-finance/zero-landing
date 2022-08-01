@@ -96,7 +96,7 @@ const Article = ({ article }: any) => {
       <div className="fixed right-3 md:right-5 bottom-3 md:bottom-5">
         <SocialShareButton
           name="twitter"
-          href={`https://twitter.com/intent/tweet?text=https://zerodao.com${router.asPath}`}
+          href={`https://twitter.com/intent/tweet?text=@zerodaohq https://zerodao.com${router.asPath}`}
         />
       </div>
     </Base>
