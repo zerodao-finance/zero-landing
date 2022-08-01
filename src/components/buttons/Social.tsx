@@ -15,7 +15,7 @@ const SocialShareButton = (props: ISocialButton) => (
       href={props.href ? props.href : 'https://twitter.com/zerodaohq'}
       target="_blank"
     >
-      <a className="min-w-[24px] flex justify-center fill-white">
+      <a className="w-[24px] h-[24px] flex justify-center fill-white">
         <TwitterIcon />
       </a>
     </Link>
