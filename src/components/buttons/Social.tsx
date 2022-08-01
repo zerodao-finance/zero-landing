@@ -35,9 +35,7 @@ const renderIcon = (iconName: string) => {
 };
 
 const SocialShareButton = (props: ISocialButton) => (
-  <div
-    className={`rounded-full bg-[#1DA1F2] py-2 px-4 flex items-center gap-2`}
-  >
+  <div className={`rounded-full bg-[#1DA1F2] p-2 flex items-center gap-2`}>
     <Link
       href={props.href ? props.href : 'https://twitter.com/zerodaohq'}
       target="_blank"
@@ -46,7 +44,7 @@ const SocialShareButton = (props: ISocialButton) => (
         {renderIcon(props.name)}
       </a>
     </Link>
-    <p className="font-medium">Share</p>
+    {/* <p className="font-medium">Share</p> */}
   </div>
 );
 
