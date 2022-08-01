@@ -42,12 +42,12 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
             />
           </div>
           <div className="flex justify-between w-full items-center">
-            <h3 className="font-bold whitespace-nowrap overflow-hidden">
+            <h3 className="font-bold text-lg mb-1 whitespace-nowrap overflow-hidden">
               {truncate(props.title, 35)}
             </h3>
             <RiMediumFill size="24px" />
           </div>
-          <span className="text-sm text-gray-100 mb-1">{props.date}</span>
+          {/* <span className="text-sm text-gray-100 mb-1">{props.date}</span> */}
           <p className="text-white" suppressHydrationWarning>
             {truncate(parsedDesc)}
           </p>

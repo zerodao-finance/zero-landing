@@ -28,12 +28,12 @@ function StrapiBlogPreview({ article }: any) {
                 priority
               />
             </div>
-            <h3 className="font-bold whitespace-nowrap overflow-hidden">
+            <h3 className="font-bold text-lg mb-1 whitespace-nowrap overflow-hidden">
               {article.attributes.title}
             </h3>
-            <span className="text-sm text-gray-100 mb-1">
+            {/* <span className="text-sm text-gray-100 mb-1">
               {article.formattedDate}
-            </span>
+            </span> */}
             <ReactMarkdown
               className="text-white"
               remarkPlugins={[remarkGfm]}

@@ -90,7 +90,7 @@ export function truncateBetween(
 
 export function truncate(
   string: string | undefined,
-  numberShown = 180,
+  numberShown = 120,
   withDots = true
 ) {
   if (string) {
