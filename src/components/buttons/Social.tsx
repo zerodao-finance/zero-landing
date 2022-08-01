@@ -1,6 +1,5 @@
 import Link from 'next/link';
-
-import { TwitterIcon } from '../../utils/svg/socials';
+import { FaTwitter } from 'react-icons/fa';
 
 type ISocialButton = {
   name?: string;
@@ -15,8 +14,8 @@ const SocialShareButton = (props: ISocialButton) => (
       href={props.href ? props.href : 'https://twitter.com/zerodaohq'}
       target="_blank"
     >
-      <a className="w-[24px] h-[24px] flex justify-center fill-white">
-        <TwitterIcon />
+      <a className="flex justify-center fill-white">
+        <FaTwitter size="24px" />
       </a>
     </Link>
     {/* <p className="font-medium">Share</p> */}
