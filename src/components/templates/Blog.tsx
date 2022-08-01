@@ -39,8 +39,8 @@ function Blog({ articles }: any) {
   }, [articles]);
 
   return (
-    <Background color="bg-gray-900">
-      <Section vertical verticalCenter yPadding="py-20">
+    <Background>
+      <Section vertical verticalCenter yPadding="pb-20 pt-28">
         <SectionTitle text="Blog" />
         <Grid>
           {(blogPosts || [])

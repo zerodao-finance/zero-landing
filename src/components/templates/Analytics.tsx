@@ -54,6 +54,7 @@ const Analytics = () => {
         title="Bridge Analytics"
         description="Bringing you live performance updates about our bridge."
         vertical
+        style="!pt-28"
       >
         <Grid style="mb-5 lg:mb-10">
           {quickviewItems.map((obj, i) => (

@@ -27,7 +27,7 @@ const Banner = (props: IBannerProps) => {
         </div>
       )}
 
-      <div className="flex justify-around md:px-10 max-w-screen-2xl mx-auto min-h-[100px]">
+      <div className="flex justify-around md:px-10 max-w-screen-2xl mx-auto min-h-[100px] lg:py-6">
         {props.items.map((item, i) => (
           <div
             key={i}
@@ -36,7 +36,7 @@ const Banner = (props: IBannerProps) => {
 					`}
           >
             {props.loading && props.items[0]?.value === 0 ? (
-              <div className="text-xl md:text-2xl font-bold animate-pulse">
+              <div className="text-2xl lg:text-3xl font-bold animate-pulse">
                 <span>0</span>
               </div>
             ) : (
@@ -44,16 +44,18 @@ const Banner = (props: IBannerProps) => {
                 start={0}
                 end={item.value}
                 delay={0}
-                decimals={item.value % 1 !== 0 ? 4 : 0}
+                decimals={item.value % 1 !== 0 ? 3 : 0}
               >
                 {({ countUpRef }) => (
-                  <div className="text-xl md:text-2xl font-bold">
+                  <div className="text-2xl lg:text-3xl font-bold">
                     <span ref={countUpRef} />
                   </div>
                 )}
               </CountUp>
             )}
-            <div className={`text-sm md:text-md`}>{item.text}</div>
+            <div className={`text-sm md:text-md text-neutral-300`}>
+              {item.text}
+            </div>
           </div>
         ))}
       </div>
