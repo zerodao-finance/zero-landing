@@ -9,8 +9,8 @@ function CTAButton(props: ICTAButtonProps) {
     <button
       onClick={props.onClick}
       className={`
-      ${props.sm ? 'px-5 space-x-1' : 'px-6 space-x-2'}
-        transition duration-300 h-12 font-bold relative group overflow-hidden rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900
+      ${props.sm ? 'px-4 space-x-1' : 'px-5 space-x-2'}
+        transition duration-300 h-10 font-bold relative group overflow-hidden rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900
       `}
     >
       <span className="relative text-md md:text-lg text-white uppercase">

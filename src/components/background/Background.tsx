@@ -32,7 +32,7 @@ const Background = (props: IBackgroundProps) => (
             position: 'relative',
           }}
           width="100vw"
-          height="90%"
+          height="100%"
           preserveAspectRatio="xMidYMid"
           viewBox="0 0 1397 557"
         >

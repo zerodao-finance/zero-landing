@@ -8,13 +8,6 @@ const NavItems = () => {
 
   return (
     <>
-      {width > 600 && (
-        <li className="hover:text-gray-100 transition duration-200 !mb-0">
-          <Link href="/">
-            <a id="nav-item">Home</a>
-          </Link>
-        </li>
-      )}
       <li className="hover:text-gray-100 transition duration-200 !mb-0">
         <Link href="https://docs.zerodao.com" target="_blank">
           <a id="nav-item">Docs</a>

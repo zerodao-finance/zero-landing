@@ -28,7 +28,7 @@ const BatmanNavbar = () => {
   }, []);
 
   return (
-    <Section yPadding="py-6">
+    <Section yPadding="py-6" wide>
       <Navbar logo={<Logo xl={width > 900} svg />}>
         <NavItems />
       </Navbar>

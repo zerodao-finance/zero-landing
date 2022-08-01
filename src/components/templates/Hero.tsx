@@ -22,7 +22,7 @@ const Hero = () => {
     <>
       <Background spaceBetween animation>
         {/* Height is to account for full screen including banner */}
-        <Section verticalCenter style="min-h-[calc(100vh-210px)]">
+        <Section verticalCenter style="min-h-[calc(100vh-200px)]">
           <Grid
             xl
             left={
@@ -64,11 +64,11 @@ const Hero = () => {
               />
             }
             right={
-              <div className="w-full flex flex-col justify-center gap-10 mt-5">
+              <div className="w-full flex flex-col justify-center gap-10 mt-5 md:mt-0">
                 <div
                   style={{ margin: '0 auto' }}
                   className={`
-                  flex justify-center 
+                  flex justify-center
                   ${
                     width > 1200
                       ? 'h-[300px] w-[300px]'

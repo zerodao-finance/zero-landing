@@ -12,13 +12,13 @@ const Logo = (props: ILogoProps) => {
   if (props.svg) {
     if (props.xl) {
       return (
-        <div className="w-[240px] h-[60px]">
+        <div className={`w-[200px] h-[40px]`}>
           <LogoFull />
         </div>
       );
     }
     return (
-      <div className="w-[60px] h-[60px]">
+      <div className="w-[50px] h-[50px]">
         <LogoOnly />
       </div>
     );

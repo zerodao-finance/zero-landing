@@ -23,22 +23,23 @@
 
   /* BG Animation */
 #bg-animation {
-    margin-top: 18vh;
+    display: none;
 }
 
 @media screen and (min-width: 600px) {
     #bg-animation {
-        margin-top: 9vh
+        display: block;
+        margin-top: 6vh
     }
 }
 @media screen and (min-width: 900px) {
     #bg-animation {
-        margin-top: 4vh
+        margin-top: 2vh
     }
 }
 @media screen and (min-width: 1200px) {
     #bg-animation {
-        margin-top: 2vh;
+        margin-top: 0vh;
     }
 }
 /* @media screen and (min-width: 2000px) {
