@@ -9,7 +9,7 @@ import { CenteredFooter } from '../footer/CenteredFooter';
 import { Section } from '../layout/Section';
 
 const Footer = () => (
-  <Background color="bg-brand-black absolute w-full">
+  <Background color="bg-brand-black">
     <Section>
       <CenteredFooter iconList>
         <li className={hoverWhite}>

@@ -8,7 +8,9 @@ type ISocialButton = {
 };
 
 const SocialShareButton = (props: ISocialButton) => (
-  <div className={`rounded-full bg-[#1DA1F2] p-2 flex items-center gap-2`}>
+  <div
+    className={`rounded-full bg-[#1DA1F2] p-2 flex items-center gap-2 transition duration-200 hover:scale-110`}
+  >
     <Link
       href={props.href ? props.href : 'https://twitter.com/zerodaohq'}
       target="_blank"
