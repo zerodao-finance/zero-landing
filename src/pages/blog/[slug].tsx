@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { IoMdArrowBack } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+import { SocialShareButton } from '../../components/buttons/Social';
 import { Section } from '../../components/layout/Section';
 import { Base } from '../../components/templates/Base';
 import useWindowDimensions from '../../hooks/WindowDimensions';
@@ -12,6 +14,7 @@ import { getStrapiMedia } from '../../lib/strapi/media';
 import style from '../../styles/markdown-styles.module.css';
 
 const Article = ({ article }: any) => {
+  const router = useRouter();
   const { width } = useWindowDimensions();
 
   return (
@@ -89,6 +92,13 @@ const Article = ({ article }: any) => {
           </Link>
         </div>
       </Section>
+
+      <div className="fixed right-3 md:right-5 bottom-3 md:bottom-5">
+        <SocialShareButton
+          name="twitter"
+          href={`https://twitter.com/intent/tweet?text=https://zerodao.com${router.asPath}`}
+        />
+      </div>
     </Base>
   );
 };

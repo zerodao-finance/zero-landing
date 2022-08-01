@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import { FooterIconList } from '../footer/FooterIconList';
+import { SocialIconList } from '../buttons/SocialIconList';
 
 // Types
 type IHeroOneActionProps = {
@@ -55,7 +55,7 @@ const HeroOneAction = (props: IHeroOneActionProps) => {
 
       {props.socials && (
         <div className="mt-5 2xl:mt-10 mb-10">
-          <FooterIconList />
+          <SocialIconList />
         </div>
       )}
     </header>
