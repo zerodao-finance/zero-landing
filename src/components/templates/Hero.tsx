@@ -24,7 +24,7 @@ const Hero = () => {
         {/* Height is to account for full screen including banner */}
         <Section
           verticalCenter
-          style="min-h-[calc(100vh-180px)] 2xl:min-h-[750px] mt-20 xl:mt-0"
+          style="min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-120px)] mt-20 xl:mt-0"
         >
           <Grid
             xl
