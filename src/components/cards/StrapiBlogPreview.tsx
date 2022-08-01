@@ -7,6 +7,7 @@ import { truncate } from '../../utils/Helpers';
 import { DefaultCard } from './Default';
 
 function StrapiBlogPreview({ article }: any) {
+  console.log(article.attributes);
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
       <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer h-full">
@@ -19,7 +20,11 @@ function StrapiBlogPreview({ article }: any) {
                     ? article?.attributes?.thumbnail
                     : '/assets/images/logos/logo-only.svg'
                 }
-                alt={'image-url'}
+                alt={
+                  article?.attributes?.slug
+                    ? article?.attributes?.slug
+                    : 'zeroDAO image preview'
+                }
                 className="rounded"
                 height="200"
                 width="350"
