@@ -16,13 +16,11 @@ type IHeroOneActionProps = {
 };
 
 const HeroOneAction = (props: IHeroOneActionProps) => {
-  // const { height, width } = useWindowDimensions();
-
   return (
     <header
       className={`
       ${props.center && 'text-center'}
-      ${props.reactive && 'text-center xl:text-left'}
+      ${props.reactive && 'text-center xl:text-left xl:mt-20'}
       max-w-[600px]
     `}
     >

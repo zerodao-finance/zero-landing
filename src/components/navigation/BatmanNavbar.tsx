@@ -28,11 +28,13 @@ const BatmanNavbar = () => {
   }, []);
 
   return (
-    <Section yPadding="py-6" wide>
-      <Navbar logo={<Logo xl={width > 900} svg />}>
-        <NavItems />
-      </Navbar>
-    </Section>
+    <div className="fixed w-full z-[99999] bg-gray-1000">
+      <Section yPadding="py-3 md:py-4 lg:py-5" wide>
+        <Navbar logo={<Logo xl={width > 900} svg />}>
+          <NavItems />
+        </Navbar>
+      </Section>
+    </div>
   );
 };
 

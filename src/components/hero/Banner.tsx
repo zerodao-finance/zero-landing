@@ -36,7 +36,7 @@ const Banner = (props: IBannerProps) => {
 					`}
           >
             {props.loading && props.items[0]?.value === 0 ? (
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold animate-pulse">
+              <div className="text-2xl lg:text-3xl font-bold animate-pulse">
                 <span>0</span>
               </div>
             ) : (
@@ -44,10 +44,10 @@ const Banner = (props: IBannerProps) => {
                 start={0}
                 end={item.value}
                 delay={0}
-                decimals={item.value % 1 !== 0 ? 4 : 0}
+                decimals={item.value % 1 !== 0 ? 3 : 0}
               >
                 {({ countUpRef }) => (
-                  <div className="text-xl md:text-2xl lg:text-3xl font-bold">
+                  <div className="text-2xl lg:text-3xl font-bold">
                     <span ref={countUpRef} />
                   </div>
                 )}

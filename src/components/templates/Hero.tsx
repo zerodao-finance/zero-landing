@@ -22,7 +22,10 @@ const Hero = () => {
     <>
       <Background spaceBetween animation>
         {/* Height is to account for full screen including banner */}
-        <Section verticalCenter style="min-h-[calc(100vh-200px)]">
+        <Section
+          verticalCenter
+          style="min-h-[calc(100vh-180px)] 2xl:min-h-[750px] mt-20 xl:mt-0"
+        >
           <Grid
             xl
             left={
@@ -86,6 +89,12 @@ const Hero = () => {
             }
           />
         </Section>
+
+        {/* <div className="scroll-downs !mb-10">
+  <div className="mousey">
+    <div className="scroller"></div>
+  </div>
+</div> */}
 
         <Banner
           loading={totalTransacted === 0}
