@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 // Components
+import { SocialIconList } from '../buttons/SocialIconList';
 import { FooterCopyright } from './FooterCopyright';
-import { FooterIconList } from './FooterIconList';
 
 // Types
 type ICenteredFooterProps = {
@@ -25,7 +25,7 @@ const CenteredFooter = (props: ICenteredFooterProps) => (
 
     {props.iconList && (
       <div className={`${props.children && 'mt-8'} flex justify-center`}>
-        <FooterIconList />
+        <SocialIconList />
       </div>
     )}
 
