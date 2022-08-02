@@ -13,6 +13,7 @@ type IBaseProps = {
   withNav?: boolean;
   title?: string;
   description?: string;
+  image?: string;
 };
 
 const Base = (props: IBaseProps) => {
@@ -24,7 +25,11 @@ const Base = (props: IBaseProps) => {
 
   return (
     <div className="antialiased text-white">
-      <Meta title={props.title} description={props.description} />
+      <Meta
+        title={props.title}
+        description={props.description}
+        image={props.image}
+      />
       {/*  IN PROG */}
       {/* {firstLogin || !eventsLoading ? (
         <PreLoader />
