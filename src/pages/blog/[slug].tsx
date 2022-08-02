@@ -17,11 +17,18 @@ const Article = ({ article }: any) => {
   const router = useRouter();
   const { width } = useWindowDimensions();
 
+  const cleanMetaTitle = (title: string) => {
+    if (title.startsWith('zeroDAO ')) {
+      return title.split('zeroDAO ')[1];
+    }
+    return title;
+  };
+
   return (
     <Base
       withNav
       meta={{
-        title: `zeroDAO - ${article.attributes.title}`,
+        title: `zeroDAO - ${cleanMetaTitle(article.attributes.title)}`,
         description: article.attributes.description,
         image: article?.attributes?.thumbnail,
       }}
