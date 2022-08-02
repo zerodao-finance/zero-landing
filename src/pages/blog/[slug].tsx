@@ -31,12 +31,15 @@ const Article = ({ article }: any) => {
           {article.attributes.author?.data?.attributes?.name && (
             <p>Author: {article.attributes.author.data.attributes.name}</p>
           )}
-          <div className="flex w-full justify-between">
+          <div className="flex flex-col md:flex-row w-full justify-between">
             <p>
               Published On:{' '}
               {new Date(article.attributes.publishedAt).toLocaleString()}
             </p>
-            <SocialIconList blogShare={`https://zerodao.com${router.asPath}`} />
+            <SocialIconList
+              blogShare={`https://zerodao.com${router.asPath}`}
+              className={`!justify-start mt-3 md:justify-center md:mt-0`}
+            />
           </div>
         </div>
         <div className="my-5">
