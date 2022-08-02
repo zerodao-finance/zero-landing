@@ -5,7 +5,7 @@ import { IoMdArrowBack } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { SocialShareButton } from '../../components/buttons/Social';
+import { SocialIconList } from '../../components/buttons/SocialIconList';
 import { Section } from '../../components/layout/Section';
 import { Base } from '../../components/templates/Base';
 import useWindowDimensions from '../../hooks/WindowDimensions';
@@ -23,7 +23,7 @@ const Article = ({ article }: any) => {
       title={`zeroDAO - ${article.attributes.title}`}
       description={article.attributes.description}
     >
-      <Section vertical>
+      <Section vertical style="!pt-28">
         <div className="mb-1">
           <h1 className="text-3xl font-bold">{article.attributes.title}</h1>
         </div>
@@ -31,10 +31,13 @@ const Article = ({ article }: any) => {
           {article.attributes.author?.data?.attributes?.name && (
             <p>Author: {article.attributes.author.data.attributes.name}</p>
           )}
-          <p>
-            Published On:{' '}
-            {new Date(article.attributes.publishedAt).toLocaleString()}
-          </p>
+          <div className="flex w-full justify-between">
+            <p>
+              Published On:{' '}
+              {new Date(article.attributes.publishedAt).toLocaleString()}
+            </p>
+            <SocialIconList blogShare={`https://zerodao.com${router.asPath}`} />
+          </div>
         </div>
         <div className="my-5">
           {article.attributes.author?.data?.attributes?.picture && (
@@ -92,13 +95,6 @@ const Article = ({ article }: any) => {
           </Link>
         </div>
       </Section>
-
-      <div className="fixed right-3 md:right-5 bottom-3 md:bottom-5">
-        <SocialShareButton
-          name="twitter"
-          href={`https://twitter.com/intent/tweet?text=@zerodaohq https://zerodao.com${router.asPath}`}
-        />
-      </div>
     </Base>
   );
 };
