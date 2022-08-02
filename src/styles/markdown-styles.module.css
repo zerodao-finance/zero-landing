@@ -46,18 +46,22 @@
 
 .reactMarkDown ul {
   list-style-type: circle;
-  padding: 0 5rem;
+  padding: 0 2rem;
   margin-bottom: 1rem;
 }
 
 .reactMarkDown ol {
   list-style-type: decimal-leading-zero ;
-  padding: 0 5rem;
+  padding: 0 2rem;
   margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 1024px) {
   .reactMarkDown p {
     margin-bottom: 1.2rem;
+  }
+
+  .reactMarkDown ul, .reactMarkDown ol {
+    padding: 0 5rem;
   }
 }
