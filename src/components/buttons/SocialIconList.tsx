@@ -12,6 +12,7 @@ type ISocialIconListProps = {
   reactive?: boolean;
   vertical?: boolean;
   blogShare?: string;
+  className?: string;
 };
 
 const SocialIconList = (props: ISocialIconListProps) => {
@@ -32,6 +33,7 @@ const SocialIconList = (props: ISocialIconListProps) => {
       ${props.reactive && 'flex-col 2xl:flex-row 2xl:gap-0'}
       ${props.vertical && '!flex-col !gap-5'}
       ${props.blogShare && '!gap-3'}
+      ${props.className ? props.className : ''}
     `}
     >
       {props.blogShare ? (
