@@ -17,12 +17,21 @@ const Article = ({ article }: any) => {
   const router = useRouter();
   const { width } = useWindowDimensions();
 
+  const cleanMetaTitle = (title: string) => {
+    if (title.startsWith('zeroDAO ')) {
+      return title.split('zeroDAO ')[1];
+    }
+    return title;
+  };
+
   return (
     <Base
       withNav
-      title={`zeroDAO - ${article.attributes.title}`}
-      description={article.attributes.description}
-      image={article?.attributes?.thumbnail}
+      meta={{
+        title: `zeroDAO - ${cleanMetaTitle(article.attributes.title)}`,
+        description: article.attributes.description,
+        image: article?.attributes?.thumbnail,
+      }}
     >
       <Section vertical style="!pt-28">
         <div className="mb-1">

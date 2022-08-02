@@ -11,9 +11,11 @@ import { Footer } from './Footer';
 type IBaseProps = {
   children: ReactNode;
   withNav?: boolean;
-  title?: string;
-  description?: string;
-  image?: string;
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string;
+  };
 };
 
 const Base = (props: IBaseProps) => {
@@ -26,9 +28,9 @@ const Base = (props: IBaseProps) => {
   return (
     <div className="antialiased text-white">
       <Meta
-        title={props.title}
-        description={props.description}
-        image={props.image}
+        title={props.meta?.title}
+        description={props.meta?.description}
+        image={props.meta?.image}
       />
       {/*  IN PROG */}
       {/* {firstLogin || !eventsLoading ? (

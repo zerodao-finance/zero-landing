@@ -4,8 +4,11 @@ import { Base } from '../components/templates/Base';
 const AnalyticsPage = () => (
   <Base
     withNav
-    title="zeroDAO - Bitcoin Bridge Analytics"
-    description="zeroDAO is a web3 cross-chain platform optimizing interoperability. Look at how the zeroBRIDGE is performing here!"
+    meta={{
+      title: 'zeroDAO - Bitcoin Bridge Analytics',
+      description:
+        'zeroDAO is a web3 cross-chain platform optimizing interoperability. Look at how the zeroBRIDGE is performing here!',
+    }}
   >
     <Analytics />
   </Base>
