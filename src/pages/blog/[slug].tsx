@@ -22,6 +22,7 @@ const Article = ({ article }: any) => {
       withNav
       title={`zeroDAO - ${article.attributes.title}`}
       description={article.attributes.description}
+      image={article?.attributes?.thumbnail}
     >
       <Section vertical style="!pt-28">
         <div className="mb-1">

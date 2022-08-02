@@ -9,6 +9,7 @@ type IMetaProps = {
   title?: string;
   description?: string;
   canonical?: string;
+  image?: string;
 };
 
 const Meta = (props: IMetaProps) => {
@@ -58,6 +59,12 @@ const Meta = (props: IMetaProps) => {
           url: props.canonical,
           locale: AppConfig.locale,
           site_name: AppConfig.site_name,
+          images: [
+            {
+              url: props.image ? props.image : AppConfig.image,
+              alt: 'zeroDAO',
+            },
+          ],
         }}
         twitter={{
           handle: AppConfig.twitter,
