@@ -51,7 +51,7 @@
 }
 
 .reactMarkDown ol {
-  list-style-type: decimal-leading-zero ;
+  list-style-type: decimal;
   padding: 0 2rem;
   margin-bottom: 1rem;
 }
