@@ -4,7 +4,7 @@ import { fetchAPI } from '../../lib/strapi/api';
 
 const BlogList = ({ articles }: any) => {
   return (
-    <Base withNav title="zeroDAO - All Blog Posts">
+    <Base withNav meta={{ title: 'zeroDAO - All Blog Posts' }}>
       <Blog articles={articles} />
     </Base>
   );
