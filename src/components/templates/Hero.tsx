@@ -1,21 +1,25 @@
 import Link from 'next/link';
 
-// Hooks
+// Hooks & Store
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-import LogoOnly from '../../utils/svg/logos/only';
-// Layout
+
 // Components
+import LogoOnly from '../../utils/svg/logos/only';
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
 import { Button } from '../buttons/Default';
 import { Banner } from '../hero/Banner';
 import { HeroOneAction } from '../hero/HeroOneAction';
+
+// Layout
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 
+// Utils
+
 const Hero = () => {
-  const { totalTransacted, pastEvents, firstLogin } = useAppContext();
+  const { transactionsSum, transactions } = useAppContext();
   const { width } = useWindowDimensions();
 
   return (
@@ -45,16 +49,16 @@ const Hero = () => {
                         <CTAButton text="Launch Bridge" />
                       </a>
                     </Link>
-                    <Link href={totalTransacted === 0 ? '/' : '/analytics'}>
+                    <Link href={transactionsSum === 0 ? '/' : '/analytics'}>
                       <a>
                         <Button
                           xl={width > 600}
                           secondary
-                          disabled={totalTransacted === 0}
+                          disabled={transactionsSum === 0}
                         >
                           <span
                             className={`${
-                              totalTransacted === 0 && 'animate-pulse'
+                              transactionsSum === 0 && 'animate-pulse'
                             }`}
                           >
                             Analytics
@@ -91,32 +95,26 @@ const Hero = () => {
         </Section>
 
         {/* <div className="scroll-downs !mb-10">
-  <div className="mousey">
-    <div className="scroller"></div>
-  </div>
-</div> */}
+          <div className="mousey">
+            <div className="scroller"></div>
+          </div>
+        </div> */}
 
         <Banner
-          loading={totalTransacted === 0}
+          loading={transactionsSum === 0}
           items={[
             {
               text: width > 600 ? 'Total Volume (BTC)' : 'BTC Volume',
-              value: totalTransacted,
+              value: transactionsSum,
             },
             { text: width > 600 ? 'Chains Integrated' : 'Chains', value: 5 },
             {
               text: width > 600 ? 'Transactions' : 'TXs',
-              value: pastEvents.length,
+              value: transactions.length,
             },
             { text: width > 600 ? 'Assets Integrated' : 'Assets', value: 7 },
           ]}
         />
-
-        {firstLogin && totalTransacted === 0 && (
-          <div
-            className={`h-screen w-full absolute left-0 top-0 animate-reveal block z-[999]`}
-          />
-        )}
       </Background>
     </>
   );

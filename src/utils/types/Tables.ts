@@ -1,7 +1,7 @@
-import { IEventProps } from './Events';
+import { IFormattedTxProps } from './Transactions';
 
 export type IEventsTableProps = {
-  data: Array<IEventProps>;
+  data: Array<IFormattedTxProps>;
   pagination?: boolean;
   search?: boolean;
 };

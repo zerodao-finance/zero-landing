@@ -23,7 +23,7 @@ import { EventsTable } from '../tables/events-table';
 
 const Analytics = () => {
   // Store
-  const { totalTransacted, pastEvents } = useAppContext();
+  const { transactions, transactionsSum } = useAppContext();
   // Hooks
   const { width } = useWindowDimensions();
   // States
@@ -32,17 +32,17 @@ const Analytics = () => {
 
   // Subscribers
   useEffect(() => {
-    if (pastEvents) setFormattedEvents(filterByDate(pastEvents));
-  }, [pastEvents]);
+    if (transactions) setFormattedEvents(filterByDate(transactions));
+  }, [transactions]);
 
   // Utils
   const quickviewItems = [
     {
-      top: `${totalTransacted} BTC`,
+      top: `${transactionsSum} BTC`,
       bottom: 'Net Volume (BTC)',
     },
     {
-      top: pastEvents.length,
+      top: transactions.length,
       bottom: 'Total Transactions',
     },
   ];
@@ -99,7 +99,10 @@ const Analytics = () => {
             dropdownText={width > 900 ? 'Transaction Type' : 'TX Type'}
           >
             <ResponsiveLineChart
-              data={eventsToBarChart(filterEventByType(type, pastEvents), true)}
+              data={eventsToBarChart(
+                filterEventByType(type, transactions),
+                true
+              )}
             />
           </DefaultCard>
         </Grid>

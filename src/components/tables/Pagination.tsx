@@ -14,7 +14,7 @@ type IPaginationProps = {
 
 function Pagination(props: IPaginationProps) {
   // Hooks
-  const { pastEvents } = useAppContext();
+  const { transactions } = useAppContext();
 
   // Utils
   const { data, page, setPage, pages } = props;
@@ -28,7 +28,8 @@ function Pagination(props: IPaginationProps) {
   // useEffects
   useEffect(() => {
     if (data) setTotalItems(data?.length);
-    else setTotalItems(removeDuplicates(pastEvents, 'transactionHash').length);
+    else
+      setTotalItems(removeDuplicates(transactions, 'transactionHash').length);
   }, []);
 
   // Functions
