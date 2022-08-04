@@ -12,6 +12,7 @@ import {
 } from '../../../utils/Helpers';
 // Utils
 import { IEventsTableProps, IHeaderProps } from '../../../utils/types/Tables';
+import { IFormattedTxProps } from '../../../utils/types/Transactions';
 // Components
 import { Pagination } from '../Pagination';
 import TableSearch from '../Search';
@@ -71,12 +72,12 @@ const EventsTable = (props: IEventsTableProps) => {
           </thead>
           <tbody>
             {(pagination ? paginated[currentPage - 1] || [] : data).map(
-              (event, i) => (
+              (tx: IFormattedTxProps, i) => (
                 <tr key={i}>
                   <td>
                     {width > 900
-                      ? new Date(event.timestamp).toLocaleDateString()
-                      : shortenDate(event.timestamp)}
+                      ? new Date(tx.timestamp).toLocaleDateString()
+                      : shortenDate(tx.timestamp)}
                   </td>
                   <td>
                     <div
@@ -84,25 +85,25 @@ const EventsTable = (props: IEventsTableProps) => {
                     ${width > 900 ? `px-3` : `px-2`}
                     py-1 w-fit rounded-3xl
                     ${
-                      event.type === 'burn'
+                      tx.type === 'burn'
                         ? `bg-red-200 text-black`
                         : `bg-green-200 text-black`
                     }
                   `}
                     >
-                      {capitalize(event.type)}
+                      {capitalize(tx.type)}
                     </div>
                   </td>
-                  {width > 900 && <td>{event.blockNumber}</td>}
-                  <td id={`hash-${event.transactionHash}`}>
+                  {width > 900 && <td>{tx.block}</td>}
+                  <td id={`hash-${tx.transactionHash}`}>
                     <a
-                      href={`https://etherscan.io/tx/${event.transactionHash}`}
+                      href={`https://etherscan.io/tx/${tx.transactionHash}`}
                       target="_blank"
                       className="hover:text-brand-100 transition duration-200 underline"
                       rel="noreferrer"
                     >
                       {truncateBetween(
-                        event.transactionHash,
+                        tx.transactionHash,
                         width,
                         width > 900 ? 6 : 3
                       )}
@@ -110,8 +111,8 @@ const EventsTable = (props: IEventsTableProps) => {
                   </td>
                   <td>
                     {width > 900
-                      ? event.amount
-                      : parseFloat(event.amount || '0').toFixed(3)}{' '}
+                      ? tx.amount
+                      : parseFloat(tx.amount || '0').toFixed(3)}{' '}
                     BTC
                   </td>
                 </tr>
