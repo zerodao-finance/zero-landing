@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
-import { utils } from 'ethers';
+import { ethers, utils } from 'ethers';
 
 import { ethersProvider } from '../utils/Constants';
+import { IFormattedTxProps, ITxProps } from '../utils/types/Transactions';
 
 const useTransactions = () => {
   const [transactions, setTransactions] = useState<Array<any>>([]);
@@ -24,28 +25,23 @@ const useTransactions = () => {
             from
             to
             amount
-            block
           }
         }
       `,
     });
 
     // TODO: Implement interface
-    const shallowTransactions: Array<any> = [];
+    const shallowTransactions: Array<IFormattedTxProps> = [];
     let shallowSum = 0;
 
     // TODO: Implement interface
     await Promise.all(
-      data.exchanges.map(async (tx: any) => {
+      data.exchanges.map(async (tx: ITxProps) => {
         const { timestamp } = await ethersProvider.getBlock(Number(tx.block));
 
         const formattedTx = {
           timestamp: new Date(timestamp * 1000).toDateString(),
-          // TODO: change address to a "zeroAddress"
-          type:
-            tx.to === '0x0000000000000000000000000000000000000000'
-              ? 'burn'
-              : 'mint',
+          type: tx.to === ethers.constants.AddressZero ? 'burn' : 'mint',
           amount: utils.formatUnits(tx.amount, 8),
           to: tx.to,
           from: tx.from,

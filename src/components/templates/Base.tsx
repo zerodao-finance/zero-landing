@@ -1,6 +1,5 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 
-import { useAppContext } from '../../store';
 // Utils
 // Layouts
 import { Meta } from '../layout/Meta';
@@ -19,12 +18,6 @@ type IBaseProps = {
 };
 
 const Base = (props: IBaseProps) => {
-  const { setFirstLogin } = useAppContext();
-
-  useEffect(() => {
-    setFirstLogin?.(false);
-  }, []);
-
   return (
     <div className="antialiased text-white">
       <Meta
@@ -32,16 +25,11 @@ const Base = (props: IBaseProps) => {
         description={props.meta?.description}
         image={props.meta?.image}
       />
-      {/*  IN PROG */}
-      {/* {firstLogin || !eventsLoading ? (
-        <PreLoader />
-      ) : ( */}
       <>
         {props.withNav && <BatmanNavbar />}
         {props.children}
         <Footer />
       </>
-      {/* )} */}
     </div>
   );
 };
