@@ -6,6 +6,7 @@ import {
   useContext,
 } from 'react';
 
+import useTransactions from '../hooks/Transactions';
 import useZeroAnalytics from '../hooks/ZeroAnalytics';
 
 // Types
@@ -15,6 +16,7 @@ type IStoreProps = {
   eventsLoading: boolean;
   firstLogin: boolean;
   setFirstLogin?: Dispatch<SetStateAction<boolean>>;
+  transactions: Array<any>; // TODO: implement interface for transactions
 };
 
 // Context
@@ -23,6 +25,7 @@ const AppContext = createContext<IStoreProps>({
   pastEvents: [],
   eventsLoading: false,
   firstLogin: true,
+  transactions: [],
 });
 
 // Wrapper
@@ -30,11 +33,14 @@ export function AppWrapper(props: { children: ReactNode }) {
   const { firstLogin, totalTransacted, pastEvents, eventsLoading } =
     useZeroAnalytics();
 
+  const { transactions } = useTransactions();
+
   const sharedState: IStoreProps = {
     totalTransacted,
     pastEvents,
     eventsLoading,
     firstLogin,
+    transactions,
   };
 
   return (

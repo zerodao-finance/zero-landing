@@ -4,19 +4,22 @@ import { Blog } from '../components/templates/Blog';
 import { Hero } from '../components/templates/Hero';
 import { fetchAPI } from '../lib/strapi/api';
 
-const HomePage = ({ articles }: any) => (
-  <Base withNav>
-    <Hero />
-    <About />
-    <Blog articles={articles} />
-  </Base>
-);
+const HomePage = ({ articles }: any) => {
+  return (
+    <Base withNav>
+      <Hero />
+      <About />
+      <Blog articles={articles} />
+    </Base>
+  );
+};
 
 export async function getStaticProps() {
-  // Run API calls in parallel
+  // Strapi Articles - START
   const [articlesRes] = await Promise.all([
     fetchAPI('/articles', { populate: ['image', 'category'] }),
   ]);
+  // Strapi Articles - END
 
   return {
     props: {

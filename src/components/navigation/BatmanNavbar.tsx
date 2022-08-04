@@ -18,7 +18,7 @@ const BatmanNavbar = () => {
     // just trigger this so that the initial state
     // is updated as soon as the component is mounted
     handleScroll();
-    console.log(scrollY);
+    console.log('Scroll Position:', scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);

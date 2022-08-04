@@ -3,16 +3,20 @@ import Link from 'next/link';
 // Hooks
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-import LogoOnly from '../../utils/svg/logos/only';
-// Layout
+
 // Components
+import LogoOnly from '../../utils/svg/logos/only';
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
 import { Button } from '../buttons/Default';
 import { Banner } from '../hero/Banner';
 import { HeroOneAction } from '../hero/HeroOneAction';
+
+// Layout
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
+
+// Utils
 
 const Hero = () => {
   const { totalTransacted, pastEvents, firstLogin } = useAppContext();
@@ -91,10 +95,10 @@ const Hero = () => {
         </Section>
 
         {/* <div className="scroll-downs !mb-10">
-  <div className="mousey">
-    <div className="scroller"></div>
-  </div>
-</div> */}
+          <div className="mousey">
+            <div className="scroller"></div>
+          </div>
+        </div> */}
 
         <Banner
           loading={totalTransacted === 0}
