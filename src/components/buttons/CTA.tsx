@@ -1,13 +1,23 @@
+import React from 'react';
+
+import { event } from 'nextjs-google-analytics';
+
 type ICTAButtonProps = {
   text: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   sm?: boolean;
 };
 
 function CTAButton(props: ICTAButtonProps) {
   return (
     <button
-      onClick={props.onClick}
+      onClick={() => {
+        event('cta_btn_click', {
+          category: 'Button Click',
+          label: props.text,
+        });
+        return props.onClick;
+      }}
       className={`
       ${props.sm ? 'px-4 space-x-1' : 'px-5 space-x-2'}
         transition duration-300 h-10 font-bold relative group overflow-hidden rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900
