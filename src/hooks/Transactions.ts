@@ -9,6 +9,8 @@ import { IFormattedTxProps, ITxProps } from '../utils/types/Transactions';
 const useTransactions = () => {
   const [transactions, setTransactions] = useState<Array<any>>([]);
   const [transactionsSum, setTransactionsSum] = useState(0);
+  const [mintAmount, setMintAmount] = useState(0);
+  const [burnAmount, setBurnAmount] = useState(0);
 
   const getEthTransactions = async () => {
     const client = new ApolloClient({
@@ -30,11 +32,11 @@ const useTransactions = () => {
       `,
     });
 
-    // TODO: Implement interface
     const shallowTransactions: Array<IFormattedTxProps> = [];
     let shallowSum = 0;
+    let shallowMints = 0;
+    let shallowBurns = 0;
 
-    // TODO: Implement interface
     await Promise.all(
       data.exchanges.map(async (tx: ITxProps) => {
         const { timestamp } = await ethersProvider.getBlock(Number(tx.block));
@@ -49,6 +51,10 @@ const useTransactions = () => {
           transactionHash: tx.id,
         };
 
+        // sum up mints and burns
+        if (formattedTx.type === 'burn') shallowBurns += 1;
+        if (formattedTx.type === 'mint') shallowMints += 1;
+
         shallowTransactions.push(formattedTx);
         return (shallowSum += parseFloat(formattedTx.amount));
       })
@@ -56,6 +62,8 @@ const useTransactions = () => {
 
     setTransactions(shallowTransactions);
     setTransactionsSum(shallowSum);
+    setBurnAmount(shallowBurns);
+    setMintAmount(shallowMints);
   };
 
   useEffect(() => {
@@ -66,6 +74,8 @@ const useTransactions = () => {
     transactions,
     transactionsSum,
     getEthTransactions,
+    burnAmount,
+    mintAmount,
   };
 };
 

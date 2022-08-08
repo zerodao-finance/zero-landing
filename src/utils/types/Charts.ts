@@ -1,6 +1,6 @@
 export type IBarChartProps = {
   name: string;
-  amt: number;
+  amt: number | string;
 };
 
 export type ICustomTooltipProps = {

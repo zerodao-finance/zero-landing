@@ -19,11 +19,10 @@ import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 // Components
 import { EventsTable } from '../tables/events-table';
-// External
 
 const Analytics = () => {
   // Store
-  const { transactions, transactionsSum } = useAppContext();
+  const { transactions, transactionsSum, burns, mints } = useAppContext();
   // Hooks
   const { width } = useWindowDimensions();
   // States
@@ -32,20 +31,10 @@ const Analytics = () => {
 
   // Subscribers
   useEffect(() => {
-    if (transactions) setFormattedEvents(filterByDate(transactions));
+    if (transactions) {
+      setFormattedEvents(filterByDate(transactions));
+    }
   }, [transactions]);
-
-  // Utils
-  const quickviewItems = [
-    {
-      top: `${transactionsSum} BTC`,
-      bottom: 'Net Volume (BTC)',
-    },
-    {
-      top: transactions.length,
-      bottom: 'Total Transactions',
-    },
-  ];
 
   return (
     <Background>
@@ -57,25 +46,77 @@ const Analytics = () => {
         style="!pt-28"
       >
         <Grid style="mb-5 lg:mb-10">
-          {quickviewItems.map((obj, i) => (
-            <div key={i}>
-              <DefaultCard center minHeight="min-h-[100px]">
-                <CountUp
-                  start={0}
-                  end={parseFloat(obj.top.toString())}
-                  delay={0}
-                  decimals={parseFloat(obj.top.toString()) % 1 !== 0 ? 8 : 0}
-                >
-                  {({ countUpRef }) => (
-                    <div className="text-3xl md:text-4xl font-bold">
-                      <span ref={countUpRef} />
-                    </div>
-                  )}
-                </CountUp>
-                <p className="">{obj.bottom}</p>
-              </DefaultCard>
+          <DefaultCard center minHeight="min-h-[100px]">
+            <CountUp
+              start={0}
+              end={parseFloat(transactionsSum.toString())}
+              delay={0}
+              decimals={
+                parseFloat(transactionsSum.toString()) % 1 !== 0 ? 8 : 0
+              }
+            >
+              {({ countUpRef }) => (
+                <div className="text-3xl md:text-4xl font-bold">
+                  <span ref={countUpRef} />
+                </div>
+              )}
+            </CountUp>
+            <p className="">{`Net Volume (BTC)`}</p>
+          </DefaultCard>
+
+          <DefaultCard
+            className="flex !flex-row !justify-around !items-center"
+            minHeight="min-h-[100px]"
+          >
+            <div className="text-center text-red-300">
+              <CountUp
+                start={0}
+                end={parseFloat(burns.toString())}
+                delay={0}
+                decimals={parseFloat(burns.toString()) % 1 !== 0 ? 8 : 0}
+              >
+                {({ countUpRef }) => (
+                  <div className="text-xl md:text-2xl font-bold">
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+              <p className="text-sm">{`Burns`}</p>
             </div>
-          ))}
+            <div className="text-center">
+              <CountUp
+                start={0}
+                end={parseFloat(transactions.length.toString())}
+                delay={0}
+                decimals={
+                  parseFloat(transactions.length.toString()) % 1 !== 0 ? 8 : 0
+                }
+              >
+                {({ countUpRef }) => (
+                  <div className="text-3xl md:text-4xl font-bold">
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+              <p className="">{`Total Transactions`}</p>
+            </div>
+            <div className="text-center text-green-200">
+              <CountUp
+                start={0}
+                end={parseFloat(mints.toString())}
+                delay={0}
+                decimals={parseFloat(mints.toString()) % 1 !== 0 ? 8 : 0}
+              >
+                {({ countUpRef }) => (
+                  <div className="text-xl md:text-2xl font-bold">
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+              <p className="text-sm">{`Mints`}</p>
+            </div>
+          </DefaultCard>
+
           <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
             <div className="flex justify-around mt-5">
               {tokens.map((obj, i) => (
