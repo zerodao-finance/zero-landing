@@ -7,21 +7,28 @@ import { IFormattedTxProps } from '../utils/types/Transactions';
 type IStoreProps = {
   transactions: Array<IFormattedTxProps>;
   transactionsSum: number;
+  burns: number;
+  mints: number;
 };
 
 // Context
 const AppContext = createContext<IStoreProps>({
   transactions: [],
   transactionsSum: 0,
+  burns: 0,
+  mints: 0,
 });
 
 // Wrapper
 export function AppWrapper(props: { children: ReactNode }) {
-  const { transactions, transactionsSum } = useTransactions();
+  const { transactions, transactionsSum, burnAmount, mintAmount } =
+    useTransactions();
 
   const sharedState: IStoreProps = {
     transactions,
     transactionsSum,
+    burns: burnAmount,
+    mints: mintAmount,
   };
 
   return (

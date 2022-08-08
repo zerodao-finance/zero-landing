@@ -1,41 +1,38 @@
 import { IBarChartProps } from './types/Charts';
 import { IEventProps } from './types/Events';
+import { IFormattedTxProps } from './types/Transactions';
 
 // Charts
-export function eventsToBarChart(events: Array<IEventProps>, sorted: boolean) {
-  // TODO: Optimize
+export function eventsToBarChart(
+  events: Array<IFormattedTxProps>,
+  sorted: boolean
+) {
   if (events && events.length > 0) {
-    const result: Array<IBarChartProps> = Object.values(
-      events.reduce((r: any, e: any) => {
-        const k = e.timestamp?.toString() || '';
-        if (!r[k]) {
-          r[k] = {
-            name: e.timestamp?.toString(),
-            amt: parseFloat(e.amount),
-          };
-        } else {
-          r[k].amt = r[k].amt === 'NaN' ? 0 : parseFloat(r[k].amt);
-        }
-        return r;
-      }, {})
-    );
+    const holder: any = {};
 
-    const divided = result
-      .filter((el) => el.amt.toString() !== 'NaN')
-      .map((el) => {
-        return {
-          name: el.name.substring(4),
-          amt: parseFloat((el.amt /= 8).toFixed(6)),
-        };
-      });
+    events.forEach(function (d) {
+      if (Object.prototype.hasOwnProperty.call(holder, d.timestamp)) {
+        holder[d.timestamp] =
+          parseFloat(holder[d.timestamp]) + parseFloat(d.amount);
+      } else {
+        holder[d.timestamp] = parseFloat(d.amount);
+      }
+    });
+
+    let final: Array<IBarChartProps> = [];
+
+    Object.keys(holder).forEach((k) => {
+      final.push({ name: k, amt: parseFloat(holder[k]).toFixed(6) });
+    });
 
     if (sorted) {
-      const final = divided.sort(
-        (a, b) => new Date(a.name).valueOf() - new Date(b.name).valueOf()
+      final = final.sort(
+        (a: any, b: any) =>
+          new Date(a.name).valueOf() - new Date(b.name).valueOf()
       );
-      return final;
     }
-    return divided;
+
+    return final;
   }
   return [];
 }
