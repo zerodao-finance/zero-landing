@@ -30,11 +30,9 @@ const useTransactions = () => {
       `,
     });
 
-    // TODO: Implement interface
     const shallowTransactions: Array<IFormattedTxProps> = [];
     let shallowSum = 0;
 
-    // TODO: Implement interface
     await Promise.all(
       data.exchanges.map(async (tx: ITxProps) => {
         const { timestamp } = await ethersProvider.getBlock(Number(tx.block));
