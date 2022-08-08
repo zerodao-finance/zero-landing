@@ -86,7 +86,7 @@ const EventsTable = (props: IEventsTableProps) => {
                     py-1 w-fit rounded-3xl
                     ${
                       tx.type === 'burn'
-                        ? `bg-red-200 text-black`
+                        ? `bg-red-300 text-black`
                         : `bg-green-200 text-black`
                     }
                   `}

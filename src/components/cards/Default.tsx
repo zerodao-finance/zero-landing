@@ -14,11 +14,13 @@ type IDefaultCardProps = {
   action?: any;
   active?: string;
   dropdownText?: string;
+  className?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
   <div
     className={`
+    ${props.className ? props.className : ''}
 		${
       props.center &&
       `text-center flex flex-col justify-center items-center h-full w-full`
