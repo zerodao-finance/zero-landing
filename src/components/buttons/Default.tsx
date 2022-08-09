@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import className from 'classnames';
 
@@ -8,6 +8,7 @@ type IButtonProps = {
   secondary?: boolean;
   disabled?: boolean;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const Button = (props: IButtonProps) => {
@@ -21,18 +22,19 @@ const Button = (props: IButtonProps) => {
   if (props.secondary) {
     return (
       <div
-        className={`${btnClass} ${
-          props.className &&
-          props.disabled &&
-          `opacity-50 !cursor-not-allowed !text-white`
-        } uppercase`}
+        className={`${btnClass} 
+          ${props.className ? props.className : ''} 
+          ${props.disabled && `opacity-50 !cursor-not-allowed !text-white`} 
+          uppercase
+        `}
+        onClick={props.onClick ? props.onClick : () => {}}
       >
         {props.children}
 
         <style jsx>
           {`
             .btn {
-              @apply inline-block rounded-md text-center;
+              @apply inline-block rounded-md text-center cursor-pointer;
             }
 
             .btn-base {
@@ -60,13 +62,14 @@ const Button = (props: IButtonProps) => {
       className={`${btnClass} ${
         props.disabled && `opacity-50 !cursor-not-allowed !text-white`
       }`}
+      onClick={props.onClick ? props.onClick : () => {}}
     >
       {props.children}
 
       <style jsx>
         {`
           .btn {
-            @apply inline-block rounded-md text-center;
+            @apply inline-block rounded-md text-center cursor-pointer;
           }
 
           .btn-base {

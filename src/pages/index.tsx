@@ -9,7 +9,7 @@ const HomePage = ({ articles }: any) => {
     <Base withNav>
       <Hero />
       <About />
-      <Blog articles={articles} />
+      <Blog articles={articles} withShowMore />
     </Base>
   );
 };
