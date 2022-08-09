@@ -136,7 +136,7 @@ export async function getStaticProps({ params }: any) {
 
   return {
     props: { article: articlesRes.data[0], categories: categoriesRes },
-    revalidate: 1,
+    revalidate: 3,
   };
 }
 

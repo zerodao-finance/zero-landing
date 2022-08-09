@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 
 import { BLOGS } from '../../utils/Blogs';
 import { Background } from '../background/Background';
+import { Button } from '../buttons/Default';
 import { MediumBlogPreview } from '../cards/MediumBlogPreview';
 import { StrapiBlogPreview } from '../cards/StrapiBlogPreview';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
 import { SectionTitle } from '../typography';
 
-function Blog({ articles }: any) {
-  const [blogPosts, setBlogPosts] = useState<any>();
+function Blog({ articles, withShowMore }: any) {
+  const [blogPosts, setBlogPosts] = useState<any>([]);
+  const [showFew, setShowFew] = useState(true);
 
   useEffect(() => {
     const withMediumType = BLOGS.map((obj) => {
@@ -52,26 +54,33 @@ function Blog({ articles }: any) {
             .map((el: any, i: number) => {
               if (el.source === 'medium') {
                 return (
-                  <div key={i}>
-                    <MediumBlogPreview
-                      title={el.title}
-                      date={el.formattedDate}
-                      desc={el.description}
-                      img={el.thumbnail}
-                      alt={el.title}
-                      link={el.link}
-                      id={String(i + 1)}
-                    />
-                  </div>
+                  <MediumBlogPreview
+                    title={el.title}
+                    date={el.formattedDate}
+                    desc={el.description}
+                    img={el.thumbnail}
+                    alt={el.title}
+                    link={el.link}
+                    id={String(i + 1)}
+                    key={i}
+                  />
                 );
               }
               return (
-                <div key={i}>
-                  <StrapiBlogPreview article={el} key={el.attributes.slug} />
-                </div>
+                <StrapiBlogPreview article={el} key={el.attributes.slug} />
               );
-            })}
+            })
+            .slice(0, showFew && withShowMore ? 6 : blogPosts.length)}
         </Grid>
+        {withShowMore && (
+          <Button
+            secondary
+            onClick={() => setShowFew(!showFew)}
+            className="mt-10"
+          >
+            {showFew ? 'Show More' : 'Show Less'}
+          </Button>
+        )}
       </Section>
     </Background>
   );
