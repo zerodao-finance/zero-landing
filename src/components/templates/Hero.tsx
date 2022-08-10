@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 // Hooks & Store
@@ -5,7 +6,6 @@ import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
 
 // Components
-import LogoOnly from '../../utils/svg/logos/only';
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
 import { Button } from '../buttons/Default';
@@ -76,18 +76,31 @@ const Hero = () => {
                   style={{ margin: '0 auto' }}
                   className={`
                   flex justify-center
-                  ${
-                    width > 1200
-                      ? 'h-[300px] w-[300px]'
-                      : width > 900
-                      ? 'h-[250px] w-[250px]'
-                      : width > 600
-                      ? 'h-[200px] w-[200px]'
-                      : 'h-[150px] w-[150px]'
-                  }
                 `}
                 >
-                  <LogoOnly />
+                  <Image
+                    style={{ filter: 'saturate(0.8) brightness(0.9)' }}
+                    src="/assets/3d/ZD-logo-3d.png"
+                    alt="zeroDAO Logo"
+                    height={
+                      width > 1200
+                        ? '400'
+                        : width > 900
+                        ? '350'
+                        : width > 600
+                        ? '300'
+                        : '250'
+                    }
+                    width={
+                      width > 1200
+                        ? '440'
+                        : width > 900
+                        ? '385'
+                        : width > 600
+                        ? '330'
+                        : '275'
+                    }
+                  />
                 </div>
               </div>
             }
