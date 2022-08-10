@@ -79,6 +79,7 @@ const Hero = () => {
                 `}
                 >
                   <Image
+                    style={{ filter: 'saturate(0.8) brightness(0.9)' }}
                     src="/assets/3d/ZD-logo-3d.png"
                     alt="zeroDAO Logo"
                     height={
