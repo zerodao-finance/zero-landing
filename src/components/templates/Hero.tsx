@@ -76,7 +76,6 @@ const Hero = () => {
                   style={{ margin: '0 auto' }}
                   className={`
                   flex justify-center
-
                 `}
                 >
                   <Image
