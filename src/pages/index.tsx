@@ -9,7 +9,7 @@ const HomePage = ({ articles }: any) => {
     <Base withNav>
       <Hero />
       <About />
-      <Blog articles={articles} />
+      <Blog articles={articles} withShowMore />
     </Base>
   );
 };
@@ -25,7 +25,7 @@ export async function getStaticProps() {
     props: {
       articles: articlesRes.data,
     },
-    revalidate: 1,
+    revalidate: 3,
   };
 }
 
