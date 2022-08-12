@@ -57,4 +57,8 @@ export const tokens = [
     src: '/assets/svg-coins/matic.svg',
     alt: 'MATIC',
   },
+  {
+    src: '/assets/svg-coins/zec.svg',
+    alt: 'ZCash',
+  },
 ];
