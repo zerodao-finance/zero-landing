@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { useRouter } from 'next/router';
-
 // Hooks & Utils
+import Link from 'next/link';
 import CountUp from 'react-countup';
 
 import useWindowDimensions from '../../hooks/WindowDimensions';
@@ -29,7 +28,6 @@ const Analytics = () => {
     useAppContext();
   // Hooks
   const { width } = useWindowDimensions();
-  const router = useRouter();
   // States
   const [formattedEvents, setFormattedEvents] = useState<Array<any>>([]);
   const [type, setType] = useState('All');
@@ -174,7 +172,11 @@ const Analytics = () => {
               Please refresh the page or turn off ad-blocker if there is one
               present.
             </p>
-            <CTAButton text="Take Me Home" onClick={() => router.push('/')} />
+            <Link href="/">
+              <a>
+                <CTAButton text="Take Me Home" />
+              </a>
+            </Link>
           </div>
         )}
       </Section>
