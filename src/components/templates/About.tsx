@@ -36,10 +36,10 @@ const About = () => {
   ];
 
   return (
-    <Background color="bg-gray-900">
-      <Section vertical verticalCenter yPadding="pt-10 lg:pt-20">
+    <Background color="bg-gray-900" animation="waves">
+      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
         <SectionTitle text="About" />
-        <div className="mb-10 md:mb-20 lg:mb-30">
+        <div className="mb-12 md:mb-24 lg:mb-36">
           <AboutParagraph
             big
             center
