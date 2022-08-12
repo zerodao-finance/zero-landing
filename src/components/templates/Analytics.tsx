@@ -25,7 +25,8 @@ import { EventsTable } from '../tables/events-table';
 
 const Analytics = () => {
   // Store
-  const { transactions, transactionsSum, burns, mints } = useAppContext();
+  const { transactions, transactionsSum, burns, mints, fetchError } =
+    useAppContext();
   // Hooks
   const { width } = useWindowDimensions();
   const router = useRouter();
@@ -49,7 +50,7 @@ const Analytics = () => {
         vertical
         style="!pt-28"
       >
-        {transactions ? (
+        {transactions && !fetchError && transactionsSum ? (
           <>
             <Grid style="mb-5 lg:mb-10">
               <DefaultCard center minHeight="min-h-[100px]">
