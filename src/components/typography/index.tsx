@@ -8,7 +8,11 @@ type ITypographyProps = {
 
 // General
 const SectionTitle = (props: ITypographyProps) => (
-  <h2 className="text-2xl uppercase font-bold mb-5 lg:mb-10">{props.text}</h2>
+  <h2
+    className={`text-2xl lg:text-3xl xl:text-4xl uppercase font-bold mb-5 lg:mb-10`}
+  >
+    {props.text}
+  </h2>
 );
 
 // About Section
@@ -19,16 +23,20 @@ const AboutSubTitle = (props: ITypographyProps) => (
 );
 
 const AboutTitle = (props: ITypographyProps) => (
-  <h3 className={`text-xl font-bold mb-2 ${props.style && props.style}`}>
+  <h3
+    className={`text-xl lg:text-2xl font-bold mb-2 ${
+      props.style && props.style
+    }`}
+  >
     {props.text}
   </h3>
 );
 
 const AboutParagraph = (props: ITypographyProps) => (
   <p
-    className={`${props.strong && 'font-bold text-lg'} ${
+    className={`${props.strong && 'font-bold'} ${
       props.center && 'text-center'
-    } ${props.big && 'text-lg'}`}
+    } ${props.big && '!text-lg lg:!text-xl'} text-md lg:text-lg`}
   >
     {props.text}
   </p>

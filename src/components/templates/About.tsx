@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
+import { DefaultCard } from '../cards/Default';
 import { Section } from '../layout/Section';
 import {
   AboutParagraph,
@@ -36,10 +37,10 @@ const About = () => {
   ];
 
   return (
-    <Background color="bg-gray-900">
-      <Section vertical verticalCenter yPadding="pt-10 lg:pt-20">
+    <Background color="bg-gray-900" animation="waves">
+      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
         <SectionTitle text="About" />
-        <div className="mb-10 md:mb-20 lg:mb-30">
+        <div className="mb-12 md:mb-24 lg:mb-36">
           <AboutParagraph
             big
             center
@@ -47,39 +48,43 @@ const About = () => {
           />
         </div>
         {aboutContent.map((el, i) => (
-          <div
-            className={`
-                ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}
-                ${i === 1 ? 'mt-10' : ''}
-                flex flex-col-reverse lg:flex-row lg:gap-10 justify-between w-full mb-10 md:mb-15 lg:mb-20 items-center
-              `}
+          <DefaultCard
+            className="mb-10 md:mb-15 lg:mb-20"
+            color="!bg-[rgba(10,10,10,0.4)]"
             key={`about-${i}`}
           >
-            <div>
-              <div className="mb-5">
-                <AboutSubTitle text={el.subtitle} />
-                <AboutTitle text={el.title} />
-                <AboutParagraph text={el.content} />
-                <br />
-                <AboutParagraph text={el.contentStrong} strong />
+            <div
+              className={`
+                  ${i % 2 === 0 ? 'lg:flex-row-reverse' : ''}
+                  flex flex-col-reverse lg:flex-row lg:gap-10 justify-between w-full  items-center
+                `}
+            >
+              <div>
+                <div className="mb-5">
+                  <AboutSubTitle text={el.subtitle} />
+                  <AboutTitle text={el.title} />
+                  <AboutParagraph text={el.content} />
+                  <br />
+                  <AboutParagraph text={el.contentStrong} strong />
+                </div>
+                <Link href={el.ctaLink} passHref={true}>
+                  <a>
+                    <CTAButton text={el.cta} />
+                  </a>
+                </Link>
               </div>
-              <Link href={el.ctaLink} passHref={true}>
-                <a>
-                  <CTAButton text={el.cta} />
-                </a>
-              </Link>
+              <div className="min-w-[100%] min-h-[250px] lg:min-w-[450px] lg:min-h-[300px] relative flex justify-center items-center">
+                <Image
+                  src={el.img}
+                  alt={el.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div className="min-w-[100%] min-h-[250px] lg:min-w-[450px] lg:min-h-[300px] relative flex justify-center items-center">
-              <Image
-                src={el.img}
-                alt={el.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          </DefaultCard>
         ))}
       </Section>
     </Background>
