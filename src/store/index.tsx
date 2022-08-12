@@ -9,6 +9,7 @@ type IStoreProps = {
   transactionsSum: number;
   burns: number;
   mints: number;
+  fetchError: boolean;
 };
 
 // Context
@@ -17,11 +18,12 @@ const AppContext = createContext<IStoreProps>({
   transactionsSum: 0,
   burns: 0,
   mints: 0,
+  fetchError: false,
 });
 
 // Wrapper
 export function AppWrapper(props: { children: ReactNode }) {
-  const { transactions, transactionsSum, burnAmount, mintAmount } =
+  const { transactions, transactionsSum, burnAmount, mintAmount, isError } =
     useTransactions();
 
   const sharedState: IStoreProps = {
@@ -29,6 +31,7 @@ export function AppWrapper(props: { children: ReactNode }) {
     transactionsSum,
     burns: burnAmount,
     mints: mintAmount,
+    fetchError: isError,
   };
 
   return (
