@@ -15,7 +15,7 @@
 .reactMarkDown h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  margin: 0.6rem;
+  margin: 0.6rem 0;
 }
 
 .reactMarkDown h3 {
