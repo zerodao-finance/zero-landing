@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,37 +16,61 @@ import { getStrapiMedia } from '../../lib/strapi/media';
 import style from '../../styles/markdown-styles.module.css';
 
 const Article = ({ article }: any) => {
+  // Hooks
   const router = useRouter();
   const { width } = useWindowDimensions();
 
+  // States
+  const [statefulArticle, setStatefulArticle] = useState(article);
+
   const cleanMetaTitle = (title: string) => {
-    if (title.startsWith('zeroDAO ')) {
+    if (title && title.startsWith('zeroDAO ')) {
       return title.split('zeroDAO ')[1];
     }
     return title;
   };
 
+  useEffect(() => {
+    const getArticles = async () => {
+      const articlesRes = await fetchAPI('/articles', {
+        filters: {
+          slug: `${router.asPath.split('/')[2]}`,
+        },
+        populate: ['image', 'category', 'author.picture'],
+      });
+      console.log('new', articlesRes);
+      setStatefulArticle(articlesRes.data[0]);
+    };
+    getArticles();
+  }, []);
+
   return (
     <Base
       withNav
       meta={{
-        title: `zeroDAO - ${cleanMetaTitle(article.attributes.title)}`,
-        description: article.attributes.description,
-        image: article?.attributes?.thumbnail,
+        title: `zeroDAO - ${cleanMetaTitle(statefulArticle?.attributes.title)}`,
+        description: statefulArticle?.attributes.description,
+        image: statefulArticle?.attributes?.thumbnail,
       }}
     >
       <Section vertical style="!pt-28">
         <div className="mb-1">
-          <h1 className="text-3xl font-bold">{article.attributes.title}</h1>
+          <h1 className="text-3xl font-bold">
+            {statefulArticle?.attributes.title}
+          </h1>
         </div>
         <div>
-          {article.attributes.author?.data?.attributes?.name && (
-            <p>Author: {article.attributes.author.data.attributes.name}</p>
+          {statefulArticle?.attributes.author?.data?.attributes?.name && (
+            <p>
+              Author: {statefulArticle?.attributes.author.data.attributes.name}
+            </p>
           )}
           <div className="flex flex-col md:flex-row w-full justify-between">
             <p>
               Published On:{' '}
-              {new Date(article.attributes.publishedAt).toLocaleString()}
+              {new Date(
+                statefulArticle?.attributes.publishedAt
+              ).toLocaleString()}
             </p>
             <SocialIconList
               blogShare={`https://zerodao.com${router.asPath}`}
@@ -53,16 +79,16 @@ const Article = ({ article }: any) => {
           </div>
         </div>
         <div className="my-5">
-          {article.attributes.author?.data?.attributes?.picture && (
+          {statefulArticle?.attributes.author?.data?.attributes?.picture && (
             <div className="md:max-h-[300px] md:max-w-[300px] lg:max-h-[500px] lg:max-w-[500px] mb-5 md:mb-0 md:float-left md:pr-10">
               {width > 768 ? (
                 <Image
                   src={getStrapiMedia(
-                    article.attributes.author.data.attributes.picture
+                    statefulArticle?.attributes.author.data.attributes.picture
                   )}
                   alt={
-                    article.attributes.author.data.attributes.picture.data
-                      .attributes.alternativeText
+                    statefulArticle?.attributes.author.data.attributes.picture
+                      .data.attributes.alternativeText
                   }
                   className="rounded"
                   height="500"
@@ -73,11 +99,11 @@ const Article = ({ article }: any) => {
               ) : (
                 <Image
                   src={getStrapiMedia(
-                    article.attributes.author.data.attributes.picture
+                    statefulArticle?.attributes.author.data.attributes.picture
                   )}
                   alt={
-                    article.attributes.author.data.attributes.picture.data
-                      .attributes.alternativeText
+                    statefulArticle?.attributes.author.data.attributes.picture
+                      .data.attributes.alternativeText
                   }
                   className="rounded"
                   height="200"
@@ -96,7 +122,7 @@ const Article = ({ article }: any) => {
             remarkPlugins={[remarkGfm]}
             className={style.reactMarkDown}
           >
-            {article.attributes.content}
+            {statefulArticle?.attributes.content}
           </ReactMarkdown>
         </div>
         <div className="flex w-full gap-5 items-center mt-5">
