@@ -38,7 +38,6 @@ const Article = ({ article }: any) => {
         },
         populate: ['image', 'category', 'author.picture'],
       });
-      console.log('new', articlesRes);
       setStatefulArticle(articlesRes.data[0]);
     };
     getArticles();

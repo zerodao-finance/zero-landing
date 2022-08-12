@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import useWindowDimensions from '../../hooks/WindowDimensions';
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
 import { DefaultCard } from '../cards/Default';
@@ -13,6 +14,8 @@ import {
 } from '../typography';
 
 const About = () => {
+  const { width } = useWindowDimensions();
+
   const aboutContent = [
     {
       title: "Crypto's Accessibility Challenges",
@@ -37,7 +40,7 @@ const About = () => {
   ];
 
   return (
-    <Background color="bg-gray-900" animation="waves">
+    <Background color="bg-gray-900" animation={width < 1920 ? 'waves' : null}>
       <Section vertical verticalCenter yPadding="py-10 lg:py-20">
         <SectionTitle text="About" />
         <div className="mb-12 md:mb-24 lg:mb-36">
