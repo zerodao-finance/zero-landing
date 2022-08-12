@@ -8,7 +8,7 @@ type IBackgroundProps = {
   color?: string;
   full?: boolean;
   spaceBetween?: boolean;
-  animation?: 'beam' | 'waves';
+  animation?: 'beam' | 'waves' | null;
   style?: string;
 };
 
