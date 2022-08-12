@@ -4,6 +4,7 @@ import Link from 'next/link';
 // Hooks & Store
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
+import { tokens } from '../../utils/Constants';
 
 // Components
 import { Background } from '../background/Background';
@@ -125,7 +126,10 @@ const Hero = () => {
               text: width > 600 ? 'Transactions' : 'TXs',
               value: transactions.length,
             },
-            { text: width > 600 ? 'Assets Integrated' : 'Assets', value: 7 },
+            {
+              text: width > 600 ? 'Assets Integrated' : 'Assets',
+              value: tokens.length,
+            },
           ]}
         />
       </Background>
