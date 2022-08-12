@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <>
-      <Background spaceBetween animation>
+      <Background spaceBetween animation={'beam'}>
         {/* Height is to account for full screen including banner */}
         <Section
           verticalCenter
