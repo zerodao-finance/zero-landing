@@ -19,6 +19,10 @@ export const avaxProvider = new ethers.providers.JsonRpcProvider(
   'https://api.avax.network/ext/bc/C/rpc'
 );
 
+export const arbProvider = new ethers.providers.JsonRpcProvider(
+  'https://arbitrum-mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
+);
+
 // Contracts
 // eslint-disable-next-line
 export const { address: bridgeControllerAddress } = require('zero-protocol/deployments/mainnet/BadgerBridgeZeroController.json');   
@@ -87,6 +91,7 @@ export const TOKEN_MAPPING = {
   ],
   avax: [TOKENS[0], TOKENS[2], TOKENS[3], TOKENS[4], TOKENS[6]],
   matic: [TOKENS[0], TOKENS[2], TOKENS[3], TOKENS[4], TOKENS[7]],
+  arb: [TOKENS[0], TOKENS[1], TOKENS[2], TOKENS[3], TOKENS[4]],
   all: TOKENS,
 };
 
@@ -98,4 +103,4 @@ export const GRAPH_APIS = {
   matic: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zero-subgraph-matic',
 };
 
-export const WORKING_CHAINS = ['eth', 'avax', 'matic'];
+export const WORKING_CHAINS = ['eth', 'avax', 'matic', 'arb'];
