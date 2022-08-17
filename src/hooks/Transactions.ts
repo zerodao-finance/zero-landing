@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { ethers, utils } from 'ethers';
 
 import {
+  arbProvider,
   avaxProvider,
   ethersProvider,
   GRAPH_APIS,
@@ -31,6 +32,12 @@ const useTransactions = () => {
     mints: 0,
   });
   const [avaxData, setAvaxData] = useState<IChainDataProps>({
+    transactions: [],
+    volume: 0,
+    burns: 0,
+    mints: 0,
+  });
+  const [arbData, setArbData] = useState<IChainDataProps>({
     transactions: [],
     volume: 0,
     burns: 0,
@@ -90,6 +97,14 @@ const useTransactions = () => {
               timestamp = avaxTime;
               break;
             }
+            case 'arb': {
+              console.log(utils.formatUnits(tx.amount, 8));
+              const { timestamp: arbTime } = await arbProvider.getBlock(
+                Number(tx.block)
+              );
+              timestamp = arbTime;
+              break;
+            }
             default:
               break;
           }
@@ -139,6 +154,13 @@ const useTransactions = () => {
             burns: shallowBurns,
             mints: shallowMints,
           });
+        case 'arb':
+          return setArbData({
+            transactions: shallowTransactions,
+            volume: shallowSum,
+            burns: shallowBurns,
+            mints: shallowMints,
+          });
         default:
           return;
       }
@@ -151,6 +173,7 @@ const useTransactions = () => {
     getTransactions('eth');
     getTransactions('matic');
     getTransactions('avax');
+    getTransactions('arb');
   }, []);
 
   return {
@@ -158,6 +181,7 @@ const useTransactions = () => {
       ethData.transactions.length === 0 &&
       maticData.transactions.length === 0 &&
       avaxData.transactions.length === 0 &&
+      arbData.transactions.length === 0 &&
       !isError,
     isError,
     getTransactions,
@@ -165,14 +189,17 @@ const useTransactions = () => {
       eth: ethData,
       matic: maticData,
       avax: avaxData,
+      arb: arbData,
       all: {
-        volume: ethData.volume + maticData.volume + avaxData.volume,
+        volume:
+          ethData.volume + maticData.volume + avaxData.volume + arbData.volume,
         transactions: ethData.transactions.concat(
           maticData.transactions,
-          avaxData.transactions
+          avaxData.transactions,
+          arbData.transactions
         ),
-        mints: ethData.mints + maticData.mints + avaxData.mints,
-        burns: ethData.burns + maticData.burns + avaxData.burns,
+        mints: ethData.mints + maticData.mints + avaxData.mints + arbData.mints,
+        burns: ethData.burns + maticData.burns + avaxData.burns + arbData.mints,
       },
     },
   };
