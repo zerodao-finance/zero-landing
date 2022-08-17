@@ -15,3 +15,12 @@ export interface IFormattedTxProps {
   block: string | number;
   transactionHash: string;
 }
+
+export type IChainDataProps = {
+  transactions: Array<IFormattedTxProps>;
+  volume: number;
+  burns: number;
+  mints: number;
+};
+
+export type IGraphChains = 'eth' | 'arb' | 'matic' | 'avax';

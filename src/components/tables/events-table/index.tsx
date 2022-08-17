@@ -11,8 +11,8 @@ import {
   truncateBetween,
 } from '../../../utils/Helpers';
 // Utils
+import { IFormattedTxProps } from '../../../utils/types/GraphData';
 import { IEventsTableProps, IHeaderProps } from '../../../utils/types/Tables';
-import { IFormattedTxProps } from '../../../utils/types/Transactions';
 // Components
 import { Pagination } from '../Pagination';
 import TableSearch from '../Search';
