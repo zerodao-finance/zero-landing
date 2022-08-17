@@ -74,7 +74,8 @@
         "prefer-destructuring": "warn",
         "no-plusplus": "warn",
         "no-useless-escape": "off",
-        "no-irregular-whitespace": "off"
+        "no-irregular-whitespace": "off",
+        "consistent-return": "warn"
       }
     }
   ]

@@ -4,7 +4,7 @@ import Link from 'next/link';
 // Hooks & Store
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-import { tokens } from '../../utils/Constants';
+import { TOKENS } from '../../utils/Constants';
 
 // Components
 import { Background } from '../background/Background';
@@ -20,7 +20,7 @@ import { Section } from '../layout/Section';
 // Utils
 
 const Hero = () => {
-  const { transactionsSum, transactions } = useAppContext();
+  const { data, isLoading } = useAppContext();
   const { width } = useWindowDimensions();
 
   return (
@@ -50,18 +50,10 @@ const Hero = () => {
                         <CTAButton text="Launch Bridge" />
                       </a>
                     </Link>
-                    <Link href={transactionsSum === 0 ? '/' : '/analytics'}>
+                    <Link href={isLoading ? '/' : '/analytics'}>
                       <a>
-                        <Button
-                          xl={width > 600}
-                          secondary
-                          disabled={transactionsSum === 0}
-                        >
-                          <span
-                            className={`${
-                              transactionsSum === 0 && 'animate-pulse'
-                            }`}
-                          >
+                        <Button xl={width > 600} secondary disabled={isLoading}>
+                          <span className={`${isLoading && 'animate-pulse'}`}>
                             Analytics
                           </span>
                         </Button>
@@ -115,20 +107,20 @@ const Hero = () => {
         </div> */}
 
         <Banner
-          loading={transactionsSum === 0}
+          loading={isLoading}
           items={[
             {
               text: width > 600 ? 'Total Volume (BTC)' : 'BTC Volume',
-              value: transactionsSum,
+              value: data.all.volume,
             },
             { text: width > 600 ? 'Chains Integrated' : 'Chains', value: 5 },
             {
               text: width > 600 ? 'Transactions' : 'TXs',
-              value: transactions.length,
+              value: data.all.transactions.length,
             },
             {
               text: width > 600 ? 'Assets Integrated' : 'Assets',
-              value: tokens.length,
+              value: TOKENS.length,
             },
           ]}
         />

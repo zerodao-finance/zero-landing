@@ -3,18 +3,13 @@ import { useEffect, useState } from 'react';
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 
 import { useAppContext } from '../../store';
-import { removeDuplicates } from '../../utils/Helpers';
-
-type IPaginationProps = {
-  data?: Array<any>;
-  page: number;
-  setPage: any;
-  pages: number;
-};
+import { IPaginationProps } from '../../utils/types/Tables';
 
 function Pagination(props: IPaginationProps) {
   // Hooks
-  const { transactions } = useAppContext();
+  const {
+    data: { all },
+  } = useAppContext();
 
   // Utils
   const { data, page, setPage, pages } = props;
@@ -28,8 +23,7 @@ function Pagination(props: IPaginationProps) {
   // useEffects
   useEffect(() => {
     if (data) setTotalItems(data?.length);
-    else
-      setTotalItems(removeDuplicates(transactions, 'transactionHash').length);
+    else setTotalItems(all.transactions.length);
   }, []);
 
   // Functions

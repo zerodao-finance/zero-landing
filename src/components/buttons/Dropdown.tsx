@@ -10,6 +10,7 @@ type IDropdownProps = {
   items?: Array<string>;
   action?: any;
   active?: string;
+  label?: string;
 };
 
 function classNames(...classes: any) {

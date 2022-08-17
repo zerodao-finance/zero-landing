@@ -11,6 +11,14 @@ export const ethersProvider = new ethers.providers.JsonRpcProvider(
   'https://mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
 );
 
+export const maticProvider = new ethers.providers.JsonRpcProvider(
+  'https://polygon-mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
+);
+
+export const avaxProvider = new ethers.providers.JsonRpcProvider(
+  'https://api.avax.network/ext/bc/C/rpc'
+);
+
 // Contracts
 // eslint-disable-next-line
 export const { address: bridgeControllerAddress } = require('zero-protocol/deployments/mainnet/BadgerBridgeZeroController.json');   
@@ -24,7 +32,7 @@ export const ethersRenBtcContract = new ethers.Contract(
 );
 
 // Tokens Integrated
-export const tokens = [
+export const TOKENS = [
   {
     src: '/assets/svg-coins/btc.svg',
     alt: 'BTC',
@@ -61,4 +69,33 @@ export const tokens = [
     src: '/assets/svg-coins/zec.svg',
     alt: 'ZCash',
   },
+  {
+    src: '/assets/svg-coins/usdt.svg',
+    alt: 'USDT',
+  },
 ];
+
+export const TOKEN_MAPPING = {
+  eth: [
+    TOKENS[0],
+    TOKENS[1],
+    TOKENS[2],
+    TOKENS[3],
+    TOKENS[4],
+    TOKENS[8],
+    TOKENS[9],
+  ],
+  avax: [TOKENS[0], TOKENS[2], TOKENS[3], TOKENS[4], TOKENS[6]],
+  matic: [TOKENS[0], TOKENS[2], TOKENS[3], TOKENS[4], TOKENS[7]],
+  all: TOKENS,
+};
+
+// Graph Data Fetching
+export const GRAPH_APIS = {
+  eth: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc',
+  arb: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc-arb',
+  avax: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc-avax',
+  matic: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zero-subgraph-matic',
+};
+
+export const WORKING_CHAINS = ['eth', 'avax', 'matic'];

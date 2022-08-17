@@ -3,20 +3,44 @@ import { useEffect, useState } from 'react';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { ethers, utils } from 'ethers';
 
-import { ethersProvider } from '../utils/Constants';
-import { IFormattedTxProps, ITxProps } from '../utils/types/Transactions';
+import {
+  avaxProvider,
+  ethersProvider,
+  GRAPH_APIS,
+  maticProvider,
+} from '../utils/Constants';
+import {
+  IChainDataProps,
+  IFormattedTxProps,
+  IGraphChains,
+  ITxProps,
+} from '../utils/types/GraphData';
 
 const useTransactions = () => {
-  const [transactions, setTransactions] = useState<Array<any>>([]);
-  const [transactionsSum, setTransactionsSum] = useState(0);
-  const [mintAmount, setMintAmount] = useState(0);
-  const [burnAmount, setBurnAmount] = useState(0);
   const [isError, setIsError] = useState(false);
+  const [ethData, setEthData] = useState<IChainDataProps>({
+    transactions: [],
+    volume: 0,
+    burns: 0,
+    mints: 0,
+  });
+  const [maticData, setMaticData] = useState<IChainDataProps>({
+    transactions: [],
+    volume: 0,
+    burns: 0,
+    mints: 0,
+  });
+  const [avaxData, setAvaxData] = useState<IChainDataProps>({
+    transactions: [],
+    volume: 0,
+    burns: 0,
+    mints: 0,
+  });
 
-  const getEthTransactions = async () => {
+  const getTransactions = async (chain: IGraphChains) => {
     try {
       const client = new ApolloClient({
-        uri: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc',
+        uri: GRAPH_APIS[chain],
         cache: new InMemoryCache(),
       });
 
@@ -34,7 +58,7 @@ const useTransactions = () => {
         `,
       });
 
-      if (error) setIsError(true);
+      if (error) return setIsError(true);
 
       const shallowTransactions: Array<IFormattedTxProps> = [];
       let shallowSum = 0;
@@ -43,16 +67,45 @@ const useTransactions = () => {
 
       await Promise.all(
         data.exchanges.map(async (tx: ITxProps) => {
-          const { timestamp } = await ethersProvider.getBlock(Number(tx.block));
+          let timestamp = 0;
+          switch (chain) {
+            case 'eth': {
+              const { timestamp: ethTime } = await ethersProvider.getBlock(
+                Number(tx.block)
+              );
+              timestamp = ethTime;
+              break;
+            }
+            case 'matic': {
+              const { timestamp: maticTime } = await maticProvider.getBlock(
+                Number(tx.block)
+              );
+              timestamp = maticTime;
+              break;
+            }
+            case 'avax': {
+              const { timestamp: avaxTime } = await avaxProvider.getBlock(
+                Number(tx.block)
+              );
+              timestamp = avaxTime;
+              break;
+            }
+            default:
+              break;
+          }
 
           const formattedTx = {
-            timestamp: new Date(timestamp * 1000).toDateString(),
+            timestamp:
+              timestamp !== 0
+                ? new Date(timestamp * 1000).toDateString()
+                : 'N/A',
             type: tx.to === ethers.constants.AddressZero ? 'burn' : 'mint',
             amount: utils.formatUnits(tx.amount, 8),
             to: tx.to,
             from: tx.from,
             block: tx.block,
             transactionHash: tx.id,
+            chain,
           };
 
           // sum up mints and burns
@@ -64,26 +117,64 @@ const useTransactions = () => {
         })
       );
 
-      setTransactions(shallowTransactions);
-      setTransactionsSum(shallowSum);
-      setBurnAmount(shallowBurns);
-      setMintAmount(shallowMints);
+      switch (chain) {
+        case 'eth':
+          return setEthData({
+            transactions: shallowTransactions,
+            volume: shallowSum,
+            burns: shallowBurns,
+            mints: shallowMints,
+          });
+        case 'matic':
+          return setMaticData({
+            transactions: shallowTransactions,
+            volume: shallowSum,
+            burns: shallowBurns,
+            mints: shallowMints,
+          });
+        case 'avax':
+          return setAvaxData({
+            transactions: shallowTransactions,
+            volume: shallowSum,
+            burns: shallowBurns,
+            mints: shallowMints,
+          });
+        default:
+          return;
+      }
     } catch (err) {
       setIsError(true);
     }
   };
 
   useEffect(() => {
-    getEthTransactions();
+    getTransactions('eth');
+    getTransactions('matic');
+    getTransactions('avax');
   }, []);
 
   return {
-    transactions,
-    transactionsSum,
-    getEthTransactions,
-    burnAmount,
-    mintAmount,
+    isLoading:
+      ethData.transactions.length === 0 &&
+      maticData.transactions.length === 0 &&
+      avaxData.transactions.length === 0 &&
+      !isError,
     isError,
+    getTransactions,
+    data: {
+      eth: ethData,
+      matic: maticData,
+      avax: avaxData,
+      all: {
+        volume: ethData.volume + maticData.volume + avaxData.volume,
+        transactions: ethData.transactions.concat(
+          maticData.transactions,
+          avaxData.transactions
+        ),
+        mints: ethData.mints + maticData.mints + avaxData.mints,
+        burns: ethData.burns + maticData.burns + avaxData.burns,
+      },
+    },
   };
 };
 

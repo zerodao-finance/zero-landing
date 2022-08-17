@@ -1,6 +1,6 @@
 import { IBarChartProps } from './types/Charts';
 import { IEventProps } from './types/Events';
-import { IFormattedTxProps } from './types/Transactions';
+import { IFormattedTxProps } from './types/GraphData';
 
 // Charts
 export function eventsToBarChart(

@@ -1,37 +1,60 @@
 import { createContext, ReactNode, useContext } from 'react';
 
 import useTransactions from '../hooks/Transactions';
-import { IFormattedTxProps } from '../utils/types/Transactions';
+import { IChainDataProps } from '../utils/types/GraphData';
 
 // Types
 type IStoreProps = {
-  transactions: Array<IFormattedTxProps>;
-  transactionsSum: number;
-  burns: number;
-  mints: number;
-  fetchError: boolean;
+  data: {
+    eth: IChainDataProps;
+    avax: IChainDataProps;
+    matic: IChainDataProps;
+    all: IChainDataProps;
+  };
+  isLoading: boolean;
+  isError: boolean;
 };
 
 // Context
 const AppContext = createContext<IStoreProps>({
-  transactions: [],
-  transactionsSum: 0,
-  burns: 0,
-  mints: 0,
-  fetchError: false,
+  data: {
+    eth: {
+      transactions: [],
+      volume: 0,
+      burns: 0,
+      mints: 0,
+    },
+    avax: {
+      transactions: [],
+      volume: 0,
+      burns: 0,
+      mints: 0,
+    },
+    matic: {
+      transactions: [],
+      volume: 0,
+      burns: 0,
+      mints: 0,
+    },
+    all: {
+      transactions: [],
+      volume: 0,
+      burns: 0,
+      mints: 0,
+    },
+  },
+  isLoading: false,
+  isError: false,
 });
 
 // Wrapper
 export function AppWrapper(props: { children: ReactNode }) {
-  const { transactions, transactionsSum, burnAmount, mintAmount, isError } =
-    useTransactions();
+  const { data, isError, isLoading } = useTransactions();
 
   const sharedState: IStoreProps = {
-    transactions,
-    transactionsSum,
-    burns: burnAmount,
-    mints: mintAmount,
-    fetchError: isError,
+    data,
+    isLoading,
+    isError,
   };
 
   return (

@@ -1,4 +1,4 @@
-import { IFormattedTxProps } from './Transactions';
+import { IFormattedTxProps } from './GraphData';
 
 export type IEventsTableProps = {
   data: Array<IFormattedTxProps>;
@@ -9,4 +9,11 @@ export type IEventsTableProps = {
 export type IHeaderProps = {
   text: string;
   sortFx?: any;
+};
+
+export type IPaginationProps = {
+  data?: Array<any>;
+  page: number;
+  setPage: any;
+  pages: number;
 };
