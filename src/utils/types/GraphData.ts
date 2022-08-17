@@ -14,6 +14,7 @@ export interface IFormattedTxProps {
   from: string;
   block: string | number;
   transactionHash: string;
+  chain: IGraphChains;
 }
 
 export type IChainDataProps = {
