@@ -6,7 +6,7 @@ import CountUp from 'react-countup';
 
 import useWindowDimensions from '../../hooks/WindowDimensions';
 import { useAppContext } from '../../store';
-import { TOKENS } from '../../utils/Constants';
+import { TOKEN_MAPPING } from '../../utils/Constants';
 import {
   eventsToBarChart,
   filterByDate,
@@ -147,11 +147,11 @@ const Analytics = () => {
 
               <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
                 <div className="flex justify-around mt-5">
-                  {TOKENS.map((obj, i) => (
-                    <div key={i} className="h-[30px] w-[30px]">
+                  {TOKEN_MAPPING[castedChain].map((obj, i) => (
+                    <div key={i} className="h-[24px] w-[24px]">
                       <img
-                        src={obj.src}
-                        alt={obj.alt}
+                        src={obj?.src}
+                        alt={obj?.alt}
                         className="h-full w-full object-contain"
                       />
                     </div>

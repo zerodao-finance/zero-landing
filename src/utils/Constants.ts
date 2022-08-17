@@ -69,7 +69,26 @@ export const TOKENS = [
     src: '/assets/svg-coins/zec.svg',
     alt: 'ZCash',
   },
+  {
+    src: '/assets/svg-coins/usdt.svg',
+    alt: 'USDT',
+  },
 ];
+
+export const TOKEN_MAPPING = {
+  eth: [
+    TOKENS[0],
+    TOKENS[1],
+    TOKENS[2],
+    TOKENS[3],
+    TOKENS[4],
+    TOKENS[8],
+    TOKENS[9],
+  ],
+  avax: [TOKENS[0], TOKENS[2], TOKENS[3], TOKENS[4], TOKENS[6]],
+  matic: [TOKENS[0], TOKENS[2], TOKENS[3], TOKENS[4], TOKENS[7]],
+  all: TOKENS,
+};
 
 // Graph Data Fetching
 export const GRAPH_APIS = {
