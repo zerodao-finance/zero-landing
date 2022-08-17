@@ -14,6 +14,10 @@ function useEventTableUtils() {
       sortFx: sortByAlpha,
     },
     {
+      text: 'Chain',
+      sortFx: sortByAlpha,
+    },
+    {
       text: 'Block Number',
       sortFx: sortByNumber,
     },

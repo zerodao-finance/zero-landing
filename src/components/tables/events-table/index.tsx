@@ -6,6 +6,7 @@ import { AiOutlineCaretDown } from 'react-icons/ai';
 import useWindowDimensions from '../../../hooks/WindowDimensions';
 import {
   capitalize,
+  determineExplorer,
   shortenDate,
   spliceIntoChunks,
   truncateBetween,
@@ -94,10 +95,13 @@ const EventsTable = (props: IEventsTableProps) => {
                       {capitalize(tx.type)}
                     </div>
                   </td>
+                  {width > 900 && <td>{tx.chain.toUpperCase()}</td>}
                   {width > 900 && <td>{tx.block}</td>}
                   <td id={`hash-${tx.transactionHash}`}>
                     <a
-                      href={`https://etherscan.io/tx/${tx.transactionHash}`}
+                      href={`${determineExplorer(tx.chain)}tx/${
+                        tx.transactionHash
+                      }`}
                       target="_blank"
                       className="hover:text-brand-100 transition duration-200 underline"
                       rel="noreferrer"

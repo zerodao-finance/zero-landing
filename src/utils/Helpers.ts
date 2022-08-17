@@ -1,8 +1,8 @@
 import { IBarChartProps } from './types/Charts';
 import { IEventProps } from './types/Events';
-import { IFormattedTxProps } from './types/GraphData';
+import { IFormattedTxProps, IGraphChains } from './types/GraphData';
 
-// Charts
+// Charts && Tables
 export function eventsToBarChart(
   events: Array<IFormattedTxProps>,
   sorted: boolean
@@ -68,6 +68,19 @@ export function filterByDate(
       );
     default:
       return events;
+  }
+}
+
+export function determineExplorer(chain: IGraphChains) {
+  switch (chain) {
+    case 'avax':
+      return 'https://snowtrace.io/';
+    case 'matic':
+      return 'https://polygonscan.com/';
+    case 'arb':
+      return 'https://arbiscan.io/';
+    default:
+      return 'https://etherscan.io/';
   }
 }
 
