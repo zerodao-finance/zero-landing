@@ -138,6 +138,7 @@ const Article = ({ article }: any) => {
 };
 
 export async function getStaticPaths() {
+  // TODO: fix so that no redeploy required
   const articlesRes = await fetchAPI('/articles', { fields: ['slug'] });
 
   return {
