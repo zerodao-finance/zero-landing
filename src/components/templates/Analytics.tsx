@@ -49,7 +49,7 @@ const Analytics = () => {
             <div className="w-full flex justify-end mb-5 lg:mb-10">
               <Dropdown
                 text={`Chain: ${chain}`}
-                items={['All', 'ETH', 'MATIC', 'AVAX', 'ARB']}
+                items={['All', 'ETH', 'MATIC', 'AVAX', 'ARB', 'OPT']}
                 action={setChain}
                 active={chain}
               />
@@ -147,7 +147,7 @@ const Analytics = () => {
 
               <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
                 <div className="flex justify-around mt-5">
-                  {TOKEN_MAPPING[castedChain].map((obj, i) => (
+                  {TOKEN_MAPPING[castedChain].map((obj: any, i: number) => (
                     <div key={i} className="h-[24px] w-[24px]">
                       <img
                         src={obj?.src}
