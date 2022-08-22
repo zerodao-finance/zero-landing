@@ -48,7 +48,7 @@ const Analytics = () => {
             <div className="w-full flex justify-end mb-5 lg:mb-10">
               <Dropdown
                 text={`Chain: ${chain}`}
-                items={['All', 'ETH', 'MATIC', 'AVAX', 'ARB', 'OPT']}
+                items={['All', 'ETH', 'MATIC', 'AVAX', 'ARB']}
                 action={setChain}
                 active={chain}
               />
