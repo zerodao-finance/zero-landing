@@ -25,9 +25,8 @@ import { EventsTable } from '../tables/events-table';
 // Types
 
 const Analytics = () => {
-  // Store
+  // Store & Hooks
   const { data, isLoading, isError } = useAppContext();
-  // Hooks
   const { width } = useWindowDimensions();
   // States
   const [type, setType] = useState('All');
