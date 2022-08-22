@@ -24,4 +24,4 @@ export type IChainDataProps = {
   mints: number;
 };
 
-export type IGraphChains = 'eth' | 'arb' | 'matic' | 'avax';
+export type IGraphChains = 'eth' | 'arb' | 'matic' | 'avax' | 'opt';

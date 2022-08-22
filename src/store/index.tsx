@@ -10,6 +10,7 @@ type IStoreProps = {
     avax: IChainDataProps;
     matic: IChainDataProps;
     arb: IChainDataProps;
+    opt: IChainDataProps;
     all: IChainDataProps;
   };
   isLoading: boolean;
@@ -38,6 +39,12 @@ const AppContext = createContext<IStoreProps>({
       mints: 0,
     },
     arb: {
+      transactions: [],
+      volume: 0,
+      burns: 0,
+      mints: 0,
+    },
+    opt: {
       transactions: [],
       volume: 0,
       burns: 0,

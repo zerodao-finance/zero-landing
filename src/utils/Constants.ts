@@ -79,7 +79,7 @@ export const TOKENS = [
   },
 ];
 
-export const TOKEN_MAPPING = {
+export const TOKEN_MAPPING: any = {
   eth: [
     TOKENS[0],
     TOKENS[1],
@@ -101,6 +101,7 @@ export const GRAPH_APIS = {
   arb: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc-arb',
   avax: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc-avax',
   matic: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zero-subgraph-matic',
+  opt: 'https://api.thegraph.com/subgraphs/name/yoyobojo/zerodao-renbtc-opt',
 };
 
 export const WORKING_CHAINS = ['eth', 'avax', 'matic', 'arb'];

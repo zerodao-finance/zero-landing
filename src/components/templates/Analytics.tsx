@@ -25,9 +25,8 @@ import { EventsTable } from '../tables/events-table';
 // Types
 
 const Analytics = () => {
-  // Store
+  // Store & Hooks
   const { data, isLoading, isError } = useAppContext();
-  // Hooks
   const { width } = useWindowDimensions();
   // States
   const [type, setType] = useState('All');
@@ -147,7 +146,7 @@ const Analytics = () => {
 
               <DefaultCard minHeight="min-h-[100px]" title="Assets Integrated">
                 <div className="flex justify-around mt-5">
-                  {TOKEN_MAPPING[castedChain].map((obj, i) => (
+                  {TOKEN_MAPPING[castedChain].map((obj: any, i: number) => (
                     <div key={i} className="h-[24px] w-[24px]">
                       <img
                         src={obj?.src}

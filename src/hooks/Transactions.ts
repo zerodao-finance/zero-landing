@@ -43,6 +43,12 @@ const useTransactions = () => {
     burns: 0,
     mints: 0,
   });
+  const [optData, setOptData] = useState<IChainDataProps>({
+    transactions: [],
+    volume: 0,
+    burns: 0,
+    mints: 0,
+  });
 
   const getTransactions = async (chain: IGraphChains) => {
     try {
@@ -98,7 +104,13 @@ const useTransactions = () => {
               break;
             }
             case 'arb': {
-              console.log(utils.formatUnits(tx.amount, 8));
+              const { timestamp: arbTime } = await arbProvider.getBlock(
+                Number(tx.block)
+              );
+              timestamp = arbTime;
+              break;
+            }
+            case 'opt': {
               const { timestamp: arbTime } = await arbProvider.getBlock(
                 Number(tx.block)
               );
@@ -161,6 +173,13 @@ const useTransactions = () => {
             burns: shallowBurns,
             mints: shallowMints,
           });
+        case 'opt':
+          return setOptData({
+            transactions: shallowTransactions,
+            volume: shallowSum,
+            burns: shallowBurns,
+            mints: shallowMints,
+          });
         default:
           return;
       }
@@ -174,6 +193,7 @@ const useTransactions = () => {
     getTransactions('matic');
     getTransactions('avax');
     getTransactions('arb');
+    getTransactions('opt');
   }, []);
 
   return {
@@ -190,16 +210,32 @@ const useTransactions = () => {
       matic: maticData,
       avax: avaxData,
       arb: arbData,
+      opt: optData,
       all: {
         volume:
-          ethData.volume + maticData.volume + avaxData.volume + arbData.volume,
+          ethData.volume +
+          maticData.volume +
+          avaxData.volume +
+          arbData.volume +
+          optData.volume,
         transactions: ethData.transactions.concat(
           maticData.transactions,
           avaxData.transactions,
-          arbData.transactions
+          arbData.transactions,
+          optData.transactions
         ),
-        mints: ethData.mints + maticData.mints + avaxData.mints + arbData.mints,
-        burns: ethData.burns + maticData.burns + avaxData.burns + arbData.mints,
+        mints:
+          ethData.mints +
+          maticData.mints +
+          avaxData.mints +
+          arbData.mints +
+          optData.mints,
+        burns:
+          ethData.burns +
+          maticData.burns +
+          avaxData.burns +
+          arbData.mints +
+          optData.burns,
       },
     },
   };
