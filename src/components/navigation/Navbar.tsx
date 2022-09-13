@@ -19,6 +19,8 @@ const Navbar = (props: INavbarProps) => {
     switch (el.toLowerCase()) {
       case 'home':
         return router.push('/');
+      case 'develop':
+        return router.push('/develop');
       case 'docs':
         return window.open('https://docs.zerodao.com');
       case 'blog':
@@ -43,7 +45,14 @@ const Navbar = (props: INavbarProps) => {
       <nav>
         {width < 600 ? (
           <Dropdown
-            items={['Home', 'Docs', 'Analytics', 'Blog', 'Launch Bridge']}
+            items={[
+              'Home',
+              'Develop',
+              'Docs',
+              'Analytics',
+              'Blog',
+              'Launch Bridge',
+            ]}
             action={redirect}
           />
         ) : (
