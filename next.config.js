@@ -13,7 +13,6 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
     loader: 'akamai',
-    path: '',
-    domains: ['localhost'],
+    path: 'https://zerodao.com/',
   },
 });

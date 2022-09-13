@@ -7,7 +7,6 @@ import { MediumBlogPreview } from '../cards/MediumBlogPreview';
 import { StrapiBlogPreview } from '../cards/StrapiBlogPreview';
 import { Grid } from '../layout/Grid';
 import { Section } from '../layout/Section';
-import { SectionTitle } from '../typography';
 
 function Blog({ articles, withShowMore }: any) {
   const [blogPosts, setBlogPosts] = useState<any>([]);
@@ -42,8 +41,13 @@ function Blog({ articles, withShowMore }: any) {
 
   return (
     <Background>
-      <Section vertical verticalCenter yPadding="pb-20 pt-28">
-        <SectionTitle text="Blog" />
+      <Section
+        vertical
+        verticalCenter
+        yPadding="pb-20 pt-28"
+        h1Title
+        title="Blog"
+      >
         <Grid>
           {(blogPosts || [])
             .sort(

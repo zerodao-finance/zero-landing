@@ -11,6 +11,13 @@
         background-color: #121212;
         font-family: 'Roboto Flex', sans-serif;
     }
+
+    pre {
+        padding: 0.5rem 1rem;
+        background-color: #383838;
+        border-radius: 4px;
+        white-space: pre-wrap;
+    }
 }
 
 /* highlighting */
