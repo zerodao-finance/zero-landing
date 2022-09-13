@@ -23,9 +23,10 @@ const Develop = () => {
             rel="noreferrer"
           >
             zeroDAO Software Development Kit
-          </a>{' '}
-          enabling you to bridge Bitcoin over to any of the chains we currently
-          support.
+          </a>
+          {',  '}
+          enabling you to bridge between Bitcoin or Zcash and any of the chains
+          we currently support.
         </span>
       }
     >
