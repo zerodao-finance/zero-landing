@@ -12,8 +12,8 @@ module.exports = withBundleAnalyzer({
   // You can remove `basePath` if you don't need it.
   reactStrictMode: true,
   images: {
-    // loader: 'akamai',
-    // path: 'https://zerodao.com/',
+    loader: 'akamai',
+    path: '',
     domains: ['i.ibb.co'],
   },
 });
