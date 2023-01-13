@@ -49,7 +49,7 @@ const Navbar = (props: INavbarProps) => {
               'Home',
               'Develop',
               'Docs',
-              'Analytics',
+              // 'Analytics',
               'Blog',
               'Launch Bridge',
             ]}

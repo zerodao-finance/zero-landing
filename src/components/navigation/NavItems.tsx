@@ -14,6 +14,21 @@ const NavItems = () => {
         </Link>
       </li>
       <li className="hover:text-gray-100 transition duration-200 !mb-0">
+        <Link href="/blog">
+          <a id="nav-item">Blog</a>
+        </Link>
+      </li>
+      <Link href="https://docs.zerodao.com" target="_blank">
+        <a>
+          <CTAButton text="Docs" sm={width < 600} />
+        </a>
+      </Link>
+      {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
+        <Link href="/develop">
+          <a id="nav-item">Develop</a>
+        </Link>
+      </li>
+      <li className="hover:text-gray-100 transition duration-200 !mb-0">
         <Link href="https://docs.zerodao.com" target="_blank">
           <a id="nav-item">Docs</a>
         </Link>
@@ -32,7 +47,7 @@ const NavItems = () => {
         <a>
           <CTAButton text="Bridge" sm={width < 600} />
         </a>
-      </Link>
+      </Link> */}
     </>
   );
 };

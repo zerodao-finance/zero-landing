@@ -29,7 +29,7 @@ const SocialIconList = (props: ISocialIconListProps) => {
   return (
     <div
       className={`
-      footer-icon-list flex flex-wrap gap-3 md:gap-5 md:gap-10 2xl:gap-5 justify-center xl:justify-start 
+      footer-icon-list flex flex-wrap gap-3 md:gap-10 2xl:gap-5 justify-center lg:justify-start 
       ${props.reactive && 'flex-col 2xl:flex-row 2xl:gap-0'}
       ${props.vertical && '!flex-col !gap-5'}
       ${props.blogShare && '!gap-3'}
