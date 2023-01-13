@@ -80,7 +80,7 @@ const Hero = () => {
               />
             }
             right={
-              <div className="w-full flex flex-col justify-center gap-10 mt-5 md:mt-0">
+              <div className="w-full flex flex-col justify-center gap-10">
                 <div
                   style={{ margin: '0 auto' }}
                   className={`
