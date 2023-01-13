@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://zerodao.com/</loc><lastmod>2022-07-10T15:58:43.436Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://zerodao.com/analytics/</loc><lastmod>2022-07-10T15:58:43.436Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/analytics/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/develop/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/meta-transaction-lending/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/optimism-release/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/usdt-live-on-zero-bridge-mainnet/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/arbitrum-avalanche-polygon-release/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/zcash-to-eth-trading-live-on-zero-bridge/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/updated-zero-dao-sdk-released/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/50-btc-celebration/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/cash-app-article/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/over-150-btc-bridged-across-550-transactions/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/thank-you-ren-and-a-look-ahead/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://zerodao.com/blog/zero-an-l0-for-eth-btc-and-xmr-powered-by-frost/</loc><lastmod>2023-01-13T21:56:53.199Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

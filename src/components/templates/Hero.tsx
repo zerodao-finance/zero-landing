@@ -1,16 +1,16 @@
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 // Hooks & Store
 import useWindowDimensions from '../../hooks/WindowDimensions';
-import { useAppContext } from '../../store';
-import { TOKENS } from '../../utils/Constants';
+// import { useAppContext } from '../../store';
+// import { TOKENS } from '../../utils/Constants';
 
 // Components
 import { Background } from '../background/Background';
-import { CTAButton } from '../buttons/CTA';
-import { Button } from '../buttons/Default';
-import { Banner } from '../hero/Banner';
+// import { CTAButton } from '../buttons/CTA';
+// import { Button } from '../buttons/Default';
+// import { Banner } from '../hero/Banner';
 import { HeroOneAction } from '../hero/HeroOneAction';
 
 // Layout
@@ -20,7 +20,7 @@ import { Section } from '../layout/Section';
 // Utils
 
 const Hero = () => {
-  const { data, isLoading } = useAppContext();
+  // const { data, isLoading } = useAppContext();
   const { width } = useWindowDimensions();
 
   return (
@@ -29,7 +29,8 @@ const Hero = () => {
         {/* Height is to account for full screen including banner */}
         <Section
           verticalCenter
-          style="min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-120px)] mt-20 xl:mt-0"
+          style="min-h-[calc(100vh-150px)] xl:min-h-[calc(100vh-100px)] mt-20 xl:mt-0"
+          // style="min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-120px)] mt-20 xl:mt-0"
         >
           <Grid
             xl
@@ -42,29 +43,44 @@ const Hero = () => {
                   href: 'https://docs.zerodao.com',
                 }}
                 title="Interoperability Optimized"
-                description="Enabling gasless Bitcoin and Zcash bridging across various networks. With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol."
-                button={
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center xl:justify-start">
-                    <Link href="https://bridge.zerodao.com" passHref={true}>
-                      <a>
-                        <CTAButton text="Launch Bridge" />
-                      </a>
-                    </Link>
-                    <Link href={isLoading ? '/' : '/analytics'}>
-                      <a>
-                        <Button xl={width > 600} secondary disabled={isLoading}>
-                          <span className={`${isLoading && 'animate-pulse'}`}>
-                            Analytics
-                          </span>
-                        </Button>
-                      </a>
-                    </Link>
-                  </div>
+                description={
+                  <>
+                    <p>
+                      The ZERO network is a fully decentralized layer 0 bridging
+                      EVM and non-EVM networks, using multiparty cryptography.{' '}
+                      {width > 900 &&
+                        'The zeroDAO protocol values security, speed, and reliability above all else, ensuring users can safely and quickly move funds across chains.'}
+                    </p>
+                    <br />
+                    <p>
+                      {
+                        'With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol.'
+                      }
+                    </p>
+                  </>
                 }
+                // button={
+                //   <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center xl:justify-start">
+                //     <Link href="https://bridge.zerodao.com" passHref={true}>
+                //       <a>
+                //         <CTAButton text="Launch Bridge" />
+                //       </a>
+                //     </Link>
+                //     <Link href={isLoading ? '/' : '/analytics'}>
+                //       <a>
+                //         <Button xl={width > 600} secondary disabled={isLoading}>
+                //           <span className={`${isLoading && 'animate-pulse'}`}>
+                //             Analytics
+                //           </span>
+                //         </Button>
+                //       </a>
+                //     </Link>
+                //   </div>
+                // }
               />
             }
             right={
-              <div className="w-full flex flex-col justify-center gap-10 mt-5 md:mt-0">
+              <div className="w-full flex flex-col justify-center gap-10">
                 <div
                   style={{ margin: '0 auto' }}
                   className={`
@@ -100,13 +116,13 @@ const Hero = () => {
           />
         </Section>
 
-        {/* <div className="scroll-downs !mb-10">
+        <div className="scroll-downs !mb-10">
           <div className="mousey">
             <div className="scroller"></div>
           </div>
-        </div> */}
+        </div>
 
-        <Banner
+        {/* <Banner
           loading={isLoading}
           items={[
             {
@@ -123,7 +139,7 @@ const Hero = () => {
               value: TOKENS.length,
             },
           ]}
-        />
+        /> */}
       </Background>
     </>
   );

@@ -48,10 +48,11 @@ const Navbar = (props: INavbarProps) => {
             items={[
               'Home',
               'Develop',
-              'Docs',
-              'Analytics',
+              // 'Docs',
+              // 'Analytics',
               'Blog',
-              'Launch Bridge',
+              // 'Launch Bridge',
+              'Docs',
             ]}
             action={redirect}
           />

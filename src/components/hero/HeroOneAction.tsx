@@ -8,7 +8,7 @@ import { SocialIconList } from '../buttons/SocialIconList';
 type IHeroOneActionProps = {
   title: ReactNode | string;
   description: string | ReactNode;
-  button: ReactNode;
+  button?: ReactNode;
   center?: boolean;
   reactive?: boolean;
   link?: { text: string; href: string };
@@ -20,13 +20,13 @@ const HeroOneAction = (props: IHeroOneActionProps) => {
     <header
       className={`
       ${props.center && 'text-center'}
-      ${props.reactive && 'text-center xl:text-left xl:mt-20'}
+      ${props.reactive && 'text-center lg:text-left xl:mt-20'}
       max-w-[600px]
     `}
     >
       {props?.link && (
         <Link href={props.link.href}>
-          <div className="flex justify-center gap-3 pb-3 text-gray-100 cursor-pointer hover:text-brand-100 xl:max-w-fit transition duration-200">
+          <div className="flex justify-center gap-3 pb-3 text-gray-100 cursor-pointer hover:text-brand-100 lg:max-w-fit transition duration-200">
             <span>{props.link.text}</span>
             <svg
               width="24"

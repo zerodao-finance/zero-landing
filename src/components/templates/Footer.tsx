@@ -13,11 +13,16 @@ const Footer = () => (
     <Section>
       <CenteredFooter iconList>
         <li className={hoverWhite}>
+          <Link href="/blog">
+            <a>Blog</a>
+          </Link>
+        </li>
+        <li className={hoverWhite}>
           <Link href="http://docs.zerodao.com" target="_blank">
             <a>Docs</a>
           </Link>
         </li>
-        <li className={hoverWhite}>
+        {/* <li className={hoverWhite}>
           <Link href="http://bridge.zerodao.com" target="_blank">
             <a>Bridge</a>
           </Link>
@@ -26,7 +31,7 @@ const Footer = () => (
           <Link href="/analytics">
             <a>Analytics</a>
           </Link>
-        </li>
+        </li> */}
       </CenteredFooter>
     </Section>
   </Background>
