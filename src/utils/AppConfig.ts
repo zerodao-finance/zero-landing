@@ -1,9 +1,9 @@
 export const AppConfig = {
-  site_name: 'zeroDAO | Cross-Chain Network',
-  title: 'zeroDAO | Cross-Chain Network',
+  site_name: 'ZERO | Cross-Chain Network',
+  title: 'ZERO | Cross-Chain Network',
   twitter: '@zerodaoHQ',
   description:
-    'zeroDAO is a web3 cross-chain network optimizing interoperability. The ZERO network enables secure, quick, and decentralized cross-chain messaging between EVM and non-EVM chains.',
+    'The ZERO network is a modern L0 blockchain built using state-of-the-art research in multiparty computation. ZERO stakers secure movement of both EVM and non-EVM assets onto any supported network.',
   locale: 'en',
   legalName: 'Z DAO LLC',
   image: 'https://i.ibb.co/ZmtnrfZ/logo-only.png',
