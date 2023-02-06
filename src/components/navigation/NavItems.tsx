@@ -8,11 +8,11 @@ const NavItems = () => {
 
   return (
     <>
-      <li className="hover:text-gray-100 transition duration-200 !mb-0">
+      {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
         <Link href="/develop">
           <a id="nav-item">Develop</a>
         </Link>
-      </li>
+      </li> */}
       <li className="hover:text-gray-100 transition duration-200 !mb-0">
         <Link href="/blog">
           <a id="nav-item">Blog</a>
