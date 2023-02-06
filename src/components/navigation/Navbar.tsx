@@ -47,7 +47,7 @@ const Navbar = (props: INavbarProps) => {
           <Dropdown
             items={[
               'Home',
-              'Develop',
+              // 'Develop',
               // 'Docs',
               // 'Analytics',
               'Blog',

@@ -35,6 +35,10 @@
   transition: 0.2s ease;
 }
 
+.reactMarkDown u {
+  text-decoration: underline;
+}
+
 .reactMarkDown a:hover {
   color: #368e4c;
 }
