@@ -32,7 +32,7 @@ function StrapiBlogPreview({ article }: any) {
                 priority
               />
             </div>
-            <h3 className="font-bold text-lg mb-1 whitespace-nowrap overflow-hidden">
+            <h3 className="font-bold text-lg mb-1">
               {article.attributes.title}
             </h3>
             {/* <span className="text-sm text-gray-100 mb-1">

@@ -42,7 +42,7 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
             />
           </div>
           <div className="flex justify-between w-full items-center">
-            <h3 className="font-bold text-lg mb-1 whitespace-nowrap overflow-hidden">
+            <h3 className="font-bold text-lg mb-1">
               {truncate(props.title, 35)}
             </h3>
             <RiMediumFill size="24px" />
