@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import CountUp from 'react-countup';
 
-import useWindowDimensions from '../../hooks/WindowDimensions';
+import useWindowDimensions from '../../hooks/window-dimensions';
 import { useAppContext } from '../../store';
 import { TOKEN_MAPPING } from '../../utils/Constants';
 import {

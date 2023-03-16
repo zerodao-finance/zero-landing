@@ -1,5 +1,5 @@
-import { Base } from '../components/templates/Base';
-import { Develop } from '../components/templates/Develop';
+import { Base } from '../ui/base';
+import { Develop } from '../ui/templates/Develop';
 
 const DevelopPage = () => {
   return (

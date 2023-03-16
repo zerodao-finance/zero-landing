@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react';
 
-import useTransactions from '../hooks/Transactions';
+import useTransactions from '../api/transactions';
 import { IChainDataProps } from '../utils/types/GraphData';
 
 // Types

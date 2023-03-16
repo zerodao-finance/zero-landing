@@ -7,13 +7,13 @@ import { IoMdArrowBack } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { SocialIconList } from '../../components/buttons/SocialIconList';
-import { Section } from '../../components/layout/Section';
-import { Base } from '../../components/templates/Base';
-import useWindowDimensions from '../../hooks/WindowDimensions';
-import { fetchAPI } from '../../lib/strapi/api';
-import { getStrapiMedia } from '../../lib/strapi/media';
+import { fetchAPI } from '../../api/strapi/api';
+import { getStrapiMedia } from '../../api/strapi/media';
+import useWindowDimensions from '../../hooks/window-dimensions';
 import style from '../../styles/markdown-styles.module.css';
+import { Base } from '../../ui/base';
+import { SocialIconList } from '../../ui/buttons/SocialIconList';
+import { Section } from '../../ui/layout/Section';
 
 const Article = ({ article }: any) => {
   // Hooks

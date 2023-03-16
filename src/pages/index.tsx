@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { About } from '../components/templates/About';
-import { Base } from '../components/templates/Base';
-import { Blog } from '../components/templates/Blog';
-import { Hero } from '../components/templates/Hero';
-import { fetchAPI } from '../lib/strapi/api';
+import { fetchAPI } from '../api/strapi/api';
+import { Base } from '../ui/base';
+import { About } from '../ui/templates/About';
+import { Blog } from '../ui/templates/Blog';
+import { Hero } from '../ui/templates/Hero';
 
 const HomePage = ({ articles }: any) => {
   const [statefulArticles, setStatefulArticles] = useState(articles);

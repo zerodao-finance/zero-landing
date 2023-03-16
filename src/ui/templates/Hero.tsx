@@ -2,7 +2,7 @@ import Image from 'next/image';
 // import Link from 'next/link';
 
 // Hooks & Store
-import useWindowDimensions from '../../hooks/WindowDimensions';
+import useWindowDimensions from '../../hooks/window-dimensions';
 // import { useAppContext } from '../../store';
 // import { TOKENS } from '../../utils/Constants';
 

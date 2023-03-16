@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { Base } from '../../components/templates/Base';
-import { Blog } from '../../components/templates/Blog';
-import { fetchAPI } from '../../lib/strapi/api';
+import { fetchAPI } from '../../api/strapi/api';
+import { Base } from '../../ui/base';
+import { Blog } from '../../ui/templates/Blog';
 
 const BlogList = ({ articles }: any) => {
   const [statefulArticles, setStatefulArticles] = useState(articles);

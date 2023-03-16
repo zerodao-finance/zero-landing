@@ -1,4 +1,4 @@
-import useTableUtils from '../../../hooks/TableUtils';
+import useTableUtils from '../../../hooks/table-utils';
 import { IHeaderProps } from '../../../utils/types/Tables';
 
 function useEventTableUtils() {

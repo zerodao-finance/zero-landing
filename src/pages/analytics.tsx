@@ -1,5 +1,5 @@
-import { Analytics } from '../components/templates/Analytics';
-import { Base } from '../components/templates/Base';
+import { Base } from '../ui/base';
+import { Analytics } from '../ui/templates/Analytics';
 
 const AnalyticsPage = () => {
   return (

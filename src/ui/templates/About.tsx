@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import useWindowDimensions from '../../hooks/WindowDimensions';
+import useWindowDimensions from '../../hooks/window-dimensions';
 import { Background } from '../background/Background';
 import { CTAButton } from '../buttons/CTA';
 import { DefaultCard } from '../cards/Default';

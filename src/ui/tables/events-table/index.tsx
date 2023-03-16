@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 // Hooks & Helpers
 import { AiOutlineCaretDown } from 'react-icons/ai';
 
-import useWindowDimensions from '../../../hooks/WindowDimensions';
+import useWindowDimensions from '../../../hooks/window-dimensions';
 import {
   capitalize,
   determineExplorer,
@@ -15,8 +15,8 @@ import {
 import { IFormattedTxProps } from '../../../utils/types/GraphData';
 import { IEventsTableProps, IHeaderProps } from '../../../utils/types/Tables';
 // Components
-import { Pagination } from '../Pagination';
-import TableSearch from '../Search';
+import { Pagination } from '../pagination';
+import TableSearch from '../search';
 import useEventTableUtils from './utils';
 // External
 
