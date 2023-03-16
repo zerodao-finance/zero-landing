@@ -12,7 +12,7 @@ const BlogList = ({ articles }: any) => {
       const [articlesRes] = await Promise.all([
         fetchAPI('/articles', { populate: ['image', 'category'] }),
       ]);
-      setStatefulArticles(articlesRes.data);
+      if (articlesRes?.data) setStatefulArticles(articlesRes.data);
     };
     getArticles();
   }, []);
@@ -32,7 +32,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articles: articlesRes.data,
+      articles: articlesRes?.data || null,
     },
     revalidate: 1,
   };

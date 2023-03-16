@@ -38,13 +38,16 @@ export async function fetchAPI(
   )}`;
 
   // Trigger API call
-  const response = await fetch(requestUrl, mergedOptions);
-
-  // Handle response
-  if (!response.ok) {
-    console.error(response.statusText);
-    throw new Error(`An error occured please try again`);
+  try {
+    const response = await fetch(requestUrl, mergedOptions);
+    // Handle response
+    if (!response.ok) {
+      console.error(response.statusText);
+      throw new Error(`An error occured please try again`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
   }
-  const data = await response.json();
-  return data;
 }
