@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ProgressBar } from './ProgressBar';
+import { ProgressBar } from './progress-bar';
 
 const PreLoader = () => {
   return (

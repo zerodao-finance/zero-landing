@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { AnimateBeam } from './AnimateBeam';
-import { AnimateWaves } from './AnimateWaves';
+import { AnimateBeam } from './animate-beam';
+import { AnimateWaves } from './animate-waves';
 
 type IBackgroundProps = {
   children: ReactNode;

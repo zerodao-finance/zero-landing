@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import useSWR from 'swr';
 
-import { IBlogDataProps } from '../utils/types/Blogs';
+import { IBlogDataProps } from '../types/Blogs';
 
 function useBlogs() {
   const [blogLoading, setBlogLoading] = useState(false);

@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import { AppConfig } from '../../utils/AppConfig';
-import { hoverWhite } from '../../utils/Constants';
-import { Background } from '../background/Background';
+import { AppConfig } from '../../utils/app-config';
+import { hoverWhite } from '../../utils/constants';
+import { Background } from '../background';
 
 // Components
-import { SocialIconList } from '../buttons/SocialIconList';
-import { Section } from '../layout/Section';
+import { SocialIconList } from '../buttons/social-icons';
+import { Section } from '../layout/section';
 
 // Types
 type IFooterProps = {

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Area, AreaChart, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-import { IBarChartProps } from '../../utils/types/Charts';
+import { IBarChartProps } from '../../types/Charts';
 import CustomTooltip from './CustomTooltip';
 
 type ILineProps = {

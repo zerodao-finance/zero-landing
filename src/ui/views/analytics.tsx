@@ -6,20 +6,20 @@ import CountUp from 'react-countup';
 
 import useWindowDimensions from '../../hooks/window-dimensions';
 import { useAppContext } from '../../store';
-import { TOKEN_MAPPING } from '../../utils/Constants';
+import { TOKEN_MAPPING } from '../../utils/constants';
 import {
   eventsToBarChart,
   filterByDate,
   filterEventByType,
-} from '../../utils/Helpers';
+} from '../../utils/helpers';
 // Layout
-import { Background } from '../background/Background';
-import { CTAButton } from '../buttons/CTA';
-import Dropdown from '../buttons/Dropdown';
-import { DefaultCard } from '../cards/Default';
+import { Background } from '../background';
+import { CTAButton } from '../buttons/cta';
+import Dropdown from '../buttons/dropdown';
+import { DefaultCard } from '../cards/default';
 import { ResponsiveLineChart } from '../charts/LineChart';
-import { Grid } from '../layout/Grid';
-import { Section } from '../layout/Section';
+import { Grid } from '../layout/grid';
+import { Section } from '../layout/section';
 // Components
 import { EventsTable } from '../tables/events-table';
 // Types

@@ -2,7 +2,7 @@
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 
-import { Section } from '../layout/Section';
+import { Section } from '../layout/section';
 import { AboutParagraph, AboutTitle } from '../typography';
 
 const Develop = () => {

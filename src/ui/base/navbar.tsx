@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import useWindowDimensions from '../../hooks/window-dimensions';
-import { CTAButton } from '../buttons/CTA';
-import Dropdown from '../buttons/Dropdown';
-import { Section } from '../layout/Section';
+import { CTAButton } from '../buttons/cta';
+import Dropdown from '../buttons/dropdown';
+import { Section } from '../layout/section';
 
 type INavbarProps = {
   logo: ReactNode;

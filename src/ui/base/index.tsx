@@ -4,10 +4,10 @@ import useWindowDimensions from '../../hooks/window-dimensions';
 
 // Utils
 // Layouts
-import { Meta } from '../layout/Meta';
 // Components
 import { Footer } from './footer';
 import { Logo } from './logo';
+import { Meta } from './meta';
 import { Navbar } from './navbar';
 
 type IBaseProps = {
@@ -50,7 +50,7 @@ const Base = (props: IBaseProps) => {
       <>
         {props.withNav && <Navbar logo={<Logo xl={width > 900} svg />} />}
         {props.children}
-        <Footer />
+        <Footer iconList />
       </>
     </div>
   );

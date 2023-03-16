@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import Dropdown from '../buttons/Dropdown';
+import Dropdown from '../buttons/dropdown';
 
 // Types
 type IDefaultCardProps = {

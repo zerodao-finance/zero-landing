@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { RiMediumFill } from 'react-icons/ri';
 
-import { truncate } from '../../utils/Helpers';
-import { DefaultCard } from './Default';
+import { truncate } from '../../utils/helpers';
+import { DefaultCard } from './default';
 
 type IBlogPreviewProps = {
   title: string;

@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext } from 'react';
 
-import useTransactions from '../api/transactions';
-import { IChainDataProps } from '../utils/types/GraphData';
+import useTransactions from '../api/bridge-transactions';
+import { IChainDataProps } from '../types/GraphData';
 
 // Types
 type IStoreProps = {

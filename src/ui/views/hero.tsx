@@ -7,17 +7,15 @@ import useWindowDimensions from '../../hooks/window-dimensions';
 // import { TOKENS } from '../../utils/Constants';
 
 // Components
-import { Background } from '../background/Background';
+import { Background } from '../background';
 // import { CTAButton } from '../buttons/CTA';
 // import { Button } from '../buttons/Default';
 // import { Banner } from '../hero/Banner';
 import { HeroOneAction } from '../hero/HeroOneAction';
 
 // Layout
-import { Grid } from '../layout/Grid';
-import { Section } from '../layout/Section';
-
-// Utils
+import { Grid } from '../layout/grid';
+import { Section } from '../layout/section';
 
 const Hero = () => {
   // const { data, isLoading } = useAppContext();

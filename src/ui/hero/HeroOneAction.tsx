@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import { SocialIconList } from '../buttons/SocialIconList';
+import { SocialIconList } from '../buttons/social-icons';
 
 // Types
 type IHeroOneActionProps = {

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { fetchAPI } from '../api/strapi/api';
 import { Base } from '../ui/base';
-import { About } from '../ui/templates/About';
-import { Blog } from '../ui/templates/Blog';
-import { Hero } from '../ui/templates/Hero';
+import { About } from '../ui/views/about';
+import { Blog } from '../ui/views/blog';
+import { Hero } from '../ui/views/hero';
 
 const HomePage = ({ articles }: any) => {
   const [statefulArticles, setStatefulArticles] = useState(articles);

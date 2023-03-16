@@ -3,8 +3,8 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { truncate } from '../../utils/Helpers';
-import { DefaultCard } from './Default';
+import { truncate } from '../../utils/helpers';
+import { DefaultCard } from './default';
 
 function StrapiBlogPreview({ article }: any) {
   return (

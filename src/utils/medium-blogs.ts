@@ -1,4 +1,4 @@
-import { IBlogDataProps } from './types/Blogs';
+import { IBlogDataProps } from '../types/Blogs';
 
 export const BLOGS: Array<IBlogDataProps> = [
   {

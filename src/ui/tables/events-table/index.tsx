@@ -4,16 +4,16 @@ import { useEffect, useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 
 import useWindowDimensions from '../../../hooks/window-dimensions';
+// Utils
+import { IFormattedTxProps } from '../../../types/GraphData';
+import { IEventsTableProps, IHeaderProps } from '../../../types/Tables';
 import {
   capitalize,
   determineExplorer,
   shortenDate,
   spliceIntoChunks,
   truncateBetween,
-} from '../../../utils/Helpers';
-// Utils
-import { IFormattedTxProps } from '../../../utils/types/GraphData';
-import { IEventsTableProps, IHeaderProps } from '../../../utils/types/Tables';
+} from '../../../utils/helpers';
 // Components
 import { Pagination } from '../pagination';
 import TableSearch from '../search';

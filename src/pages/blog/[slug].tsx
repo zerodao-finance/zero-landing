@@ -12,8 +12,8 @@ import { getStrapiMedia } from '../../api/strapi/media';
 import useWindowDimensions from '../../hooks/window-dimensions';
 import style from '../../styles/markdown-styles.module.css';
 import { Base } from '../../ui/base';
-import { SocialIconList } from '../../ui/buttons/SocialIconList';
-import { Section } from '../../ui/layout/Section';
+import { SocialIconList } from '../../ui/buttons/social-icons';
+import { Section } from '../../ui/layout/section';
 
 const Article = ({ article }: any) => {
   // Hooks

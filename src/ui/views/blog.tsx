@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { BLOGS } from '../../utils/Blogs';
-import { Background } from '../background/Background';
-import { Button } from '../buttons/Default';
-import { MediumBlogPreview } from '../cards/MediumBlogPreview';
-import { StrapiBlogPreview } from '../cards/StrapiBlogPreview';
-import { Grid } from '../layout/Grid';
-import { Section } from '../layout/Section';
+import { BLOGS } from '../../utils/medium-blogs';
+import { Background } from '../background';
+import { Button } from '../buttons/default';
+import { MediumBlogPreview } from '../cards/medium-blog-preview';
+import { StrapiBlogPreview } from '../cards/strapi-blog-preview';
+import { Grid } from '../layout/grid';
+import { Section } from '../layout/section';
 
 function Blog({ articles, withShowMore }: any) {
   const [blogPosts, setBlogPosts] = useState<any>([]);

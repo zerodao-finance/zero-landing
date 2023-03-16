@@ -4,18 +4,18 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import { ethers, utils } from 'ethers';
 
 import {
+  IChainDataProps,
+  IFormattedTxProps,
+  IGraphChains,
+  ITxProps,
+} from '../types/GraphData';
+import {
   arbProvider,
   avaxProvider,
   ethersProvider,
   GRAPH_APIS,
   maticProvider,
-} from '../utils/Constants';
-import {
-  IChainDataProps,
-  IFormattedTxProps,
-  IGraphChains,
-  ITxProps,
-} from '../utils/types/GraphData';
+} from '../utils/constants';
 
 const useTransactions = () => {
   const [isError, setIsError] = useState(false);
