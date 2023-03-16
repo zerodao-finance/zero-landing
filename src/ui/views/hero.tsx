@@ -1,24 +1,10 @@
 import Image from 'next/image';
-// import Link from 'next/link';
 
-// Hooks & Store
-import useWindowDimensions from '../../hooks/window-dimensions';
-// import { useAppContext } from '../../store';
-// import { TOKENS } from '../../utils/Constants';
-
-// Components
+import { useWindowDimensions } from '../../hooks';
 import { Background } from '../background';
-// import { CTAButton } from '../buttons/CTA';
-// import { Button } from '../buttons/Default';
-// import { Banner } from '../hero/Banner';
-import { HeroOneAction } from '../hero/HeroOneAction';
-
-// Layout
-import { Grid } from '../layout/grid';
-import { Section } from '../layout/section';
+import { Grid, Section, OneActionHero } from '../layout';
 
 const Hero = () => {
-  // const { data, isLoading } = useAppContext();
   const { width } = useWindowDimensions();
 
   return (
@@ -33,7 +19,7 @@ const Hero = () => {
           <Grid
             xl
             left={
-              <HeroOneAction
+              <OneActionHero
                 reactive
                 socials
                 link={{

@@ -5,9 +5,7 @@ import Link from 'next/link';
 import { AppConfig } from '../../utils/app-config';
 import { hoverWhite } from '../../utils/constants';
 import { Background } from '../background';
-
-// Components
-import { SocialIconList } from '../buttons/social-icons';
+import { SocialIconList } from '../components/social-icons';
 import { Section } from '../layout/section';
 
 // Types

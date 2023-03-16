@@ -1,8 +1,7 @@
-// Layout
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 
-import { Section } from '../layout/section';
+import { Section } from '../layout';
 import { AboutParagraph, AboutTitle } from '../typography';
 
 const Develop = () => {

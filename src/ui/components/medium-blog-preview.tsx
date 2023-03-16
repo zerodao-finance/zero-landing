@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { RiMediumFill } from 'react-icons/ri';
 
 import { truncate } from '../../utils/helpers';
-import { DefaultCard } from './default';
+import { DefaultCard } from './card';
 
 type IBlogPreviewProps = {
   title: string;

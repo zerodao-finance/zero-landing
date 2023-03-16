@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
-// Hooks & Helpers
 import { AiOutlineCaretDown } from 'react-icons/ai';
 
-import useWindowDimensions from '../../../hooks/window-dimensions';
-// Utils
-import { IFormattedTxProps } from '../../../types/GraphData';
-import { IEventsTableProps, IHeaderProps } from '../../../types/Tables';
+import { useWindowDimensions } from '../../../hooks';
+import {
+  IFormattedTxProps,
+  IEventsTableProps,
+  IHeaderProps,
+} from '../../../types';
 import {
   capitalize,
   determineExplorer,
@@ -14,11 +15,9 @@ import {
   spliceIntoChunks,
   truncateBetween,
 } from '../../../utils/helpers';
-// Components
 import { Pagination } from '../pagination';
-import TableSearch from '../search';
+import { TableSearch } from '../search';
 import useEventTableUtils from './utils';
-// External
 
 const EventsTable = (props: IEventsTableProps) => {
   const { data, search, pagination } = props;

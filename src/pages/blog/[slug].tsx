@@ -7,12 +7,11 @@ import { IoMdArrowBack } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { fetchAPI } from '../../api/strapi/api';
-import { getStrapiMedia } from '../../api/strapi/media';
-import useWindowDimensions from '../../hooks/window-dimensions';
+import { fetchAPI, getStrapiMedia } from '../../api/strapi';
+import { useWindowDimensions } from '../../hooks';
 import style from '../../styles/markdown-styles.module.css';
 import { Base } from '../../ui/base';
-import { SocialIconList } from '../../ui/buttons/social-icons';
+import { SocialIconList } from '../../ui/components';
 import { Section } from '../../ui/layout/section';
 
 const Article = ({ article }: any) => {

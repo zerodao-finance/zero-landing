@@ -25,4 +25,4 @@ const useWindowDimensions = (): WindowDimentions => {
   return windowDimensions;
 };
 
-export default useWindowDimensions;
+export { useWindowDimensions };

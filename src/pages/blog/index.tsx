@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fetchAPI } from '../../api/strapi/api';
+import { fetchAPI } from '../../api/strapi';
 import { Base } from '../../ui/base';
 import { Blog } from '../../ui/views/blog';
 

@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react';
 
 import { Menu, Transition } from '@headlessui/react';
@@ -17,7 +16,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Dropdown(props: IDropdownProps) {
+function Dropdown(props: IDropdownProps) {
   const items: Array<string> = ['All', 'Mint', 'Burn'];
 
   return (
@@ -66,7 +65,7 @@ export default function Dropdown(props: IDropdownProps) {
                             e.preventDefault();
                             props.action(el);
                           }
-                        : () => console.log()
+                        : () => {}
                     }
                   >
                     {el}
@@ -80,3 +79,5 @@ export default function Dropdown(props: IDropdownProps) {
     </Menu>
   );
 }
+
+export { Dropdown };

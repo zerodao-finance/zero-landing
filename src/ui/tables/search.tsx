@@ -40,4 +40,4 @@ function TableSearch(props: ITableSearchProps) {
   );
 }
 
-export default TableSearch;
+export { TableSearch };

@@ -8,7 +8,7 @@ import {
   IFormattedTxProps,
   IGraphChains,
   ITxProps,
-} from '../types/GraphData';
+} from '../types/graph-data';
 import {
   arbProvider,
   avaxProvider,

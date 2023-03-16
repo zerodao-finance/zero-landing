@@ -1,5 +1,5 @@
-import useTableUtils from '../../../hooks/table-utils';
-import { IHeaderProps } from '../../../types/Tables';
+import { useTableUtils } from '../../../hooks/table-utils';
+import { IHeaderProps } from '../../../types/tables';
 
 function useEventTableUtils() {
   const { sortByAlpha, sortByDate, sortByNumber } = useTableUtils();

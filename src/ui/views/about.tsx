@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import useWindowDimensions from '../../hooks/window-dimensions';
+import { useWindowDimensions } from '../../hooks';
 import { Background } from '../background';
-import { CTAButton } from '../buttons/cta';
-import { Section } from '../layout/section';
+import { CTAButton } from '../components';
+import { Section } from '../layout';
 import {
   AboutParagraph,
   AboutSubTitle,

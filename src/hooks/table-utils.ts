@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { IEventProps } from '../types/Events';
+import { IEventProps } from '../types/events';
 // TODO: Fix all these functions
 
 function useTableUtils() {
@@ -151,4 +151,4 @@ function useTableUtils() {
   };
 }
 
-export default useTableUtils;
+export { useTableUtils };

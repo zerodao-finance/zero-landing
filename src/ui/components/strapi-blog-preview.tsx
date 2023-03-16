@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 import { truncate } from '../../utils/helpers';
-import { DefaultCard } from './default';
+import { DefaultCard } from './card';
 
 function StrapiBlogPreview({ article }: any) {
   return (

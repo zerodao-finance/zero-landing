@@ -1,4 +1,4 @@
-import { ICustomTooltipProps } from '../../types/Charts';
+import { ICustomTooltipProps } from '../../types/charts';
 
 function CustomTooltip(props: ICustomTooltipProps) {
   if (props.active) {

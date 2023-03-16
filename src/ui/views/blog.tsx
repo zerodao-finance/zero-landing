@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { BLOGS } from '../../utils/medium-blogs';
 import { Background } from '../background';
-import { Button } from '../buttons/default';
-import { MediumBlogPreview } from '../cards/medium-blog-preview';
-import { StrapiBlogPreview } from '../cards/strapi-blog-preview';
-import { Grid } from '../layout/grid';
-import { Section } from '../layout/section';
+import { Button, MediumBlogPreview, StrapiBlogPreview } from '../components';
+import { Grid, Section } from '../layout';
 
 function Blog({ articles, withShowMore }: any) {
   const [blogPosts, setBlogPosts] = useState<any>([]);

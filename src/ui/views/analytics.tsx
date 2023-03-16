@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-// Hooks & Utils
 import Link from 'next/link';
 import CountUp from 'react-countup';
 
-import useWindowDimensions from '../../hooks/window-dimensions';
+import { useWindowDimensions } from '../../hooks';
 import { useAppContext } from '../../store';
 import { TOKEN_MAPPING } from '../../utils/constants';
 import {
@@ -12,17 +11,11 @@ import {
   filterByDate,
   filterEventByType,
 } from '../../utils/helpers';
-// Layout
 import { Background } from '../background';
-import { CTAButton } from '../buttons/cta';
-import Dropdown from '../buttons/dropdown';
-import { DefaultCard } from '../cards/default';
-import { ResponsiveLineChart } from '../charts/LineChart';
-import { Grid } from '../layout/grid';
-import { Section } from '../layout/section';
-// Components
-import { EventsTable } from '../tables/events-table';
-// Types
+import { ResponsiveLineChart } from '../charts/line-chart';
+import { Dropdown, CTAButton, DefaultCard } from '../components';
+import { Grid, Section } from '../layout';
+import { EventsTable } from '../tables';
 
 const Analytics = () => {
   // Store & Hooks

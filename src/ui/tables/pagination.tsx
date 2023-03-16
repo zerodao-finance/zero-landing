@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 
 import { useAppContext } from '../../store';
-import { IPaginationProps } from '../../types/Tables';
+import { IPaginationProps } from '../../types/tables';
 
 function Pagination(props: IPaginationProps) {
   // Hooks

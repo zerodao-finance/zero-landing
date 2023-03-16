@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Area, AreaChart, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-import { IBarChartProps } from '../../types/Charts';
-import CustomTooltip from './CustomTooltip';
+import { IBarChartProps } from '../../types/charts';
+import CustomTooltip from './custom-tooltip';
 
 type ILineProps = {
   data: Array<IBarChartProps>;

@@ -3,9 +3,8 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import useWindowDimensions from '../../hooks/window-dimensions';
-import { CTAButton } from '../buttons/cta';
-import Dropdown from '../buttons/dropdown';
+import { useWindowDimensions } from '../../hooks/window-dimensions';
+import { Dropdown, CTAButton } from '../components';
 import { Section } from '../layout/section';
 
 type INavbarProps = {
@@ -30,6 +29,8 @@ const Navbar = (props: INavbarProps) => {
         return router.push('/analytics');
       case 'launch bridge':
         return window.open('https://bridge.zerodao.com');
+      case 'roadmap':
+        return router.push('/roadmap');
       default:
         return router.push('/');
     }
@@ -53,6 +54,7 @@ const Navbar = (props: INavbarProps) => {
                   // 'Develop',
                   // 'Docs',
                   // 'Analytics',
+                  'Roadmap',
                   'Blog',
                   // 'Launch Bridge',
                   'Docs',
@@ -63,10 +65,15 @@ const Navbar = (props: INavbarProps) => {
               <ul className="navbar flex items-center font-medium text-lg text-white uppercase">
                 <>
                   {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
-        <Link href="/develop">
-          <a id="nav-item">Develop</a>
-        </Link>
-      </li> */}
+                    <Link href="/develop">
+                      <a id="nav-item">Develop</a>
+                    </Link>
+                  </li> */}
+                  <li className="hover:text-gray-100 transition duration-200 !mb-0">
+                    <Link href="/roadmap">
+                      <a id="nav-item">Roadmap</a>
+                    </Link>
+                  </li>
                   <li className="hover:text-gray-100 transition duration-200 !mb-0">
                     <Link href="/blog">
                       <a id="nav-item">Blog</a>

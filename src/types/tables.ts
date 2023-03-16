@@ -1,4 +1,4 @@
-import { IFormattedTxProps } from './GraphData';
+import { IFormattedTxProps } from './graph-data';
 
 export type IEventsTableProps = {
   data: Array<IFormattedTxProps>;

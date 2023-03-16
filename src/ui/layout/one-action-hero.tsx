@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import { SocialIconList } from '../buttons/social-icons';
+import { SocialIconList } from '../components/social-icons';
 
 // Types
 type IHeroOneActionProps = {
@@ -15,7 +15,7 @@ type IHeroOneActionProps = {
   socials?: boolean;
 };
 
-const HeroOneAction = (props: IHeroOneActionProps) => {
+const OneActionHero = (props: IHeroOneActionProps) => {
   return (
     <header
       className={`
@@ -60,4 +60,4 @@ const HeroOneAction = (props: IHeroOneActionProps) => {
   );
 };
 
-export { HeroOneAction };
+export { OneActionHero };
