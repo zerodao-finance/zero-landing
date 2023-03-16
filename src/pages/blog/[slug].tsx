@@ -126,9 +126,9 @@ const Article = ({ article }: any) => {
         </div>
         <div className="flex w-full gap-5 items-center mt-5">
           <Link href="/blog">
-            <div className="flex items-center gap-5 cursor-pointer transition duration-200 hover:scale-110">
-              <IoMdArrowBack size="24px" color="#41a75b" />
-              <p className="text-brand-100">Back to all blog posts</p>
+            <div className="flex items-center gap-2 cursor-pointer transition duration-150 hover:text-brand-100 pr-2 py-1">
+              <IoMdArrowBack size="24px" color="" />
+              <p className="">Back to all blog posts</p>
             </div>
           </Link>
         </div>

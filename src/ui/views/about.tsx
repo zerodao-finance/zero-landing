@@ -4,7 +4,6 @@ import Link from 'next/link';
 import useWindowDimensions from '../../hooks/window-dimensions';
 import { Background } from '../background';
 import { CTAButton } from '../buttons/cta';
-import { DefaultCard } from '../cards/default';
 import { Section } from '../layout/section';
 import {
   AboutParagraph,
@@ -57,8 +56,8 @@ const About = () => {
           />
         </div> */}
         {aboutContent.map((el, i) => (
-          <DefaultCard
-            className="mb-10 md:mb-15 lg:mb-20"
+          <div
+            className="mb-10 md:mb-15 lg:mb-20 first-of-type:xl:mb-32"
             color="!bg-[rgba(10,10,10,0.4)]"
             key={`about-${i}`}
           >
@@ -93,7 +92,7 @@ const About = () => {
                 />
               </div>
             </div>
-          </DefaultCard>
+          </div>
         ))}
       </Section>
     </Background>

@@ -8,6 +8,7 @@ const AnimateBeam = () => (
       display: 'block',
       zIndex: '1',
       position: 'relative',
+      transform: 'scaleX(-1)',
     }}
     width="100vw"
     height="100%"
