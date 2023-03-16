@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 import { AppConfig } from '../../utils/app-config';
 import { hoverWhite } from '../../utils/constants';
-import { Background } from '../background';
 import { SocialIconList } from '../components/social-icons';
+import { Background } from '../layout/background';
 import { Section } from '../layout/section';
 
 // Types

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { BLOGS } from '../../utils/medium-blogs';
-import { Background } from '../background';
 import { Button, MediumBlogPreview, StrapiBlogPreview } from '../components';
 import { Grid, Section } from '../layout';
+import { Background } from '../layout/background';
 
 function Blog({ articles, withShowMore }: any) {
   const [blogPosts, setBlogPosts] = useState<any>([]);

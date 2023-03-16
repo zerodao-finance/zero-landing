@@ -54,7 +54,7 @@ const Navbar = (props: INavbarProps) => {
                   // 'Develop',
                   // 'Docs',
                   // 'Analytics',
-                  'Roadmap',
+                  // 'Roadmap',
                   'Blog',
                   // 'Launch Bridge',
                   'Docs',
@@ -69,11 +69,11 @@ const Navbar = (props: INavbarProps) => {
                       <a id="nav-item">Develop</a>
                     </Link>
                   </li> */}
-                  <li className="hover:text-gray-100 transition duration-200 !mb-0">
+                  {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
                     <Link href="/roadmap">
                       <a id="nav-item">Roadmap</a>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="hover:text-gray-100 transition duration-200 !mb-0">
                     <Link href="/blog">
                       <a id="nav-item">Blog</a>

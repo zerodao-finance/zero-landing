@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 import { useWindowDimensions } from '../../hooks';
-import { Background } from '../background';
 import { Grid, Section, OneActionHero } from '../layout';
+import { Background } from '../layout/background';
 
 const Hero = () => {
   const { width } = useWindowDimensions();

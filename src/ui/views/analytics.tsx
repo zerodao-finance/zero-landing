@@ -11,10 +11,10 @@ import {
   filterByDate,
   filterEventByType,
 } from '../../utils/helpers';
-import { Background } from '../background';
 import { ResponsiveLineChart } from '../charts/line-chart';
 import { Dropdown, CTAButton, DefaultCard } from '../components';
 import { Grid, Section } from '../layout';
+import { Background } from '../layout/background';
 import { EventsTable } from '../tables';
 
 const Analytics = () => {

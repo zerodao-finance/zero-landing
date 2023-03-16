@@ -1,6 +1,6 @@
 import { useWindowDimensions } from '../../hooks';
-import { Background } from '../background';
 import { Section } from '../layout';
+import { Background } from '../layout/background';
 
 const Roadmap = () => {
   const { width } = useWindowDimensions();

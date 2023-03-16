@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useWindowDimensions } from '../../hooks';
-import { Background } from '../background';
 import { CTAButton } from '../components';
 import { Section } from '../layout';
+import { Background } from '../layout/background';
 import {
   AboutParagraph,
   AboutSubTitle,
