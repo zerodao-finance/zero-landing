@@ -38,8 +38,12 @@ module.exports = {
           '100%': { backgroundColor: 'rgba(0,0,0,0)' },
         },
         floating: {
-          '0%, 100%': { transform: 'translateY(-1.75%)' },
-          '50%': { transform: 'translateY(1.75%)' },
+          '0%, 100%': {
+            transform: 'translateY(-1.7%)',
+          },
+          '50%': {
+            transform: 'translateY(1.7%)',
+          },
         },
       }),
       // gradient bg

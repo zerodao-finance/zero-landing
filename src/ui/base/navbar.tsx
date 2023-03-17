@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { useWindowDimensions } from '../../hooks/window-dimensions';
-import { Dropdown, CTAButton } from '../components';
+import { Dropdown } from '../components';
 import { Section } from '../layout/section';
 
 type INavbarProps = {
@@ -14,6 +14,13 @@ type INavbarProps = {
 const Navbar = (props: INavbarProps) => {
   const { width } = useWindowDimensions();
   const router = useRouter();
+
+  const navItems: { text: string; link: string; target?: string }[] = [
+    { text: 'Home', link: '/' },
+    { text: 'Roadmap', link: '/roadmap' },
+    { text: 'Blog', link: '/blog' },
+    { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
+  ];
 
   const redirect = (el: string) => {
     switch (el.toLowerCase()) {
@@ -49,67 +56,21 @@ const Navbar = (props: INavbarProps) => {
           <nav>
             {width < 600 ? (
               <Dropdown
-                items={[
-                  'Home',
-                  // 'Develop',
-                  // 'Docs',
-                  // 'Analytics',
-                  // 'Roadmap',
-                  'Blog',
-                  // 'Launch Bridge',
-                  'Docs',
-                ]}
+                items={navItems.map((el) => el.text)}
                 action={redirect}
               />
             ) : (
               <ul className="navbar flex items-center font-medium text-lg text-white uppercase">
-                <>
-                  {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
-                    <Link href="/develop">
-                      <a id="nav-item">Develop</a>
-                    </Link>
-                  </li> */}
-                  {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
-                    <Link href="/roadmap">
-                      <a id="nav-item">Roadmap</a>
-                    </Link>
-                  </li> */}
-                  <li className="hover:text-gray-100 transition duration-200 !mb-0">
-                    <Link href="/blog">
-                      <a id="nav-item">Blog</a>
+                {navItems.map((el, i) => (
+                  <li
+                    className="hover:text-neutral-300 transition duration-150"
+                    key={`nav-item-${i}`}
+                  >
+                    <Link href={el.link} target={el.target}>
+                      <a>{el.text}</a>
                     </Link>
                   </li>
-                  <Link href="https://docs.zerodao.com" target="_blank">
-                    <a>
-                      <CTAButton text="Docs" sm={width < 600} />
-                    </a>
-                  </Link>
-                  {/* <li className="hover:text-gray-100 transition duration-200 !mb-0">
-        <Link href="/develop">
-          <a id="nav-item">Develop</a>
-        </Link>
-      </li>
-      <li className="hover:text-gray-100 transition duration-200 !mb-0">
-        <Link href="https://docs.zerodao.com" target="_blank">
-          <a id="nav-item">Docs</a>
-        </Link>
-      </li>
-      <li className="hover:text-gray-100 transition duration-200 !mb-0">
-        <Link href="/blog">
-          <a id="nav-item">Blog</a>
-        </Link>
-      </li>
-      <li className="hover:text-gray-100 transition duration-200 !mb-0">
-        <Link href="/analytics">
-          <a id="nav-item">Analytics</a>
-        </Link>
-      </li>
-      <Link href="https://bridge.zerodao.com" target="_blank">
-        <a>
-          <CTAButton text="Bridge" sm={width < 600} />
-        </a>
-      </Link> */}
-                </>
+                ))}
               </ul>
             )}
           </nav>
