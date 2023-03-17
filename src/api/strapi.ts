@@ -5,9 +5,19 @@ import qs from 'qs';
  * @param {string} path Path of the URL
  * @returns {string} Full Strapi URL
  */
-export function getStrapiURL(path = '') {
+type IStrapiURLs = '/articles' | '/article' | '/roadmap' | '/roadmaps' | string;
+export function getStrapiURL(path: IStrapiURLs) {
+  console.log(
+    `path: ${
+      process.env.NEXT_PUBLIC_STRAPI_DEV
+        ? 'http://localhost:1337'
+        : process.env.NEXT_PUBLIC_STRAPI_API_URL
+    }${path}`
+  );
   return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
+    process.env.NEXT_PUBLIC_STRAPI_DEV
+      ? 'http://localhost:1337'
+      : process.env.NEXT_PUBLIC_STRAPI_API_URL
   }${path}`;
 }
 

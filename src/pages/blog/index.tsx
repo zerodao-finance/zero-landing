@@ -24,18 +24,18 @@ const BlogList = ({ articles }: any) => {
   );
 };
 
-export async function getStaticProps() {
-  // Run API calls in parallel
-  const [articlesRes] = await Promise.all([
-    fetchAPI('/articles', { populate: ['image', 'category'] }),
-  ]);
+// export async function getStaticProps() {
+//   // Run API calls in parallel
+//   const [articlesRes] = await Promise.all([
+//     fetchAPI('/articles', { populate: ['image', 'category'] }),
+//   ]);
 
-  return {
-    props: {
-      articles: articlesRes?.data || null,
-    },
-    revalidate: 1,
-  };
-}
+//   return {
+//     props: {
+//       articles: articlesRes?.data || null,
+//     },
+//     revalidate: 1,
+//   };
+// }
 
 export default BlogList;

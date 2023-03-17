@@ -136,33 +136,32 @@ const Article = ({ article }: any) => {
   );
 };
 
-export async function getStaticPaths() {
-  // TODO: fix so that no redeploy required
-  const articlesRes = await fetchAPI('/articles', { fields: ['slug'] });
+// export async function getStaticPaths() {
+//   // TODO: fix so that no redeploy required
+//   const articlesRes = await fetchAPI('/articles', { fields: ['slug'] });
 
-  return {
-    paths: articlesRes.data.map((article: any) => ({
-      params: {
-        slug: article.attributes.slug,
-      },
-    })),
-    fallback: true,
-  };
-}
+//   return {
+//     paths: articlesRes.data.map((article: any) => ({
+//       params: {
+//         slug: article.attributes.slug,
+//       },
+//     })),
+//     fallback: true,
+//   };
+// }
 
-export async function getStaticProps({ params }: any) {
-  const articlesRes = await fetchAPI('/articles', {
-    filters: {
-      slug: params.slug,
-    },
-    populate: ['image', 'category', 'author.picture'],
-  });
-  const categoriesRes = await fetchAPI('/categories');
+// export async function getStaticProps({ params }: any) {
+//   const articlesRes = await fetchAPI('/articles', {
+//     filters: {
+//       slug: params.slug,
+//     },
+//     populate: ['image', 'category', 'author.picture'],
+//   });
 
-  return {
-    props: { article: articlesRes.data[0], categories: categoriesRes },
-    revalidate: 3,
-  };
-}
+//   return {
+//     props: { article: articlesRes.data[0] },
+//     revalidate: 3,
+//   };
+// }
 
 export default Article;
