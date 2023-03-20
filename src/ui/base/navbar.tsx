@@ -63,7 +63,7 @@ const Navbar = (props: INavbarProps) => {
               <ul className="navbar flex items-center font-medium text-lg text-white uppercase">
                 {navItems.map((el, i) => (
                   <li
-                    className="hover:text-neutral-300 transition duration-150"
+                    className="hover:text-gray-100 transition duration-150"
                     key={`nav-item-${i}`}
                   >
                     <Link href={el.link} target={el.target}>

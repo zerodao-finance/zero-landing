@@ -9,3 +9,4 @@ export * from './social-icons';
 export * from './spinner';
 export * from './strapi-blog-preview';
 export * from './banner';
+export * from './timeline';

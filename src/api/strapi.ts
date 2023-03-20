@@ -7,13 +7,6 @@ import qs from 'qs';
  */
 type IStrapiURLs = '/articles' | '/article' | '/roadmap' | '/roadmaps' | string;
 export function getStrapiURL(path: IStrapiURLs) {
-  console.log(
-    `path: ${
-      process.env.NEXT_PUBLIC_STRAPI_DEV
-        ? 'http://localhost:1337'
-        : process.env.NEXT_PUBLIC_STRAPI_API_URL
-    }${path}`
-  );
   return `${
     process.env.NEXT_PUBLIC_STRAPI_DEV
       ? 'http://localhost:1337'
