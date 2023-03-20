@@ -1,5 +1,5 @@
 import { useWindowDimensions } from '../../hooks';
-import { ITimelineProps, Timeline } from '../components';
+import { ITimelineProps, Spinner, Timeline } from '../components';
 import { Section } from '../layout';
 import { Background } from '../layout/background';
 
@@ -8,7 +8,7 @@ type IRoadmapProps = {
   data: ITimelineProps;
 };
 
-const Roadmap = ({ data }: IRoadmapProps) => {
+const Roadmap = ({ data, loading = true }: IRoadmapProps) => {
   const { width } = useWindowDimensions();
 
   return (
@@ -20,7 +20,7 @@ const Roadmap = ({ data }: IRoadmapProps) => {
         vertical
         style="!pt-28"
       >
-        <Timeline {...data} />
+        {loading ? <Spinner /> : <Timeline {...data} />}
       </Section>
     </Background>
   );
