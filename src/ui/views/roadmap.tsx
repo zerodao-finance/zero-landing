@@ -20,7 +20,13 @@ const Roadmap = ({ data, loading = true }: IRoadmapProps) => {
         vertical
         style="!pt-28"
       >
-        {loading ? <Spinner /> : <Timeline {...data} />}
+        {loading ? (
+          <div className="h-[42vh] flex justify-center items-center">
+            <Spinner />
+          </div>
+        ) : (
+          <Timeline {...data} />
+        )}
       </Section>
     </Background>
   );

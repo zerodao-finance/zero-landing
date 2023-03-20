@@ -68,9 +68,12 @@ const Timeline = ({
                   {item.workItemTitle}
                   <Label text={item.label} />
                 </h3>
-                {/* <time className="block mb-2 text-xs font-normal leading-none text-neutral-400">
-                Published on {new Date(item.updatedAt || "").toLocaleDateString()}
-                </time> */}
+                {item.completionDate && (
+                  <time className="block mb-2 text-xs font-normal leading-none text-neutral-400">
+                    Launch Date:{' '}
+                    {new Date(item.completionDate || '').toLocaleDateString()}
+                  </time>
+                )}
                 <p
                   className={`block mb-2 text-xs font-normal leading-none ${
                     item.stage === 'Complete'
