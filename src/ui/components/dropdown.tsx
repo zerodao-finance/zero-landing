@@ -27,7 +27,7 @@ function Dropdown(props: IDropdownProps) {
           {props.text ? (
             <FaChevronDown className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
           ) : (
-            <RiMenu4Line size="30px" />
+            <RiMenu4Line size="28px" />
           )}
         </Menu.Button>
       </div>

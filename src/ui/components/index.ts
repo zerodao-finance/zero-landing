@@ -10,3 +10,5 @@ export * from './spinner';
 export * from './strapi-blog-preview';
 export * from './banner';
 export * from './timeline';
+export * from './active-pulse';
+export * from './label';

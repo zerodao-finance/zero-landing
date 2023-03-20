@@ -23,6 +23,11 @@ const Footer = (props: IFooterProps) => (
         <nav>
           <ul className="navbar mt-5 flex flex-row justify-center font-medium text-xl text-white uppercase">
             <li className={hoverWhite}>
+              <Link href="/roadmap">
+                <a>Roadmap</a>
+              </Link>
+            </li>
+            <li className={hoverWhite}>
               <Link href="/blog">
                 <a>Blog</a>
               </Link>
@@ -32,16 +37,6 @@ const Footer = (props: IFooterProps) => (
                 <a>Docs</a>
               </Link>
             </li>
-            {/* <li className={hoverWhite}>
-          <Link href="http://bridge.zerodao.com" target="_blank">
-            <a>Bridge</a>
-          </Link>
-        </li>
-        <li className={hoverWhite}>
-          <Link href="/analytics">
-            <a>Analytics</a>
-          </Link>
-        </li> */}
           </ul>
         </nav>
 

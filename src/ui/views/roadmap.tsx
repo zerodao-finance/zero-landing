@@ -13,7 +13,13 @@ const Roadmap = ({ data }: IRoadmapProps) => {
 
   return (
     <Background color="bg-gray-900" animation={width < 1920 ? 'waves' : null}>
-      <Section h1Title title="Roadmap" vertical style="!pt-28">
+      <Section
+        title="Roadmap"
+        description="Our 2023 quarterly breakdown of the DAO's developments"
+        h1Title
+        vertical
+        style="!pt-28"
+      >
         <Timeline {...data} />
       </Section>
     </Background>
