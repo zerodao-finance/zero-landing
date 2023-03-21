@@ -84,7 +84,7 @@ const About = () => {
               <div className="min-w-[100%] min-h-[250px] lg:min-w-[450px] lg:min-h-[300px] relative flex justify-center items-center">
                 <Image
                   src={el.img}
-                  alt={el.title}
+                  alt={el.title || 'zerodao'}
                   layout="fill"
                   objectFit="cover"
                   className="rounded-lg"

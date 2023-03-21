@@ -46,7 +46,7 @@ const Article = ({ article }: any) => {
     <Base
       withNav
       meta={{
-        title: `zeroDAO - ${cleanMetaTitle(statefulArticle?.attributes.title)}`,
+        title: `ZERO | ${cleanMetaTitle(statefulArticle?.attributes.title)}`,
         description: statefulArticle?.attributes.description,
         image: statefulArticle?.attributes?.thumbnail,
       }}
@@ -86,7 +86,7 @@ const Article = ({ article }: any) => {
                   )}
                   alt={
                     statefulArticle?.attributes.author.data.attributes.picture
-                      .data.attributes.alternativeText
+                      .data.attributes.alternativeText || 'zerodao'
                   }
                   className="rounded"
                   height="500"
@@ -101,7 +101,7 @@ const Article = ({ article }: any) => {
                   )}
                   alt={
                     statefulArticle?.attributes.author.data.attributes.picture
-                      .data.attributes.alternativeText
+                      .data.attributes.alternativeText || 'zerodao'
                   }
                   className="rounded"
                   height="200"

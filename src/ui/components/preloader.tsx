@@ -11,7 +11,7 @@ const PreLoader = () => {
         <div>
           <Image
             src="/assets/images/logo-full.svg"
-            alt="Logo"
+            alt="zeroDAO Logo"
             height="100"
             width="300"
           />

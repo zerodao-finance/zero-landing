@@ -22,7 +22,7 @@ function StrapiBlogPreview({ article }: any) {
                 alt={
                   article?.attributes?.slug
                     ? article?.attributes?.slug
-                    : 'zeroDAO image preview'
+                    : 'zeroDAO'
                 }
                 className="rounded"
                 height="200"

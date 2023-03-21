@@ -18,7 +18,7 @@ const BlogList = ({ articles }: any) => {
   }, []);
 
   return (
-    <Base withNav meta={{ title: 'zeroDAO - All Blog Posts' }}>
+    <Base withNav meta={{ title: 'ZERO | Blog Posts' }}>
       <Blog articles={statefulArticles} />
     </Base>
   );

@@ -32,7 +32,7 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
           <div className="mb-5">
             <Image
               src={props.img}
-              alt={props.alt}
+              alt={props.alt || 'zerodao'}
               className="rounded"
               height="200"
               width="350"
