@@ -16,4 +16,16 @@ module.exports = withBundleAnalyzer({
     path: '',
     domains: ['i.ibb.co'],
   },
+  async headers() {
+    return [
+      {
+        key: 'X-Frame-Options',
+        value: 'DENY',
+      },
+      {
+        key: 'Content-Security-Policy',
+        value: 'frame-ancestors',
+      },
+    ];
+  },
 });
