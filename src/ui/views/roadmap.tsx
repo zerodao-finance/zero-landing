@@ -25,7 +25,7 @@ const Roadmap = ({ data, loading = true }: IRoadmapProps) => {
             <Spinner />
           </div>
         ) : (
-          <Timeline {...data} />
+          <Timeline {...data} horizontal={width > 1300} />
         )}
       </Section>
     </Background>

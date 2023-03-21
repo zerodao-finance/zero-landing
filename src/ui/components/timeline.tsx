@@ -18,6 +18,7 @@ export type ITimelineProps = {
   q2roadmapItems: IStrapiRoadmapAttr[];
   q3roadmapItems: IStrapiRoadmapAttr[];
   q4roadmapItems: IStrapiRoadmapAttr[];
+  horizontal: boolean;
 };
 
 const Timeline = ({
@@ -25,6 +26,7 @@ const Timeline = ({
   q2roadmapItems,
   q3roadmapItems,
   q4roadmapItems,
+  horizontal,
 }: ITimelineProps) => {
   const roadmapList = [
     {
@@ -45,6 +47,67 @@ const Timeline = ({
     },
   ];
 
+  const determineStageColor = (stage: string | null) => {
+    if (stage) {
+      switch (stage) {
+        case 'Complete':
+          return 'text-green-400';
+        case 'In-Progress':
+          return 'text-yellow-400';
+        default:
+          return 'text-neutral-400';
+      }
+    }
+    return 'text-neutral-400';
+  };
+
+  if (horizontal) {
+    return (
+      <ol className="grid grid-cols-4 divide-x-4 divide-neutral-900 mt-12">
+        {roadmapList.map((el) => (
+          <li
+            key={`${el.quarter}-row`}
+            className={`flex flex-col gap-2 px-3 relative`}
+          >
+            <span
+              className={`text-center text-xl rounded-t-lg font-semibold relative -top-12 mb-6`}
+            >
+              {el.quarter}
+            </span>
+            {el.items?.length > 0 &&
+              el.items.map((item, i) => (
+                <DefaultCard
+                  minHeight="0"
+                  className="w-full max-w-lg relative -top-16"
+                  key={`${el.quarter}-card-${i}`}
+                >
+                  <h3 className="flex items-start mb-1 text-lg font-semibold justify-between">
+                    {item.workItemTitle}
+                    <Label text={item.label} />
+                  </h3>
+                  {item.completionDate && (
+                    <time className="block mb-2 text-xs font-normal leading-none text-neutral-400">
+                      Launch Date:{' '}
+                      {new Date(item.completionDate || '').toLocaleDateString()}
+                    </time>
+                  )}
+                  <p
+                    className={`block mb-2 text-xs font-normal leading-none ${determineStageColor(
+                      item.stage
+                    )}`}
+                  >
+                    {item.stage}
+                  </p>
+                  <p className="mb-4 text-base font-normal">
+                    {item.workItemDescription}
+                  </p>
+                </DefaultCard>
+              ))}
+          </li>
+        ))}
+      </ol>
+    );
+  }
   return (
     <ol className="relative border-l-2 border-gray-400 ml-4 lg:ml-0">
       {roadmapList.map((el) => (
@@ -75,11 +138,9 @@ const Timeline = ({
                   </time>
                 )}
                 <p
-                  className={`block mb-2 text-xs font-normal leading-none ${
-                    item.stage === 'Complete'
-                      ? 'text-green-400'
-                      : 'text-neutral-400'
-                  }`}
+                  className={`block mb-2 text-xs font-normal leading-none ${determineStageColor(
+                    item.stage
+                  )}`}
                 >
                   {item.stage}
                 </p>
