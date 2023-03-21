@@ -7,13 +7,12 @@ import { IoMdArrowBack } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { SocialIconList } from '../../components/buttons/SocialIconList';
-import { Section } from '../../components/layout/Section';
-import { Base } from '../../components/templates/Base';
-import useWindowDimensions from '../../hooks/WindowDimensions';
-import { fetchAPI } from '../../lib/strapi/api';
-import { getStrapiMedia } from '../../lib/strapi/media';
+import { fetchAPI, getStrapiMedia } from '../../api/strapi';
+import { useWindowDimensions } from '../../hooks';
 import style from '../../styles/markdown-styles.module.css';
+import { Base } from '../../ui/base';
+import { SocialIconList } from '../../ui/components';
+import { Section } from '../../ui/layout/section';
 
 const Article = ({ article }: any) => {
   // Hooks
@@ -47,7 +46,7 @@ const Article = ({ article }: any) => {
     <Base
       withNav
       meta={{
-        title: `zeroDAO - ${cleanMetaTitle(statefulArticle?.attributes.title)}`,
+        title: `ZERO | ${cleanMetaTitle(statefulArticle?.attributes.title)}`,
         description: statefulArticle?.attributes.description,
         image: statefulArticle?.attributes?.thumbnail,
       }}
@@ -87,7 +86,7 @@ const Article = ({ article }: any) => {
                   )}
                   alt={
                     statefulArticle?.attributes.author.data.attributes.picture
-                      .data.attributes.alternativeText
+                      .data.attributes.alternativeText || 'zerodao'
                   }
                   className="rounded"
                   height="500"
@@ -102,7 +101,7 @@ const Article = ({ article }: any) => {
                   )}
                   alt={
                     statefulArticle?.attributes.author.data.attributes.picture
-                      .data.attributes.alternativeText
+                      .data.attributes.alternativeText || 'zerodao'
                   }
                   className="rounded"
                   height="200"
@@ -126,9 +125,9 @@ const Article = ({ article }: any) => {
         </div>
         <div className="flex w-full gap-5 items-center mt-5">
           <Link href="/blog">
-            <div className="flex items-center gap-5 cursor-pointer transition duration-200 hover:scale-110">
-              <IoMdArrowBack size="24px" color="#41a75b" />
-              <p className="text-brand-100">Back to all blog posts</p>
+            <div className="flex items-center gap-2 cursor-pointer transition duration-150 hover:text-brand-100 pr-2 py-1">
+              <IoMdArrowBack size="24px" color="" />
+              <p className="">Back to all blog posts</p>
             </div>
           </Link>
         </div>
@@ -138,7 +137,6 @@ const Article = ({ article }: any) => {
 };
 
 export async function getStaticPaths() {
-  // TODO: fix so that no redeploy required
   const articlesRes = await fetchAPI('/articles', { fields: ['slug'] });
 
   return {
@@ -158,10 +156,9 @@ export async function getStaticProps({ params }: any) {
     },
     populate: ['image', 'category', 'author.picture'],
   });
-  const categoriesRes = await fetchAPI('/categories');
 
   return {
-    props: { article: articlesRes.data[0], categories: categoriesRes },
+    props: { article: articlesRes.data[0] },
     revalidate: 3,
   };
 }

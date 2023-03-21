@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { Base } from '../../components/templates/Base';
-import { Blog } from '../../components/templates/Blog';
-import { fetchAPI } from '../../lib/strapi/api';
+import { fetchAPI } from '../../api/strapi';
+import { Base } from '../../ui/base';
+import { Blog } from '../../ui/views/blog';
 
 const BlogList = ({ articles }: any) => {
   const [statefulArticles, setStatefulArticles] = useState(articles);
@@ -12,13 +12,13 @@ const BlogList = ({ articles }: any) => {
       const [articlesRes] = await Promise.all([
         fetchAPI('/articles', { populate: ['image', 'category'] }),
       ]);
-      setStatefulArticles(articlesRes.data);
+      if (articlesRes?.data) setStatefulArticles(articlesRes.data);
     };
     getArticles();
   }, []);
 
   return (
-    <Base withNav meta={{ title: 'zeroDAO - All Blog Posts' }}>
+    <Base withNav meta={{ title: 'ZERO | Blog Posts' }}>
       <Blog articles={statefulArticles} />
     </Base>
   );
@@ -32,7 +32,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articles: articlesRes.data,
+      articles: articlesRes?.data || null,
     },
     revalidate: 1,
   };

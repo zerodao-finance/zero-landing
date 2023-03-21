@@ -19,7 +19,7 @@ module.exports = {
         fade: 'fadeOut 6s ease-in-out',
         'fade-transparent': 'fadeOutTransparent 6s ease-in-out',
         reveal: 'revealFromBlack 2s ease-in-out',
-        floating: 'floating 3s linear infinite ease-in-out',
+        floating: 'floating 3s infinite ease-in-out',
       },
       keyframes: () => ({
         fadeOut: {
@@ -38,9 +38,12 @@ module.exports = {
           '100%': { backgroundColor: 'rgba(0,0,0,0)' },
         },
         floating: {
-          '0%': { transform: 'translate(0, 0px)' },
-          '65%': { transform: 'translate(0, 15px)' },
-          '100%': { transform: 'translate(0, -0px)' },
+          '0%, 100%': {
+            transform: 'translateY(-1.7%)',
+          },
+          '50%': {
+            transform: 'translateY(1.7%)',
+          },
         },
       }),
       // gradient bg

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { About } from '../components/templates/About';
-import { Base } from '../components/templates/Base';
-import { Blog } from '../components/templates/Blog';
-import { Hero } from '../components/templates/Hero';
-import { fetchAPI } from '../lib/strapi/api';
+import { fetchAPI } from '../api/strapi';
+import { Base } from '../ui/base';
+import { About } from '../ui/views/about';
+import { Blog } from '../ui/views/blog';
+import { Hero } from '../ui/views/hero';
 
 const HomePage = ({ articles }: any) => {
   const [statefulArticles, setStatefulArticles] = useState(articles);
@@ -14,7 +14,7 @@ const HomePage = ({ articles }: any) => {
       const [articlesRes] = await Promise.all([
         fetchAPI('/articles', { populate: ['image', 'category'] }),
       ]);
-      setStatefulArticles(articlesRes.data);
+      if (articlesRes?.data) setStatefulArticles(articlesRes.data);
     };
     getArticles();
   }, []);
@@ -37,7 +37,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articles: articlesRes.data,
+      articles: articlesRes?.data || null,
     },
     revalidate: 3,
   };
