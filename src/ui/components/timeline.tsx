@@ -1,5 +1,6 @@
 import { DefaultCard } from './card';
 import { Label } from './label';
+import { RedirectLink } from './link';
 
 type IStrapiRoadmapAttr = {
   completionDate: string | null;
@@ -11,6 +12,7 @@ type IStrapiRoadmapAttr = {
   updatedAt: string | null;
   workItemTitle: string | null;
   workItemDescription: string | null;
+  link: string | null;
 };
 
 export type ITimelineProps = {
@@ -98,9 +100,12 @@ const Timeline = ({
                   >
                     {item.stage}
                   </p>
-                  <p className="mb-4 text-base font-normal">
-                    {item.workItemDescription}
-                  </p>
+                  {item.workItemDescription && (
+                    <p className="mb-4 text-base font-normal">
+                      {item.workItemDescription}
+                    </p>
+                  )}
+                  {item.link && <RedirectLink link={item.link} />}
                 </DefaultCard>
               ))}
           </li>
@@ -144,9 +149,12 @@ const Timeline = ({
                 >
                   {item.stage}
                 </p>
-                <p className="mb-4 text-base font-normal">
-                  {item.workItemDescription}
-                </p>
+                {item.workItemDescription && (
+                  <p className="mb-4 text-base font-normal">
+                    {item.workItemDescription}
+                  </p>
+                )}
+                {item.link && <RedirectLink link={item.link} />}
               </DefaultCard>
             ))}
         </li>

@@ -12,3 +12,4 @@ export * from './banner';
 export * from './timeline';
 export * from './active-pulse';
 export * from './label';
+export * from './link';
