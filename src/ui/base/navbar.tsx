@@ -85,7 +85,7 @@ const Navbar = (props: INavbarProps) => {
                 @apply mr-3;
               }
 
-              @media only screen and (min-width: 900px) {
+              @media only screen and (min-width: 1080px) {
                 .navbar :global(li:not(:last-child)) {
                   @apply mr-6;
                 }

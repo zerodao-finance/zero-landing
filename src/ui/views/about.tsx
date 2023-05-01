@@ -57,7 +57,7 @@ const About = () => {
         </div> */}
         {aboutContent.map((el, i) => (
           <div
-            className="mb-10 md:mb-15 lg:mb-20 first-of-type:xl:mb-32"
+            className="mb-10 md:mb-15 lg:mb-20 first-of-type:xl:mb-36"
             color="!bg-[rgba(10,10,10,0.4)]"
             key={`about-${i}`}
           >
