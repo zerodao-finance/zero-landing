@@ -41,13 +41,11 @@ const OneActionHero = (props: IHeroOneActionProps) => {
           </div>
         </Link>
       )}
-      <h1 className="text-2xl md:text-3xl text-white font-bold whitespace-pre-line uppercase">
+      <h1 className="text-3xl md:text-4xl text-white font-bold whitespace-pre-line uppercase">
         {props.title}
       </h1>
 
-      <div className="text-lg md:text-xl mt-4 mb-6 2xl:mb-10">
-        {props.description}
-      </div>
+      <div className="text-lg mt-4 mb-6 2xl:mb-10">{props.description}</div>
 
       {props.button}
 
