@@ -60,7 +60,7 @@ const Navbar = (props: INavbarProps) => {
                 action={redirect}
               />
             ) : (
-              <ul className="navbar flex items-center font-medium text-lg text-white uppercase">
+              <ul className="navbar flex items-center font-medium 2xl:text-lg text-white uppercase">
                 {navItems.map((el, i) => (
                   <li
                     className="hover:text-gray-100 transition duration-150"
@@ -82,12 +82,12 @@ const Navbar = (props: INavbarProps) => {
               }
 
               .navbar :global(li:not(:last-child)) {
-                @apply mr-4;
+                @apply mr-3;
               }
 
               @media only screen and (min-width: 900px) {
                 .navbar :global(li:not(:last-child)) {
-                  @apply mr-8;
+                  @apply mr-6;
                 }
               }
             `}
