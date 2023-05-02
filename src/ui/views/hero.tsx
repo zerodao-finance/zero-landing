@@ -77,7 +77,7 @@ const Hero = () => {
                     src="/assets/3d/ZD-logo-3d.png"
                     alt="zeroDAO Logo"
                     height={
-                      width > 1200
+                      width > 1600
                         ? '375'
                         : width > 900
                         ? '350'
@@ -86,7 +86,7 @@ const Hero = () => {
                         : '250'
                     }
                     width={
-                      width > 1200
+                      width > 1600
                         ? '410'
                         : width > 900
                         ? '385'
