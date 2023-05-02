@@ -45,7 +45,7 @@ const OneActionHero = (props: IHeroOneActionProps) => {
         {props.title}
       </h1>
 
-      <div className="text-lg mt-4 mb-6 2xl:mb-10">{props.description}</div>
+      <div className="2xl:text-lg mt-4 mb-6 2xl:mb-10">{props.description}</div>
 
       {props.button}
 
