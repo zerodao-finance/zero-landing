@@ -2,12 +2,9 @@ import { ReactNode, useState } from 'react';
 
 import { Transition } from '@headlessui/react';
 import Link from 'next/link';
-// import { useRouter } from 'next/router';
-
 import { RiMenu4Line, RiCloseFill } from 'react-icons/ri';
 
 import { useWindowDimensions } from '../../hooks/window-dimensions';
-// import { Dropdown } from '../components';
 import { Section } from '../layout/section';
 
 type INavbarProps = {
@@ -16,7 +13,6 @@ type INavbarProps = {
 
 const Navbar = (props: INavbarProps) => {
   const { width } = useWindowDimensions();
-  // const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = () => !isOpen && setIsOpen(true);
@@ -28,27 +24,6 @@ const Navbar = (props: INavbarProps) => {
     { text: 'Blog', link: '#blog', target: '_self' },
     { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
   ];
-
-  // const redirect = (el: string) => {
-  //   switch (el.toLowerCase()) {
-  //     case 'home':
-  //       return router.push('/');
-  //     case 'develop':
-  //       return router.push('/develop');
-  //     case 'docs':
-  //       return window.open('https://docs.zerodao.com');
-  //     case 'blog':
-  //       return router.push('#blog');
-  //     case 'analytics':
-  //       return router.push('/analytics');
-  //     case 'launch bridge':
-  //       return window.open('https://bridge.zerodao.com');
-  //     case 'roadmap':
-  //       return router.push('/roadmap');
-  //     default:
-  //       return router.push('/');
-  //   }
-  // };
 
   return (
     <>
@@ -65,10 +40,6 @@ const Navbar = (props: INavbarProps) => {
 
             <nav>
               {width < 600 ? (
-                // <Dropdown
-                //   items={navItems.map((el) => el.text)}
-                //   action={redirect}
-                // />
                 <>
                   <div className="justify-self-end">
                     <button
