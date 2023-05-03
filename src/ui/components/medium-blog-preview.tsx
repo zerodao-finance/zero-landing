@@ -27,32 +27,30 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
 
   return (
     <Link href={props.link} target="_blank" rel="noreferrer">
-      <div className="transition duration-300 hover:scale-[1.025] hover:text-brand-100 cursor-pointer">
-        <DefaultCard>
-          <div className="mb-5">
-            <Image
-              src={props.img}
-              alt={props.alt || 'zerodao'}
-              className="rounded"
-              height="200"
-              width="350"
-              objectFit="cover"
-              layout="responsive"
-              priority
-            />
-          </div>
-          <div className="flex justify-between w-full items-center">
-            <h3 className="font-bold text-lg mb-1">
-              {truncate(props.title, 35)}
-            </h3>
-            <RiMediumFill size="24px" />
-          </div>
-          {/* <span className="text-sm text-gray-100 mb-1">{props.date}</span> */}
-          <p className="text-white" suppressHydrationWarning>
-            {truncate(parsedDesc)}
-          </p>
-        </DefaultCard>
-      </div>
+      <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900">
+        <div className="mb-5">
+          <Image
+            src={props.img}
+            alt={props.alt || 'zerodao'}
+            className="rounded"
+            height="200"
+            width="350"
+            objectFit="cover"
+            layout="responsive"
+            priority
+          />
+        </div>
+        <div className="flex justify-between w-full items-center">
+          <h3 className="font-bold text-lg mb-1">
+            {truncate(props.title, 35)}
+          </h3>
+          <RiMediumFill size="24px" />
+        </div>
+        {/* <span className="text-sm text-gray-100 mb-1">{props.date}</span> */}
+        <p className="text-white" suppressHydrationWarning>
+          {truncate(parsedDesc)}
+        </p>
+      </DefaultCard>
     </Link>
   );
 }

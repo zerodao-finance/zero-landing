@@ -4,6 +4,7 @@ import { BLOGS } from '../../utils/medium-blogs';
 import { Button, MediumBlogPreview, StrapiBlogPreview } from '../components';
 import { Grid, Section } from '../layout';
 import { Background } from '../layout/background';
+import { SectionTitle } from '../typography';
 
 function Blog({ articles, withShowMore }: any) {
   const [blogPosts, setBlogPosts] = useState<any>([]);
@@ -38,13 +39,8 @@ function Blog({ articles, withShowMore }: any) {
 
   return (
     <Background>
-      <Section
-        vertical
-        verticalCenter
-        yPadding="pb-20 pt-28"
-        h1Title
-        title="Blog"
-      >
+      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
+        <SectionTitle text="BLOG" />
         <Grid>
           {(blogPosts || [])
             .sort(
@@ -75,7 +71,7 @@ function Blog({ articles, withShowMore }: any) {
         </Grid>
         {withShowMore && (
           <Button
-            secondary
+            type="secondary"
             onClick={() => setShowFew(!showFew)}
             className="mt-10"
           >

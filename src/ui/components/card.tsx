@@ -28,7 +28,7 @@ const DefaultCard = (props: IDefaultCardProps) => (
 		${props.maxHeight && props.maxHeight}
 		${props.minHeight ? props.minHeight : 'min-h-[300px]'}
 		${props.color ? props.color : 'bg-brand-black'}
-    px-4 py-6 rounded-xl shadow-xl
+    px-4 py-6 rounded-xl shadow-xl transition duration-200
 	`}
   >
     {props.title && (

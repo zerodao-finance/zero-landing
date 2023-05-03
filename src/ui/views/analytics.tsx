@@ -4,7 +4,7 @@ import Link from 'next/link';
 import CountUp from 'react-countup';
 
 import { useWindowDimensions } from '../../hooks';
-import { useAppContext } from '../../store';
+import { useAnalyticsContext } from '../../stores';
 import { TOKEN_MAPPING } from '../../utils/constants';
 import {
   eventsToBarChart,
@@ -12,14 +12,14 @@ import {
   filterEventByType,
 } from '../../utils/helpers';
 import { ResponsiveLineChart } from '../charts/line-chart';
-import { Dropdown, CTAButton, DefaultCard } from '../components';
+import { Dropdown, DefaultCard, Button } from '../components';
 import { Grid, Section } from '../layout';
 import { Background } from '../layout/background';
 import { EventsTable } from '../tables';
 
 const Analytics = () => {
   // Store & Hooks
-  const { data, isLoading, isError } = useAppContext();
+  const { data, isLoading, isError } = useAnalyticsContext();
   const { width } = useWindowDimensions();
   // States
   const [type, setType] = useState('All');
@@ -189,7 +189,7 @@ const Analytics = () => {
             </p>
             <Link href="/">
               <a>
-                <CTAButton text="Take Me Home" />
+                <Button type="cta">Take Me Home</Button>
               </a>
             </Link>
           </div>

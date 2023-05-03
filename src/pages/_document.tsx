@@ -6,7 +6,7 @@ import { AppConfig } from '../utils/app-config';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang={AppConfig.locale}>
+      <Html lang={AppConfig.locale} style={{ scrollBehavior: 'smooth' }}>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link

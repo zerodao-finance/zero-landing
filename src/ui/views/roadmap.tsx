@@ -18,7 +18,6 @@ const Roadmap = ({ data, loading = true }: IRoadmapProps) => {
         description="Our 2023 quarterly breakdown of the DAO's developments"
         h1Title
         vertical
-        style="!pt-28"
       >
         {loading ? (
           <div className="h-[42vh] flex justify-center items-center">

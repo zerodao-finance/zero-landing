@@ -18,7 +18,7 @@ const BlogList = ({ articles }: any) => {
   }, []);
 
   return (
-    <Base withNav meta={{ title: 'ZERO | Blog Posts' }}>
+    <Base meta={{ title: 'ZERO | Blog Posts' }}>
       <Blog articles={statefulArticles} />
     </Base>
   );

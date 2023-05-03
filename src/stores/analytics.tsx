@@ -18,7 +18,7 @@ type IStoreProps = {
 };
 
 // Context
-const AppContext = createContext<IStoreProps>({
+const AnalyticsContext = createContext<IStoreProps>({
   data: {
     eth: {
       transactions: [],
@@ -62,7 +62,7 @@ const AppContext = createContext<IStoreProps>({
 });
 
 // Wrapper
-export function AppWrapper(props: { children: ReactNode }) {
+export function AnalyticsStore(props: { children: ReactNode }) {
   const { data, isError, isLoading } = useTransactions();
 
   const sharedState: IStoreProps = {
@@ -72,13 +72,13 @@ export function AppWrapper(props: { children: ReactNode }) {
   };
 
   return (
-    <AppContext.Provider value={sharedState}>
+    <AnalyticsContext.Provider value={sharedState}>
       {props.children}
-    </AppContext.Provider>
+    </AnalyticsContext.Provider>
   );
 }
 
 // Independent
-export function useAppContext() {
-  return useContext(AppContext);
+export function useAnalyticsContext() {
+  return useContext(AnalyticsContext);
 }

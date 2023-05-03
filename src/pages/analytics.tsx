@@ -4,7 +4,6 @@ import { Analytics } from '../ui/views/analytics';
 const AnalyticsPage = () => {
   return (
     <Base
-      withNav
       meta={{
         title: 'zeroDAO - Bitcoin Bridge Analytics',
         description:

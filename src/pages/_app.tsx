@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { GoogleAnalytics, usePageViews } from 'nextjs-google-analytics';
 
-import { AppWrapper } from '../store';
+import { AnalyticsStore } from '../stores';
 
 import '../styles/global.css';
 
@@ -9,10 +9,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   usePageViews();
 
   return (
-    <AppWrapper>
+    <AnalyticsStore>
       <GoogleAnalytics />
       <Component {...pageProps} />
-    </AppWrapper>
+    </AnalyticsStore>
   );
 };
 

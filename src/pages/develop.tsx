@@ -3,7 +3,7 @@ import { Develop } from '../ui/views/develop';
 
 const DevelopPage = () => {
   return (
-    <Base withNav>
+    <Base>
       <Develop />
     </Base>
   );

@@ -20,10 +20,14 @@ const HomePage = ({ articles }: any) => {
   }, []);
 
   return (
-    <Base withNav>
+    <Base>
       <Hero />
-      <About />
-      <Blog articles={statefulArticles} withShowMore />
+      <div id="about">
+        <About />
+      </div>
+      <div id="blog">
+        <Blog articles={statefulArticles} withShowMore />
+      </div>
     </Base>
   );
 };
