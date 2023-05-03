@@ -11,10 +11,7 @@ const Hero = () => {
     <>
       <Background spaceBetween animation={'beam'}>
         {/* Height is to account for full screen including banner */}
-        <Section
-          verticalCenter
-          style="min-h-[calc(100vh-160px)] xl:min-h-[calc(100vh-120px)]"
-        >
+        <Section verticalCenter style="min-h-[calc(100vh-170px)] pb-12 xl:pb-8">
           <Grid
             xl
             left={
