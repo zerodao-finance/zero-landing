@@ -40,7 +40,7 @@ const Base = (props: IBaseProps) => {
         leaveTo="-translate-y-48"
         className="fixed z-[999] w-full top-0"
       >
-        <Navbar logo={<Logo type={width > 900 ? 'full' : 'logo'} />} />
+        <Navbar batman logo={<Logo type={width > 900 ? 'full' : 'logo'} />} />
       </Transition>
 
       <main>{props.children}</main>

@@ -6,7 +6,6 @@ type ILogoProps = {
 };
 
 const Logo = (props: ILogoProps) => {
-  console.log(props.type);
   if (props.type === 'text') {
     return (
       <div className="w-[160px] h-[30px]">
