@@ -50,7 +50,7 @@ const Article = ({ article }: any) => {
         image: statefulArticle?.attributes?.thumbnail,
       }}
     >
-      <Section vertical style="!pt-28">
+      <Section vertical>
         <div className="mb-1">
           <h1 className="text-3xl font-bold">
             {statefulArticle?.attributes.title}

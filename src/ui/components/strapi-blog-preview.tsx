@@ -9,8 +9,8 @@ import { DefaultCard } from './card';
 function StrapiBlogPreview({ article }: any) {
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
-      <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 group transition duration-200 hover:shadow-none">
-        <>
+      <a>
+        <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 group transition duration-200 hover:shadow-none">
           <div className="mb-5">
             <Image
               src={
@@ -33,8 +33,8 @@ function StrapiBlogPreview({ article }: any) {
           </div>
           <h3 className="font-bold text-lg mb-1">{article.attributes.title}</h3>
           {/* <span className="text-sm text-gray-100 mb-1">
-            {article.formattedDate}
-          </span> */}
+              {article.formattedDate}
+            </span> */}
           <ReactMarkdown
             className="text-white"
             remarkPlugins={[remarkGfm]}
@@ -46,8 +46,8 @@ function StrapiBlogPreview({ article }: any) {
                 : article.attributes.content
             )}
           </ReactMarkdown>
-        </>
-      </DefaultCard>
+        </DefaultCard>
+      </a>
     </Link>
   );
 }
