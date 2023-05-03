@@ -129,7 +129,7 @@ const Timeline = ({
             el.items.map((item, i) => (
               <DefaultCard
                 minHeight="0"
-                className="w-fit max-w-lg"
+                className={`w-full sm:w-fit max-w-lg`}
                 key={`${el.quarter}-card-${i}`}
               >
                 <h3 className="flex items-start mb-1 text-lg font-semibold">
