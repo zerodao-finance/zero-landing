@@ -10,7 +10,6 @@ import { Navbar } from './navbar';
 
 type IBaseProps = {
   children: ReactNode;
-  withNav?: boolean;
   meta?: {
     title?: string;
     description?: string;
@@ -29,7 +28,7 @@ const Base = (props: IBaseProps) => {
         image={props.meta?.image}
       />
       {/* Static Nav */}
-      <Navbar logo={<Logo xl={width > 900} svg />} />
+      <Navbar logo={<Logo xl svg />} />
       {/* Batman Nav */}
       <Transition
         show={scrollY > 500}

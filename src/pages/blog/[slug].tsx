@@ -44,7 +44,6 @@ const Article = ({ article }: any) => {
 
   return (
     <Base
-      withNav
       meta={{
         title: `ZERO | ${cleanMetaTitle(statefulArticle?.attributes.title)}`,
         description: statefulArticle?.attributes.description,

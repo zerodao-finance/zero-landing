@@ -44,7 +44,7 @@ const Navbar = (props: INavbarProps) => {
                   <div className="justify-self-end">
                     <button
                       onClick={openMenu}
-                      className="inline-flex justify-center w-full p-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
+                      className="inline-flex justify-center w-full p-1 text-neutral-100 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
                     >
                       <RiMenu4Line size="32px" />
                     </button>
@@ -61,7 +61,7 @@ const Navbar = (props: INavbarProps) => {
                       <div className=" w-72 flex flex-col h-full bg-brand-black shadow-md z-50 p-2 items-start">
                         <button
                           onClick={closeMenu}
-                          className="inline-flex p-2 self-end rounded-md text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
+                          className="inline-flex p-2 self-end rounded-md text-sm font-medium text-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
                         >
                           <RiCloseFill size="32px" />
                         </button>
@@ -72,7 +72,7 @@ const Navbar = (props: INavbarProps) => {
                                 href={item.link}
                                 target={item.target}
                                 className={
-                                  'block px-4 py-2 text-2xl uppercase font-bold w-full'
+                                  'block px-4 py-2 text-2xl uppercase font-bold w-full text-neutral-100'
                                 }
                                 rel="noreferrer"
                                 onClick={closeMenu}
@@ -95,7 +95,7 @@ const Navbar = (props: INavbarProps) => {
                       className="fixed z-[999] h-screen right-0 top-0"
                     >
                       <div
-                        className="w-screen h-full bg-[rgba(0,0,0,0.25)]"
+                        className="w-screen h-full bg-[rgba(50,50,50,0.5)]"
                         onClick={closeMenu}
                       />
                     </Transition>

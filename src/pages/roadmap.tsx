@@ -39,7 +39,7 @@ const RoadmapPage = ({ roadmapItems }: any) => {
   }, []);
 
   return (
-    <Base withNav>
+    <Base>
       <Roadmap loading={isLoading} data={statefulRoadmapItems} />
     </Base>
   );
