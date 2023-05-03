@@ -5,7 +5,7 @@ import { Grid, Section, OneActionHero } from '../layout';
 import { Background } from '../layout/background';
 
 const Hero = () => {
-  const { width } = useWindowDimensions();
+  const { width, breakpoints } = useWindowDimensions();
 
   return (
     <>
@@ -13,8 +13,7 @@ const Hero = () => {
         {/* Height is to account for full screen including banner */}
         <Section
           verticalCenter
-          style="min-h-[calc(100vh-150px)] xl:min-h-[calc(100vh-100px)] mt-20 xl:mt-0"
-          // style="min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-120px)] mt-20 xl:mt-0"
+          style="min-h-[calc(100vh-160px)] xl:min-h-[calc(100vh-120px)]"
         >
           <Grid
             xl
@@ -31,36 +30,22 @@ const Hero = () => {
                   <>
                     <p>
                       The ZERO network is a fully decentralized layer 0 bridging
-                      EVM and non-EVM networks, using multiparty cryptography.{' '}
-                      {width > 900 &&
-                        'The zeroDAO protocol values security, speed, and reliability above all else, ensuring users can safely and quickly move funds across chains.'}
+                      EVM and non-EVM networks, using multiparty cryptography.
+                      The zeroDAO protocol values security, speed, and
+                      reliability above all else, ensuring users can safely and
+                      quickly move funds across chains.
                     </p>
-                    <br />
-                    <p>
-                      {
-                        'With the launch of $ZERO and the DAO, the community will be empowered to govern the ZERO protocol.'
-                      }
-                    </p>
+                    {width > breakpoints.lg && (
+                      <>
+                        <br />
+                        <p>
+                          With the launch of $ZERO and the DAO, the community
+                          will be empowered to govern the ZERO protocol.
+                        </p>
+                      </>
+                    )}
                   </>
                 }
-                // button={
-                //   <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center items-center xl:justify-start">
-                //     <Link href="https://bridge.zerodao.com" passHref={true}>
-                //       <a>
-                //         <CTAButton text="Launch Bridge" />
-                //       </a>
-                //     </Link>
-                //     <Link href={isLoading ? '/' : '/analytics'}>
-                //       <a>
-                //         <Button xl={width > 600} secondary disabled={isLoading}>
-                //           <span className={`${isLoading && 'animate-pulse'}`}>
-                //             Analytics
-                //           </span>
-                //         </Button>
-                //       </a>
-                //     </Link>
-                //   </div>
-                // }
               />
             }
             right={
@@ -106,25 +91,6 @@ const Hero = () => {
             <div className="scroller"></div>
           </div>
         </div>
-
-        {/* <Banner
-          loading={isLoading}
-          items={[
-            {
-              text: width > 600 ? 'Total Volume (BTC)' : 'BTC Volume',
-              value: data.all.volume,
-            },
-            { text: width > 600 ? 'Chains Integrated' : 'Chains', value: 5 },
-            {
-              text: width > 600 ? 'Transactions' : 'TXs',
-              value: data.all.transactions.length,
-            },
-            {
-              text: width > 600 ? 'Assets Integrated' : 'Assets',
-              value: TOKENS.length,
-            },
-          ]}
-        /> */}
       </Background>
     </>
   );

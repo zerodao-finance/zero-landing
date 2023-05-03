@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { IEventProps } from '../types/events';
-// TODO: Fix all these functions
 
 function useTableUtils() {
   const [filters, setFilters] = useState<any>({});
@@ -130,20 +129,12 @@ function useTableUtils() {
     return sorted;
   };
 
-  // const searchTable = (
-  //     data: Array<any>,
-  //     input:string
-  // ) => {
-
-  // }
-
   return {
     filters,
     setFilters,
     sortByNumber,
     sortByAlpha,
     sortByDate,
-    // searchTable,
     originalData,
     setOriginalData,
     filteredData,

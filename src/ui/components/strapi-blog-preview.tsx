@@ -9,7 +9,7 @@ import { DefaultCard } from './card';
 function StrapiBlogPreview({ article }: any) {
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
-      <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900">
+      <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 group transition duration-200 hover:shadow-none">
         <>
           <div className="mb-5">
             <Image
@@ -23,7 +23,7 @@ function StrapiBlogPreview({ article }: any) {
                   ? article?.attributes?.slug
                   : 'zeroDAO'
               }
-              className="rounded"
+              className="rounded transition duration-200"
               height="200"
               width="350"
               objectFit={article?.attributes?.thumbnail ? 'cover' : 'contain'}

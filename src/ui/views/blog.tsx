@@ -71,7 +71,7 @@ function Blog({ articles, withShowMore }: any) {
         </Grid>
         {withShowMore && (
           <Button
-            secondary
+            type="secondary"
             onClick={() => setShowFew(!showFew)}
             className="mt-10"
           >

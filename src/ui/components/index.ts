@@ -1,6 +1,5 @@
 export * from './button';
 export * from './card';
-export * from './cta-button';
 export * from './dropdown';
 export * from './medium-blog-preview';
 export * from './preloader';

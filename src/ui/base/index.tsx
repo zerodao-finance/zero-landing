@@ -1,4 +1,6 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
+
+import { Transition } from '@headlessui/react';
 
 import { useWindowDimensions } from '../../hooks/window-dimensions';
 import { Footer } from './footer';
@@ -17,25 +19,8 @@ type IBaseProps = {
 };
 
 const Base = (props: IBaseProps) => {
-  const { width } = useWindowDimensions();
-  const [scrollY, setScrollY] = useState(0);
+  const { width, scrollY } = useWindowDimensions();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    // just trigger this so that the initial state
-    // is updated as soon as the component is mounted
-    handleScroll();
-    console.log('Scroll Position:', scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <div className="antialiased text-white">
       <Meta
@@ -43,11 +28,25 @@ const Base = (props: IBaseProps) => {
         description={props.meta?.description}
         image={props.meta?.image}
       />
-      <>
-        {props.withNav && <Navbar logo={<Logo xl={width > 900} svg />} />}
-        <main>{props.children}</main>
-        <Footer iconList />
-      </>
+      {/* Static Nav */}
+      <Navbar logo={<Logo xl={width > 900} svg />} />
+      {/* Batman Nav */}
+      <Transition
+        show={scrollY > 500}
+        enter="transform transition ease-in-out duration-500"
+        enterFrom="-translate-y-48"
+        enterTo="translate-y-0"
+        leave="transform transition ease-in-out duration-500"
+        leaveFrom="translate-y-0"
+        leaveTo="-translate-y-48"
+        className="fixed z-[999] w-full top-0"
+      >
+        <Navbar logo={<Logo xl={width > 900} svg />} />
+      </Transition>
+
+      <main>{props.children}</main>
+
+      <Footer iconList />
     </div>
   );
 };

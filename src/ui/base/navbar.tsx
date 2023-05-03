@@ -18,7 +18,7 @@ const Navbar = (props: INavbarProps) => {
   const navItems: { text: string; link: string; target?: string }[] = [
     { text: 'Home', link: '/' },
     { text: 'Roadmap', link: '/roadmap' },
-    { text: 'Blog', link: '/blog' },
+    { text: 'Blog', link: '#blog' },
     { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
   ];
 
@@ -31,7 +31,7 @@ const Navbar = (props: INavbarProps) => {
       case 'docs':
         return window.open('https://docs.zerodao.com');
       case 'blog':
-        return router.push('/blog');
+        return router.push('#blog');
       case 'analytics':
         return router.push('/analytics');
       case 'launch bridge':
@@ -44,57 +44,59 @@ const Navbar = (props: INavbarProps) => {
   };
 
   return (
-    <div className="fixed w-full z-[99999] bg-gray-1000">
-      <Section yPadding="py-3 md:py-4 lg:py-5" wide>
-        <div className="flex flex-wrap justify-between items-center w-full">
-          <div>
-            <Link href="/">
-              <a>{props.logo}</a>
-            </Link>
-          </div>
+    <>
+      <div className={`w-full z-[99999] bg-gray-1000`}>
+        <Section yPadding="py-3 md:py-4 lg:py-5" wide>
+          <div className="flex flex-wrap justify-between items-center w-full">
+            <div>
+              <Link href="/">
+                <a>{props.logo}</a>
+              </Link>
+            </div>
 
-          <nav>
-            {width < 600 ? (
-              <Dropdown
-                items={navItems.map((el) => el.text)}
-                action={redirect}
-              />
-            ) : (
-              <ul className="navbar flex items-center font-medium 2xl:text-lg text-white uppercase">
-                {navItems.map((el, i) => (
-                  <li
-                    className="hover:text-gray-100 transition duration-150"
-                    key={`nav-item-${i}`}
-                  >
-                    <Link href={el.link} target={el.target}>
-                      <a>{el.text}</a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </nav>
+            <nav>
+              {width < 600 ? (
+                <Dropdown
+                  items={navItems.map((el) => el.text)}
+                  action={redirect}
+                />
+              ) : (
+                <ul className="navbar flex items-center font-medium 2xl:text-lg text-white uppercase">
+                  {navItems.map((el, i) => (
+                    <li
+                      className="hover:text-gray-100 transition duration-150"
+                      key={`nav-item-${i}`}
+                    >
+                      <Link href={el.link} target={el.target}>
+                        <a>{el.text}</a>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </nav>
 
-          <style jsx>
-            {`
-              .navbar :global(li:not(:first-child)) {
-                @apply mt-0;
-              }
-
-              .navbar :global(li:not(:last-child)) {
-                @apply mr-3;
-              }
-
-              @media only screen and (min-width: 1080px) {
-                .navbar :global(li:not(:last-child)) {
-                  @apply mr-6;
+            <style jsx>
+              {`
+                .navbar :global(li:not(:first-child)) {
+                  @apply mt-0;
                 }
-              }
-            `}
-          </style>
-        </div>
-      </Section>
-    </div>
+
+                .navbar :global(li:not(:last-child)) {
+                  @apply mr-3;
+                }
+
+                @media only screen and (min-width: 1080px) {
+                  .navbar :global(li:not(:last-child)) {
+                    @apply mr-6;
+                  }
+                }
+              `}
+            </style>
+          </div>
+        </Section>
+      </div>
+    </>
   );
 };
 

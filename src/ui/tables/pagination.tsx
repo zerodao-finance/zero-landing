@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 
-import { useAppContext } from '../../store';
+import { useAnalyticsContext } from '../../stores';
 import { IPaginationProps } from '../../types/tables';
 
 function Pagination(props: IPaginationProps) {
   // Hooks
   const {
     data: { all },
-  } = useAppContext();
+  } = useAnalyticsContext();
 
   // Utils
   const { data, page, setPage, pages } = props;
