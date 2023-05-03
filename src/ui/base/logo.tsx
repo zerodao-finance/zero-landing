@@ -15,7 +15,7 @@ const Logo = (props: ILogoProps) => {
   }
   if (props.type === 'logo') {
     return (
-      <div className="w-[50px] h-[50px]">
+      <div className="w-[45px] h-[45px]">
         <LogoOnly />
       </div>
     );
