@@ -30,7 +30,7 @@ const Navbar = (props: INavbarProps) => {
       <div
         className={`w-full z-[99999] bg-gray-1000 shadow-md shadow-neutral-900`}
       >
-        <Section yPadding="py-3 md:py-4 lg:py-5" wide>
+        <Section yPadding="py-3 md:py-4 lg:py-5 px-4" wide>
           <div className="flex flex-wrap justify-between items-center w-full">
             <div>
               <Link href="/">

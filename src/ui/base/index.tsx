@@ -28,7 +28,7 @@ const Base = (props: IBaseProps) => {
         image={props.meta?.image}
       />
       {/* Static Nav */}
-      <Navbar logo={<Logo xl svg />} />
+      <Navbar logo={<Logo type={width > 900 ? 'full' : 'text'} />} />
       {/* Batman Nav */}
       <Transition
         show={scrollY > 500}
@@ -40,7 +40,7 @@ const Base = (props: IBaseProps) => {
         leaveTo="-translate-y-48"
         className="fixed z-[999] w-full top-0"
       >
-        <Navbar logo={<Logo xl={width > 900} svg />} />
+        <Navbar logo={<Logo type={width > 900 ? 'full' : 'logo'} />} />
       </Transition>
 
       <main>{props.children}</main>
