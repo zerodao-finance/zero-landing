@@ -9,6 +9,7 @@ import { Section } from '../layout/section';
 
 type INavbarProps = {
   logo: ReactNode;
+  batman?: boolean;
 };
 
 const Navbar = (props: INavbarProps) => {
@@ -28,7 +29,9 @@ const Navbar = (props: INavbarProps) => {
   return (
     <>
       <div
-        className={`w-full z-[99999] bg-gray-1000 shadow-md shadow-neutral-900`}
+        className={`w-full z-[99999] bg-gray-1000 ${
+          props.batman ? 'shadow-md shadow-neutral-900' : ''
+        }`}
       >
         <Section yPadding="py-3 lg:py-4 px-4" wide>
           <div className="flex flex-wrap justify-between items-center w-full">
