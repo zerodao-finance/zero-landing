@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
+import { useWindowDimensions } from '../../hooks';
 import { BLOGS } from '../../utils/medium-blogs';
 import { Button, MediumBlogPreview, StrapiBlogPreview } from '../components';
 import { Grid, Section } from '../layout';
 import { Background } from '../layout/background';
-import { SectionTitle } from '../typography';
 
 function Blog({ articles, withShowMore }: any) {
+  const { width, breakpoints } = useWindowDimensions();
   const [blogPosts, setBlogPosts] = useState<any>([]);
   const [showFew, setShowFew] = useState(true);
 
@@ -39,8 +40,7 @@ function Blog({ articles, withShowMore }: any) {
 
   return (
     <Background>
-      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
-        <SectionTitle text="BLOG" />
+      <Section title="Blog" vertical verticalCenter yPadding="py-10 lg:py-20">
         <Grid>
           {(blogPosts || [])
             .sort(
@@ -67,11 +67,18 @@ function Blog({ articles, withShowMore }: any) {
                 <StrapiBlogPreview article={el} key={el.attributes.slug} />
               );
             })
-            .slice(0, showFew && withShowMore ? 6 : blogPosts.length)}
+            .slice(
+              0,
+              showFew && withShowMore
+                ? width > breakpoints.sm
+                  ? 6
+                  : 3
+                : blogPosts.length
+            )}
         </Grid>
         {withShowMore && (
           <Button
-            type="secondary"
+            type="outline"
             onClick={() => setShowFew(!showFew)}
             className="mt-10"
           >

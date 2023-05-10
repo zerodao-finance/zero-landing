@@ -9,7 +9,7 @@ type IBackgroundProps = {
   full?: boolean;
   spaceBetween?: boolean;
   animation?: 'beam' | 'waves' | null;
-  style?: string;
+  className?: string;
 };
 
 const Background = (props: IBackgroundProps) => (
@@ -19,11 +19,11 @@ const Background = (props: IBackgroundProps) => (
       ${props.spaceBetween && 'flex flex-col items-between'}
       ${props.color ? props.color : 'bg-gray-1000'}
       ${props.animation && 'z-[99] relative block overflow-hidden'}
-      ${props.style && props.style}
+      ${props.className && props.className}
     `}
   >
     {props.animation && (
-      <div className="absolute -z-10" id="bg-animation">
+      <div className={`absolute -z-10`} id="bg-animation">
         {props.animation === 'beam' && <AnimateBeam />}
         {props.animation === 'waves' && <AnimateWaves />}
       </div>
