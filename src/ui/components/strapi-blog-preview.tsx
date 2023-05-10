@@ -10,7 +10,7 @@ function StrapiBlogPreview({ article }: any) {
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
       <a>
-        <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 group transition duration-200 hover:shadow-none">
+        <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 group transition duration-200 hover:shadow-none h-full">
           <div className="mb-5">
             <Image
               src={

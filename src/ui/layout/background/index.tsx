@@ -23,7 +23,7 @@ const Background = (props: IBackgroundProps) => (
     `}
   >
     {props.animation && (
-      <div className="absolute z-[-1]" id="bg-animation">
+      <div className="absolute -z-10" id="bg-animation">
         {props.animation === 'beam' && <AnimateBeam />}
         {props.animation === 'waves' && <AnimateWaves />}
       </div>

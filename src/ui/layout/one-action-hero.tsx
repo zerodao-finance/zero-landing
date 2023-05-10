@@ -27,9 +27,9 @@ const OneActionHero = (props: IHeroOneActionProps) => {
     >
       {props?.link && (
         <Link href={props.link.href}>
-          <div className="flex justify-center gap-1 text-gray-100 cursor-pointer hover:text-brand-100 lg:max-w-fit transition duration-200">
+          <div className="flex justify-center gap-1 text-gray-100 cursor-pointer hover:text-brand-100 lg:max-w-fit transition duration-200 text-sm">
             <span>{props.link.text}</span>
-            <MdArrowForward size="21px" />
+            <MdArrowForward size="20px" />
           </div>
         </Link>
       )}

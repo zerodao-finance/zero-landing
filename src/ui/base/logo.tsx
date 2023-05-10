@@ -8,14 +8,14 @@ type ILogoProps = {
 const Logo = (props: ILogoProps) => {
   if (props.type === 'text') {
     return (
-      <div className="w-[160px] h-[30px]">
+      <div className="w-[150px] h-[25px]">
         <img src="/assets/images/logos/text-only.png" alt="zeroDAO Logo" />
       </div>
     );
   }
   if (props.type === 'logo') {
     return (
-      <div className="w-[45px] h-[45px]">
+      <div className="w-[40px] h-[40px]">
         <LogoOnly />
       </div>
     );

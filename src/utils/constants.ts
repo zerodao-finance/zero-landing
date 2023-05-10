@@ -1,8 +1,5 @@
 import { ethers } from 'ethers';
 
-// Styles
-export const hoverWhite = 'transition duration-200 hover:text-gray-100';
-
 /* Web3 */
 export const BRIDGE_GENESIS_BLOCK = 14567078;
 

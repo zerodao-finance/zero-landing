@@ -30,7 +30,7 @@ const Navbar = (props: INavbarProps) => {
     <>
       <div
         className={`w-full z-[99999] bg-gray-1000 ${
-          props.batman ? 'shadow-md shadow-neutral-900' : ''
+          props.batman ? 'shadow-lg' : ''
         }`}
       >
         <Section yPadding="py-3 lg:py-4 px-4" wide>
