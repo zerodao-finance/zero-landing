@@ -32,7 +32,7 @@ const SocialIconList = (props: ISocialIconListProps) => {
       footer-icon-list flex flex-wrap gap-3 justify-center lg:justify-start 
       ${props.reactive && 'flex-col 2xl:flex-row 2xl:gap-0'}
       ${props.vertical && '!flex-col !gap-5'}
-      ${props.blogShare && '!gap-3'}
+      ${props.blogShare && '!gap-2 2xl:gap-3'}
       ${props.className ? props.className : ''}
     `}
     >

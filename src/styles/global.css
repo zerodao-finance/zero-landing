@@ -7,6 +7,9 @@
 @tailwind variants;
 
 @layer base {
+    html {
+        padding: 0 !important;
+    }
     body {
         background-color: #121212;
         font-family: 'Roboto Flex', sans-serif;
@@ -36,24 +39,13 @@
 @media screen and (min-width: 600px) {
     #bg-animation {
         display: block;
-        margin-top: 6vh
     }
 }
-@media screen and (min-width: 900px) {
-    #bg-animation {
-        margin-top: 2vh
-    }
-}
-@media screen and (min-width: 1200px) {
-    #bg-animation {
-        margin-top: 0vh;
-    }
-}
-/* @media screen and (min-width: 2000px) {
+@media screen and (min-width: 2000px) {
     #bg-animation {
         display: none;
     }
-} */
+}
 
 
 

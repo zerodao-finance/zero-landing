@@ -13,19 +13,19 @@
 }
 
 .reactMarkDown h2 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0.6rem 0;
 }
 
 .reactMarkDown h3 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 600;
   margin: 0.4rem 0;
 }
 
 .reactMarkDown h4 {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin: 0.4rem 0;
 }
@@ -67,5 +67,16 @@
 
   .reactMarkDown ul, .reactMarkDown ol {
     padding: 0 5rem;
+  }
+  .reactMarkDown h2 {
+    font-size: 1.8rem;
+  }
+
+  .reactMarkDown h3 {
+    font-size: 1.6rem;
+  }
+
+  .reactMarkDown h4 {
+    font-size: 1.4rem;
   }
 }
