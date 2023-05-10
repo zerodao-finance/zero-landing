@@ -5,20 +5,22 @@ type IButtonProps = {
   disabled?: boolean;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: 'secondary' | 'cta' | 'primary';
+  type?: 'outline' | 'cta' | 'link' | 'primary';
 };
 
 const Button = (props: IButtonProps) => {
-  const baseClass = `inline-block rounded-md text-center cursor-pointer text-lg font-semibold py-2 px-4`;
-
+  const baseClass = `inline-block rounded-md text-center cursor-pointer text-lg font-semibold py-2 px-4 transition duration-200`;
   if (props.type === 'cta') {
     return (
       <button
         onClick={props.onClick ? props.onClick : () => {}}
-        className={`px-5 py-1.5 space-x-1 transition duration-200 font-bold relative group rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900`}
+        className={`${
+          props.className ? props.className : ''
+        } overflow-hidden group px-5 py-1.5 space-x-1 transition duration-200 font-bold relative group rounded-full flex items-center bg-gradient-to-r from-[#286638] to-brand-100 hover:to-brand-900`}
       >
         <span className="relative text-md md:text-lg text-neutral-100 uppercase">
           {props.children}
+          <span className="absolute -right-8 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
         </span>
         <div className="flex items-center -space-x-3 translate-x-3">
           <div className="w-2.5 h-[2px] rounded bg-white origin-left scale-x-0 transition duration-200 group-hover:scale-x-100"></div>
@@ -40,17 +42,54 @@ const Button = (props: IButtonProps) => {
       </button>
     );
   }
-  if (props.type === 'secondary') {
+  if (props.type === 'outline') {
     return (
       <button
-        className={`${baseClass}
-          ${props.className ? props.className : ''} 
-          ${props.disabled ? `opacity-50 !cursor-not-allowed !text-white` : ''} 
-          uppercase
-        `}
+        onClick={props.onClick ? props.onClick : () => {}}
+        className={`${
+          props.className ? props.className : ''
+        } overflow-hidden group px-5 py-1.5 space-x-1 transition duration-200 font-bold relative group rounded-full flex items-center border-2 border-brand-900 hover:border-brand-100 hover:text-neutral-300`}
+      >
+        <span className="relative text-md md:text-lg uppercase">
+          {props.children}
+          <span className="absolute -right-8 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-brand-100 opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+        </span>
+      </button>
+    );
+  }
+  if (props.type === 'link') {
+    return (
+      <button
+        className={`${baseClass} ${
+          props.className ? props.className : ''
+        } uppercase !font-medium btn-link !p-1`}
         onClick={props.onClick ? props.onClick : () => {}}
       >
         {props.children}
+
+        <style jsx>
+          {`
+            .btn-link {
+              background-image: linear-gradient(
+                to right,
+                #41a75b,
+                #41a75b 50%,
+                #f5f5f5 50%
+              );
+              background-size: 200% 100%;
+              background-position: -100%;
+              display: inline-block;
+              position: relative;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              transition: all 0.2s ease-in-out;
+            }
+
+            .btn-link:hover {
+              background-position: 0;
+            }
+          `}
+        </style>
       </button>
     );
   }
@@ -59,35 +98,11 @@ const Button = (props: IButtonProps) => {
       className={`${baseClass}
         ${props.className ? props.className : ''} 
         ${props.disabled ? `opacity-50 !cursor-not-allowed !text-white` : ''} 
-        uppercase
+        uppercase hover:text-neutral-300
       `}
       onClick={props.onClick ? props.onClick : () => {}}
     >
       {props.children}
-
-      <style jsx>
-        {`
-          .btn {
-            @apply inline-block rounded-md text-center cursor-pointer;
-          }
-
-          .btn-base {
-            @apply text-lg font-semibold py-2 px-4;
-          }
-
-          .btn-xl {
-            @apply font-extrabold text-xl py-4 px-6;
-          }
-
-          .btn-primary {
-            @apply text-white bg-brand-100 transition duration-200;
-          }
-
-          .btn-primary:hover {
-            @apply bg-brand-900;
-          }
-        `}
-      </style>
     </button>
   );
 };

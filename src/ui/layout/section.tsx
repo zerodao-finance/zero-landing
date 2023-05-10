@@ -32,22 +32,22 @@ const Section = (props: ISectionProps) => (
     `}
   >
     {(props.title || props.description) && (
-      <div className="mb-12 text-center">
+      <div className="text-center">
         {props.title && (
           <>
             {props.h1Title ? (
-              <h1 className="text-2xl md:text-3xl text-white font-bold uppercase">
+              <h1 className="text-2xl 2xl:text-3xl uppercase font-bold mb-5 lg:mb-10">
                 {props.title}
               </h1>
             ) : (
-              <h2 className="text-2xl md:text-3xl text-white font-bold">
+              <h2 className="text-2xl 2xl:text-3xl font-bold uppercase mb-5 lg:mb-10">
                 {props.title}
               </h2>
             )}
           </>
         )}
         {props.description && (
-          <div className="mt-2 md:mt-4 text-lg md:text-xl md:px-20">
+          <div className="mt-2 md:mt-4 text-lg md:text-xl md:px-20 mb-12">
             {props.description}
           </div>
         )}

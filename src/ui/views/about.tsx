@@ -5,12 +5,7 @@ import { useWindowDimensions } from '../../hooks';
 import { Button } from '../components';
 import { Section } from '../layout';
 import { Background } from '../layout/background';
-import {
-  AboutParagraph,
-  AboutSubTitle,
-  AboutTitle,
-  SectionTitle,
-} from '../typography';
+import { AboutParagraph, AboutSubTitle, AboutTitle } from '../typography';
 
 const About = () => {
   const { width } = useWindowDimensions();
@@ -41,8 +36,7 @@ const About = () => {
 
   return (
     <Background color="bg-gray-900" animation={width < 1920 ? 'waves' : null}>
-      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
-        <SectionTitle text="About" />
+      <Section vertical verticalCenter yPadding="py-10 lg:py-20" title="About">
         {aboutContent.map((el, i) => (
           <div
             className="mb-10 md:mb-15 lg:mb-20 first-of-type:xl:mb-36"
@@ -75,7 +69,7 @@ const About = () => {
                   alt={el.title || 'zerodao'}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-lg"
+                  className="rounded-md"
                   loading="lazy"
                 />
               </div>

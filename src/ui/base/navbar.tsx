@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { RiMenu4Line, RiCloseFill } from 'react-icons/ri';
 
 import { useWindowDimensions } from '../../hooks/window-dimensions';
+import { Button } from '../components';
 import { Section } from '../layout/section';
 
 type INavbarProps = {
@@ -30,7 +31,7 @@ const Navbar = (props: INavbarProps) => {
     <>
       <div
         className={`w-full z-[99999] bg-gray-1000 ${
-          props.batman ? 'shadow-md shadow-neutral-900' : ''
+          props.batman ? 'shadow-lg' : ''
         }`}
       >
         <Section yPadding="py-3 lg:py-4 px-4" wide>
@@ -105,38 +106,22 @@ const Navbar = (props: INavbarProps) => {
                   </div>
                 </>
               ) : (
-                <ul className="navbar flex items-center font-medium 2xl:text-lg text-white uppercase">
+                <ul className="navbar flex gap-3 2xl:gap-6 items-center font-medium 2xl:text-lg text-white uppercase">
                   {navItems.map((el, i) => (
                     <li
-                      className="hover:text-gray-100 transition duration-150"
+                      // className="hover:text-gray-100 transition duration-150"
                       key={`nav-item-${i}`}
                     >
                       <Link href={el.link} target={el.target}>
-                        <a>{el.text}</a>
+                        <a>
+                          <Button type="link">{el.text}</Button>
+                        </a>
                       </Link>
                     </li>
                   ))}
                 </ul>
               )}
             </nav>
-
-            <style jsx>
-              {`
-                .navbar :global(li:not(:first-child)) {
-                  @apply mt-0;
-                }
-
-                .navbar :global(li:not(:last-child)) {
-                  @apply mr-3;
-                }
-
-                @media only screen and (min-width: 1080px) {
-                  .navbar :global(li:not(:last-child)) {
-                    @apply mr-6;
-                  }
-                }
-              `}
-            </style>
           </div>
         </Section>
       </div>
