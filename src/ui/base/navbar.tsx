@@ -34,7 +34,7 @@ const Navbar = (props: INavbarProps) => {
           props.batman ? 'shadow-lg' : ''
         }`}
       >
-        <Section yPadding="py-3 lg:py-4 px-4" wide>
+        <Section yPadding="py-2 md:py-3 lg:py-4 px-4" wide>
           <div className="flex flex-wrap justify-between items-center w-full">
             <div>
               <Link href="/">
@@ -50,7 +50,7 @@ const Navbar = (props: INavbarProps) => {
                       onClick={openMenu}
                       className="inline-flex justify-center w-full p-1 text-neutral-100 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
                     >
-                      <RiMenu4Line size="32px" />
+                      <RiMenu4Line size="30px" />
                     </button>
                     <Transition
                       show={isOpen}

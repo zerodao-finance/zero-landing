@@ -52,7 +52,7 @@ const Article = ({ article }: any) => {
     >
       <Section vertical>
         <div className="mb-1">
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-2xl 2xl:text-3xl font-bold leading-snug md:leading-normal">
             {statefulArticle?.attributes.title}
           </h1>
         </div>
@@ -62,12 +62,12 @@ const Article = ({ article }: any) => {
               Author: {statefulArticle?.attributes.author.data.attributes.name}
             </p>
           )}
-          <div className="flex flex-col md:flex-row w-full justify-between">
+          <div className="flex flex-col md:flex-row w-full justify-between text-sm">
             <p>
               Published On:{' '}
               {new Date(
                 statefulArticle?.attributes.publishedAt
-              ).toLocaleString()}
+              ).toLocaleDateString()}
             </p>
             <SocialIconList
               blogShare={`https://zerodao.com${router.asPath}`}

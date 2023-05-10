@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useWindowDimensions } from '../../hooks';
 import { Grid, Section, OneActionHero } from '../layout';
 import { Background } from '../layout/background';
+// import { WhitelistQuiz } from '../modals';
 
 const Hero = () => {
   const { width, breakpoints } = useWindowDimensions();
@@ -43,6 +44,7 @@ const Hero = () => {
                     )}
                   </>
                 }
+                // button={<WhitelistQuiz />}
               />
             }
             right={
