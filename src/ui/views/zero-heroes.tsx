@@ -7,12 +7,14 @@ const ZeroHeroes = () => {
     <Background color="bg-gradient-to-b from-gray-900 to-gray-1000">
       <Section vertical verticalCenter yPadding="py-10 lg:py-20" title="Heroes">
         <div className="flex flex-col lg:flex-row gap-3 lg:gap-6">
-          <img
-            src={`/assets/zhero-preview.gif`}
-            alt="Zero Heroes GIF"
-            loading="lazy"
-            className="rounded-md shadow-md shadow-black max-w-sm float"
-          />
+          <div>
+            <img
+              src={`/assets/zhero-preview.gif`}
+              alt="Zero Heroes GIF"
+              loading="lazy"
+              className="rounded-md shadow-md shadow-black max-w-sm float w-full sm:w-auto"
+            />
+          </div>
           <div className="flex flex-col gap-2">
             <T.Title text="ZERO Heroes are the foundation of the ZERO Network." />
             <div className="flex flex-col gap-2 lg:gap-4">
