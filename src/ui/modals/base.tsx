@@ -43,9 +43,9 @@ export const ModalBase = ({
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden transition-all w-full max-w-xl">
+              <Dialog.Panel className="relative transform overflow-hidden transition-all w-full max-w-2xl">
                 <DefaultCard
-                  className="flex flex-col text-neutral-100"
+                  className="flex flex-col text-neutral-100 sm:px-8"
                   title={title}
                   largeTitle
                   center

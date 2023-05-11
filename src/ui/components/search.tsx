@@ -1,5 +1,9 @@
 import { FormEvent } from 'react';
 
+import { BiSearchAlt, BiLoaderAlt } from 'react-icons/bi';
+
+import { useWindowDimensions } from '../../hooks';
+
 type ISearchInputProps = {
   type?: 'special' | 'default';
   className?: string;
@@ -16,12 +20,30 @@ export const SearchInput = ({
   onSearch,
   value,
   placeholder,
+  loading,
 }: ISearchInputProps) => {
+  const { width, breakpoints } = useWindowDimensions();
   const renderPlaceHolder = placeholder || 'Start typing here...';
+  const renderBtnContent = () => {
+    if (loading)
+      return (
+        <>
+          <BiLoaderAlt className="animate-spin" size="20px" />
+        </>
+      );
+    if (width < breakpoints.sm) return <BiSearchAlt size="20px" />;
+    if (width > breakpoints.sm)
+      return (
+        <>
+          Search <BiSearchAlt />
+        </>
+      );
+    return <span>Search</span>;
+  };
   if (type === 'special') {
     return (
       <div className="relative w-full">
-        <div className="overflow-hidden z-0 rounded-full relative p-1">
+        <div className="overflow-hidden z-0 rounded-full relative p-[3px]">
           <form
             role="form"
             className="relative flex z-50 bg-neutral-100 rounded-full"
@@ -30,15 +52,15 @@ export const SearchInput = ({
             <input
               type="text"
               placeholder={renderPlaceHolder}
-              className="rounded-full bg-neutral-100 flex-1 px-5 py-3 text-gray-700 focus:outline-none placeholder:text-gray-200"
+              className="rounded-full bg-neutral-100 flex-1 px-4 py-2 text-gray-700 focus:outline-none placeholder:text-gray-200"
               onChange={onChange}
               value={value}
             />
             <button
               type="submit"
-              className="bg-brand-900 text-white rounded-r-full font-semibold px-5 py-3 hover:bg-brand-100 focus:bg-brand-100 transition duration-200 focus:outline-none"
+              className="bg-brand-900 text-white rounded-r-full font-semibold px-4 py-2 hover:bg-brand-100 focus:bg-brand-100 transition duration-200 focus:outline-none flex items-center gap-1.5"
             >
-              {'Search'}
+              {renderBtnContent()}
             </button>
           </form>
           <div className="glow glow-1 z-10 animate-glow1 bg-green-300 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>

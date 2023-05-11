@@ -1,5 +1,6 @@
 import { Section } from '../layout';
 import { Background } from '../layout/background';
+import { WhitelistLookup } from '../modals';
 import * as T from '../typography';
 
 const ZeroHeroes = () => {
@@ -23,7 +24,7 @@ const ZeroHeroes = () => {
             </div>
             <div className="mt-2 flex flex-row gap-3">
               {/* <WhitelistQuiz /> */}
-              {/* <WhitelistLookup /> */}
+              <WhitelistLookup />
             </div>
           </div>
         </div>
