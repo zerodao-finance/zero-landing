@@ -1,6 +1,7 @@
 import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
+import { MdClose } from 'react-icons/md';
 
 import { DefaultCard } from '../components';
 
@@ -49,6 +50,14 @@ export const ModalBase = ({
                   title={title}
                   largeTitle
                   center
+                  close={
+                    <button
+                      onClick={() => setOpen(false)}
+                      className="text-neutral-100 h-full p-1"
+                    >
+                      <MdClose size="28px" />
+                    </button>
+                  }
                 >
                   {children}
                 </DefaultCard>

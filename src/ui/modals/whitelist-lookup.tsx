@@ -1,19 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ethers } from 'ethers';
 
-import { useInput } from '../../hooks';
+import { useInput, useNftWhitelist } from '../../hooks';
 import { Button } from '../components';
 import { SearchInput } from '../components/search';
 import { ModalBase } from './base';
 
 export const WhitelistLookup = () => {
   const [open, setOpen] = useState(false);
-  const { value, onChange } = useInput();
+  const { value, onChange, error, clear } = useInput('address');
+  const { checkWhitelistStatus } = useNftWhitelist();
 
-  const onSubmit = () => {
-    console.log('address', value);
+  const renderStatus = () => {
+    if (!value) return <></>;
+    if (error)
+      return (
+        <span className="text-red-400">
+          This is not an address. Please use a mainnet wallet address.
+        </span>
+      );
+    if (checkWhitelistStatus(value)) {
+      return (
+        <span className="text-green-400">
+          This address is on the whitelist!
+        </span>
+      );
+    }
+    return (
+      <span className="text-red-400">
+        This address is not on the whitelist.
+      </span>
+    );
   };
+
+  useEffect(() => {
+    if (!open && value) setTimeout(() => clear(), 500);
+  }, [open]);
 
   return (
     <>
@@ -31,8 +54,8 @@ export const WhitelistLookup = () => {
             value={value}
             onChange={onChange}
             placeholder={ethers.constants.AddressZero}
-            onSearch={onSubmit}
           />
+          {renderStatus()}
         </div>
       </ModalBase>
     </>

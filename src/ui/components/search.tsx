@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { FormEvent, FormEventHandler } from 'react';
 
 import { BiSearchAlt, BiLoaderAlt } from 'react-icons/bi';
 
@@ -7,7 +7,7 @@ import { useWindowDimensions } from '../../hooks';
 type ISearchInputProps = {
   type?: 'special' | 'default';
   className?: string;
-  onSearch?: () => void;
+  onSearch?: FormEventHandler<HTMLFormElement>;
   onChange: (e: FormEvent<HTMLInputElement>) => void;
   value: string;
   placeholder?: string;
@@ -47,21 +47,28 @@ export const SearchInput = ({
           <form
             role="form"
             className="relative flex z-50 bg-neutral-100 rounded-full"
-            onSubmit={onSearch}
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (onSearch) onSearch(e);
+            }}
           >
             <input
               type="text"
               placeholder={renderPlaceHolder}
-              className="rounded-full bg-neutral-100 flex-1 px-4 py-2 text-gray-700 focus:outline-none placeholder:text-gray-200"
+              className={`rounded-full bg-neutral-100 flex-1 px-4 py-2 text-gray-700 focus:outline-none placeholder:text-gray-200 ${
+                onSearch ? '' : 'text-center'
+              }`}
               onChange={onChange}
               value={value}
             />
-            <button
-              type="submit"
-              className="bg-brand-900 text-white rounded-r-full font-semibold px-4 py-2 hover:bg-brand-100 focus:bg-brand-100 transition duration-200 focus:outline-none flex items-center gap-1.5"
-            >
-              {renderBtnContent()}
-            </button>
+            {onSearch && (
+              <button
+                type="submit"
+                className="bg-brand-900 text-white rounded-r-full font-semibold px-4 py-2 hover:bg-brand-100 focus:bg-brand-100 transition duration-200 focus:outline-none flex items-center gap-1.5"
+              >
+                {renderBtnContent()}
+              </button>
+            )}
           </form>
           <div className="glow glow-1 z-10 animate-glow1 bg-green-300 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
           <div className="glow glow-2 z-20 animate-glow2 bg-green-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
