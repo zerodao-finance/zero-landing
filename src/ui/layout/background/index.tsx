@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { AnimateBeam } from './animate-beam';
 import { AnimateWaves } from './animate-waves';
+import { ParticlesContainer } from './particles';
 
 type IBackgroundProps = {
   children: ReactNode;
@@ -33,4 +34,4 @@ const Background = (props: IBackgroundProps) => (
   </div>
 );
 
-export { Background };
+export { Background, ParticlesContainer };

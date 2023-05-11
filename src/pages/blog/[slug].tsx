@@ -52,7 +52,7 @@ const Article = ({ article }: any) => {
     >
       <Section vertical>
         <div className="mb-1">
-          <h1 className="text-2xl 2xl:text-3xl font-bold leading-snug md:leading-normal">
+          <h1 className="text-2xl 2xl:text-3xl font-bold">
             {statefulArticle?.attributes.title}
           </h1>
         </div>

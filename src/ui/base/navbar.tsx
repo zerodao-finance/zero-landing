@@ -22,6 +22,7 @@ const Navbar = (props: INavbarProps) => {
 
   const navItems: { text: string; link: string; target: string }[] = [
     { text: 'Home', link: '/', target: '_self' },
+    { text: 'Heroes', link: '#heroes', target: '_self' },
     { text: 'Roadmap', link: '/roadmap', target: '_self' },
     { text: 'Blog', link: '#blog', target: '_self' },
     { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
@@ -106,7 +107,7 @@ const Navbar = (props: INavbarProps) => {
                   </div>
                 </>
               ) : (
-                <ul className="navbar flex gap-3 2xl:gap-6 items-center font-medium 2xl:text-lg text-white uppercase">
+                <ul className="navbar flex gap-3 2xl:gap-4 items-center font-medium 2xl:text-lg text-white uppercase">
                   {navItems.map((el, i) => (
                     <li
                       // className="hover:text-gray-100 transition duration-150"

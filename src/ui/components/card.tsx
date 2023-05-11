@@ -21,10 +21,7 @@ const DefaultCard = (props: IDefaultCardProps) => (
   <div
     className={`
     ${props.className ? props.className : ''}
-		${
-      props.center &&
-      `text-center flex flex-col justify-center items-center h-full w-full`
-    }
+		${props.center && `text-center flex flex-col items-center h-full w-full`}
 		${props.maxHeight && props.maxHeight}
 		${props.minHeight ? props.minHeight : 'min-h-[300px]'}
 		${props.color ? props.color : 'bg-brand-black'}

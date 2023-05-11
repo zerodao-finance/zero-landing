@@ -9,8 +9,8 @@ export const WhitelistQuiz = () => {
 
   return (
     <>
-      <Button type="outline" onClick={() => setOpen(true)}>
-        Take the Quiz
+      <Button type="cta" onClick={() => setOpen(true)}>
+        Earn Whitelist
       </Button>
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-[999]" onClose={setOpen}>
