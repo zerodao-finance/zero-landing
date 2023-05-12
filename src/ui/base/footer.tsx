@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 
 import { AppConfig } from '../../utils/app-config';
+import { Button } from '../components';
 import { SocialIconList } from '../components/social-icons';
 import { Background } from '../layout/background';
 import { Section } from '../layout/section';
@@ -13,6 +14,24 @@ type IFooterProps = {
   iconList?: boolean;
 };
 
+const links = [
+  {
+    text: 'Blog',
+    href: '/blog',
+    target: '_self',
+  },
+  {
+    text: 'Roadmap',
+    href: '/roadmap',
+    target: '_self',
+  },
+  {
+    text: 'Docs',
+    href: 'http://docs.zerodao.com',
+    target: '_blank',
+  },
+];
+
 const Footer = (props: IFooterProps) => (
   <Background color="bg-brand-black">
     <Section yPadding="py-8">
@@ -21,21 +40,15 @@ const Footer = (props: IFooterProps) => (
 
         <nav>
           <ul className="navbar grid grid-cols-3 justify-center font-medium text-white uppercase text-center 2xl:text-lg">
-            <li className={'transition duration-200 hover:text-gray-100'}>
-              <Link href="/blog">
-                <a>Blog</a>
-              </Link>
-            </li>
-            <li className={'transition duration-200 hover:text-gray-100'}>
-              <Link href="/roadmap">
-                <a>Roadmap</a>
-              </Link>
-            </li>
-            <li className={'transition duration-200 hover:text-gray-100'}>
-              <Link href="http://docs.zerodao.com" target="_blank">
-                <a>Docs</a>
-              </Link>
-            </li>
+            {links.map((link, i) => (
+              <li key={`link-${i}`}>
+                <Link href={link.href} target={link.target}>
+                  <a>
+                    <Button type="link">{link.text}</Button>
+                  </a>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 

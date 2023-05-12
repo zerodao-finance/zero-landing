@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 import { MdArrowForward } from 'react-icons/md';
 
+import { Button } from '../components';
 import { SocialIconList } from '../components/social-icons';
 
 // Types
@@ -27,10 +28,12 @@ const OneActionHero = (props: IHeroOneActionProps) => {
     >
       {props?.link && (
         <Link href={props.link.href}>
-          <div className="flex justify-center gap-1 text-gray-100 cursor-pointer hover:text-brand-100 lg:max-w-fit transition duration-200 text-sm">
-            <span>{props.link.text}</span>
-            <MdArrowForward size="20px" />
-          </div>
+          <Button type="link">
+            <span className="flex items-center text-sm">
+              <span>{props.link.text}</span>
+              <MdArrowForward size="20px" />
+            </span>
+          </Button>
         </Link>
       )}
       <h1 className="text-3xl lg:text-4xl text-white font-bold whitespace-pre-line uppercase">

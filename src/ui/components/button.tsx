@@ -62,34 +62,10 @@ const Button = (props: IButtonProps) => {
       <button
         className={`${baseClass} ${
           props.className ? props.className : ''
-        } uppercase !font-medium btn-link !p-1`}
+        } uppercase !font-bold btn-link !p-1`}
         onClick={props.onClick ? props.onClick : () => {}}
       >
         {props.children}
-
-        <style jsx>
-          {`
-            .btn-link {
-              background-image: linear-gradient(
-                to right,
-                #41a75b,
-                #41a75b 50%,
-                #f5f5f5 50%
-              );
-              background-size: 200% 100%;
-              background-position: -100%;
-              display: inline-block;
-              position: relative;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              transition: all 0.2s ease-in-out;
-            }
-
-            .btn-link:hover {
-              background-position: 0;
-            }
-          `}
-        </style>
       </button>
     );
   }

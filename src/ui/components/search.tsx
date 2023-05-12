@@ -70,10 +70,10 @@ export const SearchInput = ({
               </button>
             )}
           </form>
-          <div className="glow glow-1 z-10 animate-glow1 bg-green-300 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-          <div className="glow glow-2 z-20 animate-glow2 bg-green-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-          <div className="glow glow-3 z-30 animate-glow3 bg-lime-300 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-          <div className="glow glow-4 z-40 animate-glow4 bg-emerald-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
+          <div className="glow glow-1 z-10 animate-glow1 bg-green-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
+          <div className="glow glow-2 z-20 animate-glow2 bg-green-600 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
+          <div className="glow glow-3 z-30 animate-glow3 bg-lime-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
+          <div className="glow glow-4 z-40 animate-glow4 bg-lime-600 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
         </div>
       </div>
     );

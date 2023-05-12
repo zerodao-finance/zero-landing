@@ -14,19 +14,27 @@ type INavbarProps = {
 };
 
 const Navbar = (props: INavbarProps) => {
-  const { width } = useWindowDimensions();
+  const { width, breakpoints } = useWindowDimensions();
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = () => !isOpen && setIsOpen(true);
   const closeMenu = () => setIsOpen(false);
 
-  const navItems: { text: string; link: string; target: string }[] = [
-    { text: 'Home', link: '/', target: '_self' },
-    { text: 'Heroes', link: '#heroes', target: '_self' },
-    { text: 'Roadmap', link: '/roadmap', target: '_self' },
-    { text: 'Blog', link: '#blog', target: '_self' },
-    { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
-  ];
+  const navItems: { text: string; link: string; target: string }[] =
+    width >= breakpoints.md
+      ? [
+          { text: 'Heroes', link: '/#heroes', target: '_self' },
+          { text: 'Roadmap', link: '/roadmap', target: '_self' },
+          { text: 'Blog', link: '/#blog', target: '_self' },
+          { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
+        ]
+      : [
+          { text: 'Home', link: '/', target: '_self' },
+          { text: 'Heroes', link: '#heroes', target: '_self' },
+          { text: 'Roadmap', link: '/roadmap', target: '_self' },
+          { text: 'Blog', link: '#blog', target: '_self' },
+          { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
+        ];
 
   return (
     <>
@@ -44,7 +52,7 @@ const Navbar = (props: INavbarProps) => {
             </div>
 
             <nav>
-              {width < 600 ? (
+              {width < breakpoints.md ? (
                 <>
                   <div className="justify-self-end">
                     <button

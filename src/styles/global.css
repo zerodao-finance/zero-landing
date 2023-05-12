@@ -1,18 +1,21 @@
+@font-face {
+  font-family: "Fugaz One";
+  src: url('/fonts/FugazOne-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
-
 @tailwind variants;
-
 @layer base {
     html {
         padding: 0 !important;
     }
     body {
         background-color: #121212;
-        font-family: 'Roboto Flex', sans-serif;
+        font-family: 'Poppins', sans-serif;    
     }
 
     pre {
@@ -21,7 +24,50 @@
         border-radius: 4px;
         white-space: pre-wrap;
     }
+    h1, h2 {
+        font-family: 'Fugaz One', sans-serif;
+        /*font-family: 'Mitr', sans-serif;
+         font-family: 'Space Mono', monospace; */
+    }
 }
+
+/* Link Buttons */
+.btn-link {
+              background-image: linear-gradient(
+                to right,
+                #fff,
+                #fff 50%,
+                #d4d4d4 50%
+              );
+              background-size: 200% 100%;
+              background-position: -100%;
+              display: inline-block;
+              position: relative;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              transition: all 0.2s ease-in-out;
+            }
+            {/* 900: '#368e4c',
+          800: '#286638',
+          100: '#41a75b', */}
+            .btn-link:before {
+              content: '';
+  background: #41a75b;
+  display: block;
+  position: absolute;
+  bottom: -0px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: '6px';
+  transition: all 0.2s ease-in-out;
+            }
+            .btn-link:hover {
+              background-position: 0;
+            }
+            .btn-link:hover::before {
+              width:70%;
+            }
 
 /* Floating Element Box Shadow */
 .floating-shadow {

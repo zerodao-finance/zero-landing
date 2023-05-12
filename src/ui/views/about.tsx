@@ -33,7 +33,7 @@ const About = () => {
 
   return (
     <Background color="bg-gray-900">
-      <Section vertical verticalCenter yPadding="py-10 lg:py-20" title="About">
+      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
         {aboutContent.map((el, i) => (
           <div
             className="mb-16 md:mb-20 lg:mb-24 last-of-type:mb-0"
