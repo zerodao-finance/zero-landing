@@ -10,6 +10,8 @@ type IBaseModalProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
   children: ReactNode;
   title?: string;
+  cardClass?: string;
+  headerClass?: string;
 };
 
 export const ModalBase = ({
@@ -17,6 +19,8 @@ export const ModalBase = ({
   setOpen,
   title,
   children,
+  cardClass,
+  headerClass,
 }: IBaseModalProps) => (
   <>
     <Transition.Root show={open} as={Fragment}>
@@ -46,7 +50,10 @@ export const ModalBase = ({
             >
               <Dialog.Panel className="relative transform overflow-hidden transition-all w-full max-w-2xl">
                 <DefaultCard
-                  className="flex flex-col text-neutral-100 sm:px-8"
+                  className={`flex flex-col text-neutral-100 sm:px-8 ${
+                    cardClass || ''
+                  }`}
+                  headerClass={headerClass}
                   title={title}
                   largeTitle
                   center

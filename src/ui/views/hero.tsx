@@ -14,7 +14,7 @@ const Hero = () => {
         {/* Height is to account for full screen including banner */}
         <Section
           verticalCenter
-          style="min-h-[calc(100vh-170px)] pb-12 xl:pb-8 relative z-[999]"
+          className="min-h-[calc(100vh-170px)] pb-12 xl:pb-8 relative z-[999]"
         >
           <Grid
             xl
@@ -47,7 +47,6 @@ const Hero = () => {
                     )}
                   </>
                 }
-                // button={<WhitelistQuiz />}
               />
             }
             right={

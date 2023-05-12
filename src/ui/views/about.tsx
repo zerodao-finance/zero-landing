@@ -36,8 +36,7 @@ const About = () => {
       <Section vertical verticalCenter yPadding="py-10 lg:py-20" title="About">
         {aboutContent.map((el, i) => (
           <div
-            className="mb-10 md:mb-15 lg:mb-20 first-of-type:xl:mb-36 last-of-type:mb-0"
-            color="!bg-[rgba(10,10,10,0.4)]"
+            className="mb-16 md:mb-20 lg:mb-24 last-of-type:mb-0"
             key={`about-${i}`}
           >
             <div

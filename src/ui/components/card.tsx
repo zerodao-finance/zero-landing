@@ -16,21 +16,26 @@ type IDefaultCardProps = {
   dropdownText?: string;
   className?: string;
   close?: ReactNode;
+  headerClass?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
   <div
     className={`
     ${props.className ? props.className : ''}
-		${props.center && `text-center flex flex-col items-center h-full w-full`}
-		${props.maxHeight && props.maxHeight}
+		${props.center ? `text-center flex flex-col items-center h-full w-full` : ''}
+		${props.maxHeight ? props.maxHeight : ''}
 		${props.minHeight ? props.minHeight : 'min-h-[300px]'}
 		${props.color ? props.color : 'bg-brand-black'}
     px-4 py-6 rounded-xl shadow-xl transition duration-200
 	`}
   >
     {props.title && (
-      <div className="flex justify-between items-center mb-5">
+      <div
+        className={`flex justify-between items-center mb-5 ${
+          props.headerClass ? props.headerClass : ''
+        }`}
+      >
         <div className="flex items-center">
           <span
             className={`${

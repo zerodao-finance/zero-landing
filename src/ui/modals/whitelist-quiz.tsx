@@ -1,74 +1,60 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 
-import { Dialog, Transition } from '@headlessui/react';
+import { RadioGroup } from '@headlessui/react';
 
-import { Button } from '../components';
+import { useNftQuiz } from '../../hooks';
+import { classNames } from '../../utils/helpers';
+import { Button, Stepper } from '../components';
+import { ModalBase } from './base';
 
 export const WhitelistQuiz = () => {
   const [open, setOpen] = useState(false);
+  const { quiz, current, setCurrent, getCurrentIndex, next } = useNftQuiz(open);
 
   return (
     <>
       <Button type="cta" onClick={() => setOpen(true)}>
         Earn Whitelist
       </Button>
-      <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-[999]" onClose={setOpen}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
-                  <div>
-                    <div className="mt-3 text-center sm:mt-5">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-base font-semibold leading-6 text-gray-900"
-                      >
-                        Payment successful
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Consequatur amet labore.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-5 sm:mt-6">
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      onClick={() => setOpen(false)}
-                    >
-                      Go back to dashboard
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
+      <ModalBase
+        open={open}
+        setOpen={setOpen}
+        title="Test Your Knowledge"
+        cardClass="justify-between gap-4"
+        headerClass="mb-0"
+      >
+        <div className="flex flex-col gap-4 w-full md:px-1 justify-between h-full">
+          <span className="lg:text-lg">
+            {quiz[getCurrentIndex()]?.question}
+          </span>
+          <RadioGroup value={current} onChange={setCurrent} className="mt-2">
+            <RadioGroup.Label className="sr-only">
+              Choose a memory option
+            </RadioGroup.Label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 auto-cols-fr gap-3">
+              {quiz[getCurrentIndex()]?.answers.map((option, i) => (
+                <RadioGroup.Option
+                  key={i}
+                  value={option}
+                  className={({ active, checked }) =>
+                    classNames(
+                      active ? 'ring-2 ring-brand-100 ring-offset-2' : '',
+                      checked
+                        ? 'bg-gradient-to-r from-[#286638] to-brand-100 text-neutral-100'
+                        : 'ring-1 ring-inset text-gray-900 hover:bg-neutral-300 cursor-pointer',
+                      'flex items-center justify-center rounded-md py-3 px-3 text-sm font-semibold uppercase sm:flex-1 transition duration-200 bg-neutral-100'
+                    )
+                  }
+                  onClick={next}
+                >
+                  <RadioGroup.Label as="span">{option}</RadioGroup.Label>
+                </RadioGroup.Option>
+              ))}
             </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
+          </RadioGroup>
+        </div>
+        <Stepper steps={quiz.map((q) => ({ ...q, name: q.question }))} />
+      </ModalBase>
     </>
   );
 };

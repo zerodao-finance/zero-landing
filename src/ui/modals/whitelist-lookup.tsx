@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import { Transition } from '@headlessui/react';
 import { ethers } from 'ethers';
 
 import { useInput, useNftWhitelist } from '../../hooks';
-import { Button } from '../components';
-import { SearchInput } from '../components/search';
+import { SearchInput, Button } from '../components';
 import { ModalBase } from './base';
 
 export const WhitelistLookup = () => {
@@ -43,8 +43,13 @@ export const WhitelistLookup = () => {
       <Button type="outline" onClick={() => setOpen(true)}>
         Whitelist Lookup
       </Button>
-      <ModalBase open={open} setOpen={setOpen} title="Whitelist Lookup">
-        <div className="flex flex-col gap-4 w-full md:px-1">
+      <ModalBase
+        open={open}
+        setOpen={setOpen}
+        title="Whitelist Lookup"
+        headerClass="mb-0"
+      >
+        <div className="flex flex-col gap-4 w-full md:px-1 mt-8">
           <p>
             Enter an address here to see if it&apos;s currently on the
             whitelist!
@@ -55,7 +60,17 @@ export const WhitelistLookup = () => {
             onChange={onChange}
             placeholder={ethers.constants.AddressZero}
           />
-          {renderStatus()}
+          <Transition
+            show={value !== ''}
+            enter="transition-opacity duration-150"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            {renderStatus()}
+          </Transition>
         </div>
       </ModalBase>
     </>

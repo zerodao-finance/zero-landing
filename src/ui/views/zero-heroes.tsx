@@ -7,7 +7,7 @@ const ZeroHeroes = () => {
   return (
     <Background color="bg-gradient-to-b from-gray-900 to-gray-1000">
       <Section vertical verticalCenter yPadding="py-10 lg:py-20" title="Heroes">
-        <div className="flex flex-col lg:flex-row gap-3 lg:gap-6">
+        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10">
           <div>
             <img
               src={`/assets/zhero-preview.gif`}

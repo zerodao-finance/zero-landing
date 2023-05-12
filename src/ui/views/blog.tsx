@@ -80,7 +80,7 @@ function Blog({ articles, withShowMore }: any) {
           <Button
             type="outline"
             onClick={() => setShowFew(!showFew)}
-            className="mt-10"
+            className="mt-8 lg:mt-10"
           >
             {showFew ? 'Show More' : 'Show Less'}
           </Button>

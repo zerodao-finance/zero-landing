@@ -107,12 +107,9 @@ const Navbar = (props: INavbarProps) => {
                   </div>
                 </>
               ) : (
-                <ul className="navbar flex gap-3 2xl:gap-4 items-center font-medium 2xl:text-lg text-white uppercase">
+                <ul className="navbar flex gap-3 items-center font-medium 2xl:text-lg text-white uppercase">
                   {navItems.map((el, i) => (
-                    <li
-                      // className="hover:text-gray-100 transition duration-150"
-                      key={`nav-item-${i}`}
-                    >
+                    <li className="h-full" key={`nav-item-${i}`}>
                       <Link href={el.link} target={el.target}>
                         <a>
                           <Button type="link">{el.text}</Button>
