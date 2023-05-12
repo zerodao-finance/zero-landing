@@ -29,9 +29,9 @@ const OneActionHero = (props: IHeroOneActionProps) => {
       {props?.link && (
         <Link href={props.link.href}>
           <Button type="link">
-            <span className="flex items-center text-sm">
+            <span className="flex items-center text-sm gap-1">
               <span>{props.link.text}</span>
-              <MdArrowForward size="20px" />
+              <MdArrowForward size="16px" />
             </span>
           </Button>
         </Link>

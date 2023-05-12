@@ -43,7 +43,7 @@ const Navbar = (props: INavbarProps) => {
           props.batman ? 'shadow-lg' : ''
         }`}
       >
-        <Section yPadding="py-2 md:py-3 lg:py-4 px-4" wide>
+        <Section yPadding="py-2.5 md:py-3 lg:py-4 px-4" wide>
           <div className="flex flex-wrap justify-between items-center w-full">
             <div>
               <Link href="/">

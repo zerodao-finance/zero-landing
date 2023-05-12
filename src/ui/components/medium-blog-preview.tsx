@@ -27,7 +27,7 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
 
   return (
     <Link href={props.link} target="_blank" rel="noreferrer">
-      <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 h-full">
+      <DefaultCard className="hover:bg-black hover:cursor-pointer text-neutral-300 hover:text-white group transition duration-200 hover:shadow-none h-full">
         <div className="mb-5">
           <Image
             src={props.img}

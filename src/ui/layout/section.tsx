@@ -36,11 +36,11 @@ const Section = (props: ISectionProps) => (
         {props.title && (
           <>
             {props.h1Title ? (
-              <h1 className="text-2xl 2xl:text-3xl uppercase font-bold mb-5 lg:mb-10">
+              <h1 className="text-3xl 2xl:text-4xl uppercase font-bold mb-5 lg:mb-10">
                 {props.title}
               </h1>
             ) : (
-              <h2 className="text-2xl 2xl:text-3xl font-bold uppercase mb-5 lg:mb-10">
+              <h2 className="text-3xl 2xl:text-4xl font-bold uppercase mb-5 lg:mb-10">
                 {props.title}
               </h2>
             )}
