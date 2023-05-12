@@ -71,7 +71,7 @@ const Navbar = (props: INavbarProps) => {
                       leaveTo="translate-x-[100vw]"
                       className="fixed z-[9999] h-screen right-0 top-0"
                     >
-                      <div className=" w-72 flex flex-col h-full bg-brand-black shadow-md z-50 p-2 items-start">
+                      <div className="w-64 flex flex-col h-full bg-brand-black shadow-md z-50 p-2 items-start">
                         <button
                           onClick={closeMenu}
                           className="inline-flex p-2 self-end rounded-md text-sm font-medium text-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
@@ -85,7 +85,7 @@ const Navbar = (props: INavbarProps) => {
                                 href={item.link}
                                 target={item.target}
                                 className={
-                                  'block px-4 py-2 text-2xl uppercase font-bold w-full text-neutral-100'
+                                  'block px-4 py-1.5 text-2xl uppercase font-bold w-full text-neutral-100'
                                 }
                                 rel="noreferrer"
                                 onClick={closeMenu}

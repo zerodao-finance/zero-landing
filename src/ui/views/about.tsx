@@ -50,8 +50,9 @@ const About = () => {
                   <T.SubTitle text={el.subtitle} />
                   <T.Title text={el.title} />
                   <T.Paragraph text={el.content} />
-                  <br />
-                  <T.Paragraph text={el.contentStrong} strong big />
+                  <div className="mt-2 lg:mt-4">
+                    <T.Paragraph text={el.contentStrong} strong big />
+                  </div>
                 </div>
                 <Link href={el.ctaLink} passHref={true}>
                   <a>
