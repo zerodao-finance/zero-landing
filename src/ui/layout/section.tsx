@@ -28,7 +28,7 @@ const Section = (props: ISectionProps) => (
       ${props.fullHeight ? 'h-full' : ''}
       ${props.vertical ? 'flex-col' : ''}
       ${props.className ? props.className : ''}
-      mx-auto px-4 lg:px-8 flex justify-center
+      mx-auto px-3 sm:px-4 lg:px-8 flex justify-center
     `}
   >
     {(props.title || props.description) && (

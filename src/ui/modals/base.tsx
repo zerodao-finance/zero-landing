@@ -61,7 +61,7 @@ export const ModalBase = ({
                   close={
                     <button
                       onClick={() => setOpen(false)}
-                      className="text-neutral-100 h-full p-1"
+                      className="text-neutral-100 h-full p-1 focus-visible:outline-0"
                     >
                       <MdClose size="28px" />
                     </button>
