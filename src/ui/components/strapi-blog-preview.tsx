@@ -10,7 +10,7 @@ function StrapiBlogPreview({ article }: any) {
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
       <a>
-        <DefaultCard className="hover:bg-black hover:cursor-pointer hover:text-brand-900 group transition duration-200 hover:shadow-none h-full">
+        <DefaultCard className="hover:bg-black hover:cursor-pointer text-neutral-300 hover:text-white group transition duration-200 hover:shadow-none h-full">
           <div className="mb-5">
             <Image
               src={
@@ -36,7 +36,6 @@ function StrapiBlogPreview({ article }: any) {
               {article.formattedDate}
             </span> */}
           <ReactMarkdown
-            className="text-white"
             remarkPlugins={[remarkGfm]}
             disallowedElements={['h1', 'img']}
           >

@@ -93,11 +93,11 @@ const SocialIconList = (props: ISocialIconListProps) => {
           }
 
           .footer-icon-list :global(a) {
-            @apply text-white transition duration-200;
+            @apply text-neutral-200 transition duration-200;
           }
 
           .footer-icon-list :global(a:hover) {
-            @apply text-gray-100;
+            @apply text-brand-100;
           }
 
           .footer-icon-list :global(svg) {

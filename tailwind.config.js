@@ -20,6 +20,10 @@ module.exports = {
         'fade-transparent': 'fadeOutTransparent 6s ease-in-out',
         reveal: 'revealFromBlack 2s ease-in-out',
         floating: 'floating 3s infinite ease-in-out',
+        glow1: 'glow1 4s linear infinite',
+        glow2: 'glow2 4s linear infinite',
+        glow3: 'glow3 4s linear infinite',
+        glow4: 'glow4 4s linear infinite',
       },
       keyframes: () => ({
         fadeOut: {
@@ -45,6 +49,34 @@ module.exports = {
             transform: 'translateY(1.7%)',
           },
         },
+        glow1: {
+          '0%': { transform: 'translate(10%, 10%) scale(1)' },
+          '25%': { transform: 'translate(-10%, 10%) scale(1)' },
+          '50%': { transform: 'translate(-10%, -10%) scale(1)' },
+          '75%': { transform: 'translate(10%, -10%) scale(1)' },
+          '100%': { transform: 'translate(10%, 10%) scale(1)' },
+        },
+        glow2: {
+          '0%': { transform: 'translate(-10%, -10%) scale(1)' },
+          '25%': { transform: 'translate(10%, -10%) scale(1)' },
+          '50%': { transform: 'translate(10%, 10%) scale(1)' },
+          '75%': { transform: 'translate(-10%, 10%) scale(1)' },
+          '100%': { transform: 'translate(-10%, -10%) scale(1)' },
+        },
+        glow3: {
+          '0%': { transform: 'translate(-10%, 10%) scale(1)' },
+          '25%': { transform: 'translate(-10%, -10%) scale(1)' },
+          '50%': { transform: 'translate(10%, -10%) scale(1)' },
+          '75%': { transform: 'translate(10%, 10%) scale(1)' },
+          '100%': { transform: 'translate(-10%, 10%) scale(1)' },
+        },
+        glow4: {
+          '0%': { transform: 'translate(10%, -10%) scale(1)' },
+          '25%': { transform: 'translate(10%, 10%) scale(1)' },
+          '50%': { transform: 'translate(-10%, 10%) scale(1)' },
+          '75%': { transform: 'translate(-10%, -10%) scale(1)' },
+          '100%': { transform: 'translate(10%, -10%) scale(1)' },
+        },
       }),
       // gradient bg
       backgroundImage: {
@@ -61,19 +93,9 @@ module.exports = {
           'neon-light': '',
           black: '#0a0a0a',
         },
-        primary: {
-          100: '#E6F6FE',
-          200: '#C0EAFC',
-          300: '#9ADDFB',
-          400: '#4FC3F7',
-          500: '#03A9F4',
-          600: '#0398DC',
-          700: '#026592',
-          800: '#014C6E',
-          900: '#013349',
-        },
         gray: {
-          1000: '#121212',
+          1000: '#0f0f0f',
+          950: '#121212',
           900: '#181818',
           800: '#212121',
           700: '#2b2b2b',
@@ -88,6 +110,18 @@ module.exports = {
       // other
       lineHeight: {
         hero: '4.5rem',
+      },
+      width: {
+        120: '120%',
+      },
+      height: {
+        120: '120%',
+      },
+      inset: {
+        '-10': '-10%',
+      },
+      borderRadius: {
+        100: '100%',
       },
     },
   },

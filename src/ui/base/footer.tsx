@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 
 import { AppConfig } from '../../utils/app-config';
+import { Button } from '../components';
 import { SocialIconList } from '../components/social-icons';
 import { Background } from '../layout/background';
 import { Section } from '../layout/section';
@@ -13,29 +14,41 @@ type IFooterProps = {
   iconList?: boolean;
 };
 
+const links = [
+  {
+    text: 'Blog',
+    href: '/blog',
+    target: '_self',
+  },
+  {
+    text: 'Roadmap',
+    href: '/roadmap',
+    target: '_self',
+  },
+  {
+    text: 'Docs',
+    href: 'http://docs.zerodao.com',
+    target: '_blank',
+  },
+];
+
 const Footer = (props: IFooterProps) => (
   <Background color="bg-brand-black">
-    <Section yPadding="py-8">
-      <div className="text-center flex flex-col gap-4 2xl:gap-6">
+    <Section yPadding="py-4 lg:py-6">
+      <div className="text-center flex flex-col gap-6">
         {props.logo && <div className="flex justify-center">{props.logo}</div>}
 
         <nav>
-          <ul className="navbar grid grid-cols-3 justify-center font-medium text-white uppercase text-center 2xl:text-lg">
-            <li className={'transition duration-200 hover:text-gray-100'}>
-              <Link href="/blog">
-                <a>Blog</a>
-              </Link>
-            </li>
-            <li className={'transition duration-200 hover:text-gray-100'}>
-              <Link href="/roadmap">
-                <a>Roadmap</a>
-              </Link>
-            </li>
-            <li className={'transition duration-200 hover:text-gray-100'}>
-              <Link href="http://docs.zerodao.com" target="_blank">
-                <a>Docs</a>
-              </Link>
-            </li>
+          <ul className="navbar grid grid-cols-3 justify-center text-center text-sm sm:text-md 2xl:text-lg">
+            {links.map((link, i) => (
+              <li key={`link-${i}`}>
+                <Link href={link.href} target={link.target}>
+                  <a>
+                    <Button type="link">{link.text}</Button>
+                  </a>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -45,7 +58,7 @@ const Footer = (props: IFooterProps) => (
           </div>
         )}
 
-        <div className="text-sm">
+        <div className="text-xs sm:text-sm">
           <div className="footer-copyright">
             © Copyright {new Date().getFullYear()} {AppConfig.legalName}
           </div>

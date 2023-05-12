@@ -10,9 +10,12 @@ const Hero = () => {
 
   return (
     <>
-      <Background spaceBetween animation={'beam'}>
+      <Background spaceBetween animation={'beam'} className="pb-10">
         {/* Height is to account for full screen including banner */}
-        <Section verticalCenter style="min-h-[calc(100vh-170px)] pb-12 xl:pb-8">
+        <Section
+          verticalCenter
+          className="min-h-[calc(100vh-170px)] pb-12 xl:pb-8 relative z-[999]"
+        >
           <Grid
             xl
             left={
@@ -44,7 +47,6 @@ const Hero = () => {
                     )}
                   </>
                 }
-                // button={<WhitelistQuiz />}
               />
             }
             right={
@@ -85,7 +87,7 @@ const Hero = () => {
           />
         </Section>
 
-        <div className="scroll-downs !mb-10">
+        <div className="scroll-downs">
           <div className="mousey">
             <div className="scroller"></div>
           </div>

@@ -3,19 +3,25 @@ import { ethers } from 'ethers';
 /* Web3 */
 export const BRIDGE_GENESIS_BLOCK = 14567078;
 
+// Zero Heroes
+export const IPFS_GATEWAY_URL = 'https://gateway.pinata.cloud/ipfs/';
+export const ZHERO_META_CID =
+  process.env.REACT_APP_ZHERO_META_CID ||
+  'QmR4Kdi64gwJQ2AWkbHEfKrnDTLybECXHwCewqAC8FNhxJ';
+export const ZHERO_IMG_CID =
+  process.env.REACT_APP_ZHERO_IMG_CID ||
+  'QmcotzBG6cy64AsjXsXjRxJHRqBdZ8CJBTUxZQkgJip5WJ';
+
 // Providers
 export const ethersProvider = new ethers.providers.JsonRpcProvider(
   'https://mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
 );
-
 export const maticProvider = new ethers.providers.JsonRpcProvider(
   'https://polygon-mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
 );
-
 export const avaxProvider = new ethers.providers.JsonRpcProvider(
   'https://api.avax.network/ext/bc/C/rpc'
 );
-
 export const arbProvider = new ethers.providers.JsonRpcProvider(
   'https://arbitrum-mainnet.infura.io/v3/816df2901a454b18b7df259e61f92cd2'
 );

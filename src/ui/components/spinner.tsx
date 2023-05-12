@@ -1,5 +1,5 @@
 type ISpinnerProps = {
-  color?: string;
+  color?: `fill-${string}`;
   size?: string;
   padding?: string;
 };
@@ -10,9 +10,10 @@ const Spinner = (props: ISpinnerProps) => (
       role="status"
       className={`w-${props.size || '10'} h-${
         props.size || '10'
-      } text-gray-200 animate-spin dark:text-gray-600 fill-${
-        props.color || 'brand-900'
-      }`}
+      } text-gray-200 animate-spin dark:text-gray-600 ${
+        props.color ? props.color : 'fill-brand-900'
+      }
+      `}
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

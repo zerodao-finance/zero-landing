@@ -14,18 +14,27 @@ type INavbarProps = {
 };
 
 const Navbar = (props: INavbarProps) => {
-  const { width } = useWindowDimensions();
+  const { width, breakpoints } = useWindowDimensions();
   const [isOpen, setIsOpen] = useState(false);
 
   const openMenu = () => !isOpen && setIsOpen(true);
   const closeMenu = () => setIsOpen(false);
 
-  const navItems: { text: string; link: string; target: string }[] = [
-    { text: 'Home', link: '/', target: '_self' },
-    { text: 'Roadmap', link: '/roadmap', target: '_self' },
-    { text: 'Blog', link: '#blog', target: '_self' },
-    { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
-  ];
+  const navItems: { text: string; link: string; target: string }[] =
+    width >= breakpoints.md
+      ? [
+          { text: 'Heroes', link: '/#heroes', target: '_self' },
+          { text: 'Roadmap', link: '/roadmap', target: '_self' },
+          { text: 'Blog', link: '/#blog', target: '_self' },
+          { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
+        ]
+      : [
+          { text: 'Home', link: '/', target: '_self' },
+          { text: 'Heroes', link: '#heroes', target: '_self' },
+          { text: 'Roadmap', link: '/roadmap', target: '_self' },
+          { text: 'Blog', link: '#blog', target: '_self' },
+          { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
+        ];
 
   return (
     <>
@@ -34,7 +43,7 @@ const Navbar = (props: INavbarProps) => {
           props.batman ? 'shadow-lg' : ''
         }`}
       >
-        <Section yPadding="py-2 md:py-3 lg:py-4 px-4" wide>
+        <Section yPadding="py-2.5 md:py-3 lg:py-4 px-4" wide>
           <div className="flex flex-wrap justify-between items-center w-full">
             <div>
               <Link href="/">
@@ -43,7 +52,7 @@ const Navbar = (props: INavbarProps) => {
             </div>
 
             <nav>
-              {width < 600 ? (
+              {width < breakpoints.md ? (
                 <>
                   <div className="justify-self-end">
                     <button
@@ -106,12 +115,9 @@ const Navbar = (props: INavbarProps) => {
                   </div>
                 </>
               ) : (
-                <ul className="navbar flex gap-3 2xl:gap-6 items-center font-medium 2xl:text-lg text-white uppercase">
+                <ul className="navbar flex gap-3 items-center font-medium 2xl:text-lg text-white uppercase">
                   {navItems.map((el, i) => (
-                    <li
-                      // className="hover:text-gray-100 transition duration-150"
-                      key={`nav-item-${i}`}
-                    >
+                    <li className="h-full" key={`nav-item-${i}`}>
                       <Link href={el.link} target={el.target}>
                         <a>
                           <Button type="link">{el.text}</Button>

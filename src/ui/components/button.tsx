@@ -20,7 +20,7 @@ const Button = (props: IButtonProps) => {
       >
         <span className="relative text-md md:text-lg text-neutral-100 uppercase">
           {props.children}
-          <span className="absolute -right-8 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+          <span className="absolute -right-8 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-44 ease"></span>
         </span>
         <div className="flex items-center -space-x-3 translate-x-3">
           <div className="w-2.5 h-[2px] rounded bg-white origin-left scale-x-0 transition duration-200 group-hover:scale-x-100"></div>
@@ -52,7 +52,7 @@ const Button = (props: IButtonProps) => {
       >
         <span className="relative text-md md:text-lg uppercase">
           {props.children}
-          <span className="absolute -right-8 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-brand-100 opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+          <span className="absolute -right-8 w-8 h-32 -mt-12 transition-all duration-500 transform translate-x-12 bg-white opacity-5 rotate-12 group-hover:-translate-x-44 ease"></span>
         </span>
       </button>
     );
@@ -62,34 +62,10 @@ const Button = (props: IButtonProps) => {
       <button
         className={`${baseClass} ${
           props.className ? props.className : ''
-        } uppercase !font-medium btn-link !p-1`}
+        } uppercase !font-bold btn-link !p-1`}
         onClick={props.onClick ? props.onClick : () => {}}
       >
         {props.children}
-
-        <style jsx>
-          {`
-            .btn-link {
-              background-image: linear-gradient(
-                to right,
-                #41a75b,
-                #41a75b 50%,
-                #f5f5f5 50%
-              );
-              background-size: 200% 100%;
-              background-position: -100%;
-              display: inline-block;
-              position: relative;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              transition: all 0.2s ease-in-out;
-            }
-
-            .btn-link:hover {
-              background-position: 0;
-            }
-          `}
-        </style>
       </button>
     );
   }

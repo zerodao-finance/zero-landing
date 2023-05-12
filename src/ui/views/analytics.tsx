@@ -34,7 +34,7 @@ const Analytics = () => {
         title="Bridge Analytics"
         description="Bringing you live performance updates about our bridge."
         vertical
-        style="!pt-28"
+        className="!pt-28"
       >
         {!isLoading ? (
           <>

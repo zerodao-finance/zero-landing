@@ -1,15 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useWindowDimensions } from '../../hooks';
 import { Button } from '../components';
 import { Section } from '../layout';
 import { Background } from '../layout/background';
-import { AboutParagraph, AboutSubTitle, AboutTitle } from '../typography';
+import * as T from '../typography';
 
 const About = () => {
-  const { width } = useWindowDimensions();
-
   const aboutContent = [
     {
       title: "Crypto's Accessibility Challenges",
@@ -35,12 +32,11 @@ const About = () => {
   ];
 
   return (
-    <Background color="bg-gray-900" animation={width < 1920 ? 'waves' : null}>
-      <Section vertical verticalCenter yPadding="py-10 lg:py-20" title="About">
+    <Background color="bg-gray-900">
+      <Section vertical verticalCenter yPadding="py-10 lg:py-20">
         {aboutContent.map((el, i) => (
           <div
-            className="mb-10 md:mb-15 lg:mb-20 first-of-type:xl:mb-36"
-            color="!bg-[rgba(10,10,10,0.4)]"
+            className="mb-16 md:mb-20 lg:mb-24 last-of-type:mb-0"
             key={`about-${i}`}
           >
             <div
@@ -51,11 +47,11 @@ const About = () => {
             >
               <div>
                 <div className="mb-5">
-                  <AboutSubTitle text={el.subtitle} />
-                  <AboutTitle text={el.title} />
-                  <AboutParagraph text={el.content} />
+                  <T.SubTitle text={el.subtitle} />
+                  <T.Title text={el.title} />
+                  <T.Paragraph text={el.content} />
                   <br />
-                  <AboutParagraph text={el.contentStrong} strong big />
+                  <T.Paragraph text={el.contentStrong} strong big />
                 </div>
                 <Link href={el.ctaLink} passHref={true}>
                   <a>
@@ -63,7 +59,7 @@ const About = () => {
                   </a>
                 </Link>
               </div>
-              <div className="min-w-[100%] min-h-[250px] lg:min-w-[450px] lg:min-h-[300px] relative flex justify-center items-center">
+              <div className="min-w-[100%] min-h-[250px] lg:min-w-[450px] lg:min-h-[300px] relative flex justify-center items-center shadow-md shadow-black">
                 <Image
                   src={el.img}
                   alt={el.title || 'zerodao'}

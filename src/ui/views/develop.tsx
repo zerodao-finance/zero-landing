@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 
 import { Section } from '../layout';
-import { AboutParagraph, AboutTitle } from '../typography';
+import * as T from '../typography';
 
 const Develop = () => {
   return (
@@ -30,8 +30,8 @@ const Develop = () => {
       }
     >
       <section>
-        <AboutTitle text="Installation" />
-        <AboutParagraph text="To install to a client-side application:" />
+        <T.Title text="Installation" />
+        <T.Paragraph text="To install to a client-side application:" />
         <br />
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
           {`
@@ -46,8 +46,8 @@ const Develop = () => {
       </span>
 
       <section>
-        <AboutTitle text="ZeroP2P" />
-        <AboutParagraph text="A ZeroP2P instance can be used as an argument to Request#publish to broadcast any one of the derived Request classes." />
+        <T.Title text="ZeroP2P" />
+        <T.Paragraph text="A ZeroP2P instance can be used as an argument to Request#publish to broadcast any one of the derived Request classes." />
         <br />
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
           {`
@@ -70,8 +70,8 @@ const Develop = () => {
       </section>
 
       <section className="mt-12">
-        <AboutTitle text="Request" />
-        <AboutParagraph text="Abstract class used to derive different types of broadcasts in the protocol. Currently, only TransferRequest and BurnRequest are used. Cannot be instantiated." />
+        <T.Title text="Request" />
+        <T.Paragraph text="Abstract class used to derive different types of broadcasts in the protocol. Currently, only TransferRequest and BurnRequest are used. Cannot be instantiated." />
         <br />
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
           {`
@@ -90,8 +90,8 @@ const Develop = () => {
       </section>
 
       <section className="mt-12">
-        <AboutTitle text="Transfer Request" />
-        <AboutParagraph text="Primary class for bridging BTC or ZEC to a host EVM network. Accepts a simple configuration object as an input to its constructor and exposes some methods useful for broadcasting to zeroDAO keepers." />
+        <T.Title text="Transfer Request" />
+        <T.Paragraph text="Primary class for bridging BTC or ZEC to a host EVM network. Accepts a simple configuration object as an input to its constructor and exposes some methods useful for broadcasting to zeroDAO keepers." />
         <br />
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
           {`
@@ -130,8 +130,8 @@ const Develop = () => {
       </section>
 
       <section className="mt-12">
-        <AboutTitle text="Burn Request" />
-        <AboutParagraph text="Primary class for releasing funds as BTC or ZEC." />
+        <T.Title text="Burn Request" />
+        <T.Paragraph text="Primary class for releasing funds as BTC or ZEC." />
         <br />
         <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
           {`

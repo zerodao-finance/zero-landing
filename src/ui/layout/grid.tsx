@@ -14,9 +14,13 @@ const Grid = (props: ISectionProps) => (
   <div
     className={`
     ${props.style}
-    ${props.verticalCenter && 'h-full items-center'} 
-    ${props.xl && 'md:!grid-cols-1 lg:!grid-cols-2 2xl:!grid-cols-2'}
-    ${props.cols ? props.cols : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'}
+    ${props.verticalCenter ? 'h-full items-center' : ''} 
+    ${
+      props.xl || (props.left && props.right)
+        ? 'md:!grid-cols-1 lg:!grid-cols-2 2xl:grid-cols-2'
+        : 'xl:grid-cols-3'
+    }
+    ${props.cols ? props.cols : 'grid-cols-1 md:grid-cols-2'}
     grid gap-2 lg:gap-4
   `}
   >

@@ -6,14 +6,13 @@ type ITypographyProps = {
   big?: boolean;
 };
 
-// About Section
-const AboutSubTitle = (props: ITypographyProps) => (
+const SubTitle = (props: ITypographyProps) => (
   <h4 className="text-sm uppercase font-bold text-gray-100 mt-5 lg:mt-0">
     {props.text}
   </h4>
 );
 
-const AboutTitle = (props: ITypographyProps) => (
+const Title = (props: ITypographyProps) => (
   <h3
     className={`text-xl lg:text-2xl font-bold mb-2 ${
       props.style && props.style
@@ -23,7 +22,7 @@ const AboutTitle = (props: ITypographyProps) => (
   </h3>
 );
 
-const AboutParagraph = (props: ITypographyProps) => (
+const Paragraph = (props: ITypographyProps) => (
   <p
     className={`${props.strong && 'font-bold'} ${
       props.center && 'text-center'
@@ -33,4 +32,4 @@ const AboutParagraph = (props: ITypographyProps) => (
   </p>
 );
 
-export { AboutSubTitle, AboutTitle, AboutParagraph };
+export { SubTitle, Title, Paragraph };

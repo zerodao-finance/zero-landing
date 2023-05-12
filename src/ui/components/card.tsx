@@ -15,27 +15,41 @@ type IDefaultCardProps = {
   active?: string;
   dropdownText?: string;
   className?: string;
+  close?: ReactNode;
+  headerClass?: string;
 };
 
 const DefaultCard = (props: IDefaultCardProps) => (
   <div
     className={`
     ${props.className ? props.className : ''}
-		${
-      props.center &&
-      `text-center flex flex-col justify-center items-center h-full w-full`
-    }
-		${props.maxHeight && props.maxHeight}
+		${props.center ? `text-center flex flex-col items-center h-full w-full` : ''}
+		${props.maxHeight ? props.maxHeight : ''}
 		${props.minHeight ? props.minHeight : 'min-h-[300px]'}
 		${props.color ? props.color : 'bg-brand-black'}
     px-4 py-6 rounded-xl shadow-xl transition duration-200
 	`}
   >
     {props.title && (
-      <div className="flex justify-between items-center mb-5">
-        <p className={`${props.largeTitle && '!text-3xl'} text-lg font-bold`}>
-          {props.title}
-        </p>
+      <div
+        className={`flex justify-between items-center mb-5 ${
+          props.headerClass ? props.headerClass : ''
+        }`}
+      >
+        <div className="flex items-center">
+          <span
+            className={`${
+              props.largeTitle ? 'text-2xl md:text-3xl' : 'text-lg'
+            } font-bold`}
+          >
+            {props.title}
+          </span>
+          {props.close && (
+            <span className="absolute right-3 top-3 sm:right-6">
+              {props.close}
+            </span>
+          )}
+        </div>
         {props.action && (
           <Dropdown
             action={props.action}

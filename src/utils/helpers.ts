@@ -2,6 +2,26 @@ import { IBarChartProps } from '../types/charts';
 import { IEventProps } from '../types/events';
 import { IFormattedTxProps, IGraphChains } from '../types/graph-data';
 
+// General
+export function shuffle(array: any[]) {
+  let currentIndex = array.length;
+  let randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
+}
+
+// CSS
+export function classNames(...classes: any) {
+  return classes.filter(Boolean).join(' ');
+}
+
 // Charts && Tables
 export function eventsToBarChart(
   events: Array<IFormattedTxProps>,

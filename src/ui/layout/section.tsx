@@ -9,7 +9,7 @@ type ISectionProps = {
   verticalCenter?: boolean;
   fullHeight?: boolean;
   vertical?: boolean;
-  style?: string;
+  className?: string;
   h1Title?: boolean;
 };
 
@@ -24,10 +24,10 @@ const Section = (props: ISectionProps) => (
           ? '0'
           : 'py-8 md:py-10 lg:py-12'
       }
-      ${props.verticalCenter && 'flex items-center'}
-      ${props.fullHeight && 'h-full'}
-      ${props.vertical && 'flex-col'}
-      ${props.style && props.style}
+      ${props.verticalCenter ? 'flex items-center' : ''}
+      ${props.fullHeight ? 'h-full' : ''}
+      ${props.vertical ? 'flex-col' : ''}
+      ${props.className ? props.className : ''}
       mx-auto px-4 lg:px-8 flex justify-center
     `}
   >
@@ -36,11 +36,11 @@ const Section = (props: ISectionProps) => (
         {props.title && (
           <>
             {props.h1Title ? (
-              <h1 className="text-2xl 2xl:text-3xl uppercase font-bold mb-5 lg:mb-10">
+              <h1 className="text-3xl 2xl:text-4xl uppercase font-bold mb-5 lg:mb-10">
                 {props.title}
               </h1>
             ) : (
-              <h2 className="text-2xl 2xl:text-3xl font-bold uppercase mb-5 lg:mb-10">
+              <h2 className="text-3xl 2xl:text-4xl font-bold uppercase mb-5 lg:mb-10">
                 {props.title}
               </h2>
             )}
