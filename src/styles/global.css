@@ -15,7 +15,7 @@
     }
     body {
         background-color: #121212;
-        font-family: 'Poppins', sans-serif;    
+        font-family: 'Roboto', sans-serif;    
     }
 
     pre {
@@ -26,8 +26,6 @@
     }
     h1, h2 {
         font-family: 'Fugaz One', sans-serif;
-        /*font-family: 'Mitr', sans-serif;
-         font-family: 'Space Mono', monospace; */
     }
 }
 
