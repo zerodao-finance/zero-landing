@@ -18,14 +18,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,700&display=swap"
             rel="stylesheet"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400&family=Space+Mono:ital,wght@0,700;1,700&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-            rel="stylesheet"
-          />
         </Head>
         <body>
           <Main />
