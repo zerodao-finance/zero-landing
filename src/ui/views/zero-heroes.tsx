@@ -27,7 +27,7 @@ const ZeroHeroes = () => {
                 <T.Paragraph
                   strong
                   big
-                  text="Be a ZERO Hero now to earn passive yields and provide stability to ZERO Network."
+                  text="Be a hero now to earn a chance at joining the diamond hands game and supporting the ZERO network."
                 />
               </div>
             </div>
