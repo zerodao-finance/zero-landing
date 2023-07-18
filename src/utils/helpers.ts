@@ -170,3 +170,9 @@ export function spliceIntoChunks(arr: Array<any>, chunkSize: number = 20) {
   }
   return res;
 }
+
+export function removeArrDuplicates(arr: any[], key = 'id') {
+  return arr.filter(
+    (obj, i) => arr.findIndex((el) => el[key] === obj[key]) === i
+  );
+}

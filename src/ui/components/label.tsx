@@ -18,6 +18,9 @@ export const Label = ({ text, className }: ILabelProps) => {
         case 'token':
           customClass = 'bg-yellow-100 text-yellow-600';
           break;
+        case 'app':
+          customClass = 'bg-red-100 text-red-500';
+          break;
         default:
           return baseClass;
       }

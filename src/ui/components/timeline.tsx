@@ -21,6 +21,20 @@ export type ITimelineProps = {
   q3roadmapItems: IStrapiRoadmapAttr[];
   q4roadmapItems: IStrapiRoadmapAttr[];
   horizontal: boolean;
+  loading?: boolean;
+};
+
+const mockRoadmapItem: IStrapiRoadmapAttr = {
+  completionDate: null,
+  createdAt: '',
+  label: 'ZERODAO',
+  launchQuarter: '',
+  link: null,
+  publishedAt: '',
+  stage: 'loading',
+  updatedAt: '',
+  workItemDescription: null,
+  workItemTitle: 'ZERODAO',
 };
 
 const Timeline = ({
@@ -29,29 +43,37 @@ const Timeline = ({
   q3roadmapItems,
   q4roadmapItems,
   horizontal,
+  loading,
 }: ITimelineProps) => {
-  const roadmapList = [
-    {
-      quarter: 'Q1',
-      items: q1roadmapItems,
-    },
-    {
-      quarter: 'Q2',
-      items: q2roadmapItems,
-    },
-    {
-      quarter: 'Q3',
-      items: q3roadmapItems,
-    },
-    {
-      quarter: 'Q4',
-      items: q4roadmapItems,
-    },
-  ];
+  const roadmapList = !loading
+    ? [
+        {
+          quarter: 'Q1',
+          items: q1roadmapItems,
+        },
+        {
+          quarter: 'Q2',
+          items: q2roadmapItems,
+        },
+        {
+          quarter: 'Q3',
+          items: q3roadmapItems,
+        },
+        {
+          quarter: 'Q4',
+          items: q4roadmapItems,
+        },
+      ]
+    : [1, 2, 3, 4].map((el) => ({
+        quarter: `Q${el}`,
+        items: Array(4).fill(mockRoadmapItem),
+      }));
 
   const determineStageColor = (stage: string | null) => {
     if (stage) {
       switch (stage) {
+        case 'loading':
+          return 'text-brand-black';
         case 'Complete':
           return 'text-green-400';
         case 'In-Progress':
@@ -66,9 +88,9 @@ const Timeline = ({
   if (horizontal) {
     return (
       <ol className="grid grid-cols-4 divide-x-4 divide-neutral-900 mt-12">
-        {roadmapList.map((el) => (
+        {roadmapList.map((el, index) => (
           <li
-            key={`${el.quarter}-row`}
+            key={`${el.quarter}-row-${index}`}
             className={`flex flex-col gap-2 px-3 relative`}
           >
             <span
@@ -82,6 +104,7 @@ const Timeline = ({
                   minHeight="0"
                   className="w-full max-w-lg relative -top-16"
                   key={`${el.quarter}-card-${i}`}
+                  loading={loading}
                 >
                   <h3 className="flex items-start mb-1 text-lg font-semibold justify-between">
                     {item.workItemTitle}
@@ -131,6 +154,7 @@ const Timeline = ({
                 minHeight="0"
                 className={`w-full sm:w-fit max-w-lg`}
                 key={`${el.quarter}-card-${i}`}
+                loading={loading}
               >
                 <h3 className="flex items-start mb-1 text-lg font-semibold">
                   {item.workItemTitle}

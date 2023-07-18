@@ -1,5 +1,5 @@
 import { useWindowDimensions } from '../../hooks';
-import { ITimelineProps, Spinner, Timeline } from '../components';
+import { ITimelineProps, Timeline } from '../components';
 import { Section } from '../layout';
 import { Background } from '../layout/background';
 
@@ -19,13 +19,7 @@ const Roadmap = ({ data, loading = true }: IRoadmapProps) => {
         h1Title
         vertical
       >
-        {loading ? (
-          <div className="h-[42vh] flex justify-center items-center">
-            <Spinner />
-          </div>
-        ) : (
-          <Timeline {...data} horizontal={width > 1300} />
-        )}
+        <Timeline {...data} loading={loading} horizontal={width > 1300} />
       </Section>
     </Background>
   );
