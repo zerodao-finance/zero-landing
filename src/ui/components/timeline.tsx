@@ -87,7 +87,7 @@ const Timeline = ({
 
   if (horizontal) {
     return (
-      <ol className="grid grid-cols-4 divide-x-4 divide-neutral-900 mt-12">
+      <ol className="grid grid-cols-4 divide-x-4 divide-neutral-800 mt-12">
         {roadmapList.map((el, index) => (
           <li
             key={`${el.quarter}-row-${index}`}
@@ -105,6 +105,7 @@ const Timeline = ({
                   className="w-full max-w-lg relative -top-16"
                   key={`${el.quarter}-card-${i}`}
                   loading={loading}
+                  color="bg-gradient-to-r from-gray-950 to-brand-black"
                 >
                   <h3 className="flex items-start mb-1 text-lg font-semibold justify-between">
                     {item.workItemTitle}
@@ -155,6 +156,7 @@ const Timeline = ({
                 className={`w-full sm:w-fit max-w-lg`}
                 key={`${el.quarter}-card-${i}`}
                 loading={loading}
+                color="bg-gradient-to-r from-gray-950 to-brand-black"
               >
                 <h3 className="flex items-start mb-1 text-lg font-semibold">
                   {item.workItemTitle}

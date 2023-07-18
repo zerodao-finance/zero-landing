@@ -12,7 +12,7 @@ const Roadmap = ({ data, loading = true }: IRoadmapProps) => {
   const { width } = useWindowDimensions();
 
   return (
-    <Background color="bg-gray-900" animation={width < 1920 ? 'waves' : null}>
+    <Background color="bg-gradient-to-b from-gray-1000 via-gray-900 to-gray-900">
       <Section
         title="Roadmap"
         description="Our 2023 quarterly breakdown of the DAO's developments"

@@ -15,6 +15,7 @@ type IBaseProps = {
     description?: string;
     image?: string;
   };
+  navColor?: `bg-${string}`;
 };
 
 const Base = (props: IBaseProps) => {
@@ -28,7 +29,10 @@ const Base = (props: IBaseProps) => {
         image={props.meta?.image}
       />
       {/* Static Nav */}
-      <Navbar logo={<Logo type={width > 900 ? 'full' : 'text'} />} />
+      <Navbar
+        logo={<Logo type={width > 900 ? 'full' : 'text'} />}
+        bgColor={props.navColor}
+      />
       {/* Batman Nav */}
       <Transition
         show={scrollY > 500}
