@@ -39,7 +39,7 @@ const RoadmapPage = ({ roadmapItems }: any) => {
   }, []);
 
   return (
-    <Base>
+    <Base navColor="bg-gray-1000">
       <Roadmap loading={isLoading} data={statefulRoadmapItems} />
     </Base>
   );

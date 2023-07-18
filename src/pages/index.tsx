@@ -18,7 +18,7 @@ const HomePage = ({ articles }: any) => {
   }, []);
 
   return (
-    <Base>
+    <Base navColor="bg-gray-1000">
       <Hero />
       <div id="about">
         <About />
