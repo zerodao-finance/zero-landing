@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { RiMenu4Line, RiCloseFill } from 'react-icons/ri';
 
 import { useWindowDimensions } from '../../hooks/window-dimensions';
-import { Button } from '../components';
+import { Button, Copyright, SocialIconList } from '../components';
 import { Section } from '../layout/section';
 
 type INavbarProps = {
@@ -33,7 +33,7 @@ const Navbar = (props: INavbarProps) => {
           { text: 'Home', link: '/', target: '_self' },
           { text: 'Heroes', link: '#heroes', target: '_self' },
           { text: 'Roadmap', link: '/roadmap', target: '_self' },
-          { text: 'Blog', link: '#blog', target: '_self' },
+          { text: 'Blog', link: '/#blog', target: '_self' },
           { text: 'Docs', link: 'https://docs.zerodao.com', target: '_blank' },
         ];
 
@@ -74,30 +74,36 @@ const Navbar = (props: INavbarProps) => {
                       leaveTo="translate-x-[100vw]"
                       className="fixed z-[9999] h-screen right-0 top-0"
                     >
-                      <div className="w-64 flex flex-col h-full bg-brand-black shadow-md z-50 p-2 items-start">
-                        <button
-                          onClick={closeMenu}
-                          className="inline-flex p-2 self-end rounded-md text-sm font-medium text-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
-                        >
-                          <RiCloseFill size="32px" />
-                        </button>
-                        <ul>
-                          {navItems.map((item, i) => (
-                            <li key={`${item}-${i}`}>
-                              <a
-                                href={item.link}
-                                target={item.target}
-                                className={
-                                  'block px-4 py-1.5 text-2xl uppercase font-bold w-full text-neutral-100'
-                                }
-                                rel="noreferrer"
-                                onClick={closeMenu}
-                              >
-                                {item.text}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="w-64 flex flex-col h-full bg-brand-black shadow-md z-50 p-2 items-start justify-between">
+                        <div className="flex flex-col items-start w-full">
+                          <button
+                            onClick={closeMenu}
+                            className="inline-flex p-2 self-end rounded-md text-sm font-medium text-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900"
+                          >
+                            <RiCloseFill size="32px" />
+                          </button>
+                          <ul>
+                            {navItems.map((item, i) => (
+                              <li key={`${item}-${i}`}>
+                                <a
+                                  href={item.link}
+                                  target={item.target}
+                                  className={
+                                    'block px-4 py-1.5 text-2xl uppercase font-bold w-full text-neutral-100'
+                                  }
+                                  rel="noreferrer"
+                                  onClick={closeMenu}
+                                >
+                                  {item.text}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex flex-col items-center justify-center w-full gap-4">
+                          <SocialIconList />
+                          <Copyright size="sm" />
+                        </div>
                       </div>
                     </Transition>
                     <Transition

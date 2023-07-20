@@ -2,8 +2,7 @@ import { ReactNode } from 'react';
 
 import Link from 'next/link';
 
-import { AppConfig } from '../../utils/app-config';
-import { Button } from '../components';
+import { Button, Copyright } from '../components';
 import { SocialIconList } from '../components/social-icons';
 import { Background } from '../layout/background';
 import { Section } from '../layout/section';
@@ -60,7 +59,7 @@ const Footer = (props: IFooterProps) => (
 
         <div className="text-xs sm:text-sm">
           <div className="footer-copyright">
-            © Copyright {new Date().getFullYear()} {AppConfig.legalName}
+            <Copyright />
           </div>
         </div>
       </div>
