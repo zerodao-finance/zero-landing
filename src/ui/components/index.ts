@@ -14,3 +14,4 @@ export * from './label';
 export * from './link';
 export * from './search';
 export * from './stepper';
+export * from './copyright';
