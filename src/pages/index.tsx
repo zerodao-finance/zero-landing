@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { fetchAPI } from '../api/strapi';
 import { Base } from '../ui/base';
-import { About, Blog, Hero, ZeroHeroes } from '../ui/views';
+import { About, Blog, Demo, Hero, Team, ZeroHeroes } from '../ui/views';
 
 const HomePage = ({ articles }: any) => {
   const [statefulArticles, setStatefulArticles] = useState(articles);
@@ -22,6 +22,12 @@ const HomePage = ({ articles }: any) => {
       <Hero />
       <div id="about">
         <About />
+      </div>
+      <div id="demo">
+        <Demo />
+      </div>
+      <div id="team">
+        <Team />
       </div>
       <div id="heroes">
         <ZeroHeroes />
