@@ -20,20 +20,20 @@ function Blog({ articles, withShowMore }: any) {
         formattedDate: cleanDate,
       };
     });
-    const withStrapiType = articles
+    const withStaticType = articles
       ? articles.map((obj: any) => {
           const cleanDate = new Date(
             obj.attributes.publishedAt
           ).toLocaleString();
           return {
             ...obj,
-            source: 'strapi',
+            source: 'static',
             formattedDate: cleanDate,
           };
         })
       : [];
 
-    const finalBlogList: any = withMediumType.concat(withStrapiType);
+    const finalBlogList: any = withMediumType.concat(withStaticType);
 
     setBlogPosts(finalBlogList);
   }, [articles]);

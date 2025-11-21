@@ -1,22 +1,8 @@
-import { useEffect, useState } from 'react';
-
-import { fetchAPI } from '../api/strapi';
 import { Base } from '../ui/base';
 import { About, Blog, Demo, Hero, Team, ZeroHeroes } from '../ui/views';
+import { STATIC_ARTICLES } from '../utils/static-articles';
 
-const HomePage = ({ articles }: any) => {
-  const [statefulArticles, setStatefulArticles] = useState(articles);
-
-  useEffect(() => {
-    const getArticles = async () => {
-      const [articlesRes] = await Promise.all([
-        fetchAPI('/articles', { populate: ['image', 'category'] }),
-      ]);
-      if (articlesRes?.data) setStatefulArticles(articlesRes.data);
-    };
-    getArticles();
-  }, []);
-
+const HomePage = () => {
   return (
     <Base navColor="bg-gray-1000">
       <Hero />
@@ -33,25 +19,10 @@ const HomePage = ({ articles }: any) => {
         <ZeroHeroes />
       </div>
       <div id="blog">
-        <Blog articles={statefulArticles} withShowMore />
+        <Blog articles={STATIC_ARTICLES} withShowMore />
       </div>
     </Base>
   );
 };
-
-export async function getStaticProps() {
-  // Strapi Articles - START
-  const [articlesRes] = await Promise.all([
-    fetchAPI('/articles', { populate: ['image', 'category'] }),
-  ]);
-  // Strapi Articles - END
-
-  return {
-    props: {
-      articles: articlesRes?.data || null,
-    },
-    revalidate: 3,
-  };
-}
 
 export default HomePage;
