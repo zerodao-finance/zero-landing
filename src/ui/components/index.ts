@@ -15,3 +15,4 @@ export * from './link';
 export * from './search';
 export * from './stepper';
 export * from './copyright';
+export * from './blog-thumbnail';

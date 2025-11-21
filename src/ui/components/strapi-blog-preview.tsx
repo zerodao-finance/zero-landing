@@ -1,34 +1,35 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 import { truncate } from '../../utils/helpers';
+import { BlogThumbnail } from './blog-thumbnail';
 import { DefaultCard } from './card';
 
+const categoryVariants: Record<
+  string,
+  'gradient1' | 'gradient2' | 'gradient3' | 'gradient4' | 'gradient5'
+> = {
+  Technology: 'gradient1',
+  DeFi: 'gradient2',
+  Privacy: 'gradient3',
+  Bitcoin: 'gradient4',
+  Markets: 'gradient5',
+};
+
 function StrapiBlogPreview({ article }: any) {
+  const category = article?.attributes?.category?.data?.attributes?.name;
+  const variant = categoryVariants[category] || 'gradient1';
+
   return (
     <Link href={`/blog/${article.attributes.slug}`}>
       <a>
         <DefaultCard className="hover:bg-black hover:cursor-pointer text-neutral-300 hover:text-white group transition duration-200 hover:shadow-none h-full">
-          <div className="mb-5">
-            <Image
-              src={
-                article?.attributes?.thumbnail
-                  ? article?.attributes?.thumbnail
-                  : '/assets/images/logos/logo-only.svg'
-              }
-              alt={
-                article?.attributes?.slug
-                  ? article?.attributes?.slug
-                  : 'zeroDAO'
-              }
-              className="rounded transition duration-200"
-              height="200"
-              width="350"
-              objectFit={article?.attributes?.thumbnail ? 'cover' : 'contain'}
-              layout="responsive"
-              priority
+          <div className="mb-5 rounded overflow-hidden">
+            <BlogThumbnail
+              title={article.attributes.title}
+              category={category}
+              variant={variant}
             />
           </div>
           <h3 className="font-bold text-lg mb-1">{article.attributes.title}</h3>

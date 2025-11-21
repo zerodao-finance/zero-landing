@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { RiMediumFill } from 'react-icons/ri';
 
 import { truncate } from '../../utils/helpers';
+import { BlogThumbnail } from './blog-thumbnail';
 import { DefaultCard } from './card';
 
 type IBlogPreviewProps = {
@@ -28,17 +28,8 @@ function MediumBlogPreview(props: IBlogPreviewProps) {
   return (
     <Link href={props.link} target="_blank" rel="noreferrer">
       <DefaultCard className="hover:bg-black hover:cursor-pointer text-neutral-300 hover:text-white group transition duration-200 hover:shadow-none h-full">
-        <div className="mb-5">
-          <Image
-            src={props.img}
-            alt={props.alt || 'zerodao'}
-            className="rounded"
-            height="200"
-            width="350"
-            objectFit="cover"
-            layout="responsive"
-            priority
-          />
+        <div className="mb-5 rounded overflow-hidden">
+          <BlogThumbnail title={props.title} variant="gradient1" />
         </div>
         <div className="flex justify-between w-full items-center">
           <h3 className="font-bold text-lg mb-1">
