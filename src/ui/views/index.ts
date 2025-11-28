@@ -5,5 +5,4 @@ export * from './demo';
 export * from './develop';
 export * from './hero';
 export * from './roadmap';
-export * from './team';
 export * from './zero-heroes';

@@ -1,5 +1,5 @@
 import { Base } from '../ui/base';
-import { About, Blog, Demo, Hero, Team, ZeroHeroes } from '../ui/views';
+import { About, Blog, Demo, Hero, ZeroHeroes } from '../ui/views';
 import { STATIC_ARTICLES } from '../utils/static-articles';
 
 const HomePage = () => {
@@ -11,9 +11,6 @@ const HomePage = () => {
       </div>
       <div id="demo">
         <Demo />
-      </div>
-      <div id="team">
-        <Team />
       </div>
       <div id="heroes">
         <ZeroHeroes />
